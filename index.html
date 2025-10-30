@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Gusman Homestay — Nagreg | Modern Minimalist with Traditional Touch</title>
+<meta name="description" content="Gusman Homestay — Modern comfort with a traditional soul. Cozy 2-bedroom private house in Nagreg, near Nagreg Station. Book via WhatsApp for best rate." />
+<style>
+:root{
+  --bg:#fbfbfa; --card:#ffffff; --muted:#6b6b6b; --accent:#b87a3a; --wood:#f3e7da; --maxw:1200px;
+  --radius:14px; --shadow:0 8px 24px rgba(16,24,40,0.06);
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#0b1220;line-height:1.45}
+.container{max-width:var(--maxw);margin:32px auto;padding:20px}
+
+/* Header */
+header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:20px}
+.logo-img{width:200px;height:auto;margin-bottom:8px}
+.brand{font-weight:700;font-size:36px;text-align:center}
+.tag{color:var(--muted);font-size:16px;text-align:center}
+
+/* Language selector */
+.lang-selector{display:flex;gap:6px;margin-bottom:12px;justify-content:center;flex-wrap:wrap}
+.lang-selector img{width:32px;height:20px;cursor:pointer;border:1px solid #ddd;border-radius:4px}
+
+/* Hero layout */
+.hero{display:flex;gap:28px;flex-wrap:wrap}
+/* Left column: Harga, Kontak, Review */
+.hero-left{flex:1 1 400px;min-width:300px;display:flex;flex-direction:column;gap:12px}
+/* Middle column: Kamar & Lokasi */
+.hero-middle{flex:2 1 580px;min-width:300px;display:flex;flex-direction:column;gap:12px}
+/* Right column: Video & Map */
+.hero-right{flex:1 1 400px;min-width:300px;display:flex;flex-direction:column;gap:12px}
+
+/* Cards */
+.card,.hero-card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow)}
+h1{margin:0;font-size:28px}
+p.lead{color:var(--muted);margin-top:8px}
+
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.gallery img{width:100%;height:120px;object-fit:cover;border-radius:10px}
+
+ul{padding-left:18px;font-size:18px} /* bigger font for amenities */
+
+.cta{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+.whatsapp{background:#25D366;color:white}
+.reserve{background:transparent;border:1px solid #ddd;color:inherit}
+.google{background:#4285F4;color:white}
+
+.accent-band{background:linear-gradient(90deg,var(--wood) 0,#fff 40%);padding:10px;border-radius:10px;margin-top:18px}
+
+.hero-right video{width:100%;height:320px;border-radius:0;margin:0;padding:0;display:block}
+.hero-right iframe{width:100%;height:320px;border-radius:0;margin:0;padding:0;display:block}
+
+footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
+
+@media (max-width:1100px){
+  .hero{flex-direction:column}
+  .hero-left,.hero-middle,.hero-right{flex:1 1 100%}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <img src="images/logo.jpg" alt="Gusman Homestay Logo" class="logo-img">
+  <div class="brand">Gusman Homestay</div>
+  <div class="tag"><span class="lang id">Modern comfort with a traditional touch — Nagreg, West Java. Harga mulai dari 500K IDR per malam. Maksimal 4–6 tamu.</span>
+                        <span class="lang en" style="display:none;">Modern comfort with a traditional touch — Nagreg, West Java. Prices start from 500K IDR per night. Max 4–6 guests.</span>
+                        <span class="lang de" style="display:none;">Moderner Komfort mit traditionellem Touch — Nagreg, Westjava. Preise ab 500K IDR pro Nacht. Maximal 4–6 Gäste.</span>
+                        <span class="lang it" style="display:none;">Confort moderno con un tocco tradizionale — Nagreg, West Java. Prezzi a partire da 500K IDR a notte. Max 4–6 ospiti.</span>
+  </div>
+
+  <!-- Language Selector -->
+  <div class="lang-selector">
+    <img src="flags/id.png" alt="Indonesian" onclick="setLanguage('id')">
+    <img src="flags/en.png" alt="English" onclick="setLanguage('en')">
+    <img src="flags/de.png" alt="German" onclick="setLanguage('de')">
+    <img src="flags/it.png" alt="Italian" onclick="setLanguage('it')">
+  </div>
+</header>
+
+<section class="hero">
+
+  <!-- Left Column -->
+  <div class="hero-left">
+
+    <!-- Price & Book -->
+    <div class="card">
+      <h3>
+        <span class="lang id">Harga & Pemesanan</span>
+        <span class="lang en" style="display:none;">Price & Book</span>
+        <span class="lang de" style="display:none;">Preis & Buchung</span>
+        <span class="lang it" style="display:none;">Prezzi & Prenotazioni</span>
+      </h3>
+      <p style="color:var(--muted)">
+        <span class="lang id">Harga terbaik jika memesan langsung via WhatsApp. Harga mulai dari 500K IDR per malam. Maksimal 4–6 tamu.</span>
+        <span class="lang en" style="display:none;">Best price when you book directly via WhatsApp. Prices start from 500K IDR per night. Max 4–6 guests.</span>
+        <span class="lang de" style="display:none;">Bester Preis bei direkter Buchung über WhatsApp. Preise ab 500K IDR pro Nacht. Maximal 4–6 Gäste.</span>
+        <span class="lang it" style="display:none;">Miglior prezzo se prenoti direttamente via WhatsApp. Prezzi a partire da 500K IDR a notte. Max 4–6 ospiti.</span>
+      </p>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <a class="btn whatsapp" href="https://wa.me/6281230015529" target="_blank">📲 Book (ID)</a>
+        <a class="btn whatsapp" href="https://wa.me/4915751979737" target="_blank">📲 Book (DE)</a>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="card">
+      <h3>
+        <span class="lang id">Kontak</span>
+        <span class="lang en" style="display:none;">Contact</span>
+        <span class="lang de" style="display:none;">Kontakt</span>
+        <span class="lang it" style="display:none;">Contatto</span>
+      </h3>
+      <p style="margin:6px 0;color:var(--muted)">
+        <span class="lang id">Owner: Bai Gusman<br>WhatsApp ID: +62 812 3001 5529<br>WhatsApp DE: +49 157 5197 9737<br>Email: homestay.gusman@gmail.com</span>
+        <span class="lang en" style="display:none;">Owner: Bai Gusman<br>WhatsApp ID: +62 812 3001 5529<br>WhatsApp DE: +49 157 5197 9737<br>Email: homestay.gusman@gmail.com</span>
+        <span class="lang de" style="display:none;">Inhaber: Bai Gusman<br>WhatsApp ID: +62 812 3001 5529<br>WhatsApp DE: +49 157 5197 9737<br>Email: homestay.gusman@gmail.com</span>
+        <span class="lang it" style="display:none;">Proprietario: Bai Gusman<br>WhatsApp ID: +62 812 3001 5529<br>WhatsApp DE: +49 157 5197 9737<br>Email: homestay.gusman@gmail.com</span>
+      </p>
+    </div>
+
+    <!-- Guest Review -->
+    <div class="card">
+      <h3>
+        <span class="lang id">Review Tamu</span>
+        <span class="lang en" style="display:none;">Guest Review</span>
+        <span class="lang de" style="display:none;">Gästebewertung</span>
+        <span class="lang it" style="display:none;">Recensioni Ospiti</span>
+      </h3>
+      <blockquote style="margin:8px 0;padding-left:10px;border-left:3px solid var(--accent);color:var(--muted)">
+        <span class="lang id">"Rumah cantik dengan sentuhan tradisional. Tempat berhenti sempurna sebelum Garut!" — Ayu, Jakarta</span>
+        <span class="lang en" style="display:none;">"Beautiful house with a nice traditional touch. Perfect stop before heading to Garut!" — Ayu, Jakarta</span>
+        <span class="lang de" style="display:none;">"Schönes Haus mit traditionellem Touch. Perfekte Zwischenstation vor Garut!" — Ayu, Jakarta</span>
+        <span class="lang it" style="display:none;">"Bellissima casa con un bel tocco tradizionale. Perfetto stop prima di Garut!" — Ayu, Jakarta</span>
+      </blockquote>
+    </div>
+
+  </div>
+
+  <!-- Middle Column -->
+  <div class="hero-middle">
+    <!-- Hero Card -->
+    <div class="hero-card">
+      <h1>
+        <span class="lang id">Homestay Modern dengan Sentuhan Tradisional</span>
+        <span class="lang en" style="display:none;">Modern Homestay with Traditional Touch</span>
+        <span class="lang de" style="display:none;">Modernes Homestay mit traditionellem Touch</span>
+        <span class="lang it" style="display:none;">Homestay Moderno con Tocco Tradizionale</span>
+      </h1>
+      <p class="lead">
+        <span class="lang id">Rumah privat 2 kamar nyaman di Nagreg — 5 menit dari Stasiun Nagreg dan 1 jam dari Bandung atau Garut. Cocok untuk keluarga, pasangan, atau perjalanan darat.</span>
+        <span class="lang en" style="display:none;">A cozy 2-bedroom private house in Nagreg — just 5 minutes from Nagreg Station and 1 hour from Bandung or Garut. Perfect for families, couples, or road-trip stopover.</span>
+        <span class="lang de" style="display:none;">Ein gemütliches 2-Zimmer-Wohnung in Nagreg — nur 5 Minuten vom Bahnhof Nagreg und 1 Stunde von Bandung oder Garut entfernt. Perfekt für Familien, Paare oder Roadtrip.</span>
+        <span class="lang it" style="display:none;">Una casa privata con 2 camere a Nagreg — a soli 5 minuti dalla stazione di Nagreg e 1 ora da Bandung o Garut. Perfetto per famiglie, coppie o soste durante il viaggio.</span>
+      </p>
+
+      <div class="gallery" aria-hidden>
+        <img src="images/exterior.jpg" alt="Exterior">
+        <img src="images/taman.jpg" alt="Taman">
+        <img src="images/Terrace.jpg" alt="Terrace">
+        <img src="images/bamboo-bank.jpg" alt="Bamboo Bank">
+        <img src="images/main-bedroom.jpg" alt="Main bedroom">
+        <img src="images/living-room.jpg" alt="Living room">
+        <img src="images/kitchen.jpg" alt="Kitchen">
+        <img src="images/second-bedroom.jpg" alt="Second bedroom">
+        <img src="images/bamboo-daybed.jpg" alt="Traditional bamboo sofa">
+        <img src="images/bathroom-bathtub.jpg" alt="Bathroom with Bathtub">
+        <img src="images/Toilet.jpg" alt="Bathroom with WC">
+        <img src="images/bathroom.jpg" alt="Bathroom Mirror">
+      </div>
+
+    </div>
+
+    <!-- Rooms & Amenities -->
+    <div class="card">
+      <h3>
+        <span class="lang id">Kamar & Fasilitas</span>
+        <span class="lang en" style="display:none;">Rooms & Amenities</span>
+        <span class="lang de" style="display:none;">Zimmer & Ausstattung</span>
+        <span class="lang it" style="display:none;">Camere & Servizi</span>
+      </h3>
+      <ul>
+        <li><span class="lang id">Kamar utama: King bed 180x200, kamar mandi dengan bathtub, pemanas air</span>
+            <span class="lang en" style="display:none;">Main bedroom: King bed 180x200, bathroom with bathtub, water heater</span>
+            <span class="lang de" style="display:none;">Hauptschlafzimmer: King-Bett 180x200, Bad mit Badewanne, Warmwasser</span>
+            <span class="lang it" style="display:none;">Camera principale: letto Matrimoniale 180x200, bagno con vasca, scaldabagno</span>
+        </li>
+        <li><span class="lang id">Kamar kedua: Bed 120x200</span>
+            <span class="lang en" style="display:none;">Second bedroom: Bed 120x200</span>
+            <span class="lang de" style="display:none;">Zweites Schlafzimmer: Single Bett 120x200</span>
+            <span class="lang it" style="display:none;">Seconda camera: letto Singola 120x200</span>
+        </li>
+        <li><span class="lang id">WC terpisah dengan bidet otomatis</span>
+            <span class="lang en" style="display:none;">Separate WC with automatic bidet</span>
+            <span class="lang de" style="display:none;">Getrennte Toilette mit automatischem Bidet</span>
+            <span class="lang it" style="display:none;">WC separato con bidet automatico</span>
+        </li>
+        <li><span class="lang id">Dapur: kompor gas, microwave, dispenser air panas & dingin, kulkas, perlengkapan Dapur lengkap</span>
+            <span class="lang en" style="display:none;">Kitchen: gas stove, microwave, hot & cold dispenser, refrigerator, full utilities</span>
+            <span class="lang de" style="display:none;">Küche: Gasherd, Mikrowelle, Warm- & Kaltwasserspender, Kühlschrank, volle Ausstattung</span>
+            <span class="lang it" style="display:none;">Cucina: fornello a gas, microonde, dispenser acqua calda & fredda, frigorifero, utensili completi</span>
+        </li>
+        <li><span class="lang id">Ruang tamu: ruang terbuka besar, sofa 1.5 + daybed bambu tradisional</span>
+            <span class="lang en" style="display:none;">Living room: big open space, 1.5 sofa + traditional bamboo daybed</span>
+            <span class="lang de" style="display:none;">Wohnzimmer: großer offener Raum, 1,5 Sofa + traditionelles Bambusdaybed</span>
+            <span class="lang it" style="display:none;">Soggiorno: grande spazio aperto, divano 1,5 + daybed in bambù tradizionale</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Location & Access -->
+    <div class="card">
+      <h3>
+        <span class="lang id">Lokasi & Akses</span>
+        <span class="lang en" style="display:none;">Location & Access</span>
+        <span class="lang de" style="display:none;">Lage & Zugang</span>
+        <span class="lang it" style="display:none;">Posizione & Accesso</span>
+      </h3>
+      <p style="color:var(--muted)">
+        <span class="lang id">Nagreg, Kabupaten Bandung — 5 menit ke Stasiun Nagreg. Akses mudah dengan mobil (parkir tersedia). Ideal untuk pemberhentian Bandung ↔ Garut.</span>
+        <span class="lang en" style="display:none;">Nagreg, Bandung Regency — 5 min to Nagreg Station. Easy access by car (parking available). Ideal stopover for Bandung ↔ Garut travelers.</span>
+        <span class="lang de" style="display:none;">Nagreg, Bandung Landkreis — 5 Min. zum Bahnhof Nagreg. Einfach mit dem Auto erreichbar (Parkplätze vorhanden). Perfekte Zwischenstation für Bandung ↔ Garut.</span>
+        <span class="lang it" style="display:none;">Nagreg, Bandung Regency — 5 min dalla stazione di Nagreg. Accesso facile in auto (parcheggio disponibile). Sosta ideale per viaggiatori Bandung ↔ Garut.</span>
+      </p>
+      <div style="margin-top:8px;font-size:18px">
+        <strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right Column -->
+  <div class="hero-right">
+    <!-- Homestay Experiences Video -->
+    <div class="card">
+      <h3>
+        <span class="lang id">Homestay Experiences</span>
+        <span class="lang en" style="display:none;">Homestay Experiences</span>
+        <span class="lang de" style="display:none;">Homestay Erlebnisse</span>
+        <span class="lang it" style="display:none;">Esperienze Homestay</span>
+      </h3>
+</div>
+      <video controls>
+        <source src="videos/gusman-homestay-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+       <div class="card" style="margin-top:12px;text-align:center">
+  <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+    <a class="btn whatsapp" href="https://www.google.com/search?q=gusman+homestay+nagreg" target="_blank">Click here to view more photos & videos 📸 & 🎥</a>
+  </div>
+    </div>
+
+    <!-- Map -->
+    <div class="card">
+      <h3>
+        <span class="lang id">Peta</span>
+        <span class="lang en" style="display:none;">Map</span>
+        <span class="lang de" style="display:none;">Karte</span>
+        <span class="lang it" style="display:none;">Mappa</span>
+      </h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1982.847096764088!2d107.8812963!3d-7.0164852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c9df6ada6155%3A0x37e2fd8bf58f8eee!2sGusman%20Homestay!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <div style="max-width:720px;margin:12px auto;color:var(--muted)">
+    © Gusman Homestay — Modern minimalist with traditional touch. Book direct via WhatsApp for best rates.
+  </div>
+</footer>
+
+<script>
+function setLanguage(lang){
+  document.querySelectorAll('.lang').forEach(el=>el.style.display='none');
+  document.querySelectorAll('.lang.'+lang).forEach(el=>el.style.display='inline');
+}
+setLanguage('id'); // default language
+</script>
+
+</div>
+</body>
+</html>
