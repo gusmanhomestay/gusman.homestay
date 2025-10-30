@@ -40,7 +40,7 @@ h1{margin:0;font-size:28px}
 p.lead{color:var(--muted);margin-top:8px}
 
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
-.gallery img{width:100%;height:120px;object-fit:cover;border-radius:10px}
+.gallery img{width:100%;height:120px;object-fit:cover;border-radius:10px;cursor:pointer}
 
 ul{padding-left:18px;font-size:18px} /* bigger font for amenities */
 
@@ -61,6 +61,34 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   .hero{flex-direction:column}
   .hero-left,.hero-middle,.hero-right{flex:1 1 100%}
   .gallery{grid-template-columns:repeat(2,1fr)}
+}
+.lightbox {
+  position: fixed;
+  display: none;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+.lightbox img {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+}
+.lightbox:target { display: block; }
+.close-lightbox {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: none;
 }
 </style>
 </head>
@@ -104,10 +132,51 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
         <span class="lang de" style="display:none;">Bester Preis bei direkter Buchung über WhatsApp. Preise ab 500K IDR pro Nacht. Maximal 4–6 Gäste.</span>
         <span class="lang it" style="display:none;">Miglior prezzo se prenoti direttamente via WhatsApp. Prezzi a partire da 500K IDR a notte. Max 4–6 ospiti.</span>
       </p>
-      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-        <a class="btn whatsapp" href="https://wa.me/6281230015529" target="_blank">📲 Book (ID)</a>
-        <a class="btn whatsapp" href="https://wa.me/4915751979737" target="_blank">📲 Book (DE)</a>
-      </div>
+
+      <!-- Booking Form -->
+      <form id="bookingForm">
+        <label>
+          <span class="lang id">Check-in</span>
+          <span class="lang en" style="display:none;">Check-in</span>
+          <span class="lang de" style="display:none;">Check-in</span>
+          <span class="lang it" style="display:none;">Check-in</span>
+          <input type="date" id="checkin" required>
+        </label><br>
+        <label>
+          <span class="lang id">Check-out</span>
+          <span class="lang en" style="display:none;">Check-out</span>
+          <span class="lang de" style="display:none;">Check-out</span>
+          <span class="lang it" style="display:none;">Check-out</span>
+          <input type="date" id="checkout" required>
+        </label><br>
+        <label>
+          <span class="lang id">Dewasa</span>
+          <span class="lang en" style="display:none;">Adults</span>
+          <span class="lang de" style="display:none;">Erwachsene</span>
+          <span class="lang it" style="display:none;">Adulti</span>
+          <input type="number" id="adults" min="1" max="6" value="1" required>
+        </label><br>
+        <label>
+          <span class="lang id">Anak-anak (<12)</span>
+          <span class="lang en" style="display:none;">Children (<12)</span>
+          <span class="lang de" style="display:none;">Kinder (<12)</span>
+          <span class="lang it" style="display:none;">Bambini (<12)</span>
+          <input type="number" id="children" min="0" max="6" value="0" required>
+        </label><br>
+        <div style="margin-top:8px;font-weight:600">
+          <span class="lang id">Total Harga: </span>
+          <span class="lang en" style="display:none;">Total Price: </span>
+          <span class="lang de" style="display:none;">Gesamtpreis: </span>
+          <span class="lang it" style="display:none;">Prezzo Totale: </span>
+          <span id="totalPrice">500K IDR</span>
+        </div>
+        <button type="button" class="btn whatsapp" style="margin-top:8px;" onclick="bookWhatsApp()">
+          <span class="lang id">📲 Pesan via WhatsApp-Tunggu konfirmasi</span>
+          <span class="lang en" style="display:none;">📲 Book via WhatsApp-Awaiting confirmation</span>
+          <span class="lang de" style="display:none;">📲 Per WhatsApp buchen-Bestätigung ausstehend</span>
+          <span class="lang it" style="display:none;">📲 Prenota su WhatsApp-conferma in attesa</span>
+        </button>
+      </form>
     </div>
 
     <!-- Contact -->
@@ -161,20 +230,34 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
         <span class="lang it" style="display:none;">Una casa privata con 2 camere a Nagreg — a soli 5 minuti dalla stazione di Nagreg e 1 ora da Bandung o Garut. Perfetto per famiglie, coppie o soste durante il viaggio.</span>
       </p>
 
-      <div class="gallery" aria-hidden>
-        <img src="images/Exterior.jpg" alt="Exterior">
-        <img src="images/taman.jpg" alt="Taman">
-        <img src="images/Terrace.jpg" alt="Terrace">
-        <img src="images/bamboo-bank.jpg" alt="Bamboo Bank">
-        <img src="images/Main-bedroom.jpg" alt="Main bedroom">
-        <img src="images/Living-room.jpg" alt="Living room">
-        <img src="images/Kitchen.jpg" alt="Kitchen">
-        <img src="images/Second-bedroom.jpg" alt="Second bedroom">
-        <img src="images/bamboo-daybed.jpg" alt="Traditional bamboo sofa">
-        <img src="images/bathroom-bathtub.jpg" alt="Bathroom with Bathtub">
-        <img src="images/Toilet.jpg" alt="Bathroom with WC">
-        <img src="images/bathroom.jpg" alt="Bathroom Mirror">
+      <div class="gallery">
+        <a href="#img1"><img src="images/Exterior.jpg" alt="Exterior"></a>
+        <a href="#img2"><img src="images/taman.jpg" alt="Taman"></a>
+        <a href="#img3"><img src="images/Terrace.jpg" alt="Terrace"></a>
+        <a href="#img4"><img src="images/bamboo-bank.jpg" alt="Bamboo Bank"></a>
+        <a href="#img5"><img src="images/Main-bedroom.jpg" alt="Main bedroom"></a>
+        <a href="#img6"><img src="images/Living-room.jpg" alt="Living room"></a>
+        <a href="#img7"><img src="images/Kitchen.jpg" alt="Kitchen"></a>
+        <a href="#img8"><img src="images/Second-bedroom.jpg" alt="Second bedroom"></a>
+        <a href="#img9"><img src="images/bamboo-daybed.jpg" alt="Traditional bamboo sofa"></a>
+        <a href="#img10"><img src="images/bathroom-bathtub.jpg" alt="Bathroom with Bathtub"></a>
+        <a href="#img11"><img src="images/Toilet.jpg" alt="Bathroom with WC"></a>
+        <a href="#img12"><img src="images/bathroom.jpg" alt="Bathroom Mirror"></a>
       </div>
+
+      <!-- Lightbox -->
+      <div id="img1" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/Exterior.jpg" alt="Exterior"></div>
+      <div id="img2" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/taman.jpg" alt="Taman"></div>
+      <div id="img3" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/Terrace.jpg" alt="Terrace"></div>
+      <div id="img4" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/bamboo-bank.jpg" alt="Bamboo Bank"></div>
+      <div id="img5" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/Main-bedroom.jpg" alt="Main bedroom"></div>
+      <div id="img6" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/Living-room.jpg" alt="Living room"></div>
+      <div id="img7" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/Kitchen.jpg" alt="Kitchen"></div>
+      <div id="img8" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/Second-bedroom.jpg" alt="Second bedroom"></div>
+      <div id="img9" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/bamboo-daybed.jpg" alt="Traditional bamboo sofa"></div>
+      <div id="img10" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/bathroom-bathtub.jpg" alt="Bathroom with Bathtub"></div>
+      <div id="img11" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/Toilet.jpg" alt="Bathroom with WC"></div>
+      <div id="img12" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/bathroom.jpg" alt="Bathroom Mirror"></div>
 
     </div>
 
@@ -273,18 +356,57 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
 
 <footer>
   <div style="max-width:720px;margin:12px auto;color:var(--muted)">
-    © Gusman Homestay — Modern minimalist with traditional touch. Book direct via WhatsApp for best rates.
+    Copy © Gusman Homestay — Modern minimalist with traditional touch. Book direct via WhatsApp for best rates.
   </div>
 </footer>
 
 <script>
 function setLanguage(lang){
-  document.querySelectorAll('.lang').forEach(el=>el.style.display='none');
-  document.querySelectorAll('.lang.'+lang).forEach(el=>el.style.display='inline');
+  document.querySelectorAll('.lang').forEach(el=>{
+    el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
+  });
 }
-setLanguage('id'); // default language
+
+function bookWhatsApp(){
+  const checkin = document.getElementById('checkin').value;
+  const checkout = document.getElementById('checkout').value;
+  const adults = document.getElementById('adults').value;
+  const children = document.getElementById('children').value;
+  const price = document.getElementById('totalPrice').innerText;
+  const msg = `Halo, saya ingin memesan Gusman Homestay:\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nDewasa: ${adults}\nAnak-anak: ${children}\nTotal Harga: ${price}`;
+  window.open(`https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// Price calculation
+function updatePrice() {
+  const base = 500; // per night
+  let adults = parseInt(document.getElementById('adults').value) || 1;
+  const children = parseInt(document.getElementById('children').value) || 0;
+
+  // Limit total guests to 6
+  let totalGuests = adults + children;
+  if(totalGuests > 6){
+    adults = 6 - children;
+    document.getElementById('adults').value = adults;
+  }
+
+  const checkin = new Date(document.getElementById('checkin').value);
+  const checkout = new Date(document.getElementById('checkout').value);
+  let nights = 1;
+  if(checkin && checkout && checkout > checkin){
+    nights = Math.ceil((checkout - checkin)/(1000*60*60*24));
+  }
+
+  const extra = adults > 4 ? (adults - 4)*50 : 0;
+  const total = (base + extra) * nights;
+  document.getElementById('totalPrice').innerText = total + 'K IDR';
+}
+
+['adults','children','checkin','checkout'].forEach(id=>{
+  document.getElementById(id).addEventListener('change', updatePrice);
+});
+updatePrice();
 </script>
 
-</div>
 </body>
 </html>
