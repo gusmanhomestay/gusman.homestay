@@ -83,7 +83,40 @@ ul{padding-left:18px;font-size:18px} /* bigger font for amenities */
   color:var(--muted);
   text-align:center;
 }
+  
+/* Video selection buttons (pills) */
+.video-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-top:12px;
+}
 
+.video-btn{
+  appearance:none;
+  border:1px solid #e5e7eb;
+  background:#f3f4f6;
+  color:#111827;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:600;
+  cursor:pointer;
+  line-height:1;
+  width:auto; /* IMPORTANT: prevents full-width */
+  box-shadow:0 2px 6px rgba(16,24,40,0.06);
+}
+
+.video-btn:hover{
+  background:#e5e7eb;
+}
+
+.video-btn.active{
+  background:#25D366;
+  border-color:#25D366;
+  color:#fff;
+}
+  
 /* Map stays consistent */
 .hero-right iframe{
   width:100%;
@@ -390,14 +423,14 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
     </div>
 
     <!-- VIDEO SELECT BUTTONS -->
-    <div style="display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px">
-      <button type="button" class="btn reserve" onclick="setTourVideo('videos/01-day-overview.mp4','Day overview')">Day overview</button>
-      <button type="button" class="btn reserve" onclick="setTourVideo('videos/02-night-overview.mp4','Night overview')">Night overview</button>
-      <button type="button" class="btn reserve" onclick="setTourVideo('videos/03-terrace-night.mp4','Terrace at night')">Terrace at night</button>
-      <button type="button" class="btn reserve" onclick="setTourVideo('videos/04-kitchen-night.mp4','Kitchen & dining')">Kitchen & dining</button>
-      <button type="button" class="btn reserve" onclick="setTourVideo('videos/05-bedroom-main.mp4','Main bedroom')">Main bedroom</button>
-      <button type="button" class="btn reserve" onclick="setTourVideo('videos/06-bedroom-second.mp4','Second bedroom')">Second bedroom</button>
-    </div>
+ <div class="video-buttons">
+  <button class="video-btn" onclick="setTourVideo('videos/01-day-overview.mp4','Day overview', this)">Day overview</button>
+  <button class="video-btn" onclick="setTourVideo('videos/02-night-overview.mp4','Night overview', this)">Night overview</button>
+  <button class="video-btn active" onclick="setTourVideo('videos/03-terrace-night.mp4','Terrace at night', this)">Terrace at night</button>
+  <button class="video-btn" onclick="setTourVideo('videos/04-kitchen-night.mp4','Kitchen & dining', this)">Kitchen & dining</button>
+  <button class="video-btn" onclick="setTourVideo('videos/05-bedroom-main.mp4','Main bedroom', this)">Main bedroom</button>
+  <button class="video-btn" onclick="setTourVideo('videos/06-bedroom-second.mp4','Second bedroom', this)">Second bedroom</button>
+</div>
 
   </div>
 <div style="margin-top:14px;text-align:center">
@@ -443,7 +476,7 @@ function bookWhatsApp(){
   const msg = `Halo, saya ingin memesan Gusman Homestay:\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nDewasa: ${adults}\nAnak-anak: ${children}\nTotal Harga: ${price}`;
   window.open(`https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`, '_blank');
 }
-function setTourVideo(src, caption){
+function setTourVideo(src, caption, btn){
   const video = document.getElementById('tourVideo');
   const source = document.getElementById('tourSource');
   const cap = document.getElementById('tourCaption');
@@ -451,8 +484,13 @@ function setTourVideo(src, caption){
   source.src = src;
   cap.textContent = caption;
 
+  // active button highlight
+  document.querySelectorAll('.video-btn').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+
   video.load();
   video.play();
+}
 }
 // Price calculation
 function updatePrice() {
