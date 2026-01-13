@@ -766,11 +766,25 @@ function setLanguage(lang){
   });
 }
 
-/* Default language */
+/* Default language + preload videos */
 document.addEventListener('DOMContentLoaded', () => {
   setLanguage('id');
-});
 
+  // ✅ Preload video metadata for faster switching
+  [
+    'videos/01-day-overview.mp4',
+    'videos/02-night-overview.mp4',
+    'videos/03-terrace-night.mp4',
+    'videos/04-kitchen-night.mp4',
+    'videos/05-bedroom-main.mp4',
+    'videos/06-bedroom-second.mp4'
+  ].forEach(src => {
+    const v = document.createElement('video');
+    v.preload = 'metadata';
+    v.src = src;
+  });
+});
+  
 /* WhatsApp booking */
 function bookWhatsApp(){
   const checkin = document.getElementById('checkin').value;
@@ -783,6 +797,7 @@ function bookWhatsApp(){
 }
 
 /* Video switcher */
+<script>
 function setTourVideo(src, caption, poster, btn){
   const video = document.getElementById('tourVideo');
   const source = document.getElementById('tourSource');
@@ -795,11 +810,19 @@ function setTourVideo(src, caption, poster, btn){
 
   document.querySelectorAll('.video-btn')
     .forEach(b => b.classList.remove('active'));
-
   if(btn) btn.classList.add('active');
 
-  video.load();                // reload video (no autoplay)
+  video.load();                // load new source
+
+  // ▶️ Try to play immediately (same fast feel as before)
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      // Autoplay blocked → user can tap Play
+    });
+  }
 }
+</script>
 
 /* Price calculation */
 function updatePrice() {
