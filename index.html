@@ -379,49 +379,25 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
     <span class="lang it" style="display:none;">Homestay Video Tour</span>
   </h3>
 
-  <div class="video-grid">
+    <div class="video-grid">
 
-    <figure class="video-item">
-      <video controls playsinline preload="metadata">
-        <source src="videos/01-day-overview.mp4" type="video/mp4">
+    <!-- ONE MAIN PLAYER -->
+    <div class="video-item">
+      <video id="tourVideo" controls playsinline preload="metadata">
+        <source id="tourSource" src="videos/01-day-overview.mp4" type="video/mp4">
       </video>
-      <figcaption>Day overview</figcaption>
-    </figure>
+      <figcaption id="tourCaption">Day overview</figcaption>
+    </div>
 
-    <figure class="video-item">
-      <video controls playsinline preload="metadata">
-        <source src="videos/02-night-overview.mp4" type="video/mp4">
-      </video>
-      <figcaption>Night overview</figcaption>
-    </figure>
-
-    <figure class="video-item">
-      <video controls playsinline preload="metadata">
-        <source src="videos/03-terrace-night.mp4" type="video/mp4">
-      </video>
-      <figcaption>Terrace at night</figcaption>
-    </figure>
-
-    <figure class="video-item">
-      <video controls playsinline preload="metadata">
-        <source src="videos/04-kitchen-night.mp4" type="video/mp4">
-      </video>
-      <figcaption>Kitchen & dining</figcaption>
-    </figure>
-
-    <figure class="video-item">
-      <video controls playsinline preload="metadata">
-        <source src="videos/05-bedroom-main.mp4" type="video/mp4">
-      </video>
-      <figcaption>Main bedroom</figcaption>
-    </figure>
-
-    <figure class="video-item">
-      <video controls playsinline preload="metadata">
-        <source src="videos/06-bedroom-second.mp4" type="video/mp4">
-      </video>
-      <figcaption>Second bedroom</figcaption>
-    </figure>
+    <!-- VIDEO SELECT BUTTONS -->
+    <div style="display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px">
+      <button type="button" class="btn reserve" onclick="setTourVideo('videos/01-day-overview.mp4','Day overview')">Day overview</button>
+      <button type="button" class="btn reserve" onclick="setTourVideo('videos/02-night-overview.mp4','Night overview')">Night overview</button>
+      <button type="button" class="btn reserve" onclick="setTourVideo('videos/03-terrace-night.mp4','Terrace at night')">Terrace at night</button>
+      <button type="button" class="btn reserve" onclick="setTourVideo('videos/04-kitchen-night.mp4','Kitchen & dining')">Kitchen & dining</button>
+      <button type="button" class="btn reserve" onclick="setTourVideo('videos/05-bedroom-main.mp4','Main bedroom')">Main bedroom</button>
+      <button type="button" class="btn reserve" onclick="setTourVideo('videos/06-bedroom-second.mp4','Second bedroom')">Second bedroom</button>
+    </div>
 
   </div>
 <div style="margin-top:14px;text-align:center">
@@ -467,7 +443,17 @@ function bookWhatsApp(){
   const msg = `Halo, saya ingin memesan Gusman Homestay:\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nDewasa: ${adults}\nAnak-anak: ${children}\nTotal Harga: ${price}`;
   window.open(`https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`, '_blank');
 }
+function setTourVideo(src, caption){
+  const video = document.getElementById('tourVideo');
+  const source = document.getElementById('tourSource');
+  const cap = document.getElementById('tourCaption');
 
+  source.src = src;
+  cap.textContent = caption;
+
+  video.load();
+  video.play();
+}
 // Price calculation
 function updatePrice() {
   const base = 500; // per night
