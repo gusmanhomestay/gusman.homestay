@@ -52,9 +52,52 @@ ul{padding-left:18px;font-size:18px} /* bigger font for amenities */
 
 .accent-band{background:linear-gradient(90deg,var(--wood) 0,#fff 40%);padding:10px;border-radius:10px;margin-top:18px}
 
-.hero-right video{width:100%;height:320px;border-radius:0;margin:0;padding:0;display:block}
-.hero-right iframe{width:100%;height:320px;border-radius:0;margin:0;padding:0;display:block}
+/* Video section */
+.video-card h3{
+  text-align:center;
+  margin:0 0 12px 0;
+}
 
+.video-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+
+.video-item{
+  margin:0;
+}
+
+.video-item video{
+  width:100%;
+  aspect-ratio:16/9;
+  height:auto;
+  border-radius:12px;
+  display:block;
+  background:#000;
+}
+
+.video-item figcaption{
+  margin-top:6px;
+  font-size:14px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* Map stays consistent */
+.hero-right iframe{
+  width:100%;
+  height:320px;
+  border-radius:12px;
+  margin:0;
+  padding:0;
+  display:block;
+}
+
+/* Optional: slightly wider right column on desktop */
+.hero-right{
+  flex:1 1 480px;
+}
 footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
 
 @media (max-width:1100px){
@@ -328,18 +371,59 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   <!-- Right Column -->
   <div class="hero-right">
 <!-- Homestay Video Tour -->
-<div class="card">
-  <h3 style="text-align:center;margin:0 0 12px 0;">
+<div class="card video-card">
+  <h3>
     <span class="lang id">Homestay Video Tour</span>
     <span class="lang en" style="display:none;">Homestay Video Tour</span>
     <span class="lang de" style="display:none;">Homestay Video Tour</span>
     <span class="lang it" style="display:none;">Homestay Video Tour</span>
   </h3>
 
-  <video controls style="width:100%;height:auto;display:block;border-radius:12px;">
-    <source src="videos/gusman-homestay-video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <div class="video-grid">
+
+    <figure class="video-item">
+      <video controls playsinline preload="metadata">
+        <source src="videos/01-day-overview.mp4" type="video/mp4">
+      </video>
+      <figcaption>Day overview</figcaption>
+    </figure>
+
+    <figure class="video-item">
+      <video controls playsinline preload="metadata">
+        <source src="videos/02-night-overview.mp4" type="video/mp4">
+      </video>
+      <figcaption>Night overview</figcaption>
+    </figure>
+
+    <figure class="video-item">
+      <video controls playsinline preload="metadata">
+        <source src="videos/03-terrace-night.mp4" type="video/mp4">
+      </video>
+      <figcaption>Terrace at night</figcaption>
+    </figure>
+
+    <figure class="video-item">
+      <video controls playsinline preload="metadata">
+        <source src="videos/04-kitchen-night.mp4" type="video/mp4">
+      </video>
+      <figcaption>Kitchen & dining (night)</figcaption>
+    </figure>
+
+    <figure class="video-item">
+      <video controls playsinline preload="metadata">
+        <source src="videos/05-bedroom-main.mp4" type="video/mp4">
+      </video>
+      <figcaption>Main bedroom</figcaption>
+    </figure>
+
+    <figure class="video-item">
+      <video controls playsinline preload="metadata">
+        <source src="videos/06-bedroom-second.mp4" type="video/mp4">
+      </video>
+      <figcaption>Second bedroom</figcaption>
+    </figure>
+
+  </div>
 
   <div style="margin-top:12px;text-align:center">
     <a class="btn whatsapp" href="https://www.google.com/search?q=gusman+homestay+nagreg" target="_blank">
