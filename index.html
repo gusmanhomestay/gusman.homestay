@@ -165,35 +165,71 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   .split-row{flex-direction:column}
   .split-left,.split-right{flex:1 1 100%}
 }
+  
+/* ====== Lightbox Gallery (with Next/Prev) ====== */
+.lb-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  padding:24px;
+}
 
-/* Lightbox */
-.lightbox {
-  position: fixed;
-  display: none;
-  z-index: 999;
-  padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
+.lb-overlay.open{ display:flex; }
+
+.lb-img{
+  max-width:min(92vw, 1100px);
+  max-height:82vh;
+  border-radius:12px;
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+  background:#000;
 }
-.lightbox img {
-  margin: auto;
-  display: block;
-  max-width: 90%;
-  max-height: 80%;
+
+.lb-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  border:0;
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  font-size:28px;
+  width:52px;
+  height:52px;
+  border-radius:999px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  user-select:none;
 }
-.lightbox:target { display: block; }
-.close-lightbox {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  text-decoration: none;
+.lb-btn:hover{ background:rgba(255,255,255,.22); }
+
+.lb-prev{ left:16px; }
+.lb-next{ right:16px; }
+
+.lb-close{
+  position:absolute;
+  top:16px;
+  right:16px;
+  transform:none;
+  font-size:26px;
+  width:46px;
+  height:46px;
+}
+
+.lb-counter{
+  position:absolute;
+  bottom:16px;
+  left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.85);
+  font-size:14px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
 }
 </style>
 </head>
@@ -359,40 +395,22 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
       </p>
 
       <div class="gallery">
-        <a href="#img1"><img src="images/01-exterior-front.jpg" alt="Gusman Homestay exterior view"></a>
-        <a href="#img2"><img src="images/02-exterior-front.jpg" alt="Gusman Homestay exterior taman"></a>
-        <a href="#img3"><img src="images/03-living-room.jpg" alt="Living room at Gusman Homestay"></a>
-        <a href="#img4"><img src="images/04-living-room.jpg" alt="Living room at Gusman Homestay"></a>
-        <a href="#img5"><img src="images/05-kitchen-dining.jpg" alt="Gusman Homestay Dining"></a>
-        <a href="#img6"><img src="images/06-kitchen.jpg" alt="Gusman Homestay Kitchen"></a>
-        <a href="#img7"><img src="images/07-bedroom-main.jpg" alt="Gusman Homestay Main Bedroom"></a>
-        <a href="#img8"><img src="images/08-bedroom-second.jpg" alt="Gusman Homestay Second Bedroom"></a>
-        <a href="#img9"><img src="images/09-bathroom-main.jpg" alt="Gusman Homestay Main Bathroom"></a>
-        <a href="#img10"><img src="images/10-bathroom-main.jpg" alt="Gusman Homestay Main Bathroom Sink"></a>
-        <a href="#img11"><img src="images/11-bathroom-second.jpg" alt="Gusman Homestay Second Bathroom with Toilet"></a>
-        <a href="#img12"><img src="images/12-bathroom-second.jpg" alt="Gusman Homestay Second Bathroom Sink"></a>
-        <a href="#img13"><img src="images/13-exterior.jpg" alt="Gusman Homestay Gate Exterior"></a>
-        <a href="#img14"><img src="images/14-bamboo-bank.jpg" alt="Gusman Homestay Bamboo Bank"></a>
-        <a href="#img15"><img src="images/15-bamboo-daybed.jpg" alt="Gusman Homestay Bamboo Day Bed"></a>
+        <img src="images/01-exterior-front.jpg" alt="Gusman Homestay exterior view"></a>
+        <img src="images/02-exterior-front.jpg" alt="Gusman Homestay exterior taman"></a>
+        <img src="images/03-living-room.jpg" alt="Living room at Gusman Homestay"></a>
+        <img src="images/04-living-room.jpg" alt="Living room at Gusman Homestay"></a>
+        <img src="images/05-kitchen-dining.jpg" alt="Gusman Homestay Dining"></a>
+        <img src="images/06-kitchen.jpg" alt="Gusman Homestay Kitchen"></a>
+        <img src="images/07-bedroom-main.jpg" alt="Gusman Homestay Main Bedroom"></a>
+        <img src="images/08-bedroom-second.jpg" alt="Gusman Homestay Second Bedroom"></a>
+        <img src="images/09-bathroom-main.jpg" alt="Gusman Homestay Main Bathroom"></a>
+        <img src="images/10-bathroom-main.jpg" alt="Gusman Homestay Main Bathroom Sink"></a>
+        <img src="images/11-bathroom-second.jpg" alt="Gusman Homestay Second Bathroom with Toilet"></a>
+        <img src="images/12-bathroom-second.jpg" alt="Gusman Homestay Second Bathroom Sink"></a>
+        <img src="images/13-exterior.jpg" alt="Gusman Homestay Gate Exterior"></a>
+        <img src="images/14-bamboo-bank.jpg" alt="Gusman Homestay Bamboo Bank"></a>
+        <img src="images/15-bamboo-daybed.jpg" alt="Gusman Homestay Bamboo Day Bed"></a>
       </div>
-
-      <!-- Lightbox -->
-      <div id="img1" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/01-exterior-front.jpg" alt="Gusman Homestay exterior view"></div>
-      <div id="img2" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/02-exterior-front.jpg" alt="Gusman Homestay exterior taman"></div>
-      <div id="img3" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/03-living-room.jpg" alt="Living room at Gusman Homestay"></div>
-      <div id="img4" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/04-living-room.jpg" alt="Living room at Gusman Homestay"></div>
-      <div id="img5" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/05-kitchen-dining.jpg" alt="Gusman Homestay Dining"></div>
-      <div id="img6" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/06-kitchen.jpg" alt="Gusman Homestay Kitchen"></div>
-      <div id="img7" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/07-bedroom-main.jpg" alt="Gusman Homestay Main Bedroom"></div>
-      <div id="img8" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/08-bedroom-second.jpg" alt="Gusman Homestay Second Bedroom"></div>
-      <div id="img9" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/09-bathroom-main.jpg" alt="Gusman Homestay Main Bathroom"></div>
-      <div id="img10" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/10-bathroom-main.jpg" alt="Gusman Homestay Main Bathroom Sink"></div>
-      <div id="img11" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/11-bathroom-second.jpg" alt="Gusman Homestay Second Bathroom with Toilet"></div>
-      <div id="img12" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/12-bathroom-second.jpg" alt="Gusman Homestay Second Bathroom Sink"></div>
-      <div id="img13" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/13-exterior.jpg" alt="Gusman Homestay Gate Exterior"></div>
-      <div id="img14" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/14-bamboo-bank.jpg" alt="Gusman Homestay Bamboo Bank"></div>
-      <div id="img15" class="lightbox"><a href="#" class="close-lightbox">&times;</a><img src="images/15-bamboo-daybed.jpg" alt="Gusman Homestay Bamboo Day Bed"></div>
-    </div>
 
   </div><!-- end hero-middle -->
 
@@ -801,6 +819,77 @@ function updatePrice() {
   if(el) el.addEventListener('change', updatePrice);
 });
 updatePrice();
+  /* ====== Gallery Lightbox with Next/Prev ====== */
+(function(){
+  const overlay = document.getElementById('lbOverlay');
+  const imgEl = document.getElementById('lbImg');
+  const btnPrev = document.getElementById('lbPrev');
+  const btnNext = document.getElementById('lbNext');
+  const btnClose = document.getElementById('lbClose');
+  const counter = document.getElementById('lbCounter');
+
+  // Grab gallery images (works with your current HTML)
+  const galleryImgs = Array.from(document.querySelectorAll('.gallery img'));
+  if(!galleryImgs.length) return;
+
+  // Build an array of src + alt
+  const items = galleryImgs.map(img => ({
+    src: img.getAttribute('src'),
+    alt: img.getAttribute('alt') || 'Photo'
+  }));
+
+  let index = 0;
+
+  function show(i){
+    index = (i + items.length) % items.length;
+    imgEl.src = items[index].src;
+    imgEl.alt = items[index].alt;
+    counter.textContent = `${index + 1} / ${items.length}`;
+  }
+
+  function open(i){
+    show(i);
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
+  }
+
+  function close(){
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function next(){ show(index + 1); }
+  function prev(){ show(index - 1); }
+
+  // Click any gallery image to open
+  galleryImgs.forEach((img, i) => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', (e) => {
+      e.preventDefault();
+      open(i);
+    });
+  });
+
+  // Buttons
+  btnNext.addEventListener('click', next);
+  btnPrev.addEventListener('click', prev);
+  btnClose.addEventListener('click', close);
+
+  // Click on dark background closes (but not when clicking the image)
+  overlay.addEventListener('click', (e) => {
+    if(e.target === overlay) close();
+  });
+
+  // Keyboard support
+  document.addEventListener('keydown', (e) => {
+    if(!overlay.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowRight') next();
+    if(e.key === 'ArrowLeft') prev();
+  });
+})();
 </script>
 
 <!-- ✅ SEO: FAQ Schema (ID + EN) -->
