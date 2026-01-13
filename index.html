@@ -395,21 +395,21 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
       </p>
 
       <div class="gallery">
-        <img src="images/01-exterior-front.jpg" alt="Gusman Homestay exterior view"></a>
-        <img src="images/02-exterior-front.jpg" alt="Gusman Homestay exterior taman"></a>
-        <img src="images/03-living-room.jpg" alt="Living room at Gusman Homestay"></a>
-        <img src="images/04-living-room.jpg" alt="Living room at Gusman Homestay"></a>
-        <img src="images/05-kitchen-dining.jpg" alt="Gusman Homestay Dining"></a>
-        <img src="images/06-kitchen.jpg" alt="Gusman Homestay Kitchen"></a>
-        <img src="images/07-bedroom-main.jpg" alt="Gusman Homestay Main Bedroom"></a>
-        <img src="images/08-bedroom-second.jpg" alt="Gusman Homestay Second Bedroom"></a>
-        <img src="images/09-bathroom-main.jpg" alt="Gusman Homestay Main Bathroom"></a>
-        <img src="images/10-bathroom-main.jpg" alt="Gusman Homestay Main Bathroom Sink"></a>
-        <img src="images/11-bathroom-second.jpg" alt="Gusman Homestay Second Bathroom with Toilet"></a>
-        <img src="images/12-bathroom-second.jpg" alt="Gusman Homestay Second Bathroom Sink"></a>
-        <img src="images/13-exterior.jpg" alt="Gusman Homestay Gate Exterior"></a>
-        <img src="images/14-bamboo-bank.jpg" alt="Gusman Homestay Bamboo Bank"></a>
-        <img src="images/15-bamboo-daybed.jpg" alt="Gusman Homestay Bamboo Day Bed"></a>
+        <img src="images/01-exterior-front.jpg" alt="Gusman Homestay exterior view">
+        <img src="images/02-exterior-front.jpg" alt="Gusman Homestay exterior taman">
+        <img src="images/03-living-room.jpg" alt="Living room at Gusman Homestay">
+        <img src="images/04-living-room.jpg" alt="Living room at Gusman Homestay">
+        <img src="images/05-kitchen-dining.jpg" alt="Gusman Homestay Dining">
+        <img src="images/06-kitchen.jpg" alt="Gusman Homestay Kitchen">
+        <img src="images/07-bedroom-main.jpg" alt="Gusman Homestay Main Bedroom">
+        <img src="images/08-bedroom-second.jpg" alt="Gusman Homestay Second Bedroom">
+        <img src="images/09-bathroom-main.jpg" alt="Gusman Homestay Main Bathroom">
+        <img src="images/10-bathroom-main.jpg" alt="Gusman Homestay Main Bathroom Sink">
+        <img src="images/11-bathroom-second.jpg" alt="Gusman Homestay Second Bathroom with Toilet">
+        <img src="images/12-bathroom-second.jpg" alt="Gusman Homestay Second Bathroom Sink">
+        <img src="images/13-exterior.jpg" alt="Gusman Homestay Gate Exterior">
+        <img src="images/14-bamboo-bank.jpg" alt="Gusman Homestay Bamboo Bank">
+        <img src="images/15-bamboo-daybed.jpg" alt="Gusman Homestay Bamboo Day Bed">
       </div>
 
   </div><!-- end hero-middle -->
@@ -744,6 +744,17 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
 
 </div><!-- end container -->
 
+<!-- Lightbox Overlay (Next/Prev) -->
+<div id="lbOverlay" class="lb-overlay" aria-hidden="true">
+  <button id="lbClose" class="lb-btn lb-close" type="button" aria-label="Close">✕</button>
+  <button id="lbPrev" class="lb-btn lb-prev" type="button" aria-label="Previous">‹</button>
+
+  <img id="lbImg" class="lb-img" src="" alt="">
+
+  <button id="lbNext" class="lb-btn lb-next" type="button" aria-label="Next">›</button>
+  <div id="lbCounter" class="lb-counter">1 / 1</div>
+</div>
+  
 <script>
 function setLanguage(lang){
   document.querySelectorAll('.lang').forEach(el=>{
@@ -900,7 +911,7 @@ updatePrice();
     {
       "@type": "FAQPage",
       "@id": "https://www.gusmanhomestay.com/#faq-id",
-      "url": "https://www.gusmanhomestay.com/"
+      "url": "https://www.gusmanhomestay.com/",
       "name": "FAQ Gusman Homestay (Bahasa Indonesia)",
       "inLanguage": "id-ID",
       "mainEntity": [
@@ -965,7 +976,7 @@ updatePrice();
     {
       "@type": "FAQPage",
       "@id": "https://www.gusmanhomestay.com/#faq-en",
-      "url": "https://www.gusmanhomestay.com/"
+      "url": "https://www.gusmanhomestay.com/",
       "name": "Gusman Homestay FAQ (English)",
       "inLanguage": "en-US",
       "mainEntity": [
