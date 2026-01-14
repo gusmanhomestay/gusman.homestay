@@ -675,45 +675,75 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
         <figcaption id="tourCaption">Day overview</figcaption>
       </div>
 
-      <div class="video-buttons">
-        <button type="button" class="video-btn active"
-          onclick="setTourVideo('videos/01-day-overview.mp4','Day overview','images/video-day.jpg', this)">
-          Day overview
-        </button>
+<div class="video-buttons">
 
-        <button type="button" class="video-btn"
-          onclick="setTourVideo('videos/02-night-overview.mp4','Night overview','images/video-night.jpg', this)">
-          Night overview
-        </button>
+  <!-- 1️⃣ Day overview -->
+  <button type="button" class="video-btn active"
+    onclick="setTourVideo('videos/01-day-overview.mp4','Day overview','images/video-day.jpg', this)">
+    <span class="lang id">Siang hari</span>
+    <span class="lang en" style="display:none;">Day overview</span>
+    <span class="lang de" style="display:none;">Tagesübersicht</span>
+    <span class="lang it" style="display:none;">Panoramica diurna</span>
+  </button>
 
-        <button type="button" class="video-btn"
-          onclick="setTourVideo('videos/03-terrace-night.mp4','Terrace at night','images/video-terrace.jpg', this)">
-          Terrace at night
-        </button>
+  <!-- 2️⃣ Night overview -->
+  <button type="button" class="video-btn"
+    onclick="setTourVideo('videos/02-night-overview.mp4','Night overview','images/video-night.jpg', this)">
+    <span class="lang id">Malam hari</span>
+    <span class="lang en" style="display:none;">Night overview</span>
+    <span class="lang de" style="display:none;">Nachtübersicht</span>
+    <span class="lang it" style="display:none;">Panoramica notturna</span>
+  </button>
 
-        <button type="button" class="video-btn"
-          onclick="setTourVideo('videos/04-kitchen-night.mp4','Kitchen & dining','images/video-kitchen.jpg', this)">
-          Kitchen & dining
-        </button>
+  <!-- 3️⃣ Terrace at night -->
+  <button type="button" class="video-btn"
+    onclick="setTourVideo('videos/03-terrace-night.mp4','Terrace at night','images/video-terrace.jpg', this)">
+    <span class="lang id">Teras malam</span>
+    <span class="lang en" style="display:none;">Terrace at night</span>
+    <span class="lang de" style="display:none;">Terrasse bei Nacht</span>
+    <span class="lang it" style="display:none;">Terrazza di notte</span>
+  </button>
 
-        <button type="button" class="video-btn"
-          onclick="setTourVideo('videos/05-bedroom-main.mp4','Main bedroom','images/video-bedroom-main.jpg', this)">
-          Main bedroom
-        </button>
+  <!-- 4️⃣ Kitchen & dining -->
+  <button type="button" class="video-btn"
+    onclick="setTourVideo('videos/04-kitchen-night.mp4','Kitchen & dining','images/video-kitchen.jpg', this)">
+    <span class="lang id">Dapur & ruang makan</span>
+    <span class="lang en" style="display:none;">Kitchen & dining</span>
+    <span class="lang de" style="display:none;">Küche & Essbereich</span>
+    <span class="lang it" style="display:none;">Cucina e zona pranzo</span>
+  </button>
 
-        <button type="button" class="video-btn"
-          onclick="setTourVideo('videos/06-bedroom-second.mp4','Second bedroom','images/video-bedroom-second.jpg', this)">
-          Second bedroom
-        </button>
-      </div>
+  <!-- 5️⃣ Main bedroom -->
+  <button type="button" class="video-btn"
+    onclick="setTourVideo('videos/05-bedroom-main.mp4','Main bedroom','images/video-bedroom-main.jpg', this)">
+    <span class="lang id">Kamar utama</span>
+    <span class="lang en" style="display:none;">Main bedroom</span>
+    <span class="lang de" style="display:none;">Hauptschlafzimmer</span>
+    <span class="lang it" style="display:none;">Camera principale</span>
+  </button>
+
+  <!-- 6️⃣ Second bedroom -->
+  <button type="button" class="video-btn"
+    onclick="setTourVideo('videos/06-bedroom-second.mp4','Second bedroom','images/video-bedroom-second.jpg', this)">
+    <span class="lang id">Kamar kedua</span>
+    <span class="lang en" style="display:none;">Second bedroom</span>
+    <span class="lang de" style="display:none;">Zweites Schlafzimmer</span>
+    <span class="lang it" style="display:none;">Seconda camera</span>
+  </button>
+</div>
     </div>
 
     <div style="margin-top:14px;text-align:center">
-      <a class="btn btn-premium"
-         href="https://www.google.com/search?q=gusman+homestay+nagreg"
-         target="_blank">
-        Click here to see more photos & videos on Google 📸 & 🎥
-      </a>
+    <a class="btn btn-premium"
+   href="https://www.google.com/search?q=gusman+homestay+nagreg"
+   target="_blank">
+
+  <span class="lang id">Lihat lebih banyak foto & video di Google 📸 & 🎥</span>
+  <span class="lang en" style="display:none;">See more photos & videos on Google 📸 & 🎥</span>
+  <span class="lang de" style="display:none;">Mehr Fotos & Videos auf Google ansehen 📸 & 🎥</span>
+  <span class="lang it" style="display:none;">Guarda altre foto e video su Google 📸 & 🎥</span>
+
+</a>
     </div>
   </div>
 </section>
