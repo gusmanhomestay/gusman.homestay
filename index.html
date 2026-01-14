@@ -1018,7 +1018,7 @@ function bookWhatsApp(){
   }
 
   const templates = {
-    id: `Halo, saya ingin memesan Gusman Homestay.
+    id: `Hallo, saya ingin memesan Gusman Homestay.
 Check-in: ${checkin}
 Check-out: ${checkout}
 Dewasa: ${adults}
@@ -1114,28 +1114,48 @@ function initLightbox(){
   overlay.onclick = e=>{ if(e.target===overlay) close.onclick(); };
 }
 
+<script>
 /* =========================
-   INIT
+   INIT (RUN ONCE ONLY)
 ========================= */
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* Default language */
   setLanguage('id');
 
-  document.querySelectorAll('.year').forEach(y=>{
-    y.textContent = new Date().getFullYear();
+  /* Auto year (footer) */
+  document.querySelectorAll('.year').forEach(el => {
+    el.textContent = new Date().getFullYear();
   });
 
-  ['adults','children','checkin','checkout'].forEach(id=>{
+  /* Bind price & occupancy logic */
+  ['adults','children','checkin','checkout'].forEach(id => {
     const el = document.getElementById(id);
-    if(el){
-      el.addEventListener('input', ()=>updatePrice(id));
-      el.addEventListener('change', ()=>updatePrice(id));
-    }
+    if(!el) return;
+
+    el.addEventListener('input', () => updatePrice(id));
+    el.addEventListener('change', () => updatePrice(id));
   });
 
+  /* Block invalid characters on mobile number inputs */
+  ['adults','children'].forEach(id => {
+    const el = document.getElementById(id);
+    if(!el) return;
+
+    el.addEventListener('keydown', e => {
+      if (['e','E','+','-','.'].includes(e.key)) {
+        e.preventDefault();
+      }
+    });
+  });
+
+  /* Initial calculation */
   updatePrice();
+
+  /* Init gallery lightbox */
   initLightbox();
 });
-</script><script>
+</script>
 /* =========================
    GLOBAL STATE
 ========================= */
