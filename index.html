@@ -1006,111 +1006,98 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
     if(playPromise !== undefined) playPromise.catch(() => {});
   }
 
-/* Price calculation */
-function updatePrice() {
-  const base = 500; // per night (K)
-  let adults = parseInt(document.getElementById('adults').value) || 1;
-  const children = parseInt(document.getElementById('children').value) || 0;
+ // ========= Price calculation =========
+  function updatePrice() {
+    const base = 500; // per night (K)
+    let adults = parseInt(document.getElementById('adults').value) || 1;
+    const children = parseInt(document.getElementById('children').value) || 0;
 
-  // Limit total guests to 6
-  let totalGuests = adults + children;
-  if(totalGuests > 6){
-    adults = 6 - children;
-    document.getElementById('adults').value = adults;
+    let totalGuests = adults + children;
+    if(totalGuests > 6){
+      adults = 6 - children;
+      document.getElementById('adults').value = adults;
+    }
+
+    const checkinVal = document.getElementById('checkin').value;
+    const checkoutVal = document.getElementById('checkout').value;
+
+    const checkin = checkinVal ? new Date(checkinVal) : null;
+    const checkout = checkoutVal ? new Date(checkoutVal) : null;
+
+    let nights = 1;
+    if(checkin && checkout && checkout > checkin){
+      nights = Math.ceil((checkout - checkin)/(1000*60*60*24));
+    }
+
+    const extra = adults > 4 ? (adults - 4) * 50 : 0;
+    const total = (base + extra) * nights;
+    document.getElementById('totalPrice').innerText = total + 'K IDR';
   }
 
-  const checkinVal = document.getElementById('checkin').value;
-  const checkoutVal = document.getElementById('checkout').value;
+  // ========= Lightbox =========
+  function initLightbox(){
+    const overlay = document.getElementById('lbOverlay');
+    const imgEl = document.getElementById('lbImg');
+    const btnPrev = document.getElementById('lbPrev');
+    const btnNext = document.getElementById('lbNext');
+    const btnClose = document.getElementById('lbClose');
+    const counter = document.getElementById('lbCounter');
 
-  const checkin = checkinVal ? new Date(checkinVal) : null;
-  const checkout = checkoutVal ? new Date(checkoutVal) : null;
+    const galleryImgs = Array.from(document.querySelectorAll('.gallery img'));
+    if(!galleryImgs.length) return;
 
-  let nights = 1;
-  if(checkin && checkout && checkout > checkin){
-    nights = Math.ceil((checkout - checkin)/(1000*60*60*24));
-  }
+    const items = galleryImgs.map(img => ({
+      src: img.getAttribute('src'),
+      alt: img.getAttribute('alt') || 'Photo'
+    }));
 
-  const extra = adults > 4 ? (adults - 4)*50 : 0;
-  const total = (base + extra) * nights;
-  document.getElementById('totalPrice').innerText = total + 'K IDR';
-}
+    let index = 0;
 
-['adults','children','checkin','checkout'].forEach(id=>{
-  const el = document.getElementById(id);
-  if(el) el.addEventListener('change', updatePrice);
-});
-updatePrice();
-  /* ====== Gallery Lightbox with Next/Prev ====== */
-(function(){
-  const overlay = document.getElementById('lbOverlay');
-  const imgEl = document.getElementById('lbImg');
-  const btnPrev = document.getElementById('lbPrev');
-  const btnNext = document.getElementById('lbNext');
-  const btnClose = document.getElementById('lbClose');
-  const counter = document.getElementById('lbCounter');
+    function show(i){
+      index = (i + items.length) % items.length;
+      imgEl.src = items[index].src;
+      imgEl.alt = items[index].alt;
+      counter.textContent = `${index + 1} / ${items.length}`;
+    }
 
-  // Grab gallery images (works with your current HTML)
-  const galleryImgs = Array.from(document.querySelectorAll('.gallery img'));
-  if(!galleryImgs.length) return;
+    function open(i){
+      show(i);
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
 
-  // Build an array of src + alt
-  const items = galleryImgs.map(img => ({
-    src: img.getAttribute('src'),
-    alt: img.getAttribute('alt') || 'Photo'
-  }));
+    function close(){
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
 
-  let index = 0;
+    function next(){ show(index + 1); }
+    function prev(){ show(index - 1); }
 
-  function show(i){
-    index = (i + items.length) % items.length;
-    imgEl.src = items[index].src;
-    imgEl.alt = items[index].alt;
-    counter.textContent = `${index + 1} / ${items.length}`;
-  }
-
-  function open(i){
-    show(i);
-    overlay.classList.add('open');
-    overlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; // prevent background scroll
-  }
-
-  function close(){
-    overlay.classList.remove('open');
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  function next(){ show(index + 1); }
-  function prev(){ show(index - 1); }
-
-  // Click any gallery image to open
-  galleryImgs.forEach((img, i) => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', (e) => {
-      e.preventDefault();
-      open(i);
+    galleryImgs.forEach((img, i) => {
+      img.addEventListener('click', (e) => {
+        e.preventDefault();
+        open(i);
+      });
     });
-  });
 
-  // Buttons
-  btnNext.addEventListener('click', next);
-  btnPrev.addEventListener('click', prev);
-  btnClose.addEventListener('click', close);
+    btnNext.addEventListener('click', next);
+    btnPrev.addEventListener('click', prev);
+    btnClose.addEventListener('click', close);
 
-  // Click on dark background closes (but not when clicking the image)
-  overlay.addEventListener('click', (e) => {
-    if(e.target === overlay) close();
-  });
+    overlay.addEventListener('click', (e) => {
+      if(e.target === overlay) close();
+    });
 
-  // Keyboard support
-  document.addEventListener('keydown', (e) => {
-    if(!overlay.classList.contains('open')) return;
-    if(e.key === 'Escape') close();
-    if(e.key === 'ArrowRight') next();
-    if(e.key === 'ArrowLeft') prev();
-  });
-})();
+    document.addEventListener('keydown', (e) => {
+      if(!overlay.classList.contains('open')) return;
+      if(e.key === 'Escape') close();
+      if(e.key === 'ArrowRight') next();
+      if(e.key === 'ArrowLeft') prev();
+    });
+  }
 </script>
 
 <!-- ✅ SEO: FAQ Schema (ID + EN) -->
