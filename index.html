@@ -79,7 +79,24 @@ body{
   background:var(--bg);
   color:var(--text);
 }
+/* ===== Reviews: readable in light + dark mode ===== */
+.review-author{
+  color:var(--text);
+  font-weight:700;
+}
 
+.review-stars{
+  color:var(--text);
+}
+
+/* Slightly softer in dark mode (more elegant) */
+body[data-theme="dark"] .review-author{
+  color:rgba(255,255,255,.9);
+}
+
+body[data-theme="dark"] .review-stars{
+  color:rgba(255,255,255,.8);
+}
 /* Cards look more premium */
 .card, .hero-card{
   border:1px solid var(--card-border);
