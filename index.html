@@ -320,11 +320,11 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
           <span id="totalPrice">500K IDR</span>
         </div>
 
- <button type="button" class="btn btn-premium" style="margin-top:8px;" onclick="bookWhatsApp()">
-  <span class="lang id">📲 Pesan via WhatsApp (menunggu konfirmasi)</span>
-  <span class="lang en" style="display:none;">📲 Book via WhatsApp (subject to confirmation)</span>
-  <span class="lang de" style="display:none;">📲 Per WhatsApp buchen (nach Verfügbarkeit / Bestätigung)</span>
-  <span class="lang it" style="display:none;">📲 Prenota su WhatsApp (in attesa di conferma)</span>
+<button type="button" class="btn btn-premium" style="margin-top:8px;" onclick="bookWhatsApp()">
+  <span class="lang id">📲 Pesan via WhatsApp (kami konfirmasi dulu)</span>
+  <span class="lang en" style="display:none;">📲 Book via WhatsApp (we’ll confirm first)</span>
+  <span class="lang de" style="display:none;">📲 Per WhatsApp buchen (wir bestätigen zuerst)</span>
+  <span class="lang it" style="display:none;">📲 Prenota su WhatsApp (confermeremo prima)</span>
 </button>
       </form>
     </div>
@@ -494,12 +494,17 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
       </blockquote>
 
       <div style="margin-top:10px;">
-        <a class="btn btn-premium" href="https://www.google.com/search?q=gusman+homestay+nagreg+reviews" target="_blank">
-<span class="lang id">Baca ulasan & bagikan pengalaman Anda di Google</span>
-<span class="lang en" style="display:none;">Read reviews & share your experience on Google</span>
-<span class="lang de" style="display:none;">Bewertungen lesen & Erfahrungen auf Google teilen</span>
-<span class="lang it" style="display:none;">Leggi le recensioni e condividi la tua esperienza su Google</span>
-        </a>
+<a class="btn btn-premium"
+   href="https://g.page/r/Ce6Oj_WL_eI3EBM/review"
+   target="_blank"
+   rel="noopener">
+
+  <span class="lang id">Lihat & tulis review di Google ⭐</span>
+  <span class="lang en" style="display:none;">Read & write a review on Google ⭐</span>
+  <span class="lang de" style="display:none;">Bewertung auf Google ansehen & schreiben ⭐</span>
+  <span class="lang it" style="display:none;">Leggi e scrivi una recensione su Google ⭐</span>
+
+</a>
       </div>
     </div>
   </div>
@@ -771,16 +776,49 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
 
 <footer>
   <div style="max-width:720px;margin:12px auto;color:var(--muted);text-align:center;line-height:1.7;font-size:13px;">
-    © <span id="year"></span> Gusman Homestay — Modern minimalist with traditional touch.
-    Book direct via
-    <a href="https://wa.me/6281230015529" target="_blank" rel="noopener"
-       style="color:inherit;text-decoration:underline;">WhatsApp</a>
-    • Follow on
-    <a href="https://www.instagram.com/gusmanhomestay" target="_blank" rel="noopener"
-       style="color:inherit;text-decoration:underline;">Instagram</a>.
+    <span class="lang id">
+      © <span id="year"></span> Gusman Homestay — Modern minimalis dengan sentuhan tradisional.
+      Pesan langsung via
+      <a href="https://wa.me/6281230015529" target="_blank" rel="noopener"
+         style="color:inherit;text-decoration:underline;">WhatsApp</a>
+      • Ikuti
+      <a href="https://www.instagram.com/gusmanhomestay" target="_blank" rel="noopener"
+         style="color:inherit;text-decoration:underline;">Instagram</a>.
+    </span>
+
+    <span class="lang en" style="display:none;">
+      © <span id="year"></span> Gusman Homestay — Modern minimalist with a traditional touch.
+      Book direct via
+      <a href="https://wa.me/6281230015529" target="_blank" rel="noopener"
+         style="color:inherit;text-decoration:underline;">WhatsApp</a>
+      • Follow on
+      <a href="https://www.instagram.com/gusmanhomestay" target="_blank" rel="noopener"
+         style="color:inherit;text-decoration:underline;">Instagram</a>.
+    </span>
+
+    <span class="lang de" style="display:none;">
+      © <span id="year"></span> Gusman Homestay — Modern-minimalistisch mit traditionellem Touch.
+      Direkt buchen via
+      <a href="https://wa.me/6281230015529" target="_blank" rel="noopener"
+         style="color:inherit;text-decoration:underline;">WhatsApp</a>
+      • Folge uns auf
+      <a href="https://www.instagram.com/gusmanhomestay" target="_blank" rel="noopener"
+         style="color:inherit;text-decoration:underline;">Instagram</a>.
+    </span>
+
+    <span class="lang it" style="display:none;">
+      © <span id="year"></span> Gusman Homestay — Moderno e minimalista con un tocco tradizionale.
+      Prenota direttamente su
+      <a href="https://wa.me/6281230015529" target="_blank" rel="noopener"
+         style="color:inherit;text-decoration:underline;">WhatsApp</a>
+      • Seguici su
+      <a href="https://www.instagram.com/gusmanhomestay" target="_blank" rel="noopener"
+         style="color:inherit;text-decoration:underline;">Instagram</a>.
+    </span>
   </div>
 </footer>
-  <script>
+
+<script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
