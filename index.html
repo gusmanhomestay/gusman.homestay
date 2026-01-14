@@ -166,23 +166,32 @@ body[data-theme="dark"] #bookingForm input[type="number"]{
 }
 
 /* =========================
-   HEADER FADE-IN (PREMIUM)
+   HEADER FADE-IN (SLOW & ELEGANT)
 ========================= */
 @keyframes headerPop {
-  from { opacity:0; transform:translateY(22px) scale(.985); filter:blur(8px); }
-  to   { opacity:1; transform:translateY(0)    scale(1);     filter:blur(0); }
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.985);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 
-/* start hidden so it’s visible even if image loads late */
-header.fade-in > *{
-  opacity:0;
-  animation: headerPop 1.05s cubic-bezier(.16,1,.3,1) both;
+/* Start hidden */
+header.fade-in > * {
+  opacity: 0;
+  animation: headerPop 1.6s cubic-bezier(.22,1,.36,1) both;
 }
 
-header.fade-in > *:nth-child(1){ animation-delay:0.00s; } /* logo */
-header.fade-in > *:nth-child(2){ animation-delay:0.12s; } /* title */
-header.fade-in > *:nth-child(3){ animation-delay:0.24s; } /* tagline */
-header.fade-in > *:nth-child(4){ animation-delay:0.36s; } /* flags */
+/* Slower, more luxurious staggering */
+header.fade-in > *:nth-child(1) { animation-delay: 0.00s; } /* logo */
+header.fade-in > *:nth-child(2) { animation-delay: 0.22s; } /* title */
+header.fade-in > *:nth-child(3) { animation-delay: 0.44s; } /* subtitle */
+header.fade-in > *:nth-child(4) { animation-delay: 0.66s; } /* language flags */
 /* Header */
 header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:20px}
 .logo-img{width:200px;height:auto;margin-bottom:8px}
