@@ -992,6 +992,7 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
   });
 </script>
 
+ <script>
   // ========= Lightbox =========
   function initLightbox(){
     const overlay = document.getElementById('lbOverlay');
@@ -1002,6 +1003,7 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
     const counter = document.getElementById('lbCounter');
 
     const galleryImgs = Array.from(document.querySelectorAll('.gallery img'));
+    if(!overlay || !imgEl || !btnPrev || !btnNext || !btnClose || !counter) return;
     if(!galleryImgs.length) return;
 
     const items = galleryImgs.map(img => ({
@@ -1018,7 +1020,7 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
       counter.textContent = `${index + 1} / ${items.length}`;
     }
 
-    function open(i){
+    function openAt(i){
       show(i);
       overlay.classList.add('open');
       overlay.setAttribute('aria-hidden', 'false');
@@ -1037,7 +1039,7 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
     galleryImgs.forEach((img, i) => {
       img.addEventListener('click', (e) => {
         e.preventDefault();
-        open(i);
+        openAt(i);
       });
     });
 
@@ -1056,8 +1058,13 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
       if(e.key === 'ArrowLeft') prev();
     });
   }
-</script>
 
+  document.addEventListener('DOMContentLoaded', () => {
+    // call it AFTER gallery exists
+    initLightbox();
+  });
+</script>
+  
 <!-- ✅ SEO: FAQ Schema (ID + EN) -->
 <script type="application/ld+json">
 {
