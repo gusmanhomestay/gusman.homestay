@@ -294,36 +294,45 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
       </p>
 
       <form id="bookingForm">
-        <label>
-          <span class="lang id">Check-in</span>
-          <span class="lang en" style="display:none;">Check-in</span>
-          <input type="date" id="checkin" required>
-        </label><br>
+  <label>
+    <span class="lang id">Check-in</span>
+    <span class="lang en" style="display:none;">Check-in</span>
+    <span class="lang de" style="display:none;">Check-in</span>
+    <span class="lang it" style="display:none;">Check-in</span>
+    <input type="date" id="checkin" required>
+  </label><br>
 
-        <label>
-          <span class="lang id">Check-out</span>
-          <span class="lang en" style="display:none;">Check-out</span>
-          <input type="date" id="checkout" required>
-        </label><br>
+  <label>
+    <span class="lang id">Check-out</span>
+    <span class="lang en" style="display:none;">Check-out</span>
+    <span class="lang de" style="display:none;">Check-out</span>
+    <span class="lang it" style="display:none;">Check-out</span>
+    <input type="date" id="checkout" required>
+  </label><br>
 
-        <label>
-          <span class="lang id">Dewasa</span>
-          <span class="lang en" style="display:none;">Adults</span>
-          <input type="number" id="adults" min="1" max="6" value="1" required>
-        </label><br>
+  <label>
+    <span class="lang id">Dewasa</span>
+    <span class="lang en" style="display:none;">Adults</span>
+    <span class="lang de" style="display:none;">Erwachsene</span>
+    <span class="lang it" style="display:none;">Adulti</span>
+    <input type="number" id="adults" min="1" max="6" value="1" required>
+  </label><br>
 
-        <label>
-          <span class="lang id">Anak-anak (&lt;12)</span>
-          <span class="lang en" style="display:none;">Children (&lt;12)</span>
-          <input type="number" id="children" min="0" max="6" value="0" required>
-        </label><br>
+  <label>
+    <span class="lang id">Anak-anak (&lt;12)</span>
+    <span class="lang en" style="display:none;">Children (&lt;12)</span>
+    <span class="lang de" style="display:none;">Kinder (&lt;12)</span>
+    <span class="lang it" style="display:none;">Bambini (&lt;12)</span>
+    <input type="number" id="children" min="0" max="6" value="0" required>
+  </label><br>
 
-        <div style="margin-top:8px;font-weight:600">
-          <span class="lang id">Total Harga: </span>
-          <span class="lang en" style="display:none;">Total Price: </span>
-          <span id="totalPrice">500K IDR</span>
-        </div>
-
+  <div style="margin-top:8px;font-weight:600">
+    <span class="lang id">Total Harga: </span>
+    <span class="lang en" style="display:none;">Total Price: </span>
+    <span class="lang de" style="display:none;">Gesamtpreis: </span>
+    <span class="lang it" style="display:none;">Prezzo totale: </span>
+    <span id="totalPrice">500K IDR</span>
+  </div>
         <p style="margin-top:6px;font-size:13px;color:var(--muted);line-height:1.6;">
           <span class="lang id">
             Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.
