@@ -435,6 +435,24 @@ ul{padding-left:18px;font-size:18px}
   color:var(--muted);
   line-height:1.6;
 }
+  /* Small brand seal in About section */
+.about-seal{
+  text-align:center;
+  margin:10px 0 16px;
+}
+
+.about-seal img{
+  width:140px;           /* adjust 120–160px if needed */
+  max-width:100%;
+  opacity:0.9;
+  border-radius:10px;
+}
+
+/* Slightly softer in dark mode */
+body[data-theme="dark"] .about-seal img{
+  opacity:0.85;
+}
+  
 /* ===== Smooth section animations ===== */
 .reveal{
   opacity:0;
@@ -1008,7 +1026,11 @@ ul{padding-left:18px;font-size:18px}
       <span class="lang de" style="display:none;">Unsere Geschichte & der Gastgeber</span>
       <span class="lang it" style="display:none;">La nostra storia e il proprietario</span>
     </h3>
-
+<!-- Brand seal -->
+<div class="about-seal">
+  <img src="images/logo.jpg"
+       alt="Gusman Homestay brand seal">
+</div>
     <div class="about-grid">
       <img class="about-photo" src="images/owner-1.jpg" alt="Owner of Gusman Homestay">
 
