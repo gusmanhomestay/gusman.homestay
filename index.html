@@ -777,7 +777,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
 <footer>
   <div style="max-width:720px;margin:12px auto;color:var(--muted);text-align:center;line-height:1.7;font-size:13px;">
     <span class="lang id">
-      © <span id="year"></span> Gusman Homestay — Modern minimalis dengan sentuhan tradisional.
+      © <span class="year"></span> Gusman Homestay — Modern minimalis dengan sentuhan tradisional.
       Pesan langsung via
       <a href="https://wa.me/6281230015529" target="_blank" rel="noopener"
          style="color:inherit;text-decoration:underline;">WhatsApp</a>
@@ -787,7 +787,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
     </span>
 
     <span class="lang en" style="display:none;">
-      © <span id="year"></span> Gusman Homestay — Modern minimalist with a traditional touch.
+      © <span class="year"></span> Gusman Homestay — Modern minimalist with a traditional touch.
       Book direct via
       <a href="https://wa.me/6281230015529" target="_blank" rel="noopener"
          style="color:inherit;text-decoration:underline;">WhatsApp</a>
@@ -797,7 +797,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
     </span>
 
     <span class="lang de" style="display:none;">
-      © <span id="year"></span> Gusman Homestay — Modern-minimalistisch mit traditionellem Touch.
+      © <span class="year"></span> Gusman Homestay — Modern-minimalistisch mit traditionellem Touch.
       Direkt buchen via
       <a href="https://wa.me/6281230015529" target="_blank" rel="noopener"
          style="color:inherit;text-decoration:underline;">WhatsApp</a>
@@ -807,7 +807,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
     </span>
 
     <span class="lang it" style="display:none;">
-      © <span id="year"></span> Gusman Homestay — Moderno e minimalista con un tocco tradizionale.
+      © <span class="year"></span> Gusman Homestay — Moderno e minimalista con un tocco tradizionale.
       Prenota direttamente su
       <a href="https://wa.me/6281230015529" target="_blank" rel="noopener"
          style="color:inherit;text-decoration:underline;">WhatsApp</a>
@@ -867,30 +867,63 @@ document.addEventListener('DOMContentLoaded', () => {
 });
   
 <script>
-function bookWhatsApp(){
-  const checkin = document.getElementById('checkin').value;
-  const checkout = document.getElementById('checkout').value;
-  const adults = document.getElementById('adults').value;
-  const children = document.getElementById('children').value;
-  const price = document.getElementById('totalPrice').innerText;
+  // ========= Language =========
+  let currentLang = 'id';
 
-  // ✅ Prevent empty dates
-  if(!checkin || !checkout){
-    alert(
-      currentLang === 'id'
-        ? 'Silakan pilih tanggal check-in dan check-out terlebih dahulu.'
-        : currentLang === 'de'
-        ? 'Bitte wählen Sie zuerst Check-in- und Check-out-Daten.'
-        : currentLang === 'it'
-        ? 'Seleziona prima le date di check-in e check-out.'
-        : 'Please select check-in and check-out dates first.'
-    );
-    return;
+  function setLanguage(lang){
+    currentLang = lang;
+    document.querySelectorAll('.lang').forEach(el => {
+      el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
+    });
   }
 
-  // ✅ Message templates per language (human & clear)
-  const templates = {
-    id: (cIn, cOut, a, ch, p) =>
+  document.addEventListener('DOMContentLoaded', () => {
+    setLanguage('id');
+
+    // ✅ Update year (works for multiple languages)
+    document.querySelectorAll('.year').forEach(el => {
+      el.textContent = new Date().getFullYear();
+    });
+
+    // ✅ Preload video metadata for faster switching
+    [
+      'videos/01-day-overview.mp4',
+      'videos/02-night-overview.mp4',
+      'videos/03-terrace-night.mp4',
+      'videos/04-kitchen-night.mp4',
+      'videos/05-bedroom-main.mp4',
+      'videos/06-bedroom-second.mp4'
+    ].forEach(src => {
+      const v = document.createElement('video');
+      v.preload = 'metadata';
+      v.src = src;
+    });
+  });
+
+  // ========= WhatsApp =========
+  function bookWhatsApp(){
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const adults = document.getElementById('adults').value;
+    const children = document.getElementById('children').value;
+    const price = document.getElementById('totalPrice').innerText;
+
+    // ✅ Prevent empty dates
+    if(!checkin || !checkout){
+      alert(
+        currentLang === 'id'
+          ? 'Silakan pilih tanggal check-in dan check-out terlebih dahulu.'
+          : currentLang === 'de'
+          ? 'Bitte wählen Sie zuerst Check-in- und Check-out-Daten.'
+          : currentLang === 'it'
+          ? 'Seleziona prima le date di check-in e check-out.'
+          : 'Please select check-in and check-out dates first.'
+      );
+      return;
+    }
+
+    const templates = {
+      id: (cIn, cOut, a, ch, p) =>
 `Halo, saya ingin memesan Gusman Homestay.
 Check-in: ${cIn}
 Check-out: ${cOut}
@@ -900,7 +933,7 @@ Perkiraan total: ${p}
 
 Catatan: Kami cek ketersediaan dulu dan akan konfirmasi untuk menghindari double booking. Terima kasih 🙏`,
 
-    en: (cIn, cOut, a, ch, p) =>
+      en: (cIn, cOut, a, ch, p) =>
 `Hello, I’d like to book Gusman Homestay.
 Check-in: ${cIn}
 Check-out: ${cOut}
@@ -910,7 +943,7 @@ Estimated total: ${p}
 
 Note: Availability is subject to our confirmation to avoid double bookings. Thank you 🙏`,
 
-    de: (cIn, cOut, a, ch, p) =>
+      de: (cIn, cOut, a, ch, p) =>
 `Hallo, ich möchte Gusman Homestay buchen.
 Check-in: ${cIn}
 Check-out: ${cOut}
@@ -920,7 +953,7 @@ Geschätzter Gesamtpreis: ${p}
 
 Hinweis: Wir prüfen die Verfügbarkeit und bestätigen anschließend, um Doppelbuchungen zu vermeiden. Danke 🙏`,
 
-    it: (cIn, cOut, a, ch, p) =>
+      it: (cIn, cOut, a, ch, p) =>
 `Ciao, vorrei prenotare Gusman Homestay.
 Check-in: ${cIn}
 Check-out: ${cOut}
@@ -929,47 +962,45 @@ Bambini: ${ch}
 Totale stimato: ${p}
 
 Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie prenotazioni. Grazie 🙏`
-  };
+    };
 
-  const makeMsg = templates[currentLang] || templates.id;
-  const msg = makeMsg(checkin, checkout, adults, children, price);
+    const makeMsg = templates[currentLang] || templates.id;
+    const msg = makeMsg(checkin, checkout, adults, children, price);
 
-  window.open(
-    `https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`,
-    '_blank'
-  );
-}
-</script>
-
-/* Video switcher */
-function setTourVideo(src, caption, poster, btn){
-  const video = document.getElementById('tourVideo');
-  const source = document.getElementById('tourSource');
-  const cap = document.getElementById('tourCaption');
-
-  video.pause();               // stop current video
-  source.src = src;            // change video
-  video.poster = poster;       // show thumbnail
-  if (btn) {
-  cap.innerHTML = btn.innerHTML;  // copy the multilingual <span class="lang ...">
-  setLanguage(currentLang);       // re-apply current language to new spans
-} else {
-  cap.textContent = caption;      // fallback
-}
-  document.querySelectorAll('.video-btn')
-    .forEach(b => b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-
-  video.load();                // load new source
-
-  // ▶️ Try to play immediately (same fast feel as before)
-  const playPromise = video.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(() => {
-      // Autoplay blocked → user can tap Play
-    });
+    window.open(
+      `https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`,
+      '_blank'
+    );
   }
-}
+
+  // ========= Video switcher =========
+  function setTourVideo(src, caption, poster, btn){
+    const video = document.getElementById('tourVideo');
+    const source = document.getElementById('tourSource');
+    const cap = document.getElementById('tourCaption');
+
+    video.pause();
+    source.src = src;
+    video.poster = poster;
+
+    if(btn){
+      cap.innerHTML = btn.innerHTML;   // multilingual spans
+      setLanguage(currentLang);        // apply current language
+    } else {
+      cap.textContent = caption;
+    }
+
+    document.querySelectorAll('.video-btn').forEach(b => b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+
+    video.load();
+
+    const playPromise = video.play();
+    if(playPromise !== undefined){
+      playPromise.catch(() => {});
+    }
+  }
+</script>
 
 /* Price calculation */
 function updatePrice() {
