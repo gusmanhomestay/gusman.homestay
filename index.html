@@ -1324,12 +1324,13 @@ function initRevealAnimations(){
 
   items.forEach(el => io.observe(el));
 }
+
 /* =========================
    INIT (RUN ONCE)
 ========================= */
 document.addEventListener('DOMContentLoaded', ()=>{
   setLanguage('id');
-  applyAutoTheme(); // ✅ auto dark mode
+  applyAutoTheme();
 
   document.querySelectorAll('.year').forEach(y=>{
     y.textContent = new Date().getFullYear();
