@@ -818,12 +818,6 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   </div>
 </footer>
 
-<script>
-  document.querySelectorAll('.year').forEach(el => {
-    el.textContent = new Date().getFullYear();
-  });
-</script>
-
 </div><!-- end container -->
 
 <!-- Lightbox Overlay (Next/Prev) -->
@@ -838,37 +832,6 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
 </div>
   
 <script>
-  let currentLang = 'id';
-
-  function setLanguage(lang){
-    currentLang = lang; // ✅ remember selected language
-
-    document.querySelectorAll('.lang').forEach(el=>{
-      el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
-    });
-  }
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => { ... });
-</script>
-
-  // ✅ Preload video metadata for faster switching
-  [
-    'videos/01-day-overview.mp4',
-    'videos/02-night-overview.mp4',
-    'videos/03-terrace-night.mp4',
-    'videos/04-kitchen-night.mp4',
-    'videos/05-bedroom-main.mp4',
-    'videos/06-bedroom-second.mp4'
-  ].forEach(src => {
-    const v = document.createElement('video');
-    v.preload = 'metadata';
-    v.src = src;
-  });
-});
-  
-<script>
   // ========= Language =========
   let currentLang = 'id';
 
@@ -878,39 +841,6 @@ document.addEventListener('DOMContentLoaded', () => { ... });
       el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
     });
   }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    setLanguage('id');
-
-    // ✅ Update year in footer (all languages)
-    document.querySelectorAll('.year').forEach(el => {
-      el.textContent = new Date().getFullYear();
-    });
-
-    // ✅ Preload video metadata for faster switching
-    [
-      'videos/01-day-overview.mp4',
-      'videos/02-night-overview.mp4',
-      'videos/03-terrace-night.mp4',
-      'videos/04-kitchen-night.mp4',
-      'videos/05-bedroom-main.mp4',
-      'videos/06-bedroom-second.mp4'
-    ].forEach(src => {
-      const v = document.createElement('video');
-      v.preload = 'metadata';
-      v.src = src;
-    });
-
-    // ✅ Hook price updates
-    ['adults','children','checkin','checkout'].forEach(id=>{
-      const el = document.getElementById(id);
-      if(el) el.addEventListener('change', updatePrice);
-    });
-    updatePrice();
-
-    // ✅ Lightbox init
-    initLightbox();
-  });
 
   // ========= WhatsApp =========
   function bookWhatsApp(){
@@ -992,7 +922,7 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
     video.poster = poster;
 
     if(btn){
-      cap.innerHTML = btn.innerHTML;
+      cap.innerHTML = btn.innerHTML;  // copy multilingual spans
       setLanguage(currentLang);
     } else {
       cap.textContent = caption;
@@ -1006,17 +936,11 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
     if(playPromise !== undefined) playPromise.catch(() => {});
   }
 
- // ========= Price calculation =========
-  function updatePrice() {
+  // ========= Price calculation =========
+  function updatePrice(){
     const base = 500; // per night (K)
-    let adults = parseInt(document.getElementById('adults').value) || 1;
+    const adults = parseInt(document.getElementById('adults').value) || 1;
     const children = parseInt(document.getElementById('children').value) || 0;
-
-    let totalGuests = adults + children;
-    if(totalGuests > 6){
-      adults = 6 - children;
-      document.getElementById('adults').value = adults;
-    }
 
     const checkinVal = document.getElementById('checkin').value;
     const checkoutVal = document.getElementById('checkout').value;
@@ -1026,13 +950,47 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
 
     let nights = 1;
     if(checkin && checkout && checkout > checkin){
-      nights = Math.ceil((checkout - checkin)/(1000*60*60*24));
+      nights = Math.ceil((checkout - checkin) / (1000*60*60*24));
     }
 
+    // ✅ extra charge if adults > 4
     const extra = adults > 4 ? (adults - 4) * 50 : 0;
     const total = (base + extra) * nights;
+
     document.getElementById('totalPrice').innerText = total + 'K IDR';
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // default language
+    setLanguage('id');
+
+    // ✅ year (for all footer languages)
+    document.querySelectorAll('.year').forEach(el => {
+      el.textContent = new Date().getFullYear();
+    });
+
+    // ✅ bind price updates
+    ['adults','children','checkin','checkout'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.addEventListener('change', updatePrice);
+    });
+    updatePrice();
+
+    // ✅ preload videos (THIS MUST BE inside <script>)
+    [
+      'videos/01-day-overview.mp4',
+      'videos/02-night-overview.mp4',
+      'videos/03-terrace-night.mp4',
+      'videos/04-kitchen-night.mp4',
+      'videos/05-bedroom-main.mp4',
+      'videos/06-bedroom-second.mp4'
+    ].forEach(src => {
+      const v = document.createElement('video');
+      v.preload = 'metadata';
+      v.src = src;
+    });
+  });
+</script>
 
   // ========= Lightbox =========
   function initLightbox(){
