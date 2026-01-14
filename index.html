@@ -819,7 +819,9 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
 </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  document.querySelectorAll('.year').forEach(el => {
+    el.textContent = new Date().getFullYear();
+  });
 </script>
 
 </div><!-- end container -->
@@ -847,9 +849,9 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   }
 </script>
 
-/* Default language + preload videos */
-document.addEventListener('DOMContentLoaded', () => {
-  setLanguage('id');
+<script>
+document.addEventListener('DOMContentLoaded', () => { ... });
+</script>
 
   // ✅ Preload video metadata for faster switching
   [
@@ -880,7 +882,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('DOMContentLoaded', () => {
     setLanguage('id');
 
-    // ✅ Update year (works for multiple languages)
+    // ✅ Update year in footer (all languages)
     document.querySelectorAll('.year').forEach(el => {
       el.textContent = new Date().getFullYear();
     });
@@ -898,6 +900,16 @@ document.addEventListener('DOMContentLoaded', () => {
       v.preload = 'metadata';
       v.src = src;
     });
+
+    // ✅ Hook price updates
+    ['adults','children','checkin','checkout'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(el) el.addEventListener('change', updatePrice);
+    });
+    updatePrice();
+
+    // ✅ Lightbox init
+    initLightbox();
   });
 
   // ========= WhatsApp =========
@@ -908,7 +920,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const children = document.getElementById('children').value;
     const price = document.getElementById('totalPrice').innerText;
 
-    // ✅ Prevent empty dates
     if(!checkin || !checkout){
       alert(
         currentLang === 'id'
@@ -967,10 +978,7 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
     const makeMsg = templates[currentLang] || templates.id;
     const msg = makeMsg(checkin, checkout, adults, children, price);
 
-    window.open(
-      `https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`,
-      '_blank'
-    );
+    window.open(`https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`, '_blank');
   }
 
   // ========= Video switcher =========
@@ -984,8 +992,8 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
     video.poster = poster;
 
     if(btn){
-      cap.innerHTML = btn.innerHTML;   // multilingual spans
-      setLanguage(currentLang);        // apply current language
+      cap.innerHTML = btn.innerHTML;
+      setLanguage(currentLang);
     } else {
       cap.textContent = caption;
     }
@@ -994,13 +1002,9 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
     if(btn) btn.classList.add('active');
 
     video.load();
-
     const playPromise = video.play();
-    if(playPromise !== undefined){
-      playPromise.catch(() => {});
-    }
+    if(playPromise !== undefined) playPromise.catch(() => {});
   }
-</script>
 
 /* Price calculation */
 function updatePrice() {
