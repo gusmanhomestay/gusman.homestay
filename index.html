@@ -39,13 +39,9 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
 .lang-selector{display:flex;gap:6px;margin-bottom:12px;justify-content:center;flex-wrap:wrap}
 .lang-selector img{width:32px;height:20px;cursor:pointer;border:1px solid #ddd;border-radius:4px}
 
-/* Top Hero layout (ONLY: left + middle) */
+/* Top Hero layout */
 .hero{display:flex;gap:28px;flex-wrap:wrap}
-
-/* Left column: Harga, Kontak */
 .hero-left{flex:1 1 400px;min-width:300px;display:flex;flex-direction:column;gap:12px}
-
-/* Middle column: Main card + gallery */
 .hero-middle{flex:2 1 580px;min-width:300px;display:flex;flex-direction:column;gap:12px}
 
 /* Cards */
@@ -68,6 +64,7 @@ ul{padding-left:18px;font-size:18px}
   color:#fff;
   border:none;
   box-shadow:0 6px 16px rgba(47,143,139,0.25);
+  cursor:pointer;
 }
 .btn-premium:hover{
   background:var(--brand-dark);
@@ -87,10 +84,10 @@ ul{padding-left:18px;font-size:18px}
   min-width:300px;
   display:flex;
   flex-direction:column;
-  gap:12px; /* Amenities + Location stacked */
+  gap:12px;
 }
 
-/* Full-width sections (Video + Map) */
+/* Full-width sections (Video + Map + About) */
 .fullwidth-section{
   margin-top:28px;
 }
@@ -117,7 +114,7 @@ ul{padding-left:18px;font-size:18px}
   text-align:center;
 }
 
-/* Video selection buttons (pills) */
+/* Video selection buttons */
 .video-buttons{
   display:flex;
   flex-wrap:wrap;
@@ -165,8 +162,8 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   .split-row{flex-direction:column}
   .split-left,.split-right{flex:1 1 100%}
 }
-  
-/* ====== Lightbox Gallery (with Next/Prev) ====== */
+
+/* ====== Lightbox Gallery ====== */
 .lb-overlay{
   position:fixed;
   inset:0;
@@ -177,9 +174,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   z-index:9999;
   padding:24px;
 }
-
 .lb-overlay.open{ display:flex; }
-
 .lb-img{
   max-width:min(92vw, 1100px);
   max-height:82vh;
@@ -187,7 +182,6 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   box-shadow:0 12px 40px rgba(0,0,0,.35);
   background:#000;
 }
-
 .lb-btn{
   position:absolute;
   top:50%;
@@ -206,10 +200,8 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   user-select:none;
 }
 .lb-btn:hover{ background:rgba(255,255,255,.22); }
-
 .lb-prev{ left:16px; }
 .lb-next{ right:16px; }
-
 .lb-close{
   position:absolute;
   top:16px;
@@ -219,7 +211,6 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   width:46px;
   height:46px;
 }
-
 .lb-counter{
   position:absolute;
   bottom:16px;
@@ -231,9 +222,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   border-radius:999px;
   background:rgba(255,255,255,.12);
 }
-</style>
-  
-  <style>
+
 /* --- About section layout --- */
 .about-grid{
   display:flex;
@@ -282,7 +271,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   </div>
 </header>
 
-<!-- ===================== TOP HERO (LEFT + MIDDLE ONLY) ===================== -->
+<!-- ===================== TOP HERO ===================== -->
 <section class="hero">
 
   <!-- Left Column -->
@@ -304,75 +293,62 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
         <span class="lang it" style="display:none;">Miglior prezzo se prenoti direttamente via WhatsApp. Prezzi a partire da 500K IDR a notte. Max 4–6 ospiti.</span>
       </p>
 
-      <!-- Booking Form -->
       <form id="bookingForm">
         <label>
           <span class="lang id">Check-in</span>
           <span class="lang en" style="display:none;">Check-in</span>
-          <span class="lang de" style="display:none;">Check-in</span>
-          <span class="lang it" style="display:none;">Check-in</span>
           <input type="date" id="checkin" required>
         </label><br>
 
         <label>
           <span class="lang id">Check-out</span>
           <span class="lang en" style="display:none;">Check-out</span>
-          <span class="lang de" style="display:none;">Check-out</span>
-          <span class="lang it" style="display:none;">Check-out</span>
           <input type="date" id="checkout" required>
         </label><br>
 
         <label>
           <span class="lang id">Dewasa</span>
           <span class="lang en" style="display:none;">Adults</span>
-          <span class="lang de" style="display:none;">Erwachsene</span>
-          <span class="lang it" style="display:none;">Adulti</span>
           <input type="number" id="adults" min="1" max="6" value="1" required>
         </label><br>
 
         <label>
           <span class="lang id">Anak-anak (&lt;12)</span>
           <span class="lang en" style="display:none;">Children (&lt;12)</span>
-          <span class="lang de" style="display:none;">Kinder (&lt;12)</span>
-          <span class="lang it" style="display:none;">Bambini (&lt;12)</span>
           <input type="number" id="children" min="0" max="6" value="0" required>
         </label><br>
 
         <div style="margin-top:8px;font-weight:600">
           <span class="lang id">Total Harga: </span>
           <span class="lang en" style="display:none;">Total Price: </span>
-          <span class="lang de" style="display:none;">Gesamtpreis: </span>
-          <span class="lang it" style="display:none;">Prezzo Totale: </span>
           <span id="totalPrice">500K IDR</span>
         </div>
+
         <p style="margin-top:6px;font-size:13px;color:var(--muted);line-height:1.6;">
-  <span class="lang id">
-    Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.
-    Maksimal <strong>6 tamu</strong> (sofa di ruang tamu dapat digunakan sebagai tempat tidur tambahan).
-  </span>
+          <span class="lang id">
+            Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.
+            Maksimal <strong>6 tamu</strong> (sofa di ruang tamu dapat digunakan sebagai tempat tidur tambahan).
+          </span>
+          <span class="lang en" style="display:none;">
+            Ideal for <strong>2 adults + 2 children</strong> or <strong>3 adults</strong>.
+            Maximum <strong>6 guests</strong> (living room sofas can be used as extra sleeping space).
+          </span>
+          <span class="lang de" style="display:none;">
+            Ideal für <strong>2 Erwachsene + 2 Kinder</strong> oder <strong>3 Erwachsene</strong>.
+            Maximal <strong>6 Gäste</strong> (Sofas im Wohnzimmer können als zusätzliche Schlafplätze genutzt werden).
+          </span>
+          <span class="lang it" style="display:none;">
+            Ideale per <strong>2 adulti + 2 bambini</strong> o <strong>3 adulti</strong>.
+            Massimo <strong>6 ospiti</strong> (i divani del soggiorno possono essere utilizzati come posti letto aggiuntivi).
+          </span>
+        </p>
 
-  <span class="lang en" style="display:none;">
-    Ideal for <strong>2 adults + 2 children</strong> or <strong>3 adults</strong>.
-    Maximum <strong>6 guests</strong> (living room sofas can be used as extra sleeping space).
-  </span>
-
-  <span class="lang de" style="display:none;">
-    Ideal für <strong>2 Erwachsene + 2 Kinder</strong> oder <strong>3 Erwachsene</strong>.
-    Maximal <strong>6 Gäste</strong> (Sofas im Wohnzimmer können als zusätzliche Schlafplätze genutzt werden).
-  </span>
-
-  <span class="lang it" style="display:none;">
-    Ideale per <strong>2 adulti + 2 bambini</strong> o <strong>3 adulti</strong>.
-    Massimo <strong>6 ospiti</strong> (i divani del soggiorno possono essere utilizzati come posti letto aggiuntivi).
-  </span>
-</p>
-
-<button type="button" class="btn btn-premium" style="margin-top:8px;" onclick="bookWhatsApp()">
-  <span class="lang id">📲 Pesan via WhatsApp (kami konfirmasi dulu)</span>
-  <span class="lang en" style="display:none;">📲 Book via WhatsApp (we’ll confirm first)</span>
-  <span class="lang de" style="display:none;">📲 Per WhatsApp buchen (wir bestätigen zuerst)</span>
-  <span class="lang it" style="display:none;">📲 Prenota su WhatsApp (confermeremo prima)</span>
-</button>
+        <button type="button" class="btn btn-premium" style="margin-top:8px;" onclick="bookWhatsApp()">
+          <span class="lang id">📲 Pesan via WhatsApp (kami konfirmasi dulu)</span>
+          <span class="lang en" style="display:none;">📲 Book via WhatsApp (we’ll confirm first)</span>
+          <span class="lang de" style="display:none;">📲 Per WhatsApp buchen (wir bestätigen zuerst)</span>
+          <span class="lang it" style="display:none;">📲 Prenota su WhatsApp (confermeremo prima)</span>
+        </button>
       </form>
     </div>
 
@@ -419,10 +395,8 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
         </span>
       </p>
     </div>
-  </div>
+
   </div><!-- end hero-left -->
-  
-</section>
 
   <!-- Middle Column -->
   <div class="hero-middle">
@@ -460,10 +434,12 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
         <img src="images/15-bamboo-daybed.jpg" alt="Gusman Homestay Bamboo Day Bed">
       </div>
 
-      </div><!-- end hero-card -->
+    </div><!-- end hero-card -->
+
   </div><!-- end hero-middle -->
-  </section><!-- end hero -->
-  
+
+</section><!-- end hero -->
+
 <!-- ===================== REVIEWS LEFT | AMENITIES + LOCATION RIGHT ===================== -->
 <section class="split-row">
 
@@ -496,167 +472,19 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
         </span>
       </blockquote>
 
-      <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-        <span class="lang id">
-          “Homestay yang cozy, adem, cocok untuk yg mau mudik ke Garut/Tasik/Ciamis—bisa stop over dulu di sini. Dekat juga dari jalan raya. Kekinian, tapi ada tradisionalnya. Nyaman banget 😍”
-          <br><strong style="color:#0b1220">— Gieta Agiet</strong> · <span style="color:#0b1220">★★★★★</span>
-        </span>
-        <span class="lang en" style="display:none;">
-          “Cozy and cool homestay—perfect as a stopover when traveling toward Garut/Tasik/Ciamis. Close to the main road. Modern, but with a traditional touch. Very comfortable 😍”
-          <br><strong style="color:#0b1220">— Gieta Agiet</strong> · <span style="color:#0b1220">★★★★★</span>
-        </span>
-        <span class="lang de" style="display:none;">
-          “Gemütliches, angenehmes Homestay—ideal als Zwischenstopp Richtung Garut/Tasik/Ciamis. Nahe an der Hauptstraße. Modern, aber mit traditionellem Touch. Sehr komfortabel 😍”
-          <br><strong style="color:#0b1220">— Gieta Agiet</strong> · <span style="color:#0b1220">★★★★★</span>
-        </span>
-        <span class="lang it" style="display:none;">
-          “Homestay accogliente e fresco—perfetto come sosta verso Garut/Tasik/Ciamis. Vicino alla strada principale. Moderno ma con un tocco tradizionale. Molto confortevole 😍”
-          <br><strong style="color:#0b1220">— Gieta Agiet</strong> · <span style="color:#0b1220">★★★★★</span>
-        </span>
-      </blockquote>
-
-      <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-        <span class="lang id">
-          “Homestaynya estetik bgt.. nyaman dan bersih.. sangat worth it buat staycation.. next saya akan kembali lagi ke homestay ini..”
-          <br><strong style="color:#0b1220">— Raden Maya</strong> · <span style="color:#0b1220">★★★★★</span>
-        </span>
-        <span class="lang en" style="display:none;">
-          “Very aesthetic, comfortable, and clean. Totally worth it for a staycation. I’ll definitely come back!”
-          <br><strong style="color:#0b1220">— Raden Maya</strong> · <span style="color:#0b1220">★★★★★</span>
-        </span>
-        <span class="lang de" style="display:none;">
-          “Sehr stilvoll, bequem und sauber. Absolut empfehlenswert für einen Staycation. Ich komme wieder!”
-          <br><strong style="color:#0b1220">— Raden Maya</strong> · <span style="color:#0b1220">★★★★★</span>
-        </span>
-        <span class="lang it" style="display:none;">
-          “Molto estetico, comodo e pulito. Davvero perfetto per una staycation. Tornerò sicuramente!”
-          <br><strong style="color:#0b1220">— Raden Maya</strong> · <span style="color:#0b1220">★★★★★</span>
-        </span>
-      </blockquote>
-
-      <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-        <span class="lang id">“★★★★★”<br><strong style="color:#0b1220">— Anggunice Fahreza</strong></span>
-        <span class="lang en" style="display:none;">“★★★★★”<br><strong style="color:#0b1220">— Anggunice Fahreza</strong></span>
-        <span class="lang de" style="display:none;">“★★★★★”<br><strong style="color:#0b1220">— Anggunice Fahreza</strong></span>
-        <span class="lang it" style="display:none;">“★★★★★”<br><strong style="color:#0b1220">— Anggunice Fahreza</strong></span>
-      </blockquote>
-
       <div style="margin-top:10px;">
-<a class="btn btn-premium"
-   href="https://g.page/r/Ce6Oj_WL_eI3EBM/review"
-   target="_blank"
-   rel="noopener">
-
-  <span class="lang id">Lihat & tulis review di Google ⭐</span>
-  <span class="lang en" style="display:none;">Read & write a review on Google ⭐</span>
-  <span class="lang de" style="display:none;">Bewertung auf Google ansehen & schreiben ⭐</span>
-  <span class="lang it" style="display:none;">Leggi e scrivi una recensione su Google ⭐</span>
-
-</a>
+        <a class="btn btn-premium"
+           href="https://g.page/r/Ce6Oj_WL_eI3EBM/review"
+           target="_blank"
+           rel="noopener">
+          <span class="lang id">Lihat & tulis review di Google ⭐</span>
+          <span class="lang en" style="display:none;">Read & write a review on Google ⭐</span>
+          <span class="lang de" style="display:none;">Bewertung auf Google ansehen & schreiben ⭐</span>
+          <span class="lang it" style="display:none;">Leggi e scrivi una recensione su Google ⭐</span>
+        </a>
       </div>
     </div>
   </div>
-
-  <!-- RIGHT: Rooms & Amenities + Location -->
-  <div class="split-right">
-
-    <!-- Rooms & Amenities -->
-    <div class="card">
-      <h3>
-        <span class="lang id">Kamar & Fasilitas</span>
-        <span class="lang en" style="display:none;">Rooms & Amenities</span>
-        <span class="lang de" style="display:none;">Zimmer & Ausstattung</span>
-        <span class="lang it" style="display:none;">Camere & Servizi</span>
-      </h3>
-
-      <ul>
-        <li>
-          <span class="lang id">Kamar utama: King bed 180×200 cm, kamar mandi dalam dengan bathtub & shower, air panas</span>
-          <span class="lang en" style="display:none;">Main bedroom: King bed 180×200 cm, en-suite bathroom with bathtub & shower, hot water</span>
-          <span class="lang de" style="display:none;">Hauptschlafzimmer: King-Size-Bett 180×200 cm, eigenes Bad mit Badewanne & Dusche, Warmwasser</span>
-          <span class="lang it" style="display:none;">Camera principale: letto king size 180×200 cm, bagno privato con vasca & doccia, acqua calda</span>
-        </li>
-
-        <li>
-          <span class="lang id">Kamar kedua: Single bed 120×200 cm</span>
-          <span class="lang en" style="display:none;">Second bedroom: Single bed 120×200 cm</span>
-          <span class="lang de" style="display:none;">Zweites Schlafzimmer: Einzelbett 120×200 cm</span>
-          <span class="lang it" style="display:none;">Seconda camera: letto singolo 120×200 cm</span>
-        </li>
-
-        <li>
-          <span class="lang id">WC terpisah: bidet otomatis, shower, air panas</span>
-          <span class="lang en" style="display:none;">Separate WC: automatic bidet, shower, hot water</span>
-          <span class="lang de" style="display:none;">Separates WC: automatisches Bidet, Dusche, Warmwasser</span>
-          <span class="lang it" style="display:none;">WC separato: bidet automatico, doccia, acqua calda</span>
-        </li>
-
-        <li>
-          <span class="lang id">Dapur: kompor gas, microwave, dispenser air panas & dingin, kulkas, perlengkapan dapur lengkap</span>
-          <span class="lang en" style="display:none;">Kitchen: gas stove, microwave, hot & cold water dispenser, refrigerator, complete kitchen utensils</span>
-          <span class="lang de" style="display:none;">Küche: Gasherd, Mikrowelle, Warm- & Kaltwasserspender, Kühlschrank, komplette Küchenausstattung</span>
-          <span class="lang it" style="display:none;">Cucina: fornello a gas, microonde, dispenser acqua calda & fredda, frigorifero, utensili completi</span>
-        </li>
-
-        <li>
-          <span class="lang id">
-            Ruang tamu: ruang terbuka besar, Smart TV dengan Netflix, Disney+, Prime Video & Crunchyroll
-            <span style="color:var(--muted);font-style:italic;font-weight:600;">
-              (layanan streaming merupakan fasilitas tambahan; ketersediaan konten dapat berbeda tergantung wilayah dan akun)
-            </span>
-          </span>
-
-          <span class="lang en" style="display:none;">
-            Living room: spacious open area, Smart TV with Netflix, Disney+, Prime Video & Crunchyroll
-            <span style="color:var(--muted);font-style:italic;font-weight:600;">
-              (streaming services are provided as an additional amenity; content availability may vary by region and account)
-            </span>
-          </span>
-
-          <span class="lang de" style="display:none;">
-            Wohnzimmer: großzügiger offener Raum, Smart-TV mit Netflix, Disney+, Prime Video & Crunchyroll
-            <span style="color:var(--muted);font-style:italic;font-weight:600;">
-              (Streaming-Dienste sind eine zusätzliche Ausstattung; Inhalte können je nach Region und Konto variieren)
-            </span>
-          </span>
-
-          <span class="lang it" style="display:none;">
-            Soggiorno: ampio spazio aperto, Smart TV con Netflix, Disney+, Prime Video & Crunchyroll
-            <span style="color:var(--muted);font-style:italic;font-weight:600;">
-              (i servizi di streaming sono un comfort aggiuntivo; la disponibilità dei contenuti può variare in base alla regione e all’account)
-            </span>
-          </span>
-        </li>
-
-        <li>
-          <span class="lang id">Kenyamanan: kipas angin tersedia (tanpa AC), suasana tenang untuk istirahat</span>
-          <span class="lang en" style="display:none;">Comfort: fans available (no air conditioning), quiet atmosphere for resting</span>
-          <span class="lang de" style="display:none;">Komfort: Ventilatoren vorhanden (keine Klimaanlage), ruhige Atmosphäre zum Ausruhen</span>
-          <span class="lang it" style="display:none;">Comfort: ventilatori disponibili (senza aria condizionata), atmosfera tranquilla per il riposo</span>
-        </li>
-
-        <li>
-          <span class="lang id">Fasilitas tambahan: Wi-Fi (akses diberikan saat check-in), handuk, perlengkapan mandi, sandal tamu</span>
-          <span class="lang en" style="display:none;">Additional amenities: Wi-Fi (access provided at check-in), towels, toiletries, guest slippers</span>
-          <span class="lang de" style="display:none;">Zusätzliche Ausstattung: WLAN (Zugang beim Check-in), Handtücher, Pflegeprodukte, Hausschuhe</span>
-          <span class="lang it" style="display:none;">Servizi aggiuntivi: Wi-Fi (accesso fornito al check-in), asciugamani, articoli da bagno, pantofole</span>
-        </li>
-
-        <li>
-          <span class="lang id">Parkir: tersedia untuk tamu (1 mobil)</span>
-          <span class="lang en" style="display:none;">Parking: available for guests (1 car)</span>
-          <span class="lang de" style="display:none;">Parkplatz: für Gäste verfügbar (1 Auto)</span>
-          <span class="lang it" style="display:none;">Parcheggio: disponibile per gli ospiti (1 auto)</span>
-        </li>
-      </ul>
-
-      <p style="margin:14px 0 0;color:var(--muted);font-size:14px;font-style:italic;font-weight:600;">
-        <span class="lang id">Catatan: Fasilitas dapat diperbarui sewaktu-waktu untuk meningkatkan kenyamanan.</span>
-        <span class="lang en" style="display:none;">Note: Amenities may be updated from time to time to enhance guest comfort.</span>
-        <span class="lang de" style="display:none;">Hinweis: Die Ausstattung kann gelegentlich zur Verbesserung des Komforts aktualisiert werden.</span>
-        <span class="lang it" style="display:none;">Nota: I servizi possono essere aggiornati periodicamente per migliorare il comfort.</span>
-      </p>
-    </div>
     
 <h3 style="text-align:center;margin:0 0 12px 0;">
   <span class="lang id">Cerita di Balik Gusman Homestay</span>
