@@ -789,7 +789,9 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
 </div>
   
 <script>
-function setLanguage(lang){
+let currentLang = 'id';
+  function setLanguage(lang){
+  currentLang = lang;
   document.querySelectorAll('.lang').forEach(el=>{
     el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
   });
@@ -834,8 +836,12 @@ function setTourVideo(src, caption, poster, btn){
   video.pause();               // stop current video
   source.src = src;            // change video
   video.poster = poster;       // show thumbnail
-  cap.textContent = caption;
-
+  if (btn) {
+  cap.innerHTML = btn.innerHTML;  // copy the multilingual <span class="lang ...">
+  setLanguage(currentLang);       // re-apply current language to new spans
+} else {
+  cap.textContent = caption;      // fallback
+}
   document.querySelectorAll('.video-btn')
     .forEach(b => b.classList.remove('active'));
   if(btn) btn.classList.add('active');
