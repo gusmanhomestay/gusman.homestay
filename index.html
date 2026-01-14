@@ -166,19 +166,21 @@ body[data-theme="dark"] #bookingForm input[type="number"]{
 }
 
 /* =========================
-   HEADER FADE-IN
+   HEADER FADE-IN (PREMIUM)
 ========================= */
 @keyframes fadeUp{
-  from{ opacity:0; transform:translateY(10px); }
-  to{ opacity:1; transform:translateY(0); }
+  from{ opacity:0; transform:translateY(18px); filter:blur(4px); }
+  to{ opacity:1; transform:translateY(0); filter:blur(0); }
 }
+
 header.fade-in > *{
-  animation:fadeUp .55s ease both;
+  animation:fadeUp .9s cubic-bezier(.2,.8,.2,1) both;
 }
+
 header.fade-in > *:nth-child(1){ animation-delay:0.00s; }
-header.fade-in > *:nth-child(2){ animation-delay:0.06s; }
-header.fade-in > *:nth-child(3){ animation-delay:0.12s; }
-header.fade-in > *:nth-child(4){ animation-delay:0.18s; }
+header.fade-in > *:nth-child(2){ animation-delay:0.10s; }
+header.fade-in > *:nth-child(3){ animation-delay:0.20s; }
+header.fade-in > *:nth-child(4){ animation-delay:0.30s; }
 /* Header */
 header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:20px}
 .logo-img{width:200px;height:auto;margin-bottom:8px}
@@ -416,25 +418,26 @@ ul{padding-left:18px;font-size:18px}
   line-height:1.6;
 }
 /* ===== Smooth section animations ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .75s cubic-bezier(.2,.8,.2,1),
+             transform .75s cubic-bezier(.2,.8,.2,1);
+  will-change:opacity, transform;
+}
+
+.reveal.is-visible{
+  opacity:1;
+  transform:none;
+}
+
+@media (prefers-reduced-motion: reduce){
   .reveal{
-    opacity:0;
-    transform:translateY(22px);
-    transition:opacity .9s ease, transform .9s ease;
-    will-change:opacity, transform;
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
   }
-
-  .reveal.is-visible{
-    opacity:1;
-    transform:none;
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .reveal{
-      opacity:1 !important;
-      transform:none !important;
-      transition:none !important;
-    }
-  }
+}
 </style>
 </head>
 
@@ -1313,16 +1316,26 @@ function initRevealAnimations(){
   const items = document.querySelectorAll('.card, .fullwidth-section, header');
   items.forEach(el => el.classList.add('reveal'));
 
+  const showNow = (el) => el.classList.add('is-visible');
+
+  // ✅ Make anything already on screen visible immediately
+  items.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.92) showNow(el);
+  });
+
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
-        entry.target.classList.add('is-visible');
+        showNow(entry.target);
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.12, rootMargin: "0px 0px -10% 0px" });
 
-  items.forEach(el => io.observe(el));
+  items.forEach(el => {
+    if(!el.classList.contains('is-visible')) io.observe(el);
+  });
 }
 
 /* =========================
