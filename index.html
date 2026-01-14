@@ -853,284 +853,417 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
 </div>
   
 <script>
-  // ========= Language =========
-  let currentLang = 'id';
+/* =========================
+   GLOBAL STATE
+========================= */
+let currentLang = 'id';
 
-  function setLanguage(lang){
-    currentLang = lang;
-    document.querySelectorAll('.lang').forEach(el => {
-      el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
-    });
-  }
+/* =========================
+   LANGUAGE
+========================= */
+function setLanguage(lang){
+  currentLang = lang;
+  document.querySelectorAll('.lang').forEach(el=>{
+    el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
+  });
+}
 
-  // ========= WhatsApp =========
-  function bookWhatsApp(){
-    const checkin = document.getElementById('checkin').value;
-    const checkout = document.getElementById('checkout').value;
-    const adults = document.getElementById('adults').value;
-    const children = document.getElementById('children').value;
-    const price = document.getElementById('totalPrice').innerText;
-
-    if(!checkin || !checkout){
-      alert(
-        currentLang === 'id'
-          ? 'Silakan pilih tanggal check-in dan check-out terlebih dahulu.'
-          : currentLang === 'de'
-          ? 'Bitte wählen Sie zuerst Check-in- und Check-out-Daten.'
-          : currentLang === 'it'
-          ? 'Seleziona prima le date di check-in e check-out.'
-          : 'Please select check-in and check-out dates first.'
-      );
-      return;
-    }
-
-    const templates = {
-      id: (cIn, cOut, a, ch, p) =>
-`Halo, saya ingin memesan Gusman Homestay.
-Check-in: ${cIn}
-Check-out: ${cOut}
-Dewasa: ${a}
-Anak-anak: ${ch}
-Perkiraan total: ${p}
-
-Catatan: Kami cek ketersediaan dulu dan akan konfirmasi untuk menghindari double booking. Terima kasih 🙏`,
-
-      en: (cIn, cOut, a, ch, p) =>
-`Hello, I’d like to book Gusman Homestay.
-Check-in: ${cIn}
-Check-out: ${cOut}
-Adults: ${a}
-Children: ${ch}
-Estimated total: ${p}
-
-Note: Availability is subject to our confirmation to avoid double bookings. Thank you 🙏`,
-
-      de: (cIn, cOut, a, ch, p) =>
-`Hallo, ich möchte Gusman Homestay buchen.
-Check-in: ${cIn}
-Check-out: ${cOut}
-Erwachsene: ${a}
-Kinder: ${ch}
-Geschätzter Gesamtpreis: ${p}
-
-Hinweis: Wir prüfen die Verfügbarkeit und bestätigen anschließend, um Doppelbuchungen zu vermeiden. Danke 🙏`,
-
-      it: (cIn, cOut, a, ch, p) =>
-`Ciao, vorrei prenotare Gusman Homestay.
-Check-in: ${cIn}
-Check-out: ${cOut}
-Adulti: ${a}
-Bambini: ${ch}
-Totale stimato: ${p}
-
-Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie prenotazioni. Grazie 🙏`
-    };
-
-    const makeMsg = templates[currentLang] || templates.id;
-    const msg = makeMsg(checkin, checkout, adults, children, price);
-
-    window.open(`https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`, '_blank');
-  }
-
-  // ========= Video switcher =========
-  function setTourVideo(src, caption, poster, btn){
-    const video = document.getElementById('tourVideo');
-    const source = document.getElementById('tourSource');
-    const cap = document.getElementById('tourCaption');
-
-    video.pause();
-    source.src = src;
-    video.poster = poster;
-
-    if(btn){
-      cap.innerHTML = btn.innerHTML;  // copy multilingual spans
-      setLanguage(currentLang);
-    } else {
-      cap.textContent = caption;
-    }
-
-    document.querySelectorAll('.video-btn').forEach(b => b.classList.remove('active'));
-    if(btn) btn.classList.add('active');
-
-    video.load();
-    const playPromise = video.play();
-    if(playPromise !== undefined) playPromise.catch(() => {});
-  }
-
-  <script>
-function updatePrice(changedField) {
-  const base = 500; // per night (K)
+/* =========================
+   PRICE + OCCUPANCY LOGIC
+========================= */
+function updatePrice(changedField){
+  const base = 500; // K IDR per night
+  const MAX_TOTAL = 6;
 
   const adultsEl = document.getElementById('adults');
   const childrenEl = document.getElementById('children');
 
-  let adults = parseInt(adultsEl.value, 10);
-  let children = parseInt(childrenEl.value, 10);
+  let adults = parseInt(adultsEl.value, 10) || 1;
+  let children = parseInt(childrenEl.value, 10) || 0;
 
-  if (isNaN(adults) || adults < 1) adults = 1;
-  if (isNaN(children) || children < 0) children = 0;
+  if(adults < 1) adults = 1;
+  if(children < 0) children = 0;
 
-  // ✅ Hard cap total guests to 6 (always)
-  const MAX_TOTAL = 6;
+  // Enforce max 6 guests
+  let total = adults + children;
+  if(total > MAX_TOTAL){
+    const overflow = total - MAX_TOTAL;
 
-  if (adults + children > MAX_TOTAL) {
-    const overflow = (adults + children) - MAX_TOTAL;
-
-    // If user just changed adults, reduce children first
-    if (changedField === 'adults') {
+    if(changedField === 'adults'){
       children = Math.max(0, children - overflow);
-      childrenEl.value = children;
-    }
-    // If user just changed children, reduce adults first (but keep at least 1 adult)
-    else if (changedField === 'children') {
+    } else {
       adults = Math.max(1, adults - overflow);
-      adultsEl.value = adults;
     }
-    // Fallback: reduce children first
-    else {
-      children = Math.max(0, children - overflow);
-      childrenEl.value = children;
-    }
+
+    adultsEl.value = adults;
+    childrenEl.value = children;
   }
 
-  // ✅ Nights calculation (unchanged)
-  const checkinVal = document.getElementById('checkin').value;
-  const checkoutVal = document.getElementById('checkout').value;
-
-  const checkin = checkinVal ? new Date(checkinVal) : null;
-  const checkout = checkoutVal ? new Date(checkoutVal) : null;
-
+  // Nights
+  const ci = document.getElementById('checkin').value;
+  const co = document.getElementById('checkout').value;
   let nights = 1;
-  if (checkin && checkout && checkout > checkin) {
-    nights = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
+
+  if(ci && co && new Date(co) > new Date(ci)){
+    nights = Math.ceil((new Date(co) - new Date(ci)) / 86400000);
   }
 
-  // ✅ Pricing rule (your current rule):
-  // 500K covers up to 4 total guests
-  // Add 50K per extra ADULT beyond 4 adults
-  // (children never add extra cost in your current logic)
+  // Pricing rule
+  // ≤4 guests total = 500K
+  // extra adults >4 = +50K each
   const extra = adults > 4 ? (adults - 4) * 50 : 0;
+  const price = (base + extra) * nights;
 
-  const total = (base + extra) * nights;
-  document.getElementById('totalPrice').innerText = total + 'K IDR';
+  document.getElementById('totalPrice').innerText = price + 'K IDR';
 }
 
-// ✅ Attach listeners so we know which input changed
-['adults','children','checkin','checkout'].forEach(id=>{
-  const el = document.getElementById(id);
-  if(!el) return;
+/* =========================
+   WHATSAPP
+========================= */
+function bookWhatsApp(){
+  const checkin = document.getElementById('checkin').value;
+  const checkout = document.getElementById('checkout').value;
+  const adults = document.getElementById('adults').value;
+  const children = document.getElementById('children').value;
+  const price = document.getElementById('totalPrice').innerText;
 
-  el.addEventListener('change', () => updatePrice(id));
-  el.addEventListener('input', () => updatePrice(id)); // nicer UX while typing
-});
-
-// Initial
-updatePrice();
-</script>
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // default language
-    setLanguage('id');
-
-    // ✅ year (for all footer languages)
-    document.querySelectorAll('.year').forEach(el => {
-      el.textContent = new Date().getFullYear();
-    });
-
-    // ✅ bind price updates
-    ['adults','children','checkin','checkout'].forEach(id => {
-      const el = document.getElementById(id);
-      if(el) el.addEventListener('change', updatePrice);
-    });
-    updatePrice();
-
-    // ✅ preload videos (THIS MUST BE inside <script>)
-    [
-      'videos/01-day-overview.mp4',
-      'videos/02-night-overview.mp4',
-      'videos/03-terrace-night.mp4',
-      'videos/04-kitchen-night.mp4',
-      'videos/05-bedroom-main.mp4',
-      'videos/06-bedroom-second.mp4'
-    ].forEach(src => {
-      const v = document.createElement('video');
-      v.preload = 'metadata';
-      v.src = src;
-    });
-  });
-</script>
-
- <script>
-  // ========= Lightbox =========
-  function initLightbox(){
-    const overlay = document.getElementById('lbOverlay');
-    const imgEl = document.getElementById('lbImg');
-    const btnPrev = document.getElementById('lbPrev');
-    const btnNext = document.getElementById('lbNext');
-    const btnClose = document.getElementById('lbClose');
-    const counter = document.getElementById('lbCounter');
-
-    const galleryImgs = Array.from(document.querySelectorAll('.gallery img'));
-    if(!overlay || !imgEl || !btnPrev || !btnNext || !btnClose || !counter) return;
-    if(!galleryImgs.length) return;
-
-    const items = galleryImgs.map(img => ({
-      src: img.getAttribute('src'),
-      alt: img.getAttribute('alt') || 'Photo'
-    }));
-
-    let index = 0;
-
-    function show(i){
-      index = (i + items.length) % items.length;
-      imgEl.src = items[index].src;
-      imgEl.alt = items[index].alt;
-      counter.textContent = `${index + 1} / ${items.length}`;
-    }
-
-    function openAt(i){
-      show(i);
-      overlay.classList.add('open');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function close(){
-      overlay.classList.remove('open');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    function next(){ show(index + 1); }
-    function prev(){ show(index - 1); }
-
-    galleryImgs.forEach((img, i) => {
-      img.addEventListener('click', (e) => {
-        e.preventDefault();
-        openAt(i);
-      });
-    });
-
-    btnNext.addEventListener('click', next);
-    btnPrev.addEventListener('click', prev);
-    btnClose.addEventListener('click', close);
-
-    overlay.addEventListener('click', (e) => {
-      if(e.target === overlay) close();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if(!overlay.classList.contains('open')) return;
-      if(e.key === 'Escape') close();
-      if(e.key === 'ArrowRight') next();
-      if(e.key === 'ArrowLeft') prev();
-    });
+  if(!checkin || !checkout){
+    alert(
+      currentLang === 'id'
+        ? 'Silakan pilih tanggal check-in dan check-out terlebih dahulu.'
+        : currentLang === 'de'
+        ? 'Bitte wählen Sie zuerst Check-in- und Check-out-Daten.'
+        : currentLang === 'it'
+        ? 'Seleziona prima le date di check-in e check-out.'
+        : 'Please select check-in and check-out dates first.'
+    );
+    return;
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // call it AFTER gallery exists
-    initLightbox();
+  const templates = {
+    id: `Halo, saya ingin memesan Gusman Homestay.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Dewasa: ${adults}
+Anak-anak: ${children}
+Perkiraan total: ${price}
+
+Kami tunggu konfirmasi ketersediaan. Terima kasih 🙏`,
+
+    en: `Hello, I’d like to book Gusman Homestay.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Adults: ${adults}
+Children: ${children}
+Estimated total: ${price}
+
+Awaiting availability confirmation. Thank you 🙏`,
+
+    de: `Hallo, ich möchte Gusman Homestay buchen.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Erwachsene: ${adults}
+Kinder: ${children}
+Gesamtpreis: ${price}
+
+Bitte bestätigen Sie die Verfügbarkeit. Danke 🙏`,
+
+    it: `Ciao, vorrei prenotare Gusman Homestay.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Adulti: ${adults}
+Bambini: ${children}
+Totale stimato: ${price}
+
+In attesa di conferma. Grazie 🙏`
+  };
+
+  const msg = templates[currentLang] || templates.id;
+  window.open(`https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+/* =========================
+   VIDEO SWITCHER
+========================= */
+function setTourVideo(src, poster, btn){
+  const video = document.getElementById('tourVideo');
+  const source = document.getElementById('tourSource');
+  const cap = document.getElementById('tourCaption');
+
+  video.pause();
+  source.src = src;
+  video.poster = poster;
+
+  if(btn){
+    cap.innerHTML = btn.innerHTML;
+    setLanguage(currentLang);
+  }
+
+  document.querySelectorAll('.video-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+
+  video.load();
+  video.play().catch(()=>{});
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+function initLightbox(){
+  const overlay = document.getElementById('lbOverlay');
+  const imgEl = document.getElementById('lbImg');
+  const imgs = Array.from(document.querySelectorAll('.gallery img'));
+  const prev = document.getElementById('lbPrev');
+  const next = document.getElementById('lbNext');
+  const close = document.getElementById('lbClose');
+  const counter = document.getElementById('lbCounter');
+
+  if(!overlay || !imgs.length) return;
+
+  let index = 0;
+  function show(i){
+    index = (i + imgs.length) % imgs.length;
+    imgEl.src = imgs[index].src;
+    counter.textContent = `${index+1} / ${imgs.length}`;
+  }
+
+  imgs.forEach((img,i)=>{
+    img.onclick = ()=>{ show(i); overlay.classList.add('open'); };
   });
+
+  prev.onclick = ()=>show(index-1);
+  next.onclick = ()=>show(index+1);
+  close.onclick = ()=>overlay.classList.remove('open');
+  overlay.onclick = e=>{ if(e.target===overlay) close.onclick(); };
+}
+
+/* =========================
+   INIT
+========================= */
+document.addEventListener('DOMContentLoaded', ()=>{
+  setLanguage('id');
+
+  document.querySelectorAll('.year').forEach(y=>{
+    y.textContent = new Date().getFullYear();
+  });
+
+  ['adults','children','checkin','checkout'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){
+      el.addEventListener('input', ()=>updatePrice(id));
+      el.addEventListener('change', ()=>updatePrice(id));
+    }
+  });
+
+  updatePrice();
+  initLightbox();
+});
+</script><script>
+/* =========================
+   GLOBAL STATE
+========================= */
+let currentLang = 'id';
+
+/* =========================
+   LANGUAGE
+========================= */
+function setLanguage(lang){
+  currentLang = lang;
+  document.querySelectorAll('.lang').forEach(el=>{
+    el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
+  });
+}
+
+/* =========================
+   PRICE + OCCUPANCY LOGIC
+========================= */
+function updatePrice(changedField){
+  const base = 500; // K IDR per night
+  const MAX_TOTAL = 6;
+
+  const adultsEl = document.getElementById('adults');
+  const childrenEl = document.getElementById('children');
+
+  let adults = parseInt(adultsEl.value, 10) || 1;
+  let children = parseInt(childrenEl.value, 10) || 0;
+
+  if(adults < 1) adults = 1;
+  if(children < 0) children = 0;
+
+  // Enforce max 6 guests
+  let total = adults + children;
+  if(total > MAX_TOTAL){
+    const overflow = total - MAX_TOTAL;
+
+    if(changedField === 'adults'){
+      children = Math.max(0, children - overflow);
+    } else {
+      adults = Math.max(1, adults - overflow);
+    }
+
+    adultsEl.value = adults;
+    childrenEl.value = children;
+  }
+
+  // Nights
+  const ci = document.getElementById('checkin').value;
+  const co = document.getElementById('checkout').value;
+  let nights = 1;
+
+  if(ci && co && new Date(co) > new Date(ci)){
+    nights = Math.ceil((new Date(co) - new Date(ci)) / 86400000);
+  }
+
+  // Pricing rule
+  // ≤4 guests total = 500K
+  // extra adults >4 = +50K each
+  const extra = adults > 4 ? (adults - 4) * 50 : 0;
+  const price = (base + extra) * nights;
+
+  document.getElementById('totalPrice').innerText = price + 'K IDR';
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+function bookWhatsApp(){
+  const checkin = document.getElementById('checkin').value;
+  const checkout = document.getElementById('checkout').value;
+  const adults = document.getElementById('adults').value;
+  const children = document.getElementById('children').value;
+  const price = document.getElementById('totalPrice').innerText;
+
+  if(!checkin || !checkout){
+    alert(
+      currentLang === 'id'
+        ? 'Silakan pilih tanggal check-in dan check-out terlebih dahulu.'
+        : currentLang === 'de'
+        ? 'Bitte wählen Sie zuerst Check-in- und Check-out-Daten.'
+        : currentLang === 'it'
+        ? 'Seleziona prima le date di check-in e check-out.'
+        : 'Please select check-in and check-out dates first.'
+    );
+    return;
+  }
+
+  const templates = {
+    id: `Halo, saya ingin memesan Gusman Homestay.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Dewasa: ${adults}
+Anak-anak: ${children}
+Perkiraan total: ${price}
+
+Kami tunggu konfirmasi ketersediaan. Terima kasih 🙏`,
+
+    en: `Hello, I’d like to book Gusman Homestay.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Adults: ${adults}
+Children: ${children}
+Estimated total: ${price}
+
+Awaiting availability confirmation. Thank you 🙏`,
+
+    de: `Hallo, ich möchte Gusman Homestay buchen.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Erwachsene: ${adults}
+Kinder: ${children}
+Gesamtpreis: ${price}
+
+Bitte bestätigen Sie die Verfügbarkeit. Danke 🙏`,
+
+    it: `Ciao, vorrei prenotare Gusman Homestay.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Adulti: ${adults}
+Bambini: ${children}
+Totale stimato: ${price}
+
+In attesa di conferma. Grazie 🙏`
+  };
+
+  const msg = templates[currentLang] || templates.id;
+  window.open(`https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+/* =========================
+   VIDEO SWITCHER
+========================= */
+function setTourVideo(src, poster, btn){
+  const video = document.getElementById('tourVideo');
+  const source = document.getElementById('tourSource');
+  const cap = document.getElementById('tourCaption');
+
+  video.pause();
+  source.src = src;
+  video.poster = poster;
+
+  if(btn){
+    cap.innerHTML = btn.innerHTML;
+    setLanguage(currentLang);
+  }
+
+  document.querySelectorAll('.video-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+
+  video.load();
+  video.play().catch(()=>{});
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+function initLightbox(){
+  const overlay = document.getElementById('lbOverlay');
+  const imgEl = document.getElementById('lbImg');
+  const imgs = Array.from(document.querySelectorAll('.gallery img'));
+  const prev = document.getElementById('lbPrev');
+  const next = document.getElementById('lbNext');
+  const close = document.getElementById('lbClose');
+  const counter = document.getElementById('lbCounter');
+
+  if(!overlay || !imgs.length) return;
+
+  let index = 0;
+  function show(i){
+    index = (i + imgs.length) % imgs.length;
+    imgEl.src = imgs[index].src;
+    counter.textContent = `${index+1} / ${imgs.length}`;
+  }
+
+  imgs.forEach((img,i)=>{
+    img.onclick = ()=>{ show(i); overlay.classList.add('open'); };
+  });
+
+  prev.onclick = ()=>show(index-1);
+  next.onclick = ()=>show(index+1);
+  close.onclick = ()=>overlay.classList.remove('open');
+  overlay.onclick = e=>{ if(e.target===overlay) close.onclick(); };
+}
+
+/* =========================
+   INIT
+========================= */
+document.addEventListener('DOMContentLoaded', ()=>{
+  setLanguage('id');
+
+  document.querySelectorAll('.year').forEach(y=>{
+    y.textContent = new Date().getFullYear();
+  });
+
+  ['adults','children','checkin','checkout'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){
+      el.addEventListener('input', ()=>updatePrice(id));
+      el.addEventListener('change', ()=>updatePrice(id));
+    }
+  });
+
+  updatePrice();
+  initLightbox();
+});
 </script>
   
 <!-- ✅ SEO: FAQ Schema (ID + EN) -->
