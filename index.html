@@ -1,10 +1,15 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Gusman Homestay — Nagreg | Modern Minimalist with Traditional Touch</title>
-<meta name="description" content="Gusman Homestay — Modern comfort with a traditional soul. Cozy 2-bedroom private house in Nagreg, near Nagreg Station. Book via WhatsApp for best rate." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gusman Homestay — Nagreg | Modern Minimalist with Traditional Touch</title>
+  <meta name="description" content="Gusman Homestay — Modern comfort with a traditional soul. Cozy 2-bedroom private house in Nagreg, near Nagreg Station. Book via WhatsApp for best rate." />
+
+  <!-- Premium fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -32,7 +37,13 @@ body{margin:0;background:var(--bg);color:#0b1220;line-height:1.45}
 /* Header */
 header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:20px}
 .logo-img{width:200px;height:auto;margin-bottom:8px}
-.brand{font-weight:700;font-size:36px;text-align:center}
+.brand{
+  font-family:'Playfair Display', serif;
+  font-weight:600;
+  font-size:clamp(36px, 5vw, 52px);
+  text-align:center;
+  letter-spacing:0.2px;
+}
 .tag{color:var(--muted);font-size:16px;text-align:center}
 
 /* Language selector */
