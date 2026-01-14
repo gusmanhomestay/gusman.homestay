@@ -319,6 +319,27 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
           <span class="lang it" style="display:none;">Prezzo Totale: </span>
           <span id="totalPrice">500K IDR</span>
         </div>
+        <p style="margin-top:6px;font-size:13px;color:var(--muted);line-height:1.6;">
+  <span class="lang id">
+    Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.
+    Maksimal <strong>6 tamu</strong> (sofa di ruang tamu dapat digunakan sebagai tempat tidur tambahan).
+  </span>
+
+  <span class="lang en" style="display:none;">
+    Ideal for <strong>2 adults + 2 children</strong> or <strong>3 adults</strong>.
+    Maximum <strong>6 guests</strong> (living room sofas can be used as extra sleeping space).
+  </span>
+
+  <span class="lang de" style="display:none;">
+    Ideal für <strong>2 Erwachsene + 2 Kinder</strong> oder <strong>3 Erwachsene</strong>.
+    Maximal <strong>6 Gäste</strong> (Sofas im Wohnzimmer können als zusätzliche Schlafplätze genutzt werden).
+  </span>
+
+  <span class="lang it" style="display:none;">
+    Ideale per <strong>2 adulti + 2 bambini</strong> o <strong>3 adulti</strong>.
+    Massimo <strong>6 ospiti</strong> (i divani del soggiorno possono essere utilizzati come posti letto aggiuntivi).
+  </span>
+</p>
 
 <button type="button" class="btn btn-premium" style="margin-top:8px;" onclick="bookWhatsApp()">
   <span class="lang id">📲 Pesan via WhatsApp (kami konfirmasi dulu)</span>
@@ -936,29 +957,76 @@ Nota: Verifichiamo prima la disponibilità e poi confermiamo per evitare doppie 
     if(playPromise !== undefined) playPromise.catch(() => {});
   }
 
-  // ========= Price calculation =========
-  function updatePrice(){
-    const base = 500; // per night (K)
-    const adults = parseInt(document.getElementById('adults').value) || 1;
-    const children = parseInt(document.getElementById('children').value) || 0;
+  <script>
+function updatePrice(changedField) {
+  const base = 500; // per night (K)
 
-    const checkinVal = document.getElementById('checkin').value;
-    const checkoutVal = document.getElementById('checkout').value;
+  const adultsEl = document.getElementById('adults');
+  const childrenEl = document.getElementById('children');
 
-    const checkin = checkinVal ? new Date(checkinVal) : null;
-    const checkout = checkoutVal ? new Date(checkoutVal) : null;
+  let adults = parseInt(adultsEl.value, 10);
+  let children = parseInt(childrenEl.value, 10);
 
-    let nights = 1;
-    if(checkin && checkout && checkout > checkin){
-      nights = Math.ceil((checkout - checkin) / (1000*60*60*24));
+  if (isNaN(adults) || adults < 1) adults = 1;
+  if (isNaN(children) || children < 0) children = 0;
+
+  // ✅ Hard cap total guests to 6 (always)
+  const MAX_TOTAL = 6;
+
+  if (adults + children > MAX_TOTAL) {
+    const overflow = (adults + children) - MAX_TOTAL;
+
+    // If user just changed adults, reduce children first
+    if (changedField === 'adults') {
+      children = Math.max(0, children - overflow);
+      childrenEl.value = children;
     }
-
-    // ✅ extra charge if adults > 4
-    const extra = adults > 4 ? (adults - 4) * 50 : 0;
-    const total = (base + extra) * nights;
-
-    document.getElementById('totalPrice').innerText = total + 'K IDR';
+    // If user just changed children, reduce adults first (but keep at least 1 adult)
+    else if (changedField === 'children') {
+      adults = Math.max(1, adults - overflow);
+      adultsEl.value = adults;
+    }
+    // Fallback: reduce children first
+    else {
+      children = Math.max(0, children - overflow);
+      childrenEl.value = children;
+    }
   }
+
+  // ✅ Nights calculation (unchanged)
+  const checkinVal = document.getElementById('checkin').value;
+  const checkoutVal = document.getElementById('checkout').value;
+
+  const checkin = checkinVal ? new Date(checkinVal) : null;
+  const checkout = checkoutVal ? new Date(checkoutVal) : null;
+
+  let nights = 1;
+  if (checkin && checkout && checkout > checkin) {
+    nights = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
+  }
+
+  // ✅ Pricing rule (your current rule):
+  // 500K covers up to 4 total guests
+  // Add 50K per extra ADULT beyond 4 adults
+  // (children never add extra cost in your current logic)
+  const extra = adults > 4 ? (adults - 4) * 50 : 0;
+
+  const total = (base + extra) * nights;
+  document.getElementById('totalPrice').innerText = total + 'K IDR';
+}
+
+// ✅ Attach listeners so we know which input changed
+['adults','children','checkin','checkout'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(!el) return;
+
+  el.addEventListener('change', () => updatePrice(id));
+  el.addEventListener('input', () => updatePrice(id)); // nicer UX while typing
+});
+
+// Initial
+updatePrice();
+</script>
 
   document.addEventListener('DOMContentLoaded', () => {
     // default language
