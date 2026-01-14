@@ -946,278 +946,48 @@ function setLanguage(lang){
 }
 
 /* =========================
-   PRICE + OCCUPANCY LOGIC
+   PRICE + OCCUPANCY (FIXED FOR MOBILE)
 ========================= */
 function updatePrice(changedField){
-  const base = 500; // K IDR per night
-  const MAX_TOTAL = 6;
+  const BASE = 500; // K IDR
+  const MAX = 6;
 
   const adultsEl = document.getElementById('adults');
   const childrenEl = document.getElementById('children');
 
-  let adults = parseInt(adultsEl.value, 10) || 1;
-  let children = parseInt(childrenEl.value, 10) || 0;
+  let adults = parseInt(adultsEl.value || 1, 10);
+  let children = parseInt(childrenEl.value || 0, 10);
 
   if(adults < 1) adults = 1;
   if(children < 0) children = 0;
 
-  // Enforce max 6 guests
-  let total = adults + children;
-  if(total > MAX_TOTAL){
-    const overflow = total - MAX_TOTAL;
-
+  // 🔒 HARD LIMIT (DESKTOP + iOS + ANDROID)
+  if(adults + children > MAX){
     if(changedField === 'adults'){
-      children = Math.max(0, children - overflow);
+      children = Math.max(0, MAX - adults);
     } else {
-      adults = Math.max(1, adults - overflow);
-    }
-
-    adultsEl.value = adults;
-    childrenEl.value = children;
-  }
-
-  // Nights
-  const ci = document.getElementById('checkin').value;
-  const co = document.getElementById('checkout').value;
-  let nights = 1;
-
-  if(ci && co && new Date(co) > new Date(ci)){
-    nights = Math.ceil((new Date(co) - new Date(ci)) / 86400000);
-  }
-
-  // Pricing rule
-  // ≤4 guests total = 500K
-  // extra adults >4 = +50K each
-  const extra = adults > 4 ? (adults - 4) * 50 : 0;
-  const price = (base + extra) * nights;
-
-  document.getElementById('totalPrice').innerText = price + 'K IDR';
-}
-
-/* =========================
-   WHATSAPP
-========================= */
-function bookWhatsApp(){
-  const checkin = document.getElementById('checkin').value;
-  const checkout = document.getElementById('checkout').value;
-  const adults = document.getElementById('adults').value;
-  const children = document.getElementById('children').value;
-  const price = document.getElementById('totalPrice').innerText;
-
-  if(!checkin || !checkout){
-    alert(
-      currentLang === 'id'
-        ? 'Silakan pilih tanggal check-in dan check-out terlebih dahulu.'
-        : currentLang === 'de'
-        ? 'Bitte wählen Sie zuerst Check-in- und Check-out-Daten.'
-        : currentLang === 'it'
-        ? 'Seleziona prima le date di check-in e check-out.'
-        : 'Please select check-in and check-out dates first.'
-    );
-    return;
-  }
-
-  const templates = {
-    id: `Hallo, saya ingin memesan Gusman Homestay.
-Check-in: ${checkin}
-Check-out: ${checkout}
-Dewasa: ${adults}
-Anak-anak: ${children}
-Perkiraan total: ${price}
-
-Kami tunggu konfirmasi ketersediaan. Terima kasih 🙏`,
-
-    en: `Hello, I’d like to book Gusman Homestay.
-Check-in: ${checkin}
-Check-out: ${checkout}
-Adults: ${adults}
-Children: ${children}
-Estimated total: ${price}
-
-Awaiting availability confirmation. Thank you 🙏`,
-
-    de: `Hallo, ich möchte Gusman Homestay buchen.
-Check-in: ${checkin}
-Check-out: ${checkout}
-Erwachsene: ${adults}
-Kinder: ${children}
-Gesamtpreis: ${price}
-
-Bitte bestätigen Sie die Verfügbarkeit. Danke 🙏`,
-
-    it: `Ciao, vorrei prenotare Gusman Homestay.
-Check-in: ${checkin}
-Check-out: ${checkout}
-Adulti: ${adults}
-Bambini: ${children}
-Totale stimato: ${price}
-
-In attesa di conferma. Grazie 🙏`
-  };
-
-  const msg = templates[currentLang] || templates.id;
-  window.open(`https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-/* =========================
-   VIDEO SWITCHER
-========================= */
-function setTourVideo(src, poster, btn){
-  const video = document.getElementById('tourVideo');
-  const source = document.getElementById('tourSource');
-  const cap = document.getElementById('tourCaption');
-
-  video.pause();
-  source.src = src;
-  video.poster = poster;
-
-  if(btn){
-    cap.innerHTML = btn.innerHTML;
-    setLanguage(currentLang);
-  }
-
-  document.querySelectorAll('.video-btn').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-
-  video.load();
-  video.play().catch(()=>{});
-}
-
-/* =========================
-   LIGHTBOX
-========================= */
-function initLightbox(){
-  const overlay = document.getElementById('lbOverlay');
-  const imgEl = document.getElementById('lbImg');
-  const imgs = Array.from(document.querySelectorAll('.gallery img'));
-  const prev = document.getElementById('lbPrev');
-  const next = document.getElementById('lbNext');
-  const close = document.getElementById('lbClose');
-  const counter = document.getElementById('lbCounter');
-
-  if(!overlay || !imgs.length) return;
-
-  let index = 0;
-  function show(i){
-    index = (i + imgs.length) % imgs.length;
-    imgEl.src = imgs[index].src;
-    counter.textContent = `${index+1} / ${imgs.length}`;
-  }
-
-  imgs.forEach((img,i)=>{
-    img.onclick = ()=>{ show(i); overlay.classList.add('open'); };
-  });
-
-  prev.onclick = ()=>show(index-1);
-  next.onclick = ()=>show(index+1);
-  close.onclick = ()=>overlay.classList.remove('open');
-  overlay.onclick = e=>{ if(e.target===overlay) close.onclick(); };
-}
-
-<script>
-<script>
-/* =========================
-   INIT (RUN ONCE ONLY)
-========================= */
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* Default language */
-  setLanguage('id');
-
-  /* Auto year (footer) */
-  document.querySelectorAll('.year').forEach(el => {
-    el.textContent = new Date().getFullYear();
-  });
-
-  /* Bind price & occupancy logic (mobile-safe) */
-  ['adults','children','checkin','checkout'].forEach(id => {
-    const el = document.getElementById(id);
-    if(!el) return;
-
-    el.addEventListener('input', () => updatePrice(id));
-    el.addEventListener('change', () => updatePrice(id));
-  });
-
-  /* HARD LIMIT for mobile browsers */
-  ['adults','children'].forEach(id => {
-    const el = document.getElementById(id);
-    if(!el) return;
-
-    el.addEventListener('input', () => {
-      if(parseInt(el.value,10) > 6){
-        el.value = 6;
-      }
-      updatePrice(id);
-    });
-  });
-
-  updatePrice();
-  initLightbox();
-});
-</script>
-/* =========================
-   GLOBAL STATE
-========================= */
-let currentLang = 'id';
-
-/* =========================
-   LANGUAGE
-========================= */
-function setLanguage(lang){
-  currentLang = lang;
-  document.querySelectorAll('.lang').forEach(el=>{
-    el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
-  });
-}
-
-<script>
-/* =========================
-   PRICE + OCCUPANCY LOGIC
-========================= */
-function updatePrice(changedField){
-  const base = 500; // K IDR per night
-  const MAX_TOTAL = 6;
-
-  const adultsEl = document.getElementById('adults');
-  const childrenEl = document.getElementById('children');
-
-  let adults = parseInt(adultsEl.value,10) || 1;
-  let children = parseInt(childrenEl.value,10) || 0;
-
-  if(adults < 1) adults = 1;
-  if(children < 0) children = 0;
-
-  /* 🔒 Absolute guest cap (desktop + mobile) */
-  if(adults + children > MAX_TOTAL){
-    if(changedField === 'adults'){
-      children = Math.max(0, MAX_TOTAL - adults);
-    } else {
-      adults = Math.max(1, MAX_TOTAL - children);
+      adults = Math.max(1, MAX - children);
     }
   }
 
   adultsEl.value = adults;
   childrenEl.value = children;
 
-  /* Nights */
+  // Nights
+  let nights = 1;
   const ci = document.getElementById('checkin').value;
   const co = document.getElementById('checkout').value;
-  let nights = 1;
 
   if(ci && co && new Date(co) > new Date(ci)){
     nights = Math.ceil((new Date(co) - new Date(ci)) / 86400000);
   }
 
-  /* Pricing */
-  let extra = 0;
-  if(adults > 4){
-    extra = (adults - 4) * 50;
-  }
+  // Pricing
+  const extra = adults > 4 ? (adults - 4) * 50 : 0;
+  const total = (BASE + extra) * nights;
 
-  const price = (base + extra) * nights;
-  document.getElementById('totalPrice').innerText = price + 'K IDR';
+  document.getElementById('totalPrice').innerText = total + 'K IDR';
 }
-</script>
 
 /* =========================
    WHATSAPP
@@ -1232,17 +1002,17 @@ function bookWhatsApp(){
   if(!checkin || !checkout){
     alert(
       currentLang === 'id'
-        ? 'Silakan pilih tanggal check-in dan check-out terlebih dahulu.'
+        ? 'Silakan pilih tanggal check-in dan check-out.'
         : currentLang === 'de'
-        ? 'Bitte wählen Sie zuerst Check-in- und Check-out-Daten.'
+        ? 'Bitte wählen Sie Check-in und Check-out.'
         : currentLang === 'it'
-        ? 'Seleziona prima le date di check-in e check-out.'
-        : 'Please select check-in and check-out dates first.'
+        ? 'Seleziona check-in e check-out.'
+        : 'Please select check-in and check-out.'
     );
     return;
   }
 
-  const templates = {
+  const msg = {
     id: `Halo, saya ingin memesan Gusman Homestay.
 Check-in: ${checkin}
 Check-out: ${checkout}
@@ -1250,8 +1020,7 @@ Dewasa: ${adults}
 Anak-anak: ${children}
 Perkiraan total: ${price}
 
-Kami tunggu konfirmasi ketersediaan. Terima kasih 🙏`,
-
+Mohon konfirmasi ketersediaan. Terima kasih 🙏`,
     en: `Hello, I’d like to book Gusman Homestay.
 Check-in: ${checkin}
 Check-out: ${checkout}
@@ -1259,8 +1028,7 @@ Adults: ${adults}
 Children: ${children}
 Estimated total: ${price}
 
-Awaiting availability confirmation. Thank you 🙏`,
-
+Awaiting confirmation. Thank you 🙏`,
     de: `Hallo, ich möchte Gusman Homestay buchen.
 Check-in: ${checkin}
 Check-out: ${checkout}
@@ -1269,7 +1037,6 @@ Kinder: ${children}
 Gesamtpreis: ${price}
 
 Bitte bestätigen Sie die Verfügbarkeit. Danke 🙏`,
-
     it: `Ciao, vorrei prenotare Gusman Homestay.
 Check-in: ${checkin}
 Check-out: ${checkout}
@@ -1280,8 +1047,10 @@ Totale stimato: ${price}
 In attesa di conferma. Grazie 🙏`
   };
 
-  const msg = templates[currentLang] || templates.id;
-  window.open(`https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(
+    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[currentLang])}`,
+    '_blank'
+  );
 }
 
 /* =========================
@@ -1313,7 +1082,7 @@ function setTourVideo(src, poster, btn){
 ========================= */
 function initLightbox(){
   const overlay = document.getElementById('lbOverlay');
-  const imgEl = document.getElementById('lbImg');
+  const img = document.getElementById('lbImg');
   const imgs = Array.from(document.querySelectorAll('.gallery img'));
   const prev = document.getElementById('lbPrev');
   const next = document.getElementById('lbNext');
@@ -1325,22 +1094,19 @@ function initLightbox(){
   let index = 0;
   function show(i){
     index = (i + imgs.length) % imgs.length;
-    imgEl.src = imgs[index].src;
+    img.src = imgs[index].src;
     counter.textContent = `${index+1} / ${imgs.length}`;
   }
 
-  imgs.forEach((img,i)=>{
-    img.onclick = ()=>{ show(i); overlay.classList.add('open'); };
-  });
-
-  prev.onclick = ()=>show(index-1);
-  next.onclick = ()=>show(index+1);
-  close.onclick = ()=>overlay.classList.remove('open');
-  overlay.onclick = e=>{ if(e.target===overlay) close.onclick(); };
+  imgs.forEach((el,i)=>el.onclick=()=>{show(i);overlay.classList.add('open');});
+  prev.onclick=()=>show(index-1);
+  next.onclick=()=>show(index+1);
+  close.onclick=()=>overlay.classList.remove('open');
+  overlay.onclick=e=>{if(e.target===overlay) close.onclick();}
 }
 
 /* =========================
-   INIT
+   INIT (RUN ONCE)
 ========================= */
 document.addEventListener('DOMContentLoaded', ()=>{
   setLanguage('id');
@@ -1352,8 +1118,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
   ['adults','children','checkin','checkout'].forEach(id=>{
     const el = document.getElementById(id);
     if(el){
-      el.addEventListener('input', ()=>updatePrice(id));
-      el.addEventListener('change', ()=>updatePrice(id));
+      el.addEventListener('input',()=>updatePrice(id));
+      el.addEventListener('change',()=>updatePrice(id));
     }
   });
 
