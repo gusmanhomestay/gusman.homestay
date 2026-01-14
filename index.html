@@ -232,6 +232,31 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
   background:rgba(255,255,255,.12);
 }
 </style>
+  
+  <style>
+/* --- About section layout --- */
+.about-grid{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+.about-text{flex:1 1 420px; min-width:280px;}
+.about-photo{
+  flex:0 0 220px;
+  width:220px;
+  height:220px;
+  border-radius:14px;
+  object-fit:cover;
+  box-shadow:var(--shadow);
+}
+.about-meta{
+  margin-top:10px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+</style>
 </head>
 
 <body>
@@ -630,7 +655,93 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:13px}
         <span class="lang it" style="display:none;">Nota: I servizi possono essere aggiornati periodicamente per migliorare il comfort.</span>
       </p>
     </div>
+<section class="fullwidth-section" id="about">
+  <div class="card">
+    <h3 style="text-align:center;margin:0 0 12px 0;">
+      <span class="lang id">Tentang Kami</span>
+      <span class="lang en" style="display:none;">About Us</span>
+      <span class="lang de" style="display:none;">Über uns</span>
+      <span class="lang it" style="display:none;">Chi siamo</span>
+    </h3>
 
+    <div class="about-grid">
+      <!-- Owner photo -->
+      <img class="about-photo" src="images/owner-1.jpg" alt="Owner of Gusman Homestay">
+
+      <div class="about-text">
+        <p style="margin:0;color:var(--muted);line-height:1.7;">
+          <span class="lang id">
+            Gusman Homestay awalnya adalah rumah keluarga yang dirancang dengan konsep modern-minimalis dan sentuhan tradisional.
+            Saat ini saya tinggal dan bekerja di Berlin, Jerman, serta memiliki ketertarikan besar pada traveling dan budaya.
+            <br><br>
+            Karena saya hanya pulang ke Indonesia sekitar setahun sekali, rumah ini kami buka sebagai homestay saat saya berada di Eropa.
+            Tujuannya sederhana: menyediakan rumah singgah yang nyaman, bersih, dan terasa seperti di rumah sendiri — terutama untuk keluarga, pasangan, atau tamu yang transit Bandung ↔ Garut.
+            <br><br>
+            Homestay ini dikelola secara personal, sehingga setiap pemesanan akan kami konfirmasi terlebih dahulu untuk memastikan ketersediaan dan menghindari double booking.
+          </span>
+
+          <span class="lang en" style="display:none;">
+            Gusman Homestay started as a family home, designed with a modern minimalist feel and a traditional touch.
+            I currently live and work in Berlin, Germany, and I have a strong passion for traveling and culture.
+            <br><br>
+            Since I return to Indonesia only about once a year, we open the house as a homestay while I’m based in Europe.
+            The idea is simple: a clean, calm, private place that feels like home — ideal for families, couples, and travelers stopping over between Bandung and Garut.
+            <br><br>
+            As the homestay is personally managed, every booking is confirmed manually to ensure availability and avoid double bookings.
+          </span>
+
+          <span class="lang de" style="display:none;">
+            Gusman Homestay war ursprünglich unser Familienhaus – modern-minimalistisch gestaltet, mit einem traditionellen Akzent.
+            Ich lebe und arbeite derzeit in Berlin, Deutschland und habe eine große Leidenschaft für Reisen und Kulturen.
+            <br><br>
+            Da ich nur etwa einmal im Jahr nach Indonesien zurückkehre, vermieten wir das Haus als Homestay, während ich in Europa bin.
+            Die Idee ist einfach: ein sauberes, ruhiges und privates Zuhause auf Zeit – ideal für Familien, Paare und Reisende zwischen Bandung und Garut.
+            <br><br>
+            Alle Buchungen werden persönlich bestätigt, um Verfügbarkeit sicherzustellen und Doppelbuchungen zu vermeiden.
+          </span>
+
+          <span class="lang it" style="display:none;">
+            Gusman Homestay nasce come casa di famiglia, con uno stile moderno e minimalista e un tocco tradizionale.
+            Attualmente vivo e lavoro a Berlino, in Germania, e ho una grande passione per i viaggi e le culture.
+            <br><br>
+            Poiché torno in Indonesia solo circa una volta all’anno, mettiamo a disposizione la casa come homestay mentre sono in Europa.
+            L’obiettivo è semplice: offrire un alloggio pulito, tranquillo e privato che faccia sentire gli ospiti a casa — ideale per famiglie, coppie e viaggiatori tra Bandung e Garut.
+            <br><br>
+            Ogni prenotazione viene confermata manualmente per garantire la disponibilità ed evitare doppie prenotazioni.
+          </span>
+        </p>
+
+        <!-- Owner line -->
+        <div class="about-meta">
+          <span class="lang id">
+            <strong>Owner:</strong> B. Gusman • Tinggal di Berlin, Jerman • Suka traveling
+            • <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener"
+                 style="color:inherit;text-decoration:underline;">Instagram</a>
+          </span>
+
+          <span class="lang en" style="display:none;">
+            <strong>Owner:</strong> B. Gusman • Based in Berlin, Germany • Loves traveling
+            • <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener"
+                 style="color:inherit;text-decoration:underline;">Instagram</a>
+          </span>
+
+          <span class="lang de" style="display:none;">
+            <strong>Inhaber:</strong> B. Gusman • Wohnhaft in Berlin, Deutschland • Reiseliebhaber
+            • <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener"
+                 style="color:inherit;text-decoration:underline;">Instagram</a>
+          </span>
+
+          <span class="lang it" style="display:none;">
+            <strong>Proprietario:</strong> B. Gusman • Vive a Berlino, Germania • Ama viaggiare
+            • <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener"
+                 style="color:inherit;text-decoration:underline;">Instagram</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    
     <!-- Location & Access (RIGHT COLUMN, under amenities) -->
     <div class="card">
       <h3>
