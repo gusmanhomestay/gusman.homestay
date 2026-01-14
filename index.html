@@ -1115,6 +1115,7 @@ function initLightbox(){
 }
 
 <script>
+<script>
 /* =========================
    INIT (RUN ONCE ONLY)
 ========================= */
@@ -1128,7 +1129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el.textContent = new Date().getFullYear();
   });
 
-  /* Bind price & occupancy logic */
+  /* Bind price & occupancy logic (mobile-safe) */
   ['adults','children','checkin','checkout'].forEach(id => {
     const el = document.getElementById(id);
     if(!el) return;
@@ -1137,22 +1138,20 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('change', () => updatePrice(id));
   });
 
-  /* Block invalid characters on mobile number inputs */
+  /* HARD LIMIT for mobile browsers */
   ['adults','children'].forEach(id => {
     const el = document.getElementById(id);
     if(!el) return;
 
-    el.addEventListener('keydown', e => {
-      if (['e','E','+','-','.'].includes(e.key)) {
-        e.preventDefault();
+    el.addEventListener('input', () => {
+      if(parseInt(el.value,10) > 6){
+        el.value = 6;
       }
+      updatePrice(id);
     });
   });
 
-  /* Initial calculation */
   updatePrice();
-
-  /* Init gallery lightbox */
   initLightbox();
 });
 </script>
@@ -1171,6 +1170,7 @@ function setLanguage(lang){
   });
 }
 
+<script>
 /* =========================
    PRICE + OCCUPANCY LOGIC
 ========================= */
@@ -1181,28 +1181,25 @@ function updatePrice(changedField){
   const adultsEl = document.getElementById('adults');
   const childrenEl = document.getElementById('children');
 
-  let adults = parseInt(adultsEl.value, 10) || 1;
-  let children = parseInt(childrenEl.value, 10) || 0;
+  let adults = parseInt(adultsEl.value,10) || 1;
+  let children = parseInt(childrenEl.value,10) || 0;
 
   if(adults < 1) adults = 1;
   if(children < 0) children = 0;
 
-  // Enforce max 6 guests
-  let total = adults + children;
-  if(total > MAX_TOTAL){
-    const overflow = total - MAX_TOTAL;
-
+  /* 🔒 Absolute guest cap (desktop + mobile) */
+  if(adults + children > MAX_TOTAL){
     if(changedField === 'adults'){
-      children = Math.max(0, children - overflow);
+      children = Math.max(0, MAX_TOTAL - adults);
     } else {
-      adults = Math.max(1, adults - overflow);
+      adults = Math.max(1, MAX_TOTAL - children);
     }
-
-    adultsEl.value = adults;
-    childrenEl.value = children;
   }
 
-  // Nights
+  adultsEl.value = adults;
+  childrenEl.value = children;
+
+  /* Nights */
   const ci = document.getElementById('checkin').value;
   const co = document.getElementById('checkout').value;
   let nights = 1;
@@ -1211,14 +1208,16 @@ function updatePrice(changedField){
     nights = Math.ceil((new Date(co) - new Date(ci)) / 86400000);
   }
 
-  // Pricing rule
-  // ≤4 guests total = 500K
-  // extra adults >4 = +50K each
-  const extra = adults > 4 ? (adults - 4) * 50 : 0;
-  const price = (base + extra) * nights;
+  /* Pricing */
+  let extra = 0;
+  if(adults > 4){
+    extra = (adults - 4) * 50;
+  }
 
+  const price = (base + extra) * nights;
   document.getElementById('totalPrice').innerText = price + 'K IDR';
 }
+</script>
 
 /* =========================
    WHATSAPP
