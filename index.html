@@ -286,9 +286,14 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
   text-align:center;
   margin-top:4px;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   gap:6px;
+}
+
+.site-time .time-icon{
+  display:inline-flex;
+  opacity:.85;
 }
   
 /* Language selector */
@@ -605,7 +610,19 @@ body[data-theme="dark"] .about-seal img{
     <span class="lang it" style="display:none;">Confort moderno con un tocco tradizionale — Nagreg, West Java. Prezzi a partire da 500K IDR a notte. Max 4–6 ospiti.</span>
   </div>
  <!-- ✅ WIB Time -->
-  <div class="site-time">📅 <span id="timeWIB">--</span></div>
+  <div class="site-time">
+  <span class="time-icon" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 2v3M16 2v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M3 9h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+
+  <span id="timeWIB">--</span>
+</div>
   
   <div class="lang-selector">
     <img src="flags/id.png" alt="Indonesian" onclick="setLanguage('id')">
