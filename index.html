@@ -187,24 +187,24 @@ body[data-theme="dark"] .container:before{
   line-height:1.6;
   color:var(--text);
 }
-/* High season line — slightly smaller to fit nicely */
-.season-high{
-  display:block;
-  font-size:12.5px;      /* smaller than normal text */
-  font-weight:700;
-  white-space:nowrap;    /* keep one line */
-}
-
-/* Extra safety on very small screens */
-@media (max-width: 380px){
-  .season-high{
-    font-size:12px;
-  }
-}
 body[data-theme="dark"] .season-note{
   background:rgba(69,183,178,0.12);
 }
-  
+ /* High season line — slightly smaller to fit nicely */
+.season-high{
+  display:block;
+  font-size:12.5px;      /* smaller than normal */
+  font-weight:700;
+  white-space:nowrap;    /* keep it one line */
+}
+
+/* Extra safety for very small phones */
+@media (max-width: 380px){
+  .season-high{
+    font-size:12px;
+    white-space:normal;  /* allow wrap if screen is extremely small */
+  }
+} 
 #bookingForm input[type="date"],
 #bookingForm input[type="number"]{
   width:170px;
