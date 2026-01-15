@@ -470,7 +470,36 @@ ul{padding-left:18px;font-size:18px}
   border:0;
   display:block;
 }
+/* ✅ Map preview (fast) */
+.map-preview{
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+}
 
+.map-preview img{
+  width:100%;
+  display:block;
+  border-radius:12px;
+}
+
+.map-btn{
+  position:absolute;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--brand);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.25);
+}
+
+.map-preview:hover .map-btn{
+  background:var(--brand-dark);
+}
 .site-footer{
   max-width:720px;
   margin:12px auto;
@@ -1235,12 +1264,17 @@ body[data-theme="dark"] .about-seal img{
       <span class="lang it" style="display:none;">Mappa</span>
     </h3>
 
-    <iframe
-      class="map-embed"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1982.847096764088!2d107.8812963!3d-7.0164852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c9df6ada6155%3A0x37e2fd8bf58f8eee!2sGusman%20Homestay!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid"
-      allowfullscreen
-      loading="lazy">
-    </iframe>
+<div class="map-preview">
+  <a href="https://maps.google.com/?q=Gusman+Homestay+Nagreg" target="_blank" rel="noopener noreferrer">
+    <img
+      src="images/map-preview.jpg"
+      alt="Gusman Homestay location map preview"
+      loading="lazy"
+      decoding="async"
+    >
+    <div class="map-btn">Open in Google Maps</div>
+  </a>
+</div>
   </div>
 </section>
  </section> 
