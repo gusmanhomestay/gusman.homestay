@@ -1369,15 +1369,12 @@ function updateTimeWIB(){
   const minute = String(wibDate.getMinutes()).padStart(2, "0");
 
   const lang = (typeof currentLang !== "undefined") ? currentLang : "id";
-
   const dayText = (dayNames[lang] || dayNames.id)[dayIndex];
   const monthText = (monthNames[lang] || monthNames.id)[monthIndex];
 
   el.textContent = `${dayText}, ${day} ${monthText} ${year} • ${hour}:${minute} WIB`;
 }
   // ✅ Re-trigger header animation on language switch
-  restartHeaderAnimation();
-}
 function restartHeaderAnimation(){
   const header = document.querySelector('header');
   if(!header) return;
