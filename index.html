@@ -255,25 +255,27 @@ body[data-theme="dark"] .season-note{
   }
 } 
 #bookingForm input[type="date"],
-#bookingForm input[type="number"]{
-  width:170px;
+#bookingForm input[type="number"],
+#bookingForm input[type="tel"]{
+  width:160px;
   max-width:55%;
-  padding:10px 12px;
+  padding:8px 10px;
   border-radius:10px;
+  font-size:14px;
   border:1px solid var(--border);
   background:rgba(255,255,255,0.85);
   color:var(--text);
-  outline:none;
-  transition:transform .08s ease, border-color .15s ease, background .15s ease;
 }
 
 body[data-theme="dark"] #bookingForm input[type="date"],
-body[data-theme="dark"] #bookingForm input[type="number"]{
+body[data-theme="dark"] #bookingForm input[type="number"],
+body[data-theme="dark"] #bookingForm input[type="tel"]{
   background:rgba(16,24,36,0.85);
 }
 
 #bookingForm input[type="date"]:focus,
-#bookingForm input[type="number"]:focus{
+#bookingForm input[type="number"]:focus,
+#bookingForm input[type="tel"]:focus{
   border-color:rgba(47,143,139,0.65);
   transform:translateY(-1px);
 }
@@ -1661,20 +1663,35 @@ function sanitizeNumericInputs(){
   const childrenEl = document.getElementById('children');
   if(!adultsEl || !childrenEl) return;
 
-  const onlyDigits = (v) => String(v).replace(/[^\d]/g,'');
+  const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
   [adultsEl, childrenEl].forEach(el=>{
-    el.addEventListener('input', ()=>{
-      const cleaned = onlyDigits(el.value);
-      el.value = cleaned === '' ? '' : String(parseInt(cleaned,10));
+    // ✅ When user focuses, select all text so typing replaces (fixes 12,13,14)
+    el.addEventListener('focus', ()=>{
+      el.select?.();
     });
 
-    // When user finishes editing, enforce defaults + limits
+    // ✅ While typing: keep only digits, allow empty temporarily
+    el.addEventListener('input', ()=>{
+      el.value = el.value.replace(/[^\d]/g,'');
+    });
+
+    // ✅ Only when leaving field: set defaults + enforce limits
     el.addEventListener('blur', ()=>{
-      if(el.value === '' || isNaN(el.value)) {
+      if(el.value === ''){
         el.value = (el.id === 'adults') ? '1' : '0';
       }
-      updatePrice(el.id); // reuse your existing logic
+
+      let val = parseInt(el.value, 10);
+      if(isNaN(val)) val = (el.id === 'adults') ? 1 : 0;
+
+      if(el.id === 'adults') val = clamp(val, 1, 6);
+      if(el.id === 'children') val = clamp(val, 0, 6);
+
+      el.value = String(val);
+
+      // update price with your existing function name:
+      updatePrice(el.id);
     });
   });
 }
@@ -1686,6 +1703,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
   restartHeaderAnimation();
   applyAutoTheme();
   sanitizeNumericInputs();
+    // ✅ iPhone fix: when tapping adults/children, replace number (not append)
+  ['adults','children'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('focus', ()=>{
+      setTimeout(()=>{ el.select(); }, 0);
+    });
+  });
 
   updateTimeWIB();
   setInterval(updateTimeWIB, 15000);
