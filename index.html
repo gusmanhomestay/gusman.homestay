@@ -280,11 +280,15 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
 }
 .tag{color:var(--muted);font-size:16px;text-align:center}
 
-  .site-time{
+.site-time{
   font-size:13px;
   color:var(--muted);
   text-align:center;
   margin-top:4px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:6px;
 }
   
 /* Language selector */
@@ -1600,12 +1604,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
   setLanguage('id');
   restartHeaderAnimation();
   applyAutoTheme();
+
   updateTimeWIB();
-setInterval(updateTimeWIB, 15000);
+  setInterval(updateTimeWIB, 15000);
 
   document.querySelectorAll('.year').forEach(y=>{
     y.textContent = new Date().getFullYear();
   });
+});
 
   ['adults','children','checkin','checkout'].forEach(id=>{
     const el = document.getElementById(id);
