@@ -417,25 +417,43 @@ ul{padding-left:18px;font-size:18px}
 /* --- About section layout --- */
 .about-grid{
   display:flex;
-  gap:18px;
+  gap:22px;
   align-items:flex-start;
-  flex-wrap:wrap;
+  flex-wrap:nowrap; /* ✅ keeps side-by-side on desktop */
 }
-.about-text{flex:1 1 420px; min-width:280px;}
+
 .about-photo{
-  flex:0 0 220px;
-  width:220px;
-  height:220px;
+  flex:0 0 240px;
+  width:240px;
+  height:240px;
   border-radius:14px;
   object-fit:cover;
   box-shadow:var(--shadow);
-  margin:0 auto;
+  margin:0; /* ✅ do NOT center the photo */
 }
+
+.about-text{
+  flex:1 1 auto;
+  min-width:0;
+}
+
 .about-meta{
   margin-top:10px;
   font-size:13px;
   color:var(--muted);
   line-height:1.6;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width:820px){
+  .about-grid{
+    flex-wrap:wrap;
+  }
+  .about-photo{
+    width:220px;
+    height:220px;
+    margin:0 auto; /* center photo on mobile */
+  }
 }
   /* Small brand seal in About section */
 .about-seal{
@@ -1034,89 +1052,79 @@ body[data-theme="dark"] .about-seal img{
        alt="Gusman Homestay brand seal">
 </div>
     <div class="about-grid">
-      <img class="about-photo" src="images/owner-1.jpg" alt="Owner of Gusman Homestay">
+  <!-- LEFT: Photo -->
+  <img class="about-photo" src="images/owner-1.jpg" alt="Owner of Gusman Homestay" loading="lazy" decoding="async">
 
+  <!-- RIGHT: Text -->
+  <div class="about-text">
+    <p style="margin:0;color:var(--muted);line-height:1.7;">
+      <span class="lang id">
+        Gusman Homestay awalnya dibangun dan dirancang sebagai rumah keluarga pribadi saya saat saya menghabiskan waktu di Indonesia.
+        Setiap detail dibuat dengan penuh perhatian dan rasa cinta, memadukan konsep modern-minimalis dengan suasana tradisional yang hangat.
+        <br><br>
+        Kini, rumah ini kami buka sebagai homestay agar bisa dinikmati oleh tamu yang mencari tempat singgah yang nyaman, bersih, dan terasa seperti di rumah sendiri — terutama untuk keluarga, pasangan, atau tamu yang transit antara Bandung dan Garut.
+        <br><br>
+        Homestay ini dikelola secara personal, sehingga setiap pemesanan akan kami konfirmasi terlebih dahulu demi kenyamanan bersama.
+        <br><br>
+        <em>Kami berharap Gusman Homestay bisa menjadi bagian kecil dari perjalanan Anda.</em>
+      </span>
 
-    <!-- 🇮🇩 Indonesian -->
-    <span class="lang id">
-      Gusman Homestay awalnya dibangun dan dirancang sebagai rumah keluarga pribadi saya saat saya menghabiskan waktu di Indonesia.
-      Setiap detailnya dibuat dengan penuh perhatian dan rasa cinta, memadukan konsep modern-minimalis dengan suasana tradisional yang hangat.
-      <br><br>
-      Kini, rumah ini kami buka sebagai homestay agar bisa dinikmati oleh tamu yang mencari tempat singgah yang nyaman, bersih, dan terasa seperti di rumah sendiri —
-      terutama untuk keluarga, pasangan, atau tamu yang sedang transit antara Bandung dan Garut.
-      <br><br>
-      Homestay ini dikelola secara personal, sehingga setiap pemesanan akan kami konfirmasi terlebih dahulu demi kenyamanan bersama.
-      <br><br>
-      <em>Kami berharap Gusman Homestay bisa menjadi bagian kecil dari perjalanan Anda.</em>
-    </span>
+      <span class="lang en" style="display:none;">
+        Gusman Homestay was originally built and designed as my personal family home while I was spending time in Indonesia.
+        Every detail was thoughtfully created with love, combining modern minimalist design and a warm traditional atmosphere.
+        <br><br>
+        Today, we open the house as a homestay for guests who want a clean, calm place that feels like home — especially for families, couples, or travelers stopping between Bandung and Garut.
+        <br><br>
+        We manage the homestay personally, so every booking is confirmed manually to ensure comfort and avoid double bookings.
+        <br><br>
+        <em>We hope Gusman Homestay can be a small, beautiful part of your journey.</em>
+      </span>
 
-    <!-- 🇬🇧 English -->
-    <span class="lang en" style="display:none;">
-      Gusman Homestay was originally built and designed as my personal family home while I was spending time in Indonesia.
-      Every detail was thoughtfully created with love, combining modern minimalist design and a warm traditional atmosphere.
-      <br><br>
-      Today, the house is opened as a homestay for guests looking for a clean, calm, and comfortable place that truly feels like home —
-      especially for families, couples, or travelers stopping between Bandung and Garut.
-      <br><br>
-      The homestay is personally managed, so every booking is confirmed manually to ensure comfort and availability.
-      <br><br>
-      <em>We hope Gusman Homestay can become a small, meaningful part of your journey.</em>
-    </span>
+      <span class="lang de" style="display:none;">
+        Gusman Homestay wurde ursprünglich als mein persönliches Familienhaus gebaut und gestaltet, während ich Zeit in Indonesien verbracht habe.
+        Jedes Detail wurde mit viel Liebe und Sorgfalt geplant – modern-minimalistisch, mit einer warmen traditionellen Atmosphäre.
+        <br><br>
+        Heute öffnen wir das Haus als Homestay für Gäste, die eine saubere, ruhige Unterkunft suchen, die sich wie ein Zuhause anfühlt – besonders für Familien, Paare oder Reisende zwischen Bandung und Garut.
+        <br><br>
+        Wir führen das Homestay persönlich, daher bestätigen wir jede Buchung manuell, um Komfort zu sichern und Doppelbuchungen zu vermeiden.
+        <br><br>
+        <em>Wir hoffen, dass Gusman Homestay ein kleiner, schöner Teil Ihrer Reise sein darf.</em>
+      </span>
 
-    <!-- 🇩🇪 German -->
-    <span class="lang de" style="display:none;">
-      Gusman Homestay wurde ursprünglich als mein persönliches Familienhaus entworfen und gebaut, während ich Zeit in Indonesien verbrachte.
-      Mit viel Liebe zum Detail verbindet es modernen Minimalismus mit einer warmen, traditionellen Atmosphäre.
-      <br><br>
-      Heute öffnen wir das Haus als Homestay für Gäste, die einen sauberen, ruhigen und gemütlichen Ort suchen, der sich wie ein Zuhause anfühlt —
-      ideal für Familien, Paare oder Reisende zwischen Bandung und Garut.
-      <br><br>
-      Die Unterkunft wird persönlich geführt, daher wird jede Buchung individuell bestätigt.
-      <br><br>
-      <em>Wir hoffen, dass Gusman Homestay ein kleiner, besonderer Teil Ihrer Reise sein darf.</em>
-    </span>
+      <span class="lang it" style="display:none;">
+        Gusman Homestay è stata costruita e progettata inizialmente come la mia casa di famiglia personale, mentre trascorrevo del tempo in Indonesia.
+        Ogni dettaglio è stato curato con amore, unendo uno stile moderno e minimalista con un’atmosfera tradizionale e calda.
+        <br><br>
+        Oggi apriamo la casa come homestay per chi cerca un luogo pulito e tranquillo, che faccia sentire come a casa — ideale per famiglie, coppie o viaggiatori tra Bandung e Garut.
+        <br><br>
+        Gestiamo l’homestay in modo personale, quindi ogni prenotazione viene confermata manualmente per garantire comfort ed evitare doppie prenotazioni.
+        <br><br>
+        <em>Speriamo che Gusman Homestay possa essere una piccola parte speciale del vostro viaggio.</em>
+      </span>
+    </p>
+  <div class="about-meta">
+      <span class="lang id">
+        <strong>Owner:</strong> B. Gusman • Tinggal di Jerman • Loves traveling •
+        <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
+      </span>
 
-    <!-- 🇮🇹 Italian -->
-    <span class="lang it" style="display:none;">
-      Gusman Homestay è stato originariamente costruito e progettato come la mia casa di famiglia, durante il periodo trascorso in Indonesia.
-      Ogni dettaglio è stato realizzato con cura e amore, unendo uno stile moderno e minimalista a un’atmosfera tradizionale e accogliente.
-      <br><br>
-      Oggi la casa è aperta come homestay per chi cerca un luogo pulito, tranquillo e confortevole che faccia sentire davvero a casa —
-      ideale per famiglie, coppie o viaggiatori tra Bandung e Garut.
-      <br><br>
-      La struttura è gestita personalmente, quindi ogni prenotazione viene confermata manualmente.
-      <br><br>
-      <em>Speriamo che Gusman Homestay possa diventare una piccola parte speciale del vostro viaggio.</em>
-    </span>
+      <span class="lang en" style="display:none;">
+        <strong>Owner:</strong> B. Gusman • Based in Germany • Loves traveling •
+        <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
+      </span>
 
-  </p>
+      <span class="lang de" style="display:none;">
+        <strong>Inhaber:</strong> B. Gusman • Wohnhaft in Deutschland • Reiseliebhaber •
+        <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
+      </span>
 
-        <div class="about-meta">
-          <span class="lang id">
-            <strong>Owner:</strong> B. Gusman • Tinggal di Berlin, Jerman • Loves traveling •
-            <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
-          </span>
-
-          <span class="lang en" style="display:none;">
-            <strong>Owner:</strong> B. Gusman • Based in Berlin, Germany • Loves traveling •
-            <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
-          </span>
-
-          <span class="lang de" style="display:none;">
-            <strong>Inhaber:</strong> B. Gusman • Wohnhaft in Berlin, Deutschland • Reiseliebhaber •
-            <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
-          </span>
-
-          <span class="lang it" style="display:none;">
-            <strong>Proprietario:</strong> B. Gusman • Vive a Berlino, Germania • Ama viaggiare •
-            <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
-          </span>
-        </div>
-
-      </div>
+      <span class="lang it" style="display:none;">
+        <strong>Proprietario:</strong> B. Gusman • Vive in Germania • Ama viaggiare •
+        <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
+      </span>
     </div>
-
   </div>
+</div>
 </section>
 <footer>
   <div class="site-footer">
