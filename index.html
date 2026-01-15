@@ -333,11 +333,15 @@ ul{padding-left:18px;font-size:18px}
 .site-footer{
   max-width:720px;
   margin:12px auto;
+  padding:0 12px;              /* important for mobile */
   color:var(--muted);
   text-align:center;
   font-size:13px;
   line-height:1.7;
-  white-space:nowrap; /* 🔒 keeps Instagram on SAME LINE */
+
+  white-space:normal;          /* ✅ allow wrapping */
+  word-wrap:break-word;        /* ✅ Safari safe */
+  overflow-wrap:anywhere;      /* ✅ long links */
 }
 
 .site-footer a{
