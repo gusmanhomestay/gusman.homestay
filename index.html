@@ -156,11 +156,27 @@ body[data-theme="dark"] .container:before{
   font-size:15px;    /* ✅ smaller label text */
 }
 
+/* ✅ Force compact inputs (works on iOS/Safari too) */
 #bookingForm input[type="date"],
 #bookingForm input[type="number"]{
-  height:36px;
-  padding:5px 10px;
-  font-size:13px;
+  -webkit-appearance: none;
+  appearance: none;
+
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px;
+  font-size: 13px;
+
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.85);
+  color: var(--text);
+}
+
+body[data-theme="dark"] #bookingForm input[type="date"],
+body[data-theme="dark"] #bookingForm input[type="number"]{
+  background: rgba(16,24,36,0.85);
+  border-radius:10px;
 }
 
 /* ✅ Even more compact on small phones */
