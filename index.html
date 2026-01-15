@@ -280,6 +280,13 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
 }
 .tag{color:var(--muted);font-size:16px;text-align:center}
 
+  .site-time{
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+  margin-top:4px;
+}
+  
 /* Language selector */
 .lang-selector{display:flex;gap:6px;margin-bottom:12px;justify-content:center;flex-wrap:wrap}
 .lang-selector img{width:32px;height:20px;cursor:pointer;border:1px solid #ddd;border-radius:4px}
@@ -593,7 +600,9 @@ body[data-theme="dark"] .about-seal img{
     <span class="lang de" style="display:none;">Moderner Komfort mit traditionellem Touch — Nagreg, Westjava. Preise ab 500K IDR pro Nacht. Maximal 4–6 Gäste.</span>
     <span class="lang it" style="display:none;">Confort moderno con un tocco tradizionale — Nagreg, West Java. Prezzi a partire da 500K IDR a notte. Max 4–6 ospiti.</span>
   </div>
-
+ <!-- ✅ WIB Time -->
+  <div class="site-time">📅 <span id="timeWIB">--</span></div>
+  
   <div class="lang-selector">
     <img src="flags/id.png" alt="Indonesian" onclick="setLanguage('id')">
     <img src="flags/en.png" alt="English" onclick="setLanguage('en')">
@@ -1320,7 +1329,48 @@ function setLanguage(lang){
   document.querySelectorAll('.lang').forEach(el=>{
     el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
   });
+restartHeaderAnimation();
 
+  updateTimeWIB(); // ✅ update time when language changes
+}
+
+/* ✅ PASTE HERE */
+function updateTimeWIB(){
+  const el = document.getElementById('timeWIB');
+  if(!el) return;
+
+  const now = new Date();
+
+  const dayNames = {
+    id: ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"],
+    en: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    de: ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],
+    it: ["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"]
+  };
+
+  const monthNames = {
+    id: ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
+    en: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+    de: ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"],
+    it: ["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"]
+  };
+
+  const wibDate = new Date(now.toLocaleString("en-US", { timeZone:"Asia/Jakarta" }));
+
+  const dayIndex = wibDate.getDay();
+  const day = String(wibDate.getDate()).padStart(2, "0");
+  const monthIndex = wibDate.getMonth();
+  const year = wibDate.getFullYear();
+  const hour = String(wibDate.getHours()).padStart(2, "0");
+  const minute = String(wibDate.getMinutes()).padStart(2, "0");
+
+  const lang = (typeof currentLang !== "undefined") ? currentLang : "id";
+
+  const dayText = (dayNames[lang] || dayNames.id)[dayIndex];
+  const monthText = (monthNames[lang] || monthNames.id)[monthIndex];
+
+  el.textContent = `${dayText}, ${day} ${monthText} ${year} • ${hour}:${minute} WIB`;
+}
   // ✅ Re-trigger header animation on language switch
   restartHeaderAnimation();
 }
@@ -1550,6 +1600,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
   setLanguage('id');
   restartHeaderAnimation();
   applyAutoTheme();
+  updateTimeWIB();
+setInterval(updateTimeWIB, 15000);
 
   document.querySelectorAll('.year').forEach(y=>{
     y.textContent = new Date().getFullYear();
