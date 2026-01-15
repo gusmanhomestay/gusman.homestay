@@ -173,9 +173,16 @@ body[data-theme="dark"] .container:before{
   color: var(--text);
 }
 
-body[data-theme="dark"] #bookingForm input[type="date"],
-body[data-theme="dark"] #bookingForm input[type="number"]{
-  background: rgba(16,24,36,0.85);
+#bookingForm input[type="date"],
+#bookingForm input[type="number"]{
+  -webkit-appearance:none;
+  appearance:none;
+
+  height:36px !important;
+  line-height:36px !important;
+  padding:0 10px !important;
+  font-size:13px !important;
+
   border-radius:10px;
 }
 
