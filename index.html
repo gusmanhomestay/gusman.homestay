@@ -40,8 +40,22 @@
 }
 
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#0b1220;line-height:1.45}
-.container{max-width:var(--maxw);margin:32px auto;padding:20px}
+  /* 🔒 Prevent horizontal scroll on mobile Safari */
+html, body{
+  max-width:100%;
+  overflow-x:hidden;
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.45;
+}
+.container{
+  max-width:var(--maxw);
+  margin:32px auto;
+  padding:20px;
+}
 /* =========================
    THEME (Light + Dark)
 ========================= */
@@ -333,15 +347,17 @@ ul{padding-left:18px;font-size:18px}
 .site-footer{
   max-width:720px;
   margin:12px auto;
-  padding:0 12px;              /* important for mobile */
+  padding:0 12px;
   color:var(--muted);
   text-align:center;
   font-size:13px;
   line-height:1.7;
+}
 
-  white-space:normal;          /* ✅ allow wrapping */
-  word-wrap:break-word;        /* ✅ Safari safe */
-  overflow-wrap:anywhere;      /* ✅ long links */
+@media (min-width: 768px){
+  .site-footer{
+    white-space:nowrap;
+  }
 }
 
 .site-footer a{
