@@ -769,7 +769,7 @@ body[data-theme="dark"] .about-seal img{
     <span class="lang en" style="display:none;">Adults</span>
     <span class="lang de" style="display:none;">Erwachsene</span>
     <span class="lang it" style="display:none;">Adulti</span>
-    <input type="tel" id="adults" inputmode="numeric" pattern="[0-9]*" value="1" autocomplete="off">
+    <input type="number" id="adults" min="1" max="6" value="0" required inputmode="numeric">
   </label><br>
 
   <label>
@@ -777,7 +777,7 @@ body[data-theme="dark"] .about-seal img{
     <span class="lang en" style="display:none;">Children (&lt;12)</span>
     <span class="lang de" style="display:none;">Kinder (&lt;12)</span>
     <span class="lang it" style="display:none;">Bambini (&lt;12)</span>
-    <input type="tel" id="children" inputmode="numeric" pattern="[0-9]*" value="0" autocomplete="off">
+    <input type="number" id="children" min="0" max="6" value="0" required inputmode="numeric">
   </label><br>
 
   <div style="margin-top:8px;font-weight:600">
