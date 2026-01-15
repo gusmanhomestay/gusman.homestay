@@ -769,7 +769,7 @@ body[data-theme="dark"] .about-seal img{
     <span class="lang en" style="display:none;">Adults</span>
     <span class="lang de" style="display:none;">Erwachsene</span>
     <span class="lang it" style="display:none;">Adulti</span>
-    <input type="number" id="adults" min="1" max="6" value="1" required>
+    <input type="tel" id="adults" inputmode="numeric" pattern="[0-9]*" value="1" autocomplete="off">
   </label><br>
 
   <label>
@@ -777,7 +777,7 @@ body[data-theme="dark"] .about-seal img{
     <span class="lang en" style="display:none;">Children (&lt;12)</span>
     <span class="lang de" style="display:none;">Kinder (&lt;12)</span>
     <span class="lang it" style="display:none;">Bambini (&lt;12)</span>
-    <input type="number" id="children" min="0" max="6" value="0" required>
+    <input type="tel" id="children" inputmode="numeric" pattern="[0-9]*" value="0" autocomplete="off">
   </label><br>
 
   <div style="margin-top:8px;font-weight:600">
@@ -1656,7 +1656,28 @@ function initRevealAnimations(){
     if(!el.classList.contains('is-visible')) io.observe(el);
   });
 }
+function sanitizeNumericInputs(){
+  const adultsEl = document.getElementById('adults');
+  const childrenEl = document.getElementById('children');
+  if(!adultsEl || !childrenEl) return;
 
+  const onlyDigits = (v) => String(v).replace(/[^\d]/g,'');
+
+  [adultsEl, childrenEl].forEach(el=>{
+    el.addEventListener('input', ()=>{
+      const cleaned = onlyDigits(el.value);
+      el.value = cleaned === '' ? '' : String(parseInt(cleaned,10));
+    });
+
+    // When user finishes editing, enforce defaults + limits
+    el.addEventListener('blur', ()=>{
+      if(el.value === '' || isNaN(el.value)) {
+        el.value = (el.id === 'adults') ? '1' : '0';
+      }
+      updatePrice(el.id); // reuse your existing logic
+    });
+  });
+}
 /* =========================
    INIT (RUN ONCE)
 ========================= */
@@ -1664,6 +1685,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   setLanguage('id');
   restartHeaderAnimation();
   applyAutoTheme();
+  sanitizeNumericInputs();
 
   updateTimeWIB();
   setInterval(updateTimeWIB, 15000);
