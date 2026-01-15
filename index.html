@@ -154,7 +154,44 @@ body[data-theme="dark"] .container:before{
   gap:12px;
   margin:10px 0;
 }
+/* ===== Availability status badge ===== */
+.availability{
+  margin:10px 0 6px;
+  font-weight:700;
+  font-size:13px;
+  display:inline-flex;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+}
 
+.availability.available{
+  background:rgba(34,197,94,.10);
+}
+
+.availability.full{
+  background:rgba(239,68,68,.10);
+}
+
+.availability.limited{
+  background:rgba(245,158,11,.12);
+}
+  /* ===== Season pricing note ===== */
+.season-note{
+  margin:10px 0 14px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:var(--brand-soft);
+  font-size:13px;
+  line-height:1.6;
+  color:var(--text);
+}
+
+body[data-theme="dark"] .season-note{
+  background:rgba(69,183,178,0.12);
+}
+  
 #bookingForm input[type="date"],
 #bookingForm input[type="number"]{
   width:170px;
@@ -570,7 +607,40 @@ body[data-theme="dark"] .about-seal img{
         <span class="lang de" style="display:none;">Bester Preis bei direkter Buchung über WhatsApp. Preise ab 500K IDR pro Nacht. Maximal 4–6 Gäste.</span>
         <span class="lang it" style="display:none;">Miglior prezzo se prenoti direttamente via WhatsApp. Prezzi a partire da 500K IDR a notte. Max 4–6 ospiti.</span>
       </p>
+      <!-- Season pricing note -->
+<div class="season-note">
+  <span class="lang id">
+    🏷️ <strong>Harga normal:</strong> mulai Rp 500.000 / malam<br>
+    <strong>High season (Lebaran & libur nasional):</strong> mulai Rp 750.000 / malam<br>
+    <em>Harga akhir dikonfirmasi via WhatsApp.</em>
+  </span>
 
+  <span class="lang en" style="display:none;">
+    🏷️ <strong>Standard rate:</strong> IDR 500,000 / night<br>
+    <strong>High season (Lebaran & public holidays):</strong> from IDR 750,000 / night<br>
+    <em>Final price will be confirmed via WhatsApp.</em>
+  </span>
+
+  <span class="lang de" style="display:none;">
+    🏷️ <strong>Standardpreis:</strong> 500.000 IDR / Nacht<br>
+    <strong>Hochsaison (Lebaran & Feiertage):</strong> ab 750.000 IDR / Nacht<br>
+    <em>Endpreis wird per WhatsApp bestätigt.</em>
+  </span>
+
+  <span class="lang it" style="display:none;">
+    🏷️ <strong>Prezzo standard:</strong> 500.000 IDR / notte<br>
+    <strong>Alta stagione (Lebaran & festività):</strong> da 750.000 IDR / notte<br>
+    <em>Il prezzo finale verrà confermato via WhatsApp.</em>
+  </span>
+</div>
+      
+<!-- ✅ ADD AVAILABILITY RIGHT HERE -->
+<div class="availability available">
+  ✅ <span class="lang id">Tersedia</span>
+  <span class="lang en" style="display:none;">Available</span>
+  <span class="lang de" style="display:none;">Verfügbar</span>
+  <span class="lang it" style="display:none;">Disponibile</span>
+</div>
       <form id="bookingForm">
   <label>
     <span class="lang id">Check-in</span>
