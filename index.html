@@ -775,6 +775,11 @@ body[data-theme="dark"] .about-seal img{
   font-size:14px;
   font-weight:800;
   border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center; /* ✅ centers text */
+  text-align:center;      /* ✅ centers if it wraps */
 }
 
 /* Mobile rules */
@@ -2075,8 +2080,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 <div class="wa-sticky">
   <button type="button" class="btn btn-premium" onclick="bookWhatsApp()">
     <span class="lang id">📲 Pesan via WhatsApp</span>
-    <span class="lang en" style="display:none;">📲 WhatsApp Booking</span>
-    <span class="lang de" style="display:none;">📲 WhatsApp buchen</span>
+    <span class="lang en" style="display:none;">📲 via WhatsApp Booking</span>
+    <span class="lang de" style="display:none;">📲 Durch WhatsApp buchen</span>
     <span class="lang it" style="display:none;">📲 Prenota via WhatsApp</span>
   </button>
 </div>
