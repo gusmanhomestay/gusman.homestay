@@ -709,10 +709,10 @@ body[data-theme="dark"] .about-seal img{
   }
 }
 /* =========================
-   WhatsApp buttons (clean)
+   WhatsApp Buttons (Clean Final)
 ========================= */
 
-/* Normal button in the booking form (desktop + tablet) */
+/* Desktop normal button */
 #bookingForm .btn-premium.wa-normal{
   width:100%;
   max-width:420px;
@@ -726,17 +726,9 @@ body[data-theme="dark"] .about-seal img{
   border-radius:14px;
 }
 
-/* Slightly smaller on very small phones */
-@media (max-width:420px){
-  #bookingForm .btn-premium.wa-normal{
-    font-size:14px;
-    padding:14px 16px;
-  }
-}
-
 /* Sticky container (mobile only) */
 .wa-sticky{
-  display:none;           /* hidden by default (desktop) */
+  display:none; 
   position:fixed;
   left:12px;
   right:12px;
@@ -745,7 +737,7 @@ body[data-theme="dark"] .about-seal img{
   justify-content:center;
 }
 
-/* Sticky button sizing */
+/* Sticky button (mobile only) */
 .wa-sticky .btn-premium{
   width:100%;
   max-width:360px;
@@ -755,13 +747,15 @@ body[data-theme="dark"] .about-seal img{
   border-radius:16px;
 }
 
-/* Mobile behavior: show sticky, hide normal, add bottom space */
+/* ✅ Mobile behavior */
 @media (max-width:768px){
   .wa-sticky{ display:flex; }
   .wa-normal{ display:none !important; }
 
-  body{ padding-bottom:130px; } /* space so sticky doesn't cover content */
-}
+  /* ✅ Important: add space so sticky doesn't cover content */
+  .container{
+    padding-bottom:170px;
+  }
 }
 </style>
 </head>
@@ -925,19 +919,12 @@ body[data-theme="dark"] .about-seal img{
   <div id="totalPrice" class="total-price-value">500K IDR</div>
 </div>
 
-          <button type="button" class="btn btn-premium wa-normal" onclick="bookWhatsApp()">
-          <span class="lang id">📲 Pesan via WhatsApp (kami konfirmasi dulu)</span>
-          <span class="lang en" style="display:none;">📲 Book via WhatsApp (we’ll confirm first)</span>
-          <span class="lang de" style="display:none;">📲 Per WhatsApp buchen (wir bestätigen zuerst)</span>
-          <span class="lang it" style="display:none;">📲 Prenota su WhatsApp (confermeremo prima)</span>
-        </button>
-        <div class="wa-sticky">
-  <button type="button" class="btn btn-premium" onclick="bookWhatsApp()">
-    <span class="lang id">📲 Pesan via WhatsApp</span>
-    <span class="lang en" style="display:none;">📲 WhatsApp Booking</span>
-    <span class="lang de" style="display:none;">📲 WhatsApp buchen</span>
-    <span class="lang it" style="display:none;">📲 Prenota via WhatsApp</span>
-  </button>
+         <button type="button" class="btn btn-premium wa-normal" onclick="bookWhatsApp()">
+  <span class="lang id">📲 Pesan via WhatsApp (kami konfirmasi dulu)</span>
+  <span class="lang en" style="display:none;">📲 Book via WhatsApp (we confirm first)</span>
+  <span class="lang de" style="display:none;">📲 Per WhatsApp buchen (wir bestätigen zuerst)</span>
+  <span class="lang it" style="display:none;">📲 Prenota via WhatsApp (confermiamo prima)</span>
+</button>
 </div>
       </form>
     </div>
@@ -2057,15 +2044,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
   ]
 }
 </script>
-<!-- ✅ Mobile Sticky WhatsApp Button (mobile only) -->
-<a class="wa-sticky" href="javascript:bookWhatsApp()" aria-label="WhatsApp Booking">
-  <span class="wa-sticky-icon">📲</span>
-  <span class="wa-sticky-text">
-    <span class="lang id">Pesan via WhatsApp</span>
-    <span class="lang en" style="display:none;">Book via WhatsApp</span>
-    <span class="lang de" style="display:none;">Per WhatsApp buchen</span>
-    <span class="lang it" style="display:none;">Prenota via WhatsApp</span>
-  </span>
-</a>
+<div class="wa-sticky">
+  <button type="button" class="btn btn-premium" onclick="bookWhatsApp()">
+    <span class="lang id">📲 Pesan via WhatsApp</span>
+    <span class="lang en" style="display:none;">📲 WhatsApp Booking</span>
+    <span class="lang de" style="display:none;">📲 WhatsApp buchen</span>
+    <span class="lang it" style="display:none;">📲 Prenota via WhatsApp</span>
+  </button>
+</div>
 </body>
 </html>
