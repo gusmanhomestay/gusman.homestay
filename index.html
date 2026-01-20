@@ -708,18 +708,9 @@ body[data-theme="dark"] .about-seal img{
     transition:none !important;
   }
 }
-/* =========================
-   WhatsApp buttons (final)
-========================= */
-
-/* Desktop / normal button */
-.wa-normal{
-  display:flex;
-}
-
-/* Sticky container hidden by default (desktop) */
+/* ✅ Sticky WhatsApp (mobile only) */
 .wa-sticky{
-  display:none;
+  display:none;            /* hidden by default (desktop) */
   position:fixed;
   left:12px;
   right:12px;
@@ -728,27 +719,27 @@ body[data-theme="dark"] .about-seal img{
   justify-content:center;
 }
 
-/* Mobile rules */
-@media (max-width: 768px){
-
-  /* hide normal button on mobile */
-  .wa-normal{ display:none !important; }
-
-  /* show sticky bar on mobile */
+/* only show on mobile */
+@media (max-width:768px){
   .wa-sticky{ display:flex; }
+  .wa-normal{ display:none !important; }  /* hide normal button on mobile */
+}
 
-  /* make space so sticky button NEVER covers text */
-  body{
-    padding-bottom: calc(120px + env(safe-area-inset-bottom));
+/* ✅ Space so sticky button doesn't cover content */
+@media (max-width:768px){
+  .container{
+    padding-bottom:160px; /* ✅ better than body padding */
   }
+}
 
-  /* sticky button size (nice but not huge) */
+/* optional: make sticky button not too tall */
+@media (max-width:768px){
   .wa-sticky .btn-premium{
-    width:100%;
-    max-width:360px;
-    margin:0 auto;
     padding:14px 18px;
     font-size:14px;
+    max-width:360px;
+    width:100%;
+    margin:0 auto;
   }
 }
 </style>
