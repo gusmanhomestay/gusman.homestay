@@ -720,10 +720,10 @@ body[data-theme="dark"] .about-seal img{
   }
 }
 /* =========================
-   WhatsApp Buttons (Clean Final)
+   WhatsApp buttons (CLEAN)
 ========================= */
 
-/* Desktop normal button */
+/* Desktop normal WhatsApp button */
 #bookingForm .btn-premium.wa-normal{
   width:100%;
   max-width:420px;
@@ -737,9 +737,9 @@ body[data-theme="dark"] .about-seal img{
   border-radius:14px;
 }
 
-/* Sticky container (mobile only) */
+/* Sticky WhatsApp container (mobile only) */
 .wa-sticky{
-  display:none; 
+  display:none;
   position:fixed;
   left:12px;
   right:12px;
@@ -748,7 +748,7 @@ body[data-theme="dark"] .about-seal img{
   justify-content:center;
 }
 
-/* Sticky button (mobile only) */
+/* Sticky WhatsApp button (mobile only) */
 .wa-sticky .btn-premium{
   width:100%;
   max-width:360px;
@@ -758,14 +758,14 @@ body[data-theme="dark"] .about-seal img{
   border-radius:16px;
 }
 
-/* ✅ Mobile behavior */
+/* Mobile rules */
 @media (max-width:768px){
   .wa-sticky{ display:flex; }
   .wa-normal{ display:none !important; }
 
-  /* ✅ Important: add space so sticky doesn't cover content */
+  /* IMPORTANT: give extra space so sticky never covers content */
   .container{
-    padding-bottom:170px;
+    padding-bottom:180px;
   }
 }
 </style>
