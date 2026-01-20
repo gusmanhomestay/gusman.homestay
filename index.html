@@ -303,12 +303,23 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   font-weight:700;
   border-radius:14px;
 }
-
 /* ✅ smaller text on very small phones */
 @media (max-width:420px){
   #bookingForm .btn-premium{
     font-size:14px;
     padding:14px 16px;
+  }
+/* ✅ Make space at bottom so sticky WhatsApp button doesn't cover content */
+@media (max-width: 768px){
+  body{
+    padding-bottom: 150px; /* increase space */
+  }
+}
+  @media (max-width: 768px){
+  .wa-sticky .btn-premium{
+    padding:14px 18px;
+    font-size:14px;
+    max-width:360px;
   }
 }
 /* =========================
