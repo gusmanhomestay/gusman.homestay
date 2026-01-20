@@ -741,6 +741,29 @@ body[data-theme="dark"] .about-seal img{
   @media (max-width: 768px){
   .wa-normal{ display:none !important; }
 }
+  /* ✅ Sticky WhatsApp bar ONLY on mobile */
+.wa-sticky{
+  display:none; /* hidden by default */
+}
+
+@media (max-width: 768px){
+  .wa-sticky{
+    display:flex;
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    z-index:9999;
+    justify-content:center;
+  }
+}
+
+/* ✅ Hide the normal WhatsApp button on mobile */
+@media (max-width: 768px){
+  .wa-normal{
+    display:none !important;
+  }
+}
 </style>
 </head>
 
@@ -910,6 +933,14 @@ body[data-theme="dark"] .about-seal img{
           <span class="lang de" style="display:none;">📲 Per WhatsApp buchen (wir bestätigen zuerst)</span>
           <span class="lang it" style="display:none;">📲 Prenota su WhatsApp (confermeremo prima)</span>
         </button>
+        <div class="wa-sticky">
+  <button type="button" class="btn btn-premium" onclick="bookWhatsApp()">
+    <span class="lang id">📲 Pesan via WhatsApp</span>
+    <span class="lang en" style="display:none;">📲 WhatsApp Booking</span>
+    <span class="lang de" style="display:none;">📲 WhatsApp buchen</span>
+    <span class="lang it" style="display:none;">📲 Prenota via WhatsApp</span>
+  </button>
+</div>
       </form>
     </div>
 
