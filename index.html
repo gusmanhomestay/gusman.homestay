@@ -692,6 +692,55 @@ body[data-theme="dark"] .about-seal img{
     transition:none !important;
   }
 }
+  /* ✅ Sticky WhatsApp (mobile only) */
+.wa-sticky{
+  display:none; /* hidden by default (desktop) */
+  position:fixed;
+  left:16px;
+  right:16px;
+  bottom:14px;
+  z-index:9999;
+
+  text-decoration:none;
+  border-radius:16px;
+  padding:14px 16px;
+  font-weight:800;
+  font-size:16px;
+  letter-spacing:.2px;
+
+  background:linear-gradient(180deg, rgba(69,183,178,.95), rgba(47,143,139,.95));
+  color:#fff;
+  box-shadow:0 14px 40px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.18);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  /* iPhone safe area */
+  padding-bottom:calc(14px + env(safe-area-inset-bottom));
+}
+
+.wa-sticky-icon{
+  font-size:18px;
+  line-height:1;
+}
+
+/* Show ONLY on phones */
+@media (max-width: 768px){
+  .wa-sticky{ display:flex; }
+}
+
+/* Optional: make space so sticky button doesn't cover last content on mobile */
+@media (max-width: 768px){
+  body{
+    padding-bottom:90px;
+  }
+}
+  @media (max-width: 768px){
+  .wa-normal{ display:none !important; }
+}
 </style>
 </head>
 
@@ -855,7 +904,7 @@ body[data-theme="dark"] .about-seal img{
           </span>
         </p>
 
-        <button type="button" class="btn btn-premium" onclick="bookWhatsApp()">
+          <button type="button" class="btn btn-premium wa-normal" onclick="bookWhatsApp()">
           <span class="lang id">📲 Pesan via WhatsApp (kami konfirmasi dulu)</span>
           <span class="lang en" style="display:none;">📲 Book via WhatsApp (we’ll confirm first)</span>
           <span class="lang de" style="display:none;">📲 Per WhatsApp buchen (wir bestätigen zuerst)</span>
@@ -1979,6 +2028,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
   ]
 }
 </script>
-
+<!-- ✅ Mobile Sticky WhatsApp Button (mobile only) -->
+<a class="wa-sticky" href="javascript:bookWhatsApp()" aria-label="WhatsApp Booking">
+  <span class="wa-sticky-icon">📲</span>
+  <span class="wa-sticky-text">
+    <span class="lang id">Pesan via WhatsApp</span>
+    <span class="lang en" style="display:none;">Book via WhatsApp</span>
+    <span class="lang de" style="display:none;">Per WhatsApp buchen</span>
+    <span class="lang it" style="display:none;">Prenota via WhatsApp</span>
+  </span>
+</a>
 </body>
 </html>
