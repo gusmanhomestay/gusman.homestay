@@ -1487,7 +1487,9 @@ function restartHeaderAnimation(){
    PRICE + OCCUPANCY (FIXED FOR MOBILE)
 ========================= */
 function updatePrice(changedField){
-  const BASE = 500; // K IDR
+  const WEEKDAY_BASE = 500;   // K IDR
+  const WEEKEND_BASE = 750;   // K IDR
+  const EXTRA_ADULT = 50;     // K IDR per adult above 4
   const MAX = 6;
 
   const adultsEl = document.getElementById('adults');
@@ -1511,17 +1513,39 @@ function updatePrice(changedField){
   adultsEl.value = adults;
   childrenEl.value = children;
 
-  // Nights
-  let nights = 1;
-  const ci = document.getElementById('checkin').value;
-  const co = document.getElementById('checkout').value;
+  // ✅ Get check-in/out dates
+  const ciVal = document.getElementById('checkin').value;
+  const coVal = document.getElementById('checkout').value;
 
-  if(ci && co && new Date(co) > new Date(ci)){
-    nights = Math.ceil((new Date(co) - new Date(ci)) / 86400000);
+  let nights = 1;
+  let isWeekendStay = false;
+
+  if(ciVal && coVal){
+    const ci = new Date(ciVal);
+    const co = new Date(coVal);
+
+    if(co > ci){
+      nights = Math.ceil((co - ci) / 86400000);
+
+      // ✅ Detect if any night is Fri or Sat
+      let d = new Date(ci);
+      for(let i = 0; i < nights; i++){
+        const day = d.getDay(); // 0=Sun ... 5=Fri, 6=Sat
+        if(day === 5 || day === 6){
+          isWeekendStay = true;
+          break;
+        }
+        d.setDate(d.getDate() + 1);
+      }
+    }
   }
 
-  // Pricing
-  const extra = adults > 4 ? (adults - 4) * 50 : 0;
+  // ✅ Choose base rate
+  const BASE = isWeekendStay ? WEEKEND_BASE : WEEKDAY_BASE;
+
+  // ✅ Extra adults pricing
+  const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
+
   const total = (BASE + extra) * nights;
 
   document.getElementById('totalPrice').innerText = total + 'K IDR';
