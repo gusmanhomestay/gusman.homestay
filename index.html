@@ -398,9 +398,24 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
 .lang-selector img{width:32px;height:20px;cursor:pointer;border:1px solid #ddd;border-radius:4px}
 
 /* Top Hero layout */
-.hero{display:flex;gap:28px;flex-wrap:wrap}
-.hero-left{flex:1 1 400px;min-width:300px;display:flex;flex-direction:column;gap:12px}
-.hero-middle{flex:2 1 580px;min-width:300px;display:flex;flex-direction:column;gap:12px}
+.hero{
+  display:flex;
+  gap:28px;
+  align-items:flex-start;
+  flex-wrap:nowrap; /* ✅ IMPORTANT: keep side-by-side on desktop */
+}
+.hero-left{
+  flex:0 0 420px;   /* left column fixed width */
+  min-width:420px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.hero-middle{
+  flex:1 1 auto;    /* gallery takes remaining space */
+  min-width:0;
+}
 
 /* Cards */
 .card,.hero-card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow)}
