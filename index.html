@@ -293,31 +293,9 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
    WhatsApp buttons (clean)
 ========================= */
 
-/* Normal button in the booking form (desktop + tablet) */
-#bookingForm .btn-premium.wa-normal{
-  width:100%;
-  max-width:420px;
-  margin:18px auto 0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:16px 18px;
-  font-size:15px;
-  font-weight:700;
-  border-radius:14px;
-}
-
-/* Slightly smaller on very small phones */
-@media (max-width:420px){
-  #bookingForm .btn-premium.wa-normal{
-    font-size:14px;
-    padding:14px 16px;
-  }
-}
-
-/* Sticky container (mobile only) */
+/* ✅ Sticky WhatsApp (mobile only) */
 .wa-sticky{
-  display:none;           /* hidden by default (desktop) */
+  display:none;            /* hidden by default (desktop) */
   position:fixed;
   left:12px;
   right:12px;
@@ -326,22 +304,28 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   justify-content:center;
 }
 
-/* Sticky button sizing */
-.wa-sticky .btn-premium{
-  width:100%;
-  max-width:360px;
-  padding:14px 18px;
-  font-size:14px;
-  font-weight:800;
-  border-radius:16px;
-}
-
-/* Mobile behavior: show sticky, hide normal, add bottom space */
+/* only show on mobile */
 @media (max-width:768px){
   .wa-sticky{ display:flex; }
-  .wa-normal{ display:none !important; }
+  .wa-normal{ display:none !important; }  /* hide normal button on mobile */
+}
 
-  body{ padding-bottom:150px; } /* space so sticky doesn't cover content */
+/* ✅ Space so sticky button doesn't cover content */
+@media (max-width:768px){
+  .container{
+    padding-bottom:160px; /* ✅ better than body padding */
+  }
+}
+
+/* optional: make sticky button not too tall */
+@media (max-width:768px){
+  .wa-sticky .btn-premium{
+    padding:14px 18px;
+    font-size:14px;
+    max-width:360px;
+    width:100%;
+    margin:0 auto;
+  }
 }
 /* =========================
    HEADER FADE-IN (SLOW & ELEGANT)
