@@ -1749,6 +1749,29 @@ function setDefaultDates(){
   if(!checkinEl.value) checkinEl.value = todayStr;
   if(!checkoutEl.value) checkoutEl.value = tomorrowStr;
 }
+  function autoFixCheckout(){
+  const checkinEl = document.getElementById("checkin");
+  const checkoutEl = document.getElementById("checkout");
+  if(!checkinEl || !checkoutEl) return;
+
+  const ciVal = checkinEl.value;
+  const coVal = checkoutEl.value;
+  if(!ciVal) return;
+
+  const ci = new Date(ciVal);
+
+  // If checkout empty OR checkout <= checkin, make checkout = checkin + 1 day
+  if(!coVal || new Date(coVal) <= ci){
+    const nextDay = new Date(ci);
+    nextDay.setDate(ci.getDate() + 1);
+
+    const yyyy = nextDay.getFullYear();
+    const mm = String(nextDay.getMonth() + 1).padStart(2, "0");
+    const dd = String(nextDay.getDate()).padStart(2, "0");
+
+    checkoutEl.value = `${yyyy}-${mm}-${dd}`;
+  }
+}
 /* =========================
    WHATSAPP
 ========================= */
@@ -1955,7 +1978,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
   restartHeaderAnimation();
   applyAutoTheme();
   sanitizeNumericInputs();
-  
+
+  // iPhone fix: replace number instead of append
   ['adults','children'].forEach(id=>{
     const el = document.getElementById(id);
     if(!el) return;
@@ -1964,6 +1988,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   });
 
+  // ✅ set initial dates first
+  setDefaultDates();
+
   updateTimeWIB();
   setInterval(updateTimeWIB, 15000);
 
@@ -1971,7 +1998,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     y.textContent = new Date().getFullYear();
   });
 
-  ['adults','children','checkin','checkout'].forEach(id=>{
+  // ✅ price update listeners
+  ['adults','children'].forEach(id=>{
     const el = document.getElementById(id);
     if(el){
       el.addEventListener('input', ()=>updatePrice(id));
@@ -1979,12 +2007,35 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   });
 
-  setDefaultDates();
+  // ✅ when checkin changes, force checkout >= checkin+1
+  const checkinEl = document.getElementById('checkin');
+  const checkoutEl = document.getElementById('checkout');
+
+  if(checkinEl){
+    checkinEl.addEventListener('change', ()=>{
+      autoFixCheckout();
+      updatePrice('checkin');
+    });
+    checkinEl.addEventListener('input', ()=>{
+      autoFixCheckout();
+      updatePrice('checkin');
+    });
+  }
+
+  if(checkoutEl){
+    checkoutEl.addEventListener('change', ()=>{
+      autoFixCheckout();
+      updatePrice('checkout');
+    });
+  }
+
+  // ✅ first calculation
+  autoFixCheckout();
   updatePrice();
+
   initLightbox();
   initRevealAnimations();
 });
-</script>
   
 <!-- ✅ SEO: FAQ Schema (ID + EN) -->
 <script type="application/ld+json">
