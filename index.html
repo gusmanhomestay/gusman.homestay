@@ -589,17 +589,22 @@ ul{padding-left:18px;font-size:18px}
   
 .site-footer{
   width:100%;
-  margin:14px auto 0;
+  margin:18px 0 0;
   padding:0 12px;
-  color:var(--muted);
+  color:rgba(255,255,255,0.55); /* softer in dark mode */
   text-align:center;
-  font-size:13px;
-  line-height:1.7;
+  font-size:12px;              /* slightly smaller */
+  line-height:1.6;
+  letter-spacing:0.2px;
+}
+body:not([data-theme="dark"]) .site-footer{
+  color:rgba(11,18,32,0.55);   /* softer in light mode */
 }
 
 .site-footer a{
   color:inherit;
   text-decoration:underline;
+  text-underline-offset:3px;
 }
   
 @media (min-width: 768px){
