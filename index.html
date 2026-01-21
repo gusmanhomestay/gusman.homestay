@@ -508,6 +508,8 @@ ul{
 /* Video */
 .video-grid{display:grid;grid-template-columns:1fr;gap:14px}
 .video-item{margin:0}
+  position:relative;
+}
 .video-item video{
   width:100%;
   aspect-ratio:16/9;
@@ -551,7 +553,47 @@ ul{
   border-color:var(--brand);
   color:#fff;
 }
+.video-item{ position:relative; }
 
+.video-nav{
+  position:absolute;
+  inset:0;
+  pointer-events:none; /* only buttons clickable */
+}
+
+.video-nav-btn{
+  pointer-events:auto;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,0.35);
+  color:#fff;
+  font-size:26px;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  backdrop-filter: blur(6px);
+}
+
+.video-nav-btn.prev{ left:14px; }
+.video-nav-btn.next{ right:14px; }
+
+.video-nav-btn:hover{
+  background:rgba(0,0,0,0.5);
+}
+  @media (max-width:600px){
+  .video-nav-btn{
+    width:38px;
+    height:38px;
+    font-size:22px;
+  }
+}
 /* Map */
 .map-embed{
   width:100%;
@@ -1353,72 +1395,92 @@ body[data-theme="dark"] .about-seal img{
           poster="images/video-brand-poster.jpg">
           <source id="tourSource" src="videos/01-day-overview.mp4" type="video/mp4">
         </video>
+          <!-- ✅ NEXT/PREV BUTTONS ON TOP OF VIDEO -->
+  <div class="video-nav">
+    <button type="button" class="video-nav-btn prev" onclick="tourPrev()">‹</button>
+    <button type="button" class="video-nav-btn next" onclick="tourNext()">›</button>
+  </div>
         <figcaption id="tourCaption">Day overview</figcaption>
       </div>
 
 <div class="video-buttons">
-
-  <!-- 1️⃣ Day overview -->
-  <button type="button" class="video-btn active"
-    onclick="setTourVideo('videos/01-day-overview.mp4','images/video-day.jpg', this)">
-    <span class="lang id">Siang hari</span>
-    <span class="lang en" style="display:none;">Day overview</span>
-    <span class="lang de" style="display:none;">Tagesübersicht</span>
-    <span class="lang it" style="display:none;">Panoramica diurna</span>
-  </button>
-
-  <!-- 2️⃣ Night overview -->
+  
+<!-- 1️⃣ Day overview -->
+ <button type="button" class="video-btn active"
+  data-src="videos/01-day-overview.mp4"
+  data-poster="images/video-day.jpg"
+  onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
+  <span class="lang id">Siang hari</span>
+  <span class="lang en" style="display:none;">Day overview</span>
+  <span class="lang de" style="display:none;">Tagesübersicht</span>
+  <span class="lang it" style="display:none;">Panoramica diurna</span>
+</button>
+  
+<!-- 2️⃣ Night overview -->
   <button type="button" class="video-btn"
-    onclick="setTourVideo('videos/02-night-overview.mp4','images/video-night.jpg', this)">
-    <span class="lang id">Malam hari</span>
-    <span class="lang en" style="display:none;">Night overview</span>
-    <span class="lang de" style="display:none;">Nachtübersicht</span>
-    <span class="lang it" style="display:none;">Panoramica notturna</span>
-  </button>
+  data-src="videos/02-night-overview.mp4"
+  data-poster="images/video-night.jpg"
+  onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
+  <span class="lang id">Malam hari</span>
+  <span class="lang en" style="display:none;">Night overview</span>
+  <span class="lang de" style="display:none;">Nachtübersicht</span>
+  <span class="lang it" style="display:none;">Panoramica notturna</span>
+</button>
 
-  <!-- 3️⃣ Terrace at night -->
-  <button type="button" class="video-btn"
-    onclick="setTourVideo('videos/03-terrace-night.mp4','images/video-terrace.jpg', this)">
-    <span class="lang id">Teras malam</span>
-    <span class="lang en" style="display:none;">Terrace at night</span>
-    <span class="lang de" style="display:none;">Terrasse bei Nacht</span>
-    <span class="lang it" style="display:none;">Terrazza di notte</span>
-  </button>
+<!-- 3️⃣ Terrace at night -->
+<button type="button" class="video-btn"
+  data-src="videos/03-terrace-night.mp4"
+  data-poster="images/video-terrace.jpg"
+  onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
+  <span class="lang id">Teras malam</span>
+  <span class="lang en" style="display:none;">Terrace at night</span>
+  <span class="lang de" style="display:none;">Terrasse bei Nacht</span>
+  <span class="lang it" style="display:none;">Terrazza di notte</span>
+</button>
 
-  <!-- 4️⃣ Kitchen & dining -->
-  <button type="button" class="video-btn"
-    onclick="setTourVideo('videos/04-kitchen-night.mp4','images/video-kitchen.jpg', this)">
-    <span class="lang id">Dapur & ruang makan</span>
-    <span class="lang en" style="display:none;">Kitchen & dining</span>
-    <span class="lang de" style="display:none;">Küche & Essbereich</span>
-    <span class="lang it" style="display:none;">Cucina e zona pranzo</span>
-  </button>
+<!-- 4️⃣ Kitchen & dining -->
+<button type="button" class="video-btn"
+  data-src="videos/04-kitchen-night.mp4"
+  data-poster="images/video-kitchen.jpg"
+  onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
+  <span class="lang id">Dapur & ruang makan</span>
+  <span class="lang en" style="display:none;">Kitchen & dining</span>
+  <span class="lang de" style="display:none;">Küche & Essbereich</span>
+  <span class="lang it" style="display:none;">Cucina e zona pranzo</span>
+</button>
 
-  <!-- 5️⃣ Main bedroom -->
-  <button type="button" class="video-btn"
-    onclick="setTourVideo('videos/05-bedroom-main.mp4','images/video-bedroom-main.jpg', this)">
-    <span class="lang id">Kamar utama</span>
-    <span class="lang en" style="display:none;">Main bedroom</span>
-    <span class="lang de" style="display:none;">Hauptschlafzimmer</span>
-    <span class="lang it" style="display:none;">Camera principale</span>
-  </button>
+<!-- 5️⃣ Main bedroom -->
+<button type="button" class="video-btn"
+  data-src="videos/05-bedroom-main.mp4"
+  data-poster="images/video-bedroom-main.jpg"
+  onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
+  <span class="lang id">Kamar utama</span>
+  <span class="lang en" style="display:none;">Main bedroom</span>
+  <span class="lang de" style="display:none;">Hauptschlafzimmer</span>
+  <span class="lang it" style="display:none;">Camera principale</span>
+</button>
 
-  <!-- 6️⃣ Second bedroom -->
-  <button type="button" class="video-btn"
-    onclick="setTourVideo('videos/06-bedroom-second.mp4','images/video-bedroom-second.jpg', this)">
-    <span class="lang id">Kamar kedua</span>
-    <span class="lang en" style="display:none;">Second bedroom</span>
-    <span class="lang de" style="display:none;">Zweites Schlafzimmer</span>
-    <span class="lang it" style="display:none;">Seconda camera</span>
-  </button>
+<!-- 6️⃣ Second bedroom -->
+<button type="button" class="video-btn"
+  data-src="videos/06-bedroom-second.mp4"
+  data-poster="images/video-bedroom-second.jpg"
+  onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
+  <span class="lang id">Kamar kedua</span>
+  <span class="lang en" style="display:none;">Second bedroom</span>
+  <span class="lang de" style="display:none;">Zweites Schlafzimmer</span>
+  <span class="lang it" style="display:none;">Seconda camera</span>
+</button>
 
-   <button type="button" class="video-btn"
-    onclick="setTourVideo('videos/07-amenities.mp4','images/video-amenities.jpg', this)">
-    <span class="lang id">Amenities</span>
-    <span class="lang en" style="display:none;">Amenitites</span>
-    <span class="lang de" style="display:none;">Amenities</span>
-    <span class="lang it" style="display:none;">Amenities</span>
-  </button>
+<!-- 7️⃣ Amenities -->
+<button type="button" class="video-btn"
+  data-src="videos/07-amenities.mp4"
+  data-poster="images/video-amenities.jpg"
+  onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
+  <span class="lang id">Amenities</span>
+  <span class="lang en" style="display:none;">Amenities</span>
+  <span class="lang de" style="display:none;">Amenities</span>
+  <span class="lang it" style="display:none;">Amenities</span>
+</button>
 
 </div>
 
@@ -1870,7 +1932,29 @@ function setTourVideo(src, poster, btn){
   video.load();
   video.play().catch(()=>{});
 }
+function getTourButtons(){
+  return Array.from(document.querySelectorAll('.video-btn'));
+}
 
+function getActiveTourIndex(btns){
+  return Math.max(0, btns.findIndex(b => b.classList.contains('active')));
+}
+
+function tourNext(){
+  const btns = getTourButtons();
+  if(!btns.length) return;
+  const i = getActiveTourIndex(btns);
+  const next = btns[(i + 1) % btns.length];
+  setTourVideo(next.dataset.src, next.dataset.poster, next);
+}
+
+function tourPrev(){
+  const btns = getTourButtons();
+  if(!btns.length) return;
+  const i = getActiveTourIndex(btns);
+  const prev = btns[(i - 1 + btns.length) % btns.length];
+  setTourVideo(prev.dataset.src, prev.dataset.poster, prev);
+}
 /* =========================
    LIGHTBOX
 ========================= */
