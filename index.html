@@ -448,14 +448,13 @@ p.lead{
 /* Gallery */
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
 .gallery img{width:100%;height:120px;object-fit:cover;border-radius:10px;cursor:pointer}
-/* ✅ Mobile: keep 2 columns but make last image full width */
+/* Mobile: 2 columns, all images same size */
 @media (max-width: 700px){
   .gallery{
     grid-template-columns: repeat(2, 1fr);
   }
-  .gallery img:last-child{
-    grid-column: 1 / -1;
-    height: 200px;
+  .gallery img{
+    height: 140px;         /* adjust 120–170px if you want */
     object-position: center;
   }
 }
