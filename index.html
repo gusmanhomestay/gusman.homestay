@@ -1612,7 +1612,6 @@ function setLanguage(lang){
   updateTimeWIB(); // ✅ update time when language changes
 }
 
-/* ✅ PASTE HERE */
 function updateTimeWIB(){
   const el = document.getElementById('timeWIB');
   if(!el) return;
@@ -1726,7 +1725,30 @@ function updatePrice(changedField){
 
   document.getElementById('totalPrice').innerText = total + 'K IDR';
 }
+function setDefaultDates(){
+  const checkinEl = document.getElementById("checkin");
+  const checkoutEl = document.getElementById("checkout");
+  if(!checkinEl || !checkoutEl) return;
 
+  // today's date in YYYY-MM-DD
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  const todayStr = `${yyyy}-${mm}-${dd}`;
+
+  // tomorrow (checkout)
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  const yyyy2 = tomorrow.getFullYear();
+  const mm2 = String(tomorrow.getMonth() + 1).padStart(2, "0");
+  const dd2 = String(tomorrow.getDate()).padStart(2, "0");
+  const tomorrowStr = `${yyyy2}-${mm2}-${dd2}`;
+
+  // only set if empty (so user choice won't be overwritten)
+  if(!checkinEl.value) checkinEl.value = todayStr;
+  if(!checkoutEl.value) checkoutEl.value = tomorrowStr;
+}
 /* =========================
    WHATSAPP
 ========================= */
@@ -1844,9 +1866,6 @@ function initLightbox(){
 }
 
 /* =========================
-   INIT (RUN ONCE)
-========================= */
-/* =========================
    AUTO THEME: DARK AT NIGHT
 ========================= */
 function applyAutoTheme(){
@@ -1936,7 +1955,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   restartHeaderAnimation();
   applyAutoTheme();
   sanitizeNumericInputs();
-    // ✅ iPhone fix: when tapping adults/children, replace number (not append)
+  
   ['adults','children'].forEach(id=>{
     const el = document.getElementById(id);
     if(!el) return;
@@ -1960,6 +1979,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   });
 
+  setDefaultDates();
   updatePrice();
   initLightbox();
   initRevealAnimations();
