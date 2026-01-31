@@ -324,6 +324,7 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   font-size:13px;
   font-weight:500;
   opacity:0.9;
+  font-style: italic;
 }
 /* =========================
    WhatsApp buttons (CLEAN)
@@ -1136,34 +1137,26 @@ body[data-theme="dark"] .about-seal img{
   <div id="totalPrice" class="total-price-value">500K IDR</div>
 </div>
 
-<button type="button"
-        class="btn btn-premium wa-normal"
-        onclick="bookWhatsApp()">
-
-  <!-- Indonesian -->
+<button type="button" class="btn btn-premium wa-normal" onclick="bookWhatsApp()">
   <span class="lang id">
     <span class="btn-title">📲 Pesan via WhatsApp</span>
-    <span class="btn-sub">(kami konfirmasi dulu)</span>
+    <span class="btn-sub"><em>(kami konfirmasi dulu)</em></span>
   </span>
 
-  <!-- English -->
   <span class="lang en" style="display:none;">
     <span class="btn-title">📲 Book via WhatsApp</span>
-    <span class="btn-sub">(we confirm first)</span>
+    <span class="btn-sub"><em>(we confirm first)</em></span>
   </span>
 
-  <!-- German -->
   <span class="lang de" style="display:none;">
     <span class="btn-title">📲 Per WhatsApp buchen</span>
-    <span class="btn-sub">(wir bestätigen zuerst)</span>
+    <span class="btn-sub"><em>(wir bestätigen zuerst)</em></span>
   </span>
 
-  <!-- Italian -->
   <span class="lang it" style="display:none;">
     <span class="btn-title">📲 Prenota via WhatsApp</span>
-    <span class="btn-sub">(confermiamo prima)</span>
+    <span class="btn-sub"><em>(confermiamo prima)</em></span>
   </span>
-
 </button>
       </form>
 </div>
