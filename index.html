@@ -289,6 +289,42 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
 .btn-premium:hover{
   transform:translateY(-1px);
 }
+  /* Premium brand button – layout & text control */
+.btn-premium{
+  background:var(--brand);
+  color:#fff;
+  border:none;
+  box-shadow:0 6px 16px rgba(47,143,139,0.25);
+  cursor:pointer;
+
+  /* Center content */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  line-height:1.3;
+}
+
+/* Two-line language layout */
+.btn-premium .lang{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:100%;
+}
+
+/* Main line */
+.btn-premium .btn-title{
+  font-size:15px;
+  font-weight:700;
+}
+
+/* Sub line (text in parentheses) */
+.btn-premium .btn-sub{
+  font-size:13px;
+  font-weight:500;
+  opacity:0.9;
+}
 /* =========================
    WhatsApp buttons (CLEAN)
 ========================= */
@@ -1100,11 +1136,34 @@ body[data-theme="dark"] .about-seal img{
   <div id="totalPrice" class="total-price-value">500K IDR</div>
 </div>
 
-         <button type="button" class="btn btn-premium wa-normal" onclick="bookWhatsApp()">
-  <span class="lang id">📲 Pesan via WhatsApp (kami konfirmasi dulu)</span>
-  <span class="lang en" style="display:none;">📲 Book via WhatsApp (we confirm first)</span>
-  <span class="lang de" style="display:none;">📲 Per WhatsApp buchen (wir bestätigen zuerst)</span>
-  <span class="lang it" style="display:none;">📲 Prenota via WhatsApp (confermiamo prima)</span>
+<button type="button"
+        class="btn btn-premium wa-normal"
+        onclick="bookWhatsApp()">
+
+  <!-- Indonesian -->
+  <span class="lang id">
+    <span class="btn-title">📲 Pesan via WhatsApp</span>
+    <span class="btn-sub">(kami konfirmasi dulu)</span>
+  </span>
+
+  <!-- English -->
+  <span class="lang en" style="display:none;">
+    <span class="btn-title">📲 Book via WhatsApp</span>
+    <span class="btn-sub">(we confirm first)</span>
+  </span>
+
+  <!-- German -->
+  <span class="lang de" style="display:none;">
+    <span class="btn-title">📲 Per WhatsApp buchen</span>
+    <span class="btn-sub">(wir bestätigen zuerst)</span>
+  </span>
+
+  <!-- Italian -->
+  <span class="lang it" style="display:none;">
+    <span class="btn-title">📲 Prenota via WhatsApp</span>
+    <span class="btn-sub">(confermiamo prima)</span>
+  </span>
+
 </button>
       </form>
 </div>
