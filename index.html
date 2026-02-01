@@ -1596,14 +1596,16 @@ body[data-theme="dark"] .about-seal img{
 </span>
   </em>
 </p>
-      <button type="button"
-        class="btn btn-outline rules-btn"
-        onclick="openRules()">
+     <button type="button"
+  class="btn btn-outline rules-btn"
+  onclick="openRules()">
   <span class="lang id">📋 Peraturan Rumah & Info Tamu</span>
   <span class="lang en" style="display:none;">📋 House Rules & Guest Info</span>
   <span class="lang de" style="display:none;">📋 Hausregeln & Gästeinfo</span>
   <span class="lang it" style="display:none;">📋 Regole della casa & Info ospiti</span>
-</button>
+</button> 
+  <!-- MODAL -->
+<div class="rules-modal" id="rulesModal">
   <div class="rules-box">
     <button class="rules-close" onclick="closeRules()">×</button>
 
@@ -1613,7 +1615,7 @@ body[data-theme="dark"] .about-seal img{
       <span class="lang de" style="display:none;">Hausregeln & Kurzinformation</span>
       <span class="lang it" style="display:none;">Regole della casa & Guida rapida</span>
     </h3>
-
+    
     <ul>
       <li>
         <span class="lang id">Harap menjaga rumah dan seluruh fasilitas dengan baik.</span>
@@ -1658,14 +1660,14 @@ body[data-theme="dark"] .about-seal img{
       </li>
     </ul>
 
-    <p class="rules-note">
+   <p class="rules-note">
       <span class="lang id">Panduan lengkap akan diberikan setelah check-in.</span>
       <span class="lang en" style="display:none;">The full guest guide will be provided after check-in.</span>
       <span class="lang de" style="display:none;">Der vollständige Gästeleitfaden wird nach dem Check-in bereitgestellt.</span>
       <span class="lang it" style="display:none;">La guida completa verrà fornita dopo il check-in.</span>
     </p>
   </div>
-    </div>
+</div>
 
     <!-- Location -->
     <div class="card">
@@ -2487,6 +2489,13 @@ function closeRules(){
   document.getElementById('rulesModal').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+/* ✅ Close modal with ESC key */
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape'){
+    closeRules();
+  }
+});
 </script>
 <!-- ✅ SEO: FAQ Schema (ID + EN) -->
 <script type="application/ld+json">
