@@ -917,6 +917,13 @@ body[data-theme="dark"] .about-seal img{
     transition:none !important;
   }
 }
+/* Airbnb button stays visible on mobile */
+@media (max-width:768px){
+  .airbnb-btn{
+    display:flex !important;
+    opacity:0.95;
+  }
+}
 /* =========================
    WhatsApp buttons (CLEAN)
 ========================= */
@@ -1181,7 +1188,7 @@ body[data-theme="dark"] .about-seal img{
     <span class="btn-sub"><em>* (confermiamo prima)</em></span>
   </span>
 </button>
-<a class="btn btn-premium wa-normal"
+<a class="btn btn-premium airbnb-btn"
    href="https://www.airbnb.com/h/gusmanhomestay"
    target="_blank"
    rel="noopener"
