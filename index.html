@@ -2572,6 +2572,7 @@ document.addEventListener('keydown', e=>{
   ]
 }
 </script>
+
 <div class="wa-sticky">
   <button type="button" class="btn btn-premium" onclick="bookWhatsApp()">
     <span class="lang id">📲 Pesan via WhatsApp</span>
@@ -2580,6 +2581,58 @@ document.addEventListener('keydown', e=>{
     <span class="lang it" style="display:none;">📲 Prenota via WhatsApp</span>
   </button>
 </div>
-  <div id="rulesModal" class="rules-modal" aria-hidden="true">
+
+<!-- ===================== HOUSE RULES MODAL ===================== -->
+<div id="rulesModal" class="rules-modal" aria-hidden="true">
+  <div class="rules-box">
+    <button class="rules-close" onclick="closeRules()">×</button>
+
+    <h3>
+      <span class="lang id">Peraturan Rumah & Info Tamu</span>
+      <span class="lang en" style="display:none;">House Rules & Guest Info</span>
+      <span class="lang de" style="display:none;">Hausregeln & Gästeinfo</span>
+      <span class="lang it" style="display:none;">Regole della casa & Info ospiti</span>
+    </h3>
+
+    <ul>
+      <li>
+        <span class="lang id">Harap menjaga rumah dan fasilitas dengan baik.</span>
+        <span class="lang en" style="display:none;">Please take good care of the house and facilities.</span>
+        <span class="lang de" style="display:none;">Bitte gehen Sie sorgsam mit Haus und Ausstattung um.</span>
+        <span class="lang it" style="display:none;">Si prega di prendersi cura della casa e delle strutture.</span>
+      </li>
+
+      <li>
+        <span class="lang id">Merokok hanya diperbolehkan di dapur dan teras depan.</span>
+        <span class="lang en" style="display:none;">Smoking is only allowed in the kitchen and front terrace.</span>
+        <span class="lang de" style="display:none;">Rauchen ist nur in der Küche und auf der vorderen Terrasse erlaubt.</span>
+        <span class="lang it" style="display:none;">È consentito fumare solo in cucina e sulla terrazza anteriore.</span>
+      </li>
+
+      <li>
+        <span class="lang id">Dilarang merokok di kamar tidur, ruang tamu, dan kamar mandi.</span>
+        <span class="lang en" style="display:none;">Smoking is not allowed in bedrooms, living room, and bathrooms.</span>
+        <span class="lang de" style="display:none;">Rauchen ist in Schlafzimmern, Wohnzimmer und Badezimmern verboten.</span>
+        <span class="lang it" style="display:none;">È vietato fumare in camere da letto, soggiorno e bagni.</span>
+      </li>
+
+      <li>
+        <span class="lang id">Mohon menjaga ketenangan dan menghormati lingkungan sekitar.</span>
+        <span class="lang en" style="display:none;">Please keep noise levels low and respect the neighborhood.</span>
+        <span class="lang de" style="display:none;">Bitte halten Sie Ruhe und respektieren Sie die Nachbarschaft.</span>
+        <span class="lang it" style="display:none;">Si prega di mantenere la quiete e rispettare il vicinato.</span>
+      </li>
+    </ul>
+
+    <p class="rules-note">
+      <span class="lang id">Panduan lengkap akan diberikan saat check-in.</span>
+      <span class="lang en" style="display:none;">The full guest guide will be provided at check-in.</span>
+      <span class="lang de" style="display:none;">Der vollständige Gästeleitfaden wird beim Check-in bereitgestellt.</span>
+      <span class="lang it" style="display:none;">La guida completa verrà fornita al check-in.</span>
+    </p>
+  </div>
+</div>
+<!-- ===================== END HOUSE RULES MODAL ===================== -->
+
 </body>
 </html>
