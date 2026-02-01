@@ -1005,6 +1005,70 @@ body[data-theme="dark"] .about-seal img{
   line-height: 1.35;
   max-width: 320px; /* keeps it tidy on wide screens */
 }
+
+/* Outline button base */
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--text);
+  margin-top:12px;
+}
+
+/* House Rules button */
+.rules-btn{
+  font-size:14px;
+  opacity:0.9;
+}
+
+.rules-btn:hover{
+  opacity:1;
+}
+
+/* House Rules modal */
+.rules-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
+  padding:20px;
+}
+
+.rules-modal.open{ display:flex; }
+
+.rules-box{
+  background:var(--card);
+  border-radius:14px;
+  max-width:520px;
+  width:100%;
+  padding:18px 20px;
+  box-shadow:var(--shadow);
+}
+
+.rules-box ul{
+  padding-left:18px;
+  margin:12px 0;
+  line-height:1.6;
+}
+
+.rules-close{
+  position:absolute;
+  right:20px;
+  top:16px;
+  background:none;
+  border:none;
+  font-size:22px;
+  cursor:pointer;
+  color:var(--muted);
+}
+
+.rules-note{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:12px;
+}
 </style>
 </head>
 
@@ -1532,6 +1596,75 @@ body[data-theme="dark"] .about-seal img{
 </span>
   </em>
 </p>
+      <button type="button"
+        class="btn btn-outline rules-btn"
+        onclick="openRules()">
+  <span class="lang id">📋 Peraturan Rumah & Info Tamu</span>
+  <span class="lang en" style="display:none;">📋 House Rules & Guest Info</span>
+  <span class="lang de" style="display:none;">📋 Hausregeln & Gästeinfo</span>
+  <span class="lang it" style="display:none;">📋 Regole della casa & Info ospiti</span>
+</button>
+  <div class="rules-box">
+    <button class="rules-close" onclick="closeRules()">×</button>
+
+    <h3>
+      <span class="lang id">Peraturan Rumah & Panduan Singkat</span>
+      <span class="lang en" style="display:none;">House Rules & Quick Guide</span>
+      <span class="lang de" style="display:none;">Hausregeln & Kurzinformation</span>
+      <span class="lang it" style="display:none;">Regole della casa & Guida rapida</span>
+    </h3>
+
+    <ul>
+      <li>
+        <span class="lang id">Harap menjaga rumah dan seluruh fasilitas dengan baik.</span>
+        <span class="lang en" style="display:none;">Please take good care of the house and all facilities.</span>
+        <span class="lang de" style="display:none;">Bitte gehen Sie sorgfältig mit dem Haus und der Ausstattung um.</span>
+        <span class="lang it" style="display:none;">Si prega di prendersi cura della casa e delle strutture.</span>
+      </li>
+
+      <li>
+        <span class="lang id">Merokok hanya diperbolehkan di dapur dan teras depan.</span>
+        <span class="lang en" style="display:none;">Smoking is allowed only in the kitchen and front terrace.</span>
+        <span class="lang de" style="display:none;">Rauchen ist nur in der Küche und auf der vorderen Terrasse erlaubt.</span>
+        <span class="lang it" style="display:none;">È consentito fumare solo in cucina e sulla terrazza anteriore.</span>
+      </li>
+
+      <li>
+        <span class="lang id">Dilarang merokok di ruang tamu, kamar tidur, dan kamar mandi.</span>
+        <span class="lang en" style="display:none;">No smoking in the living room, bedrooms, or bathrooms.</span>
+        <span class="lang de" style="display:none;">Rauchen im Wohnzimmer, Schlafzimmer und Bad ist nicht gestattet.</span>
+        <span class="lang it" style="display:none;">È vietato fumare in soggiorno, camere da letto e bagni.</span>
+      </li>
+
+      <li>
+        <span class="lang id">Mohon menjaga ketenangan dan menghormati lingkungan sekitar.</span>
+        <span class="lang en" style="display:none;">Please keep noise to a minimum and respect the neighborhood.</span>
+        <span class="lang de" style="display:none;">Bitte Ruhe bewahren und die Nachbarschaft respektieren.</span>
+        <span class="lang it" style="display:none;">Si prega di mantenere la tranquillità e rispettare il vicinato.</span>
+      </li>
+
+      <li>
+        <span class="lang id">Check-in memerlukan konfirmasi dan identitas diri.</span>
+        <span class="lang en" style="display:none;">Check-in requires confirmation and valid identification.</span>
+        <span class="lang de" style="display:none;">Beim Check-in ist eine Bestätigung und ein Ausweis erforderlich.</span>
+        <span class="lang it" style="display:none;">Il check-in richiede conferma e un documento di identità.</span>
+      </li>
+
+      <li>
+        <span class="lang id">Check-out maksimal pukul 12.00 WIB.</span>
+        <span class="lang en" style="display:none;">Latest check-out time is 12:00 PM.</span>
+        <span class="lang de" style="display:none;">Check-out spätestens um 12:00 Uhr.</span>
+        <span class="lang it" style="display:none;">Check-out entro le ore 12:00.</span>
+      </li>
+    </ul>
+
+    <p class="rules-note">
+      <span class="lang id">Panduan lengkap akan diberikan setelah check-in.</span>
+      <span class="lang en" style="display:none;">The full guest guide will be provided after check-in.</span>
+      <span class="lang de" style="display:none;">Der vollständige Gästeleitfaden wird nach dem Check-in bereitgestellt.</span>
+      <span class="lang it" style="display:none;">La guida completa verrà fornita dopo il check-in.</span>
+    </p>
+  </div>
     </div>
 
     <!-- Location -->
@@ -2339,7 +2472,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
   initRevealAnimations();
 });
 </script>
-  
+<script>
+function openRules(){
+  const modal = document.getElementById('rulesModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  modal.addEventListener('click', e=>{
+    if(e.target === modal) closeRules();
+  }, { once:true });
+}
+
+function closeRules(){
+  document.getElementById('rulesModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
 <!-- ✅ SEO: FAQ Schema (ID + EN) -->
 <script type="application/ld+json">
 {
@@ -2486,5 +2634,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     <span class="lang it" style="display:none;">📲 Prenota via WhatsApp</span>
   </button>
 </div>
+  <div id="rulesModal" class="rules-modal" aria-hidden="true">
 </body>
 </html>
