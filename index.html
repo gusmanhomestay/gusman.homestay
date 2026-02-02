@@ -2828,30 +2828,6 @@ function updatePrice(changedField){
 
   document.getElementById('totalPrice').innerText = total + 'K IDR';
 }
-
-/* =========================
-   WHATSAPP
-========================= */
-function bookWhatsApp(){
-  const checkin = document.getElementById('checkin').value;
-  const checkout = document.getElementById('checkout').value;
-  const adults = document.getElementById('adults').value;
-  const children = document.getElementById('children').value;
-  const price = document.getElementById('totalPrice').innerText;
-
-  const msg = `Hello, I’d like to book Gusman Homestay.
-Check-in: ${checkin}
-Check-out: ${checkout}
-Adults: ${adults}
-Children: ${children}
-Estimated total: ${price}`;
-
-  window.open(
-    `https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`,
-    '_blank'
-  );
-}
-</script>
 <script>
 function openDirections(){
   const modal = document.getElementById('directionsModal');
