@@ -2765,6 +2765,90 @@ document.addEventListener('keydown', e=>{
     </p>
   </div>
 </div>
+  <script>
+/* =========================
+   PRICE + OCCUPANCY
+========================= */
+function updatePrice(changedField){
+  const WEEKDAY_BASE = 500;   // K IDR
+  const WEEKEND_BASE = 750;   // K IDR
+  const EXTRA_ADULT = 50;     // K IDR
+  const MAX = 6;
+
+  const adultsEl = document.getElementById('adults');
+  const childrenEl = document.getElementById('children');
+
+  let adults = parseInt(adultsEl.value || 1, 10);
+  let children = parseInt(childrenEl.value || 0, 10);
+
+  if(adults < 1) adults = 1;
+  if(children < 0) children = 0;
+
+  if(adults + children > MAX){
+    if(changedField === 'adults'){
+      children = Math.max(0, MAX - adults);
+    } else {
+      adults = Math.max(1, MAX - children);
+    }
+  }
+
+  adultsEl.value = adults;
+  childrenEl.value = children;
+
+  const ciVal = document.getElementById('checkin').value;
+  const coVal = document.getElementById('checkout').value;
+
+  let nights = 1;
+  let isWeekendStay = false;
+
+  if(ciVal && coVal){
+    const ci = new Date(ciVal);
+    const co = new Date(coVal);
+
+    if(co > ci){
+      nights = Math.ceil((co - ci) / 86400000);
+      let d = new Date(ci);
+      for(let i=0;i<nights;i++){
+        const day = d.getDay();
+        if(day === 5 || day === 6){
+          isWeekendStay = true;
+          break;
+        }
+        d.setDate(d.getDate() + 1);
+      }
+    }
+  }
+
+  const BASE = isWeekendStay ? WEEKEND_BASE : WEEKDAY_BASE;
+  const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
+  const total = (BASE + extra) * nights;
+
+  document.getElementById('totalPrice').innerText = total + 'K IDR';
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+function bookWhatsApp(){
+  const checkin = document.getElementById('checkin').value;
+  const checkout = document.getElementById('checkout').value;
+  const adults = document.getElementById('adults').value;
+  const children = document.getElementById('children').value;
+  const price = document.getElementById('totalPrice').innerText;
+
+  const msg = `Hello, I’d like to book Gusman Homestay.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Adults: ${adults}
+Children: ${children}
+Estimated total: ${price}`;
+
+  window.open(
+    `https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`,
+    '_blank'
+  );
+}
+</script>
 <script>
 function openDirections(){
   const modal = document.getElementById('directionsModal');
