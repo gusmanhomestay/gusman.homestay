@@ -2005,6 +2005,8 @@ let currentLang = 'id';
 function setLanguage(lang){
   currentLang = lang;
 
+  document.body.dataset.lang = lang; 
+
   document.querySelectorAll('.lang').forEach(el=>{
     el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
   });
@@ -2177,6 +2179,8 @@ function setDefaultDates(){
    WHATSAPP
 ========================= */
 function bookWhatsApp(){
+  const lang = document.body.dataset.lang || 'id'; // ✅ SOURCE OF TRUTH
+
   const checkin = document.getElementById('checkin').value;
   const checkout = document.getElementById('checkout').value;
   const adults = document.getElementById('adults').value;
@@ -2185,11 +2189,11 @@ function bookWhatsApp(){
 
   if(!checkin || !checkout){
     alert(
-      currentLang === 'id'
+      lang === 'id'
         ? 'Silakan pilih tanggal check-in dan check-out.'
-        : currentLang === 'de'
+        : lang === 'de'
         ? 'Bitte wählen Sie Check-in und Check-out.'
-        : currentLang === 'it'
+        : lang === 'it'
         ? 'Seleziona check-in e check-out.'
         : 'Please select check-in and check-out.'
     );
@@ -2204,7 +2208,7 @@ Dewasa: ${adults}
 Anak-anak: ${children}
 Perkiraan total: ${price}
 
-Mohon konfirmasi ketersediaan. Terima kasih 🙏`,
+Terima kasih 🙏`,
     en: `Hello, I’d like to book Gusman Homestay.
 Check-in: ${checkin}
 Check-out: ${checkout}
@@ -2232,7 +2236,7 @@ Grazie 🙏`
   };
 
   window.open(
-    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[currentLang] || msg.en)}`,
+    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
     '_blank'
   );
 }
