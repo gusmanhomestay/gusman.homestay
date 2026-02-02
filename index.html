@@ -941,6 +941,11 @@ body[data-theme="dark"] .about-seal img{
   opacity:1;
   transform:translateY(-1px);
 }
+/* Directions button (Location & Access) */
+.directions-btn{
+  margin:16px 0 18px; /* spacing fix */
+  font-size:14px;
+}
 /* =========================
    WhatsApp buttons (CLEAN)
 ========================= */
@@ -1681,21 +1686,21 @@ body[data-theme="dark"] .about-seal img{
 
   <!-- 📍 Directions button -->
   <button type="button"
-    class="btn btn-outline"
+    class="btn btn-premium directions-btn"
     onclick="openDirections()">
     <span class="lang id">📍 Petunjuk Menuju Gusman Homestay</span>
     <span class="lang en" style="display:none;">📍 Directions to Gusman Homestay</span>
     <span class="lang de" style="display:none;">📍 Anfahrt zum Gusman Homestay</span>
     <span class="lang it" style="display:none;">📍 Indicazioni per Gusman Homestay</span>
   </button>
-
-  <p style="margin-top:10px;color:var(--muted);">
-    <span class="lang id"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
-    <span class="lang en" style="display:none;"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
-    <span class="lang de" style="display:none;"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
-    <span class="lang it" style="display:none;"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
-  </p>
 </div>
+
+<p style="color:var(--muted);">
+  <span class="lang id"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
+  <span class="lang en" style="display:none;"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
+  <span class="lang de" style="display:none;"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
+  <span class="lang it" style="display:none;"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
+</p>
 <!-- ✅ END LOCATION CARD -->
 
 </section><!-- end split-row -->
@@ -2763,16 +2768,33 @@ document.addEventListener('keydown', e=>{
     </p>
   </div>
 </div>
-  <script>
+<script>
 function openDirections(){
-  document.getElementById('directionsModal').classList.add('open');
+  const modal = document.getElementById('directionsModal');
+  modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // close when clicking outside the box
+  modal.addEventListener('click', e=>{
+    if(e.target === modal) closeDirections();
+  }, { once:true });
 }
 
 function closeDirections(){
-  document.getElementById('directionsModal').classList.remove('open');
+  const modal = document.getElementById('directionsModal');
+  modal.classList.remove('open');
   document.body.style.overflow = '';
 }
+
+// close with ESC key
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape'){
+    const modal = document.getElementById('directionsModal');
+    if(modal.classList.contains('open')){
+      closeDirections();
+    }
+  }
+});
 </script>
 </body>
 </html>
