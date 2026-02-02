@@ -2176,66 +2176,54 @@ function setDefaultDates(){
 /* =========================
    WHATSAPP
 ========================= */
+<script>
 function bookWhatsApp(){
+  const lang = document.documentElement.lang || 'id';
+
   const checkin = document.getElementById('checkin').value;
   const checkout = document.getElementById('checkout').value;
   const adults = document.getElementById('adults').value;
   const children = document.getElementById('children').value;
   const price = document.getElementById('totalPrice').innerText;
 
-  if(!checkin || !checkout){
-    alert(
-      currentLang === 'id'
-        ? 'Silakan pilih tanggal check-in dan check-out.'
-        : currentLang === 'de'
-        ? 'Bitte wählen Sie Check-in und Check-out.'
-        : currentLang === 'it'
-        ? 'Seleziona check-in e check-out.'
-        : 'Please select check-in and check-out.'
-    );
-    return;
-  }
-
-  const msg = {
-    id: `Halo, saya ingin memesan Gusman Homestay.
+  const messages = {
+    id: `Halo, saya ingin booking Gusman Homestay.
 Check-in: ${checkin}
 Check-out: ${checkout}
 Dewasa: ${adults}
 Anak-anak: ${children}
-Perkiraan total: ${price}
+Estimasi total: ${price}`,
 
-Mohon konfirmasi ketersediaan. Terima kasih 🙏`,
     en: `Hello, I’d like to book Gusman Homestay.
 Check-in: ${checkin}
 Check-out: ${checkout}
 Adults: ${adults}
 Children: ${children}
-Estimated total: ${price}
+Estimated total: ${price}`,
 
-Awaiting confirmation. Thank you 🙏`,
-    de: `Hallo, ich möchte Gusman Homestay buchen.
+    de: `Hallo, ich möchte das Gusman Homestay buchen.
 Check-in: ${checkin}
 Check-out: ${checkout}
 Erwachsene: ${adults}
 Kinder: ${children}
-Gesamtpreis: ${price}
+Geschätzter Preis: ${price}`,
 
-Bitte bestätigen Sie die Verfügbarkeit. Danke 🙏`,
     it: `Ciao, vorrei prenotare Gusman Homestay.
 Check-in: ${checkin}
 Check-out: ${checkout}
 Adulti: ${adults}
 Bambini: ${children}
-Totale stimato: ${price}
-
-In attesa di conferma. Grazie 🙏`
+Prezzo stimato: ${price}`
   };
 
+  const msg = messages[lang] || messages.en;
+
   window.open(
-    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[currentLang])}`,
+    `https://wa.me/6281230015529?text=${encodeURIComponent(msg)}`,
     '_blank'
   );
 }
+</script>
 
 /* =========================
    VIDEO SWITCHER
