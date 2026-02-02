@@ -2177,19 +2177,6 @@ function setDefaultDates(){
    WHATSAPP
 ========================= */
 <script>
-let currentLang = 'id'; // default Indonesian
-
-function setLang(lang){
-  currentLang = lang; // ✅ THIS IS THE KEY
-
-  document.querySelectorAll('.lang').forEach(el=>{
-    el.style.display = 'none';
-  });
-  document.querySelectorAll('.lang.' + lang).forEach(el=>{
-    el.style.display = '';
-  });
-}
-
 function bookWhatsApp(){
   const checkin = document.getElementById('checkin').value;
   const checkout = document.getElementById('checkout').value;
@@ -2226,7 +2213,7 @@ Adults: ${adults}
 Children: ${children}
 Estimated total: ${price}
 
-Awaiting confirmation. Thank you 🙏`,
+Thank you 🙏`,
     de: `Hallo, ich möchte Gusman Homestay buchen.
 Check-in: ${checkin}
 Check-out: ${checkout}
@@ -2234,7 +2221,7 @@ Erwachsene: ${adults}
 Kinder: ${children}
 Gesamtpreis: ${price}
 
-Bitte bestätigen Sie die Verfügbarkeit. Danke 🙏`,
+Danke 🙏`,
     it: `Ciao, vorrei prenotare Gusman Homestay.
 Check-in: ${checkin}
 Check-out: ${checkout}
@@ -2242,11 +2229,11 @@ Adulti: ${adults}
 Bambini: ${children}
 Totale stimato: ${price}
 
-In attesa di conferma. Grazie 🙏`
+Grazie 🙏`
   };
 
   window.open(
-    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[currentLang])}`,
+    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[currentLang] || msg.en)}`,
     '_blank'
   );
 }
