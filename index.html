@@ -241,7 +241,7 @@ body[data-theme="dark"] .season-note{
   /* ✅ Total Price highlight box */
 .total-price-box{
   margin-top:14px;
-  padding:12px 14px;
+  padding:14px 16px;
   border-radius:14px;
   background:var(--brand-soft);
   text-align:center;
@@ -337,6 +337,15 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
 }
   .btn-premium .lang{
   gap:1px; /* small vertical spacing */
+}
+    /* =========================
+   Booking layout consistency
+========================= */
+.booking-width{
+  width:100%;
+  max-width:420px;
+  margin-left:auto;
+  margin-right:auto;
 }
 /* =========================
    WhatsApp buttons (CLEAN)
@@ -1242,18 +1251,17 @@ body[data-theme="dark"] .about-seal img{
     <input type="number" id="children" min="0" max="6" value="0" required inputmode="numeric">
   </label><br>
 
-  <div class="total-price-box">
+  <div class="total-price-box booking-width">
   <div class="total-price-label">
     <span class="lang id">Total Harga</span>
     <span class="lang en" style="display:none;">Total Price</span>
-    <span class="lang de" style="display:none;">Gesamtpreis</span>
-    <span class="lang it" style="display:none;">Prezzo totale</span>
   </div>
-
   <div id="totalPrice" class="total-price-value">500K IDR</div>
 </div>
 
-<button type="button" class="btn btn-premium wa-normal" onclick="bookWhatsApp()">
+<button type="button"
+  class="btn btn-premium wa-normal booking-width"
+  onclick="bookWhatsApp()">
   <span class="lang id">
     <span class="btn-title">📲 Pesan via WhatsApp *</span>
     <span class="btn-sub"><em>* (kami konfirmasi dulu)</em></span>
@@ -1274,11 +1282,11 @@ body[data-theme="dark"] .about-seal img{
     <span class="btn-sub"><em>* (confermiamo prima)</em></span>
   </span>
 </button>
-<a class="btn btn-premium airbnb-btn"
+<a class="btn btn-premium airbnb-btn booking-width"
    href="https://www.airbnb.com/h/gusmanhomestay"
    target="_blank"
    rel="noopener"
-   style="margin-top:12px;background:#ff5a5f;">
+   style="background:#ff5a5f;">
   <span class="lang id">
     <span class="btn-title">🛏️ Pesan via Airbnb *</span>
     <span class="btn-sub"><em>* (cek ketersediaan & harga)</em></span>
