@@ -299,6 +299,15 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   margin-left:auto;
   margin-right:auto;
 }
+.total-price-box{
+  width:100%;
+  max-width:420px;        /* SAME as Airbnb */
+  margin:0 auto 14px;     /* space below */
+  padding:12px 16px;      /* SAME as buttons */
+  border-radius:14px;     /* SAME as buttons */
+  background:var(--brand-soft);
+  text-align:center;
+}
 /* =========================
    WhatsApp buttons (CLEAN)
 ========================= */
@@ -311,21 +320,29 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   display:flex;
   justify-content:center;
   align-items:center;
-
-padding:12px 16px;          /* SAME as Airbnb */
+  padding:12px 16px;          /* SAME as Airbnb */
   font-size:15px;
   border-radius:14px;
 }
-  .btn-premium .btn-title{
-  line-height:1.15;   /* ⬅️ tighter main line */
+
+/* spacing between buttons */
+.wa-normal{
+  margin-bottom:12px;
 }
 
-.btn-premium .btn-sub{
-  line-height:1.1;    /* ⬅️ tighter sub line */
-}
 .airbnb-btn{
   padding:12px 16px;
   border-radius:14px;
+  margin-top:12px;
+}
+
+/* text tightening */
+.btn-premium .btn-title{
+  line-height:1.15;
+}
+
+.btn-premium .btn-sub{
+  line-height:1.1;
 }
 /* Sticky container (mobile only) */
 .wa-sticky{
@@ -1191,11 +1208,8 @@ body[data-theme="dark"] .about-seal img{
   </label><br>
 
   <div class="total-price-box booking-width">
-  <div class="total-price-label">
-    <span class="lang id">Total Harga</span>
-    <span class="lang en" style="display:none;">Total Price</span>
-  </div>
-  <div id="totalPrice" class="total-price-value">500K IDR</div>
+  <div class="total-price-label">Total Harga</div>
+  <div class="total-price-value">500K IDR</div>
 </div>
 
 <button type="button"
