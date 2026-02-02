@@ -1659,32 +1659,41 @@ body[data-theme="dark"] .about-seal img{
 
   <p style="color:var(--muted);line-height:1.7;">
     <span class="lang id">
-      Nagreg, Kabupaten Bandung — 5 menit ke Stasiun Nagreg.
+      Nagreg, Kabupaten Bandung — 5 menit ke Stasiun Nagreg.<br>
       Lingkungan tenang dengan akses mobil & parkir tersedia.
-      <br><br>
-      <strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00
     </span>
 
     <span class="lang en" style="display:none;">
-      Nagreg, Bandung Regency — 5 minutes from Nagreg Station.
-      Quiet neighborhood with car access & parking.
-      <br><br>
-      <strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00
+      Nagreg, Bandung Regency — 5 minutes from Nagreg Station.<br>
+      Quiet neighborhood with car access & parking available.
     </span>
 
     <span class="lang de" style="display:none;">
-      Nagreg, Bandung — 5 Minuten vom Bahnhof Nagreg entfernt.
+      Nagreg, Bandung — 5 Minuten vom Bahnhof Nagreg entfernt.<br>
       Ruhige Umgebung mit Parkplatz.
-      <br><br>
-      <strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00
     </span>
 
     <span class="lang it" style="display:none;">
-      Nagreg, Bandung — a 5 minuti dalla stazione di Nagreg.
+      Nagreg, Bandung — a 5 minuti dalla stazione di Nagreg.<br>
       Zona tranquilla con parcheggio disponibile.
-      <br><br>
-      <strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00
     </span>
+  </p>
+
+  <!-- 📍 Directions button -->
+  <button type="button"
+    class="btn btn-outline"
+    onclick="openDirections()">
+    <span class="lang id">📍 Petunjuk Menuju Gusman Homestay</span>
+    <span class="lang en" style="display:none;">📍 Directions to Gusman Homestay</span>
+    <span class="lang de" style="display:none;">📍 Anfahrt zum Gusman Homestay</span>
+    <span class="lang it" style="display:none;">📍 Indicazioni per Gusman Homestay</span>
+  </button>
+
+  <p style="margin-top:10px;color:var(--muted);">
+    <span class="lang id"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
+    <span class="lang en" style="display:none;"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
+    <span class="lang de" style="display:none;"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
+    <span class="lang it" style="display:none;"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
   </p>
 </div>
 <!-- ✅ END LOCATION CARD -->
@@ -2671,6 +2680,99 @@ document.addEventListener('keydown', e=>{
   </div>
 </div>
 <!-- ===================== END HOUSE RULES MODAL ===================== -->
+<div id="directionsModal" class="rules-modal" aria-hidden="true">
+  <div class="rules-box">
+    <button class="rules-close" onclick="closeDirections()">×</button>
 
+    <h3>
+      <span class="lang id">Petunjuk Menuju Gusman Homestay</span>
+      <span class="lang en" style="display:none;">Directions to Gusman Homestay</span>
+      <span class="lang de" style="display:none;">Anfahrt zum Gusman Homestay</span>
+      <span class="lang it" style="display:none;">Indicazioni per Gusman Homestay</span>
+    </h3>
+
+    <!-- 🇮🇩 Indonesian -->
+    <p class="lang id" style="line-height:1.7;">
+      Dari jalan utama (Jalan Nasional Nagreg atau Stasiun Nagreg), lanjutkan perjalanan lurus
+      hingga melewati depan Gedung Stasiun Nagreg.<br><br>
+
+      Setelah itu, belok kiri dan ikuti jalan tersebut sekitar 500 meter,
+      lalu belok kanan hingga melewati rel kereta api.<br><br>
+
+      Setelah melewati rel, jangan belok kanan, tetapi langsung belok kiri.
+      Lanjutkan perjalanan lurus sampai ujung jalan, di mana akan terlihat
+      Gerbang Perumahan Rahayu Regency Nagreg di sebelah kanan.<br><br>
+
+      Masuk ke dalam perumahan, lalu berjalan atau berkendara sekitar 50 meter.
+      <strong>Rumah nomor 5 di sebelah kiri adalah Gusman Homestay.</strong>
+    </p>
+
+    <!-- 🇬🇧 English -->
+    <p class="lang en" style="display:none;line-height:1.7;">
+      From the main road (Nagreg National Road or Nagreg Station),
+      continue straight past the Nagreg Station building.<br><br>
+
+      Turn left and follow the road for about 500 meters,
+      then turn right and cross the railway tracks.<br><br>
+
+      After crossing the tracks, do not turn right — turn left immediately.
+      Continue straight until the end of the road, where you will see
+      the Rahayu Regency Nagreg housing gate on the right.<br><br>
+
+      Enter the complex and continue for about 50 meters.
+      <strong>House number 5 on the left is Gusman Homestay.</strong>
+    </p>
+
+    <!-- 🇩🇪 German -->
+    <p class="lang de" style="display:none;line-height:1.7;">
+      Von der Hauptstraße (Nationalstraße Nagreg oder Bahnhof Nagreg)
+      fahren Sie geradeaus und passieren das Bahnhofsgebäude Nagreg.<br><br>
+
+      Biegen Sie links ab und folgen Sie der Straße etwa 500 Meter,
+      dann biegen Sie rechts ab und überqueren die Bahngleise.<br><br>
+
+      Nach den Gleisen biegen Sie nicht rechts ab, sondern sofort links.
+      Fahren Sie geradeaus bis zum Ende der Straße, wo sich
+      auf der rechten Seite das Eingangstor der Wohnanlage Rahayu Regency Nagreg befindet.<br><br>
+
+      Fahren Sie in die Wohnanlage hinein und nach etwa 50 Metern
+      befindet sich <strong>Haus Nummer 5 auf der linken Seite – Gusman Homestay.</strong>
+    </p>
+
+    <!-- 🇮🇹 Italian -->
+    <p class="lang it" style="display:none;line-height:1.7;">
+      Dalla strada principale (Strada Nazionale di Nagreg o Stazione di Nagreg),
+      proseguire dritto passando davanti all’edificio della stazione di Nagreg.<br><br>
+
+      Svoltare a sinistra e seguire la strada per circa 500 metri,
+      quindi svoltare a destra e attraversare i binari del treno.<br><br>
+
+      Dopo aver attraversato i binari, non svoltare a destra ma girare subito a sinistra.
+      Proseguire dritto fino alla fine della strada, dove sulla destra
+      si trova il cancello del complesso residenziale Rahayu Regency Nagreg.<br><br>
+
+      Entrare nel complesso e proseguire per circa 50 metri.
+      <strong>La casa numero 5 sulla sinistra è Gusman Homestay.</strong>
+    </p>
+
+    <p class="rules-note">
+      <span class="lang id">Jika ragu, silakan hubungi kami via WhatsApp untuk panduan langsung.</span>
+      <span class="lang en" style="display:none;">If needed, contact us via WhatsApp for live guidance.</span>
+      <span class="lang de" style="display:none;">Bei Bedarf kontaktieren Sie uns bitte per WhatsApp.</span>
+      <span class="lang it" style="display:none;">In caso di dubbi, contattaci via WhatsApp.</span>
+    </p>
+  </div>
+</div>
+  <script>
+function openDirections(){
+  document.getElementById('directionsModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDirections(){
+  document.getElementById('directionsModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
 </body>
 </html>
