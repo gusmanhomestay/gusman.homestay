@@ -2176,6 +2176,20 @@ function setDefaultDates(){
 /* =========================
    WHATSAPP
 ========================= */
+<script>
+let currentLang = 'id'; // default Indonesian
+
+function setLang(lang){
+  currentLang = lang; // ✅ THIS IS THE KEY
+
+  document.querySelectorAll('.lang').forEach(el=>{
+    el.style.display = 'none';
+  });
+  document.querySelectorAll('.lang.' + lang).forEach(el=>{
+    el.style.display = '';
+  });
+}
+
 function bookWhatsApp(){
   const checkin = document.getElementById('checkin').value;
   const checkout = document.getElementById('checkout').value;
@@ -2236,7 +2250,7 @@ In attesa di conferma. Grazie 🙏`
     '_blank'
   );
 }
-
+</script>
 /* =========================
    VIDEO SWITCHER
 ========================= */
