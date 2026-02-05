@@ -1087,15 +1087,6 @@ body[data-theme="dark"] .about-seal img{
 .best-price strong{
   letter-spacing:0.2px;
 }
-    
-.availability-note,
-.availability-cta {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #555;
-  margin-top: 10px;
-}
-
 </style>
 </head>
 
@@ -1214,75 +1205,43 @@ body[data-theme="dark"] .about-seal img{
             Massimo <strong>6 ospiti</strong> (i divani del soggiorno possono essere utilizzati come posti letto aggiuntivi).
           </span>
         </p>
- </form>
+      <form id="bookingForm">
+  <label>
+    <span class="lang id">Check-in</span>
+    <span class="lang en" style="display:none;">Check-in</span>
+    <span class="lang de" style="display:none;">Check-in</span>
+    <span class="lang it" style="display:none;">Check-in</span>
+    <input type="date" id="checkin" required>
+  </label><br>
 
-<section class="availability-section">
-  <h3>
-    <span class="lang id">Ketersediaan Tanggal</span>
-    <span class="lang en" style="display:none;">Availability</span>
-    <span class="lang de" style="display:none;">Verfügbarkeit</span>
-    <span class="lang it" style="display:none;">Disponibilità</span>
-  </h3>
+  <label>
+    <span class="lang id">Check-out</span>
+    <span class="lang en" style="display:none;">Check-out</span>
+    <span class="lang de" style="display:none;">Check-out</span>
+    <span class="lang it" style="display:none;">Check-out</span>
+    <input type="date" id="checkout" required>
+  </label><br>
 
-  <p class="availability-note">
-    <span class="lang id">
-      Kalender di bawah menunjukkan ketersediaan terbaru yang disinkronkan dari Booking.com.
-      Tanggal yang tidak tersedia berarti sudah terisi.
-    </span>
-    <span class="lang en" style="display:none;">
-      The calendar below shows the latest availability synced from Booking.com.
-      Unavailable dates are already booked.
-    </span>
-    <span class="lang de" style="display:none;">
-      Der Kalender unten zeigt die aktuelle Verfügbarkeit, synchronisiert von Booking.com.
-      Nicht verfügbare Daten sind bereits gebucht.
-    </span>
-    <span class="lang it" style="display:none;">
-      Il calendario qui sotto mostra la disponibilità aggiornata sincronizzata da Booking.com.
-      Le date non disponibili sono già prenotate.
-    </span>
-  </p>
+  <label>
+    <span class="lang id">Dewasa</span>
+    <span class="lang en" style="display:none;">Adults</span>
+    <span class="lang de" style="display:none;">Erwachsene</span>
+    <span class="lang it" style="display:none;">Adulti</span>
+    <input type="number" id="adults" min="1" max="6" value="0" required inputmode="numeric">
+  </label><br>
 
-<div class="calendar-wrapper">
-  <iframe
-    src="https://calendar.google.com/calendar/embed?height=420&wkst=2&ctz=Asia%2FJakarta&showPrint=0&hl=en&showTitle=0&showNav=0&showTz=0&showCalendars=0&src=cGw4cTFnb2UzZXBuYWZlbW05azJicDZycnM2NHVnZzdAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23616161"
-    style="border:0; width:100%; height:420px;"
-    frameborder="0"
-    scrolling="no">
-  </iframe>
+  <label>
+    <span class="lang id">Anak-anak (&lt;12)</span>
+    <span class="lang en" style="display:none;">Children (&lt;12)</span>
+    <span class="lang de" style="display:none;">Kinder (&lt;12)</span>
+    <span class="lang it" style="display:none;">Bambini (&lt;12)</span>
+    <input type="number" id="children" min="0" max="6" value="0" required inputmode="numeric">
+  </label><br>
+
+  <div class="total-price-box booking-width">
+  <div class="total-price-label">Total Harga</div>
+  <div class="total-price-value" id="totalPrice">500K IDR</div>
 </div>
-
-  <p class="availability-cta">
-    <span class="lang id">
-      Untuk pemesanan dan harga terbaik, silakan hubungi kami melalui WhatsApp.
-    </span>
-    <span class="lang en" style="display:none;">
-      For booking and the best available rate, please contact us via WhatsApp.
-    </span>
-    <span class="lang de" style="display:none;">
-      Für Buchungen und den besten Preis kontaktieren Sie uns bitte per WhatsApp.
-    </span>
-    <span class="lang it" style="display:none;">
-      Per prenotazioni e la migliore tariffa disponibile, contattaci tramite WhatsApp.
-    </span>
-  </p>
-
-  <p class="availability-note">
-    <span class="lang id">
-      Kalender ini hanya untuk melihat ketersediaan tanggal. Website ini tidak menyediakan pemesanan instan.
-    </span>
-    <span class="lang en" style="display:none;">
-      This calendar is for availability reference only. This website does not offer instant booking.
-    </span>
-    <span class="lang de" style="display:none;">
-      Dieser Kalender dient nur zur Anzeige der Verfügbarkeit. Diese Website bietet keine Sofortbuchung an.
-    </span>
-    <span class="lang it" style="display:none;">
-      Questo calendario è solo a scopo informativo. Il sito non offre prenotazioni istantanee.
-    </span>
-  </p>
-</section>
-
 <button
   type="button"
   class="btn btn-premium booking-width"
@@ -1292,7 +1251,7 @@ body[data-theme="dark"] .about-seal img{
   
   <span class="lang id">
     <span class="btn-title">📱 Pesan via WhatsApp *</span>
-    <span class="btn-sub"><em>* (Konfirmasi cepat via WhatsApp)</em></span>
+    <span class="btn-sub"><em>* (kami konfirmasi dulu)</em></span>
   </span>
 
   <span class="lang en" style="display:none;">
@@ -1320,7 +1279,7 @@ body[data-theme="dark"] .about-seal img{
    style="background:#ff5a5f;">
   <span class="lang id">
     <span class="btn-title">🛏️ Pesan via Airbnb *</span>
-    <span class="btn-sub"><em>* (cek ketersediaan & harga resmi)</em></span>
+    <span class="btn-sub"><em>* (cek ketersediaan & harga)</em></span>
   </span>
 
   <span class="lang en" style="display:none;">
