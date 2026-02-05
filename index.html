@@ -166,123 +166,112 @@ body[data-theme="dark"] .container:before{
 }
 
 /* =====================================================
-   HERO BOOKING — FINAL FORCE COMPACT (NO CONFLICTS)
-   Paste this AT THE VERY END of <style>
+   HERO BOOKING — FINAL CLEAN COMPACT (WORKING)
 ===================================================== */
 
-/* Lock hero column so gallery stays side-by-side */
+/* Lock hero width so gallery stays side-by-side */
 .hero-left{
-  flex:0 0 350px !important;
-  min-width:350px !important;
+  flex:0 0 360px;
+  min-width:360px;
 }
 
-/* Reduce hero card padding */
+/* Compact hero card */
 .hero .card{
-  padding:10px !important;
+  padding:14px;
 }
 
 /* =========================
-   BOOKING CALCULATOR (HARD SQUEEZE)
-========================= */
-
-/* Labels */
-.hero #bookingForm label{
-  justify-content:flex-start !important;
-  gap:8px !important;
-  margin:4px 0 !important;
-  font-size:12.5px !important;
-}
-
-/* Fixed label width */
-.hero #bookingForm label > span{
-  width:100px !important;
-  flex-shrink:0 !important;
-}
-
-/* Inputs — FORCE SMALL */
-.hero #bookingForm input[type="date"],
-.hero #bookingForm input[type="number"]{
-  width:100px !important;
-  max-width:100px !important;
-  height:26px !important;
-  line-height:26px !important;
-  padding:0 6px !important;
-  font-size:12px !important;
-  border-radius:7px !important;
-}
-
-/* Tight calculator stacking */
-.booking-inner-left{
-  gap:2px !important;
-}
-
-/* =========================
-   INNER GRID (CALCULATOR + CALENDAR)
+   INNER DUAL LAYOUT
 ========================= */
 .booking-inner-dual{
-  display:grid !important;
-  grid-template-columns: 1fr 190px !important;
-  gap:8px !important;
-  margin-top:6px !important;
+  display:grid;
+  grid-template-columns: 1fr 180px;
+  gap:12px;
+  margin-top:12px;
 }
 
 /* =========================
-   GOOGLE CALENDAR — REAL SHRINK
+   BOOKING CALCULATOR (VERTICAL – NOT HORIZONTAL)
+========================= */
+.hero #bookingForm{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.hero #bookingForm label{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:13px;
+  margin:0;
+}
+
+/* Inputs — SMALL but NOT stretched */
+.hero #bookingForm input[type="date"],
+.hero #bookingForm input[type="number"]{
+  width:120px;
+  height:28px;
+  font-size:12px;
+  padding:0 6px;
+  border-radius:8px;
+}
+
+/* =========================
+   GOOGLE CALENDAR — REAL SMALL
 ========================= */
 .booking-inner-right{
-  max-width:190px !important;
-  overflow:hidden !important;
+  width:180px;
 }
 
 .booking-inner-right iframe{
-  width:190px !important;
-  max-width:190px !important;
-  height:150px !important;
-  border-radius:8px !important;
+  width:100%;
+  height:160px;
+  border-radius:10px;
 }
 
 /* Calendar note */
 .booking-inner-right .availability-note{
-  font-size:10.5px !important;
-  margin-top:2px !important;
+  font-size:11px;
+  text-align:center;
+  margin-top:4px;
 }
 
 /* =========================
-   TOTAL PRICE — COMPACT
+   TOTAL PRICE
 ========================= */
 .hero .total-price-box{
-  padding:8px !important;
-  margin:6px auto 8px !important;
+  padding:10px;
+  margin:10px auto;
 }
 
 .hero .total-price-label{
-  font-size:11px !important;
+  font-size:12px;
 }
 
 .hero .total-price-value{
-  font-size:14px !important;
+  font-size:15px;
 }
 
 /* =========================
-   MOBILE FALLBACK
+   MOBILE
 ========================= */
 @media (max-width:768px){
   .hero-left{
-    flex:1 1 100% !important;
-    min-width:0 !important;
+    flex:1 1 100%;
+    min-width:0;
   }
 
   .booking-inner-dual{
-    grid-template-columns:1fr !important;
+    grid-template-columns:1fr;
   }
 
   .booking-inner-right{
-    max-width:100% !important;
+    width:100%;
   }
 
   .booking-inner-right iframe{
-    width:100% !important;
-    height:220px !important;
+    height:220px;
   }
 }
 /* =========================
@@ -1053,12 +1042,7 @@ body[data-theme="dark"] .about-seal img{
   letter-spacing:0.2px;
 }
 /* === INNER DUAL LAYOUT: CALCULATOR + CALENDAR (COMPACT) === */
-.booking-inner-dual{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:12px;                 /* ⬅️ smaller gap */
-  margin-top:10px;
-}
+
 
 /* Left: booking calculator */
 .booking-inner-left{
@@ -1075,12 +1059,6 @@ body[data-theme="dark"] .about-seal img{
 }
 
 /* Calendar size — THIS is the main fix */
-.booking-inner-right iframe{
-  width:100%;
-  height:220px;             /* ⬅️ was too big before */
-  border-radius:10px;
-  background:#fff;
-}
 
 /* Availability note */
 .booking-inner-right .availability-note{
