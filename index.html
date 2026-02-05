@@ -1087,6 +1087,54 @@ body[data-theme="dark"] .about-seal img{
 .best-price strong{
   letter-spacing:0.2px;
 }
+    /* === INNER DUAL LAYOUT: CALCULATOR + CALENDAR === */
+.booking-inner-dual{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+  margin-top:14px;
+}
+
+/* Left: booking calculator */
+.booking-inner-left{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* Right: availability calendar */
+.booking-inner-right{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+/* Calendar fits perfectly inside rectangle */
+.booking-inner-right iframe{
+  width:100%;
+  height:260px;
+  border-radius:10px;
+  background:#fff;
+}
+
+/* Availability note under calendar */
+.booking-inner-right .availability-note{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:6px;
+  text-align:center;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px){
+  .booking-inner-dual{
+    grid-template-columns:1fr;
+  }
+
+  .booking-inner-right iframe{
+    height:300px;
+  }
+}
 </style>
 </head>
 
@@ -1129,271 +1177,214 @@ body[data-theme="dark"] .about-seal img{
 <!-- ===================== TOP HERO ===================== -->
 <section class="hero">
 
-  <!-- Left Column -->
-  <div class="hero-left">
+  <div class="card">
 
-    <!-- Price & Book -->
-    <div class="card">
-      <h3>
-        <span class="lang id">Harga & Pemesanan</span>
-        <span class="lang en" style="display:none;">Price & Book</span>
-        <span class="lang de" style="display:none;">Preis & Buchung</span>
-        <span class="lang it" style="display:none;">Prezzi & Prenotazioni</span>
-      </h3>
+    <h3>
+      <span class="lang id">Harga & Pemesanan</span>
+      <span class="lang en" style="display:none;">Price & Book</span>
+      <span class="lang de" style="display:none;">Preis & Buchung</span>
+      <span class="lang it" style="display:none;">Prezzi & Prenotazioni</span>
+    </h3>
 
-     <!-- Season pricing note -->
-<div class="season-note">
-  <span class="lang id">
-  ℹ️💰 <strong>Harga normal:</strong> mulai dari 500K IDR / malam *<br>
+    <!-- Season pricing note -->
+    <div class="season-note">
+      <span class="lang id">
+        ℹ️💰 <strong>Harga normal:</strong> mulai dari 500K IDR / malam *<br>
+        <strong class="season-high">
+          Weekend & High season (Lebaran & liburan nasional):<br>
+          mulai dari 750K IDR / malam *
+        </strong><br>
+        <em>* Harga akhir dikonfirmasi via WhatsApp.</em>
+      </span>
 
-  <strong class="season-high">
-    Weekend & High season (Lebaran & liburan nasional):<br>
-    mulai dari 750K IDR / malam *
-  </strong>
+      <span class="lang en" style="display:none;">
+        ℹ️💰 <strong>Standard rate:</strong> Starting from 500K IDR / night*<br>
+        <strong class="season-high">
+          Weekend & High Season (Lebaran & public holidays):<br>
+          Starting from 750K IDR / night *
+        </strong><br>
+        <em>* Final price will be confirmed via WhatsApp.</em>
+      </span>
 
-    <em>* Harga akhir dikonfirmasi via WhatsApp.</em>
-  </span>
+      <span class="lang de" style="display:none;">
+        ℹ️💰 <strong>Standardpreis:</strong> ab 500K IDR / Nacht *<br>
+        <strong class="season-high">
+          Wochenende & Hochsaison (Lebaran & Feiertage):<br>
+          ab 750K IDR / Nacht *
+        </strong><br>
+        <em>* Endpreis wird per WhatsApp bestätigt.</em>
+      </span>
 
-  <span class="lang en" style="display:none;">
-    ℹ️💰 <strong>Standard rate:</strong> Starting from 500K IDR / night*<br>
+      <span class="lang it" style="display:none;">
+        ℹ️💰 <strong>Prezzo standard:</strong> da 500K IDR / notte *<br>
+        <strong class="season-high">
+          Fine Settimana & Alta stagione (Lebaran & festività):<br>
+          da 750K IDR / notte *
+        </strong><br>
+        <em>* Il prezzo finale verrà confermato via WhatsApp.</em>
+      </span>
+    </div>
 
-    <strong class="season-high">
-      Weekend & High Season (Lebaran & public holidays):<br>
-      Starting from 750K IDR / night *
-    </strong>
+    <p style="margin-top:6px;font-size:13px;color:var(--muted);line-height:1.6;">
+      <span class="lang id">
+        Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.
+        Maksimal <strong>6 tamu</strong>.
+      </span>
+      <span class="lang en" style="display:none;">
+        Ideal for <strong>2 adults + 2 children</strong> or <strong>3 adults</strong>.
+        Maximum <strong>6 guests</strong>.
+      </span>
+      <span class="lang de" style="display:none;">
+        Ideal für <strong>2 Erwachsene + 2 Kinder</strong> oder <strong>3 Erwachsene</strong>.
+        Maximal <strong>6 Gäste</strong>.
+      </span>
+      <span class="lang it" style="display:none;">
+        Ideale per <strong>2 adulti + 2 bambini</strong> o <strong>3 adulti</strong>.
+        Massimo <strong>6 ospiti</strong>.
+      </span>
+    </p>
 
-    <em>* Final price will be confirmed via WhatsApp.</em>
-  </span>
+    <!-- DUAL INNER LAYOUT -->
+    <div class="booking-inner-dual">
 
-  <span class="lang de" style="display:none;">
-    ℹ️💰 <strong>Standardpreis:</strong> ab 500K IDR / Nacht *<br>
+      <!-- LEFT: BOOKING CALCULATOR -->
+      <div class="booking-inner-left">
 
-    <strong class="season-high">
-      Wochenende & Hochsaison (Lebaran & Feiertage):<br>
-      ab 750K IDR / Nacht *
-    </strong>
+        <form id="bookingForm">
 
-    <em>* Endpreis wird per WhatsApp bestätigt.</em>
-  </span>
+          <label>
+            <span class="lang id">Check-in</span>
+            <span class="lang en" style="display:none;">Check-in</span>
+            <span class="lang de" style="display:none;">Check-in</span>
+            <span class="lang it" style="display:none;">Check-in</span>
+            <input type="date" id="checkin" required>
+          </label>
 
-  <span class="lang it" style="display:none;">
-    ℹ️💰 <strong>Prezzo standard:</strong> da 500K IDR / notte *<br>
+          <label>
+            <span class="lang id">Check-out</span>
+            <span class="lang en" style="display:none;">Check-out</span>
+            <span class="lang de" style="display:none;">Check-out</span>
+            <span class="lang it" style="display:none;">Check-out</span>
+            <input type="date" id="checkout" required>
+          </label>
 
-    <strong class="season-high">
-      Fine Settimana & Alta stagione (Lebaran & festività):<br>
-      da 750K IDR / notte *
-    </strong>
+          <label>
+            <span class="lang id">Dewasa</span>
+            <span class="lang en" style="display:none;">Adults</span>
+            <span class="lang de" style="display:none;">Erwachsene</span>
+            <span class="lang it" style="display:none;">Adulti</span>
+            <input type="number" id="adults" min="1" max="6" value="0">
+          </label>
 
-    <em>* Il prezzo finale verrà confermato via WhatsApp.</em>
-  </span>
-</div>
-         <p style="margin-top:6px;font-size:13px;color:var(--muted);line-height:1.6;">
-          <span class="lang id">
-            Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.
-            Maksimal <strong>6 tamu</strong> (sofa di ruang tamu dapat digunakan sebagai tempat tidur tambahan).
-          </span>
-          <span class="lang en" style="display:none;">
-            Ideal for <strong>2 adults + 2 children</strong> or <strong>3 adults</strong>.
-            Maximum <strong>6 guests</strong> (living room sofas can be used as extra sleeping space).
-          </span>
-          <span class="lang de" style="display:none;">
-            Ideal für <strong>2 Erwachsene + 2 Kinder</strong> oder <strong>3 Erwachsene</strong>.
-            Maximal <strong>6 Gäste</strong> (Sofas im Wohnzimmer können als zusätzliche Schlafplätze genutzt werden).
-          </span>
-          <span class="lang it" style="display:none;">
-            Ideale per <strong>2 adulti + 2 bambini</strong> o <strong>3 adulti</strong>.
-            Massimo <strong>6 ospiti</strong> (i divani del soggiorno possono essere utilizzati come posti letto aggiuntivi).
-          </span>
+          <label>
+            <span class="lang id">Anak-anak (&lt;12)</span>
+            <span class="lang en" style="display:none;">Children (&lt;12)</span>
+            <span class="lang de" style="display:none;">Kinder (&lt;12)</span>
+            <span class="lang it" style="display:none;">Bambini (&lt;12)</span>
+            <input type="number" id="children" min="0" max="6" value="0">
+          </label>
+
+        </form>
+
+      </div>
+
+      <!-- RIGHT: AVAILABILITY CALENDAR -->
+      <div class="booking-inner-right">
+
+        <iframe
+          src="https://calendar.google.com/calendar/embed?height=260&wkst=2&ctz=Asia%2FJakarta&showTitle=0&showNav=0&showPrint=0&showCalendars=0&showTz=0&hl=en"
+          style="border:0;width:100%;height:260px;"
+          loading="lazy"
+          scrolling="no">
+        </iframe>
+
+        <p class="availability-note">
+          <span class="lang id">* Kalender hanya untuk cek ketersediaan</span>
+          <span class="lang en" style="display:none;">* Availability only</span>
+          <span class="lang de" style="display:none;">* Nur zur Anzeige</span>
+          <span class="lang it" style="display:none;">* Solo consultazione</span>
         </p>
-      <form id="bookingForm">
-  <label>
-    <span class="lang id">Check-in</span>
-    <span class="lang en" style="display:none;">Check-in</span>
-    <span class="lang de" style="display:none;">Check-in</span>
-    <span class="lang it" style="display:none;">Check-in</span>
-    <input type="date" id="checkin" required>
-  </label><br>
 
-  <label>
-    <span class="lang id">Check-out</span>
-    <span class="lang en" style="display:none;">Check-out</span>
-    <span class="lang de" style="display:none;">Check-out</span>
-    <span class="lang it" style="display:none;">Check-out</span>
-    <input type="date" id="checkout" required>
-  </label><br>
+      </div>
 
-  <label>
-    <span class="lang id">Dewasa</span>
-    <span class="lang en" style="display:none;">Adults</span>
-    <span class="lang de" style="display:none;">Erwachsene</span>
-    <span class="lang it" style="display:none;">Adulti</span>
-    <input type="number" id="adults" min="1" max="6" value="0" required inputmode="numeric">
-  </label><br>
+    </div>
 
-  <label>
-    <span class="lang id">Anak-anak (&lt;12)</span>
-    <span class="lang en" style="display:none;">Children (&lt;12)</span>
-    <span class="lang de" style="display:none;">Kinder (&lt;12)</span>
-    <span class="lang it" style="display:none;">Bambini (&lt;12)</span>
-    <input type="number" id="children" min="0" max="6" value="0" required inputmode="numeric">
-  </label><br>
+    <!-- TOTAL PRICE -->
+    <div class="total-price-box booking-width">
+      <div class="total-price-label">Total Harga</div>
+      <div class="total-price-value" id="totalPrice">500K IDR</div>
+    </div>
 
-  <div class="total-price-box booking-width">
-  <div class="total-price-label">Total Harga</div>
-  <div class="total-price-value" id="totalPrice">500K IDR</div>
-</div>
-<button
-  type="button"
-  class="btn btn-premium booking-width"
-  onclick="bookWhatsApp()"
-  data-track="whatsapp"
-  data-location="booking_section">
-  
-  <span class="lang id">
-    <span class="btn-title">📱 Pesan via WhatsApp *</span>
-    <span class="btn-sub"><em>* (kami konfirmasi dulu)</em></span>
-  </span>
+    <!-- WHATSAPP BUTTON (UNCHANGED, 4 LANGUAGES) -->
+    <button
+      type="button"
+      class="btn btn-premium booking-width"
+      onclick="bookWhatsApp()"
+      data-track="whatsapp"
+      data-location="booking_section">
 
-  <span class="lang en" style="display:none;">
-    <span class="btn-title">📱 Book via WhatsApp *</span>
-    <span class="btn-sub"><em>* (we confirm first)</em></span>
-  </span>
+      <span class="lang id">
+        <span class="btn-title">📱 Pesan via WhatsApp *</span>
+        <span class="btn-sub"><em>* (kami konfirmasi dulu)</em></span>
+      </span>
 
-  <span class="lang de" style="display:none;">
-    <span class="btn-title">📱 Über WhatsApp buchen *</span>
-    <span class="btn-sub"><em>* (Bestätigung erforderlich)</em></span>
-  </span>
+      <span class="lang en" style="display:none;">
+        <span class="btn-title">📱 Book via WhatsApp *</span>
+        <span class="btn-sub"><em>* (we confirm first)</em></span>
+      </span>
 
-  <span class="lang it" style="display:none;">
-    <span class="btn-title">📱 Prenota via WhatsApp *</span>
-    <span class="btn-sub"><em>* (confermiamo prima)</em></span>
-  </span>
-</button>
-<a class="btn btn-premium airbnb-btn booking-width"
-   href="https://www.airbnb.com/h/gusmanhomestay"
-   target="_blank"
-   rel="noopener"
-   data-track="ota"
-   data-ota="airbnb"
-   data-location="booking_section"
-   style="background:#ff5a5f;">
-  <span class="lang id">
-    <span class="btn-title">🛏️ Pesan via Airbnb *</span>
-    <span class="btn-sub"><em>* (cek ketersediaan & harga)</em></span>
-  </span>
+      <span class="lang de" style="display:none;">
+        <span class="btn-title">📱 Über WhatsApp buchen *</span>
+        <span class="btn-sub"><em>* (Bestätigung erforderlich)</em></span>
+      </span>
 
-  <span class="lang en" style="display:none;">
-    <span class="btn-title">🛏️ Book on Airbnb *</span>
-    <span class="btn-sub"><em>* (check availability & price)</em></span>
-  </span>
+      <span class="lang it" style="display:none;">
+        <span class="btn-title">📱 Prenota via WhatsApp *</span>
+        <span class="btn-sub"><em>* (confermiamo prima)</em></span>
+      </span>
+    </button>
 
-  <span class="lang de" style="display:none;">
-    <span class="btn-title">🛏️ Über Airbnb buchen *</span>
-    <span class="btn-sub"><em>* (Verfügbarkeit & Preis prüfen)</em></span>
-  </span>
-
-  <span class="lang it" style="display:none;">
-    <span class="btn-title">🛏️ Prenota su Airbnb *</span>
-    <span class="btn-sub"><em>* (verifica disponibilità e prezzo)</em></span>
-  </span>
-</a>
-<p style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6;">
-
-  <!-- Indonesian -->
-  <span class="lang id">
-    Reservasi juga tersedia via
-    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+    <!-- AIRBNB BUTTON (4 LANGUAGES) -->
+    <a class="btn btn-premium airbnb-btn booking-width"
+       href="https://www.airbnb.com/h/gusmanhomestay"
        target="_blank"
        rel="noopener"
-       data-track="ota"
-       data-ota="booking.com"
-       data-location="booking_section">Booking.com</a>
-    &
-    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-       target="_blank"
-       rel="noopener"
-       data-track="ota"
-       data-ota="traveloka"
-       data-location="booking_section">Traveloka</a>.<br>
-    Namun untuk harga terbaik untuk booking langsung melalui tombol WhatsApp di sini.<br>
-    <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
-  </span>
+       style="background:#ff5a5f;">
+      <span class="lang id">🛏️ Pesan via Airbnb * <em>(cek ketersediaan & harga)</em></span>
+      <span class="lang en" style="display:none;">🛏️ Book on Airbnb * <em>(check availability & price)</em></span>
+      <span class="lang de" style="display:none;">🛏️ Über Airbnb buchen * <em>(Verfügbarkeit & Preis)</em></span>
+      <span class="lang it" style="display:none;">🛏️ Prenota su Airbnb * <em>(disponibilità e prezzo)</em></span>
+    </a>
 
-  <!-- English -->
-  <span class="lang en" style="display:none;">
-    Booking also available via
-    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-       target="_blank"
-       rel="noopener"
-       data-track="ota"
-       data-ota="booking.com"
-       data-location="booking_section">Booking.com</a>
-    &
-    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-       target="_blank"
-       rel="noopener"
-       data-track="ota"
-       data-ota="traveloka"
-       data-location="booking_section">Traveloka</a>.<br>
-    For the best price when booking directly via the WhatsApp button here.<br>
-    <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
-  </span>
+    <!-- OTA TEXT (4 LANGUAGES) -->
+    <p style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6;">
+      <span class="lang id">
+        Reservasi juga tersedia via Booking.com & Traveloka.<br>
+        Namun untuk harga terbaik booking langsung melalui WhatsApp.<br>
+        <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
+      </span>
 
-  <!-- German -->
-  <span class="lang de" style="display:none;">
-    Buchung auch verfügbar über
-    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-       target="_blank"
-       rel="noopener"
-       data-track="ota"
-       data-ota="booking.com"
-       data-location="booking_section">Booking.com</a>
-    &
-    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-       target="_blank"
-       rel="noopener"
-       data-track="ota"
-       data-ota="traveloka"
-       data-location="booking_section">Traveloka</a>.<br>
-    Für den besten Preis direkt über den WhatsApp-Button buchen.<br>
-    <span class="best-price">🔒 <strong>Bestpreis-Garantie</strong></span>
-  </span>
+      <span class="lang en" style="display:none;">
+        Booking is also available via Booking.com & Traveloka.<br>
+        For the best price, book directly via WhatsApp.<br>
+        <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
+      </span>
 
-  <!-- Italian -->
-  <span class="lang it" style="display:none;">
-    Prenotazione disponibile anche tramite
-    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-       target="_blank"
-       rel="noopener"
-       data-track="ota"
-       data-ota="booking.com"
-       data-location="booking_section">Booking.com</a>
-    &
-    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-       target="_blank"
-       rel="noopener"
-       data-track="ota"
-       data-ota="traveloka"
-       data-location="booking_section">Traveloka</a>.<br>
-    Per il miglior prezzo prenota direttamente tramite il pulsante WhatsApp qui.<br>
-    <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
-  </span>
+      <span class="lang de" style="display:none;">
+        Buchung auch verfügbar über Booking.com & Traveloka.<br>
+        Für den besten Preis direkt über WhatsApp buchen.<br>
+        <span class="best-price">🔒 <strong>Bestpreis-Garantie</strong></span>
+      </span>
 
-</p>
+      <span class="lang it" style="display:none;">
+        Prenotazione disponibile anche tramite Booking.com & Traveloka.<br>
+        Per il miglior prezzo prenota direttamente tramite WhatsApp.<br>
+        <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
+      </span>
+    </p>
 
-  <span class="lang it" style="display:none;">
-    Prenotazione disponibile anche tramite
-    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-       target="_blank" rel="noopener">Booking.com</a>
-    &
-    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-       target="_blank" rel="noopener">Traveloka</a>.<br>
-    Per il miglior prezzo prenota direttamente tramite il pulsante WhatsApp qui.<br>
-    <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
-  </span>
-</p>
-      </form>
-</div>
+  </div>
+</section>
     <!-- Contact -->
     <div class="card">
       <h3>
