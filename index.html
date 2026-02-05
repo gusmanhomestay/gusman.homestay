@@ -2277,10 +2277,10 @@ function setDefaultDates(){
   }
 }
 /* =========================
-   WHATSAPP
+   WHATSAPP (TRACKED)
 ========================= */
 function bookWhatsApp(){
-  const lang = document.body.dataset.lang || 'id'; // ✅ SOURCE OF TRUTH
+  const lang = document.body.dataset.lang || 'id'; // SOURCE OF TRUTH
 
   const checkin = document.getElementById('checkin').value;
   const checkout = document.getElementById('checkout').value;
@@ -2288,6 +2288,7 @@ function bookWhatsApp(){
   const children = document.getElementById('children').value;
   const price = document.getElementById('totalPrice').innerText;
 
+  // ✅ KEEP validation (important UX)
   if(!checkin || !checkout){
     alert(
       lang === 'id'
@@ -2301,6 +2302,7 @@ function bookWhatsApp(){
     return;
   }
 
+  // ✅ KEEP full message (no simplification)
   const msg = {
     id: `Halo, saya ingin memesan Gusman Homestay.
 Check-in: ${checkin}
@@ -2336,10 +2338,22 @@ Totale stimato: ${price}
 Grazie.`
   };
 
-  window.open(
-    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
-    '_blank'
-  );
+  // ✅ NEW: send GA event FIRST
+  if (typeof gtag === 'function') {
+    gtag('event', 'whatsapp_click', {
+      event_category: 'booking',
+      booking_location: 'booking_section',
+      transport_type: 'beacon'
+    });
+  }
+
+  // ✅ NEW: delay navigation so GA4 can send event
+  setTimeout(() => {
+    window.open(
+      `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
+      '_blank'
+    );
+  }, 150);
 }
 /* =========================
    VIDEO SWITCHER
@@ -2922,32 +2936,32 @@ document.addEventListener('keydown', e=>{
   }
 });
 </script>
-  <!-- =========================
-     GA4 CLICK TRACKING
-     WhatsApp + OTA
+<!-- =========================
+   GA4 CLICK TRACKING
+   OTA ONLY
 ========================= -->
 <script>
 document.addEventListener('click', function(e){
   const el = e.target.closest('[data-track]');
   if (!el) return;
 
-  // WhatsApp = direct booking lead
-  if (el.dataset.track === 'whatsapp') {
-    gtag('event', 'whatsapp_click', {
-      event_category: 'booking',
-      booking_location: el.dataset.location || 'unknown',
-      transport_type: 'beacon'
-    });
-  }
-
   // OTA = Airbnb / Booking.com / Traveloka
   if (el.dataset.track === 'ota') {
+    e.preventDefault(); // stop instant navigation
+
+    const url = el.href;
+
     gtag('event', 'ota_click', {
       event_category: 'booking',
       event_label: el.dataset.ota,
       booking_location: el.dataset.location || 'unknown',
       transport_type: 'beacon'
     });
+
+    // open link after GA event is sent
+    setTimeout(() => {
+      window.open(url, '_blank');
+    }, 150);
   }
 });
 </script>
