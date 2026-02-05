@@ -1141,13 +1141,11 @@ body[data-theme="dark"] .about-seal img{
   <span id="timeWIB">--</span>
   <span id="timeWIB">--</span>
 <!-- ===================== TOP HERO ===================== -->
+<section class="hero">
 
- <section class="hero">
-
-  <!-- DUAL LAYOUT -->
   <div class="booking-dual">
 
-    <!-- LEFT COLUMN (UNCHANGED CONTENT) -->
+    <!-- ================= LEFT COLUMN ================= -->
     <div class="booking-left">
 
       <!-- Price & Book -->
@@ -1218,6 +1216,7 @@ body[data-theme="dark"] .about-seal img{
         </p>
 
         <form id="bookingForm">
+
           <label>
             <span class="lang id">Check-in</span>
             <span class="lang en" style="display:none;">Check-in</span>
@@ -1239,7 +1238,7 @@ body[data-theme="dark"] .about-seal img{
             <span class="lang en" style="display:none;">Adults</span>
             <span class="lang de" style="display:none;">Erwachsene</span>
             <span class="lang it" style="display:none;">Adulti</span>
-            <input type="number" id="adults" min="1" max="6" value="0">
+            <input type="number" id="adults" min="1" max="6" value="0" required>
           </label><br>
 
           <label>
@@ -1247,7 +1246,7 @@ body[data-theme="dark"] .about-seal img{
             <span class="lang en" style="display:none;">Children (&lt;12)</span>
             <span class="lang de" style="display:none;">Kinder (&lt;12)</span>
             <span class="lang it" style="display:none;">Bambini (&lt;12)</span>
-            <input type="number" id="children" min="0" max="6" value="0">
+            <input type="number" id="children" min="0" max="6" value="0" required>
           </label><br>
 
           <div class="total-price-box booking-width">
@@ -1255,7 +1254,7 @@ body[data-theme="dark"] .about-seal img{
             <div class="total-price-value" id="totalPrice">500K IDR</div>
           </div>
 
-          <!-- WHATSAPP BUTTON (UNCHANGED) -->
+          <!-- ✅ WHATSAPP BUTTON (UNCHANGED, 4 LANGUAGES) -->
           <button
             type="button"
             class="btn btn-premium booking-width"
@@ -1284,11 +1283,57 @@ body[data-theme="dark"] .about-seal img{
             </span>
           </button>
 
+          <!-- Airbnb button -->
+          <a class="btn btn-premium airbnb-btn booking-width"
+             href="https://www.airbnb.com/h/gusmanhomestay"
+             target="_blank"
+             rel="noopener"
+             data-track="ota"
+             data-ota="airbnb"
+             data-location="booking_section"
+             style="background:#ff5a5f;">
+            <span class="lang id">🛏️ Pesan via Airbnb *</span>
+            <span class="lang en" style="display:none;">🛏️ Book on Airbnb *</span>
+            <span class="lang de" style="display:none;">🛏️ Über Airbnb buchen *</span>
+            <span class="lang it" style="display:none;">🛏️ Prenota su Airbnb *</span>
+          </a>
+
         </form>
+
+        <p style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6;">
+          <span class="lang id">
+            Reservasi juga tersedia via
+            <a href="https://booking.com" target="_blank">Booking.com</a> &
+            <a href="https://traveloka.com" target="_blank">Traveloka</a>.<br>
+            <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
+          </span>
+
+          <span class="lang en" style="display:none;">
+            Booking also available via
+            <a href="https://booking.com" target="_blank">Booking.com</a> &
+            <a href="https://traveloka.com" target="_blank">Traveloka</a>.<br>
+            <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
+          </span>
+
+          <span class="lang de" style="display:none;">
+            Buchung auch verfügbar über
+            <a href="https://booking.com" target="_blank">Booking.com</a> &
+            <a href="https://traveloka.com" target="_blank">Traveloka</a>.<br>
+            <span class="best-price">🔒 <strong>Bestpreis-Garantie</strong></span>
+          </span>
+
+          <span class="lang it" style="display:none;">
+            Prenotazione disponibile anche tramite
+            <a href="https://booking.com" target="_blank">Booking.com</a> &
+            <a href="https://traveloka.com" target="_blank">Traveloka</a>.<br>
+            <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
+          </span>
+        </p>
+
       </div>
     </div>
 
-    <!-- RIGHT COLUMN (NEW: AVAILABILITY CALENDAR) -->
+    <!-- ================= RIGHT COLUMN ================= -->
     <div class="booking-right">
       <div class="card">
 
@@ -1307,7 +1352,7 @@ body[data-theme="dark"] .about-seal img{
         </p>
 
         <iframe
-          src="https://calendar.google.com/calendar/embed?height=320&wkst=2&ctz=Asia%2FJakarta&showTitle=0&showNav=1&showPrint=0&showCalendars=0&showTz=0&hl=en&src=cGw4cTFnb2UzZXBuYWZlbW05azJicDZycnM2NHVnZzdAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20"
+          src="https://calendar.google.com/calendar/embed?height=320&ctz=Asia%2FJakarta&showTitle=0&showNav=1&showPrint=0&showCalendars=0"
           style="border:0;width:100%;height:320px;"
           loading="lazy"
           scrolling="no">
