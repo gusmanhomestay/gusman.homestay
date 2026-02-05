@@ -2337,23 +2337,23 @@ Totale stimato: ${price}
 Grazie.`
   };
 
-  // ✅ NEW: send GA event FIRST
-  if (typeof gtag === 'function') {
-    gtag('event', 'whatsapp_click', {
-      event_category: 'booking',
-      booking_location: 'booking_section',
-      transport_type: 'beacon'
-    });
-  }
-
-  // ✅ NEW: delay navigation so GA4 can send event
-  setTimeout(() => {
-    window.open(
-      `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
-      '_blank'
-    );
-  }, 150);
+ // ✅ send GA event FIRST (ONLY ONCE)
+if (typeof gtag === 'function') {
+  gtag('event', 'whatsapp_click', {
+    event_category: 'booking',
+    booking_location: 'booking_section',
+    transport_type: 'beacon'
+  });
 }
+
+// ✅ delay navigation so GA4 can send event
+setTimeout(() => {
+  window.open(
+    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
+    '_blank'
+  );
+}, 150);
+}  
 /* =========================
    VIDEO SWITCHER
 ========================= */
