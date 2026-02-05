@@ -210,11 +210,12 @@ body[data-theme="dark"] .container:before{
 }
 
 .hero .total-price-label{
-  font-size:12px;
+  font-size:15px;          /* unified size */
 }
 
 .hero .total-price-value{
   font-size:15px;
+  font-weight:700;
 }
     /* Match pricing text size with OTA note */
 .season-note,
@@ -227,6 +228,14 @@ body[data-theme="dark"] .container:before{
    WhatsApp buttons (CLEAN)
 ========================= */
 
+/* === Unified font size for buttons & total price === */
+.btn-premium,
+.airbnb-btn{
+  font-size:15px;
+  line-height:1.25;
+  text-align:center;
+  justify-content:center;
+}
 /* Desktop/Tablet button inside booking card */
 #bookingForm .btn-premium.wa-normal{
   width:100%;
@@ -245,12 +254,21 @@ body[data-theme="dark"] .container:before{
   margin-bottom:12px;
 }
 
+/* Airbnb button – centered & two-line layout */
 .airbnb-btn{
   padding:12px 16px;
   border-radius:14px;
   margin-top:12px;
-  font-size:15px;   /* same as WhatsApp & Total Harga */
-  line-height:1.3;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  font-size:15px;
+  line-height:1.25;
+  gap:2px;
 }
 
 /* text tightening */
@@ -1245,18 +1263,34 @@ body[data-theme="dark"] .about-seal img{
         <span class="btn-sub"><em>* (confermiamo prima)</em></span>
       </span>
     </button>
+<!-- AIRBNB BUTTON (4 LANGUAGES) -->
+<a class="btn btn-premium airbnb-btn booking-width"
+   href="https://www.airbnb.com/h/gusmanhomestay"
+   target="_blank"
+   rel="noopener"
+   style="background:#ff5a5f;">
+  
+  <span class="lang id">
+    <span class="btn-title">🛏️ Pesan via Airbnb *</span>
+    <span class="btn-sub">(cek ketersediaan & harga)</span>
+  </span>
 
-    <!-- AIRBNB BUTTON (4 LANGUAGES) -->
-    <a class="btn btn-premium airbnb-btn booking-width"
-       href="https://www.airbnb.com/h/gusmanhomestay"
-       target="_blank"
-       rel="noopener"
-       style="background:#ff5a5f;">
-      <span class="lang id">🛏️ Pesan via Airbnb * <em>(cek ketersediaan & harga)</em></span>
-      <span class="lang en" style="display:none;">🛏️ Book on Airbnb * <em>(check availability & price)</em></span>
-      <span class="lang de" style="display:none;">🛏️ Über Airbnb buchen * <em>(Verfügbarkeit & Preis)</em></span>
-      <span class="lang it" style="display:none;">🛏️ Prenota su Airbnb * <em>(disponibilità e prezzo)</em></span>
-    </a>
+  <span class="lang en" style="display:none;">
+    <span class="btn-title">🛏️ Book on Airbnb *</span>
+    <span class="btn-sub">(check availability & price)</span>
+  </span>
+
+  <span class="lang de" style="display:none;">
+    <span class="btn-title">🛏️ Über Airbnb buchen *</span>
+    <span class="btn-sub">(Verfügbarkeit & Preis)</span>
+  </span>
+
+  <span class="lang it" style="display:none;">
+    <span class="btn-title">🛏️ Prenota su Airbnb *</span>
+    <span class="btn-sub">(disponibilità e prezzo)</span>
+  </span>
+
+</a>
 
     <!-- OTA TEXT (4 LANGUAGES) -->
     <p style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6;">
