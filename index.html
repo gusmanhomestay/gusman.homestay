@@ -1215,6 +1215,32 @@ body[data-theme="dark"] .about-seal img{
   width:160px !important;
   height:140px !important;
 }
+    /* =====================================
+   FINAL FIX — GIVE BOOKING MORE SPACE
+   (gallery shrinks, calendar stays inline)
+===================================== */
+
+/* Booking column wider */
+.hero-left{
+  flex: 0 0 400px !important;
+  min-width: 400px !important;
+}
+
+/* Gallery column yields space */
+.hero-middle{
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+/* Gallery tighter */
+.gallery{
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 6px !important;
+}
+
+.gallery img{
+  height: 100px !important; /* ⬅️ smaller tiles */
+}
 </style>
 </head>
 
