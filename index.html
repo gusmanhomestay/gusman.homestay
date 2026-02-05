@@ -205,12 +205,15 @@ body[data-theme="dark"] .container:before{
    TOTAL PRICE
 ========================= */
 .hero .total-price-box{
-  padding:10px;
-  margin:10px auto;
+  padding:12px 16px;          /* SAME as buttons */
+  margin:14px auto;
+  border-radius:14px;
+  text-align:center;
 }
 
 .hero .total-price-label{
-  font-size:15px;          /* unified size */
+  font-size:15px;
+  line-height:1.25;
 }
 
 .hero .total-price-value{
@@ -227,7 +230,13 @@ body[data-theme="dark"] .container:before{
 /* =========================
    WhatsApp buttons (CLEAN)
 ========================= */
-
+/* === Unified width for price box & buttons === */
+.booking-width{
+  width:100%;
+  max-width:420px;      /* same as Airbnb */
+  margin-left:auto;
+  margin-right:auto;
+}
 /* === Unified font size for buttons & total price === */
 .btn-premium,
 .airbnb-btn{
