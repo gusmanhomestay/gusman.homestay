@@ -1241,26 +1241,29 @@ body[data-theme="dark"] .about-seal img{
   <div class="total-price-value" id="totalPrice">500K IDR</div>
 </div>
 
-<button type="button"
-  class="btn btn-premium wa-normal booking-width"
-  onclick="bookWhatsApp()">
+<button
+  class="btn btn-premium booking-width"
+  onclick="bookWhatsApp()"
+  data-track="whatsapp"
+  data-location="booking_section">
+  
   <span class="lang id">
-    <span class="btn-title">📲 Pesan via WhatsApp *</span>
+    <span class="btn-title">📱 Pesan via WhatsApp *</span>
     <span class="btn-sub"><em>* (kami konfirmasi dulu)</em></span>
   </span>
 
   <span class="lang en" style="display:none;">
-    <span class="btn-title">📲 Book via WhatsApp *</span>
+    <span class="btn-title">📱 Book via WhatsApp *</span>
     <span class="btn-sub"><em>* (we confirm first)</em></span>
   </span>
 
   <span class="lang de" style="display:none;">
-    <span class="btn-title">📲 Per WhatsApp buchen *</span>
-    <span class="btn-sub"><em>* (wir bestätigen zuerst)</em></span>
+    <span class="btn-title">📱 Über WhatsApp buchen *</span>
+    <span class="btn-sub"><em>* (Bestätigung erforderlich)</em></span>
   </span>
 
   <span class="lang it" style="display:none;">
-    <span class="btn-title">📲 Prenota via WhatsApp *</span>
+    <span class="btn-title">📱 Prenota via WhatsApp *</span>
     <span class="btn-sub"><em>* (confermiamo prima)</em></span>
   </span>
 </button>
@@ -1268,6 +1271,9 @@ body[data-theme="dark"] .about-seal img{
    href="https://www.airbnb.com/h/gusmanhomestay"
    target="_blank"
    rel="noopener"
+   data-track="ota"
+   data-ota="airbnb"
+   data-location="booking_section"
    style="background:#ff5a5f;">
   <span class="lang id">
     <span class="btn-title">🛏️ Pesan via Airbnb *</span>
@@ -1290,38 +1296,88 @@ body[data-theme="dark"] .about-seal img{
   </span>
 </a>
 <p style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6;">
+
+  <!-- Indonesian -->
   <span class="lang id">
     Reservasi juga tersedia via
     <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-       target="_blank" rel="noopener">Booking.com</a>
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
     &
     <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-       target="_blank" rel="noopener">Traveloka</a>.<br>
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
     Namun untuk harga terbaik untuk booking langsung melalui tombol WhatsApp di sini.<br>
     <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
   </span>
 
+  <!-- English -->
   <span class="lang en" style="display:none;">
     Booking also available via
     <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-       target="_blank" rel="noopener">Booking.com</a>
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
     &
     <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-       target="_blank" rel="noopener">Traveloka</a>.<br>
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
     For the best price when booking directly via the WhatsApp button here.<br>
     <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
   </span>
 
+  <!-- German -->
   <span class="lang de" style="display:none;">
     Buchung auch verfügbar über
     <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-       target="_blank" rel="noopener">Booking.com</a>
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
     &
     <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-       target="_blank" rel="noopener">Traveloka</a>.<br>
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
     Für den besten Preis direkt über den WhatsApp-Button buchen.<br>
     <span class="best-price">🔒 <strong>Bestpreis-Garantie</strong></span>
   </span>
+
+  <!-- Italian -->
+  <span class="lang it" style="display:none;">
+    Prenotazione disponibile anche tramite
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
+    Per il miglior prezzo prenota direttamente tramite il pulsante WhatsApp qui.<br>
+    <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
+  </span>
+
+</p>
 
   <span class="lang it" style="display:none;">
     Prenotazione disponibile anche tramite
