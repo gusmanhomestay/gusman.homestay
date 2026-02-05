@@ -181,15 +181,6 @@ body[data-theme="dark"] .container:before{
 }
 
 /* =========================
-   INNER DUAL LAYOUT
-========================= */
-.booking-inner-dual{
-  grid-template-columns: max-content 160px !important;
-  gap:8px !important;          /* ✅ small, natural gap */
-  align-items:start;
-}
-
-/* =========================
    BOOKING CALCULATOR (VERTICAL – NOT HORIZONTAL)
 ========================= */
 .hero #bookingForm{
@@ -1130,71 +1121,11 @@ body[data-theme="dark"] .about-seal img{
   font-size:11.5px !important;
   padding:0 5px !important;
 }
-/* =========================
-   FIX REAL GAP (ROOT CAUSE)
-========================= */
-
-/* 🔴 You had TWO hero-left rules.
-   This one MUST win. */
-.hero-left{
-  flex:0 0 350px !important;
-  min-width:350px !important;
-}
 
 /* =========================
    CALCULATOR + CALENDAR
    REMOVE EMPTY SPACE
 ========================= */
-
-/* Grid must shrink to content */
-.booking-inner-dual{
-  grid-template-columns: max-content 160px !important;
-  gap:4px !important;
-  align-items:start;
-}
-
-/* Calculator must NOT stretch */
-.booking-inner-left{
-  width:max-content !important;
-}
-
-/* Pull calendar LEFT */
-.booking-inner-right{
-  width:160px !important;
-  margin-left:-6px !important;
-}
-
-/* Calendar hard size */
-.booking-inner-right iframe{
-  width:160px !important;
-  max-width:160px !important;
-  height:140px !important;
-}
-    /* === FINAL HARD FIX === */
-
-/* Booking column MUST be wide enough */
-.hero-left{
-  flex: 0 0 440px !important;
-  min-width: 440px !important;
-}
-
-/* Calculator + calendar ALWAYS side by side */
-.booking-inner-dual{
-  display:grid !important;
-  grid-template-columns: max-content 160px !important;
-  gap: 8px !important;
-  align-items: start !important;
-}
-
-/* Calendar size */
-.booking-inner-right{
-  width:160px !important;
-}
-
-.booking-inner-right iframe{
-  width:160px !important;
-  height:150px !important;
-}
 
 /* Gallery REALLY squished */
 .gallery{
@@ -1205,10 +1136,9 @@ body[data-theme="dark"] .about-seal img{
 .gallery img{
   height: 95px !important;
 }
-    /* =========================
-   BOOKING: CALCULATOR + CALENDAR
-   FINAL CLEAN FIX
-========================= */
+    /* =====================================================
+   FINAL — CALCULATOR + GOOGLE CALENDAR GAP (SINGLE SOURCE)
+===================================================== */
 
 .hero-left{
   flex: 0 0 420px;
@@ -1218,7 +1148,7 @@ body[data-theme="dark"] .about-seal img{
 .booking-inner-dual{
   display: grid;
   grid-template-columns: max-content 160px;
-  gap: 10px;
+  gap: 16px;              /* ✅ GAP BETWEEN CALCULATOR & CALENDAR */
   align-items: start;
 }
 
@@ -1228,12 +1158,30 @@ body[data-theme="dark"] .about-seal img{
 
 .booking-inner-right{
   width: 160px;
+  margin-left: 0;
 }
 
 .booking-inner-right iframe{
   width: 160px;
   height: 160px;
   border-radius: 10px;
+}
+
+/* Mobile */
+@media (max-width:768px){
+  .booking-inner-dual{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .booking-inner-right{
+    width: 100%;
+  }
+
+  .booking-inner-right iframe{
+    width: 100%;
+    height: 240px;
+  }
 }
 </style>
 </head>
