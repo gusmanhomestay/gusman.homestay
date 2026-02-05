@@ -1171,6 +1171,32 @@ body[data-theme="dark"] .about-seal img{
   max-width:160px !important;
   height:140px !important;
 }
+    /* =====================================
+   FINAL BALANCE FIX
+   Shrink gallery → booking gets space
+===================================== */
+
+/* Make booking column slightly wider */
+.hero-left{
+  flex: 0 0 380px !important;
+  min-width: 380px !important;
+}
+
+/* Slightly reduce gallery width pressure */
+.hero-middle{
+  flex: 1 1 auto;
+  max-width: calc(100% - 380px);
+}
+
+/* Make gallery tiles a bit smaller */
+.gallery{
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.gallery img{
+  height: 110px; /* was 120px */
+}
 </style>
 </head>
 
