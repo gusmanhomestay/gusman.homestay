@@ -185,9 +185,9 @@ body[data-theme="dark"] .container:before{
 ========================= */
 .booking-inner-dual{
   display:grid;
-  grid-template-columns: 1fr 180px;
-  gap:12px;
-  margin-top:12px;
+  grid-template-columns: max-content 170px; /* ⬅️ KEY CHANGE */
+  gap:12px;                                  /* natural space */
+  align-items:start;
 }
 
 /* =========================
