@@ -165,114 +165,91 @@ body[data-theme="dark"] .container:before{
   background:radial-gradient(closest-side, rgba(69,183,178,0.18), transparent 70%);
 }
 
-/* =========================
-   BOOKING FORM — BASE (GLOBAL)
-   Used everywhere EXCEPT hero
-========================= */
-#bookingForm label{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin:8px 0;
-  font-size:15px;
-}
-
-#bookingForm input[type="date"],
-#bookingForm input[type="number"]{
-  -webkit-appearance:none;
-  appearance:none;
-
-  height:36px;
-  line-height:36px;
-  padding:0 10px;
-  font-size:13px;
-
-  border-radius:10px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,0.85);
-  color:var(--text);
-}
-
-/* Dark mode inputs */
-body[data-theme="dark"] #bookingForm input[type="date"],
-body[data-theme="dark"] #bookingForm input[type="number"]{
-  background:rgba(16,24,36,0.85);
-}
-
 /* =====================================================
-   HERO BOOKING — ULTRA COMPACT
-   (forces gallery to stay side-by-side)
+   HERO BOOKING — FINAL FORCE COMPACT (NO CONFLICTS)
+   Paste this AT THE VERY END of <style>
 ===================================================== */
 
-/* HERO column must NOT grow too tall */
+/* Lock hero column so gallery stays side-by-side */
 .hero-left{
-  flex:0 0 360px;      /* ⬅️ was 420px */
-  min-width:360px;
+  flex:0 0 350px !important;
+  min-width:350px !important;
 }
 
 /* Reduce hero card padding */
 .hero .card{
-  padding:10px 10px;
-}
-
-/* =========================
-   BOOKING FORM (HERO ONLY)
-========================= */
-.hero #bookingForm label{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:6px;
-  margin:4px 0;
-  font-size:12.5px;
-}
-/* =====================================================
-   HERO BOOKING — HARD COMPACT OVERRIDE (FINAL)
-   This WILL reduce size. No guessing.
-===================================================== */
-
-/* 1️⃣ Reduce hero left column width */
-.hero-left{
-  flex: 0 0 360px !important;
-  min-width: 360px !important;
-}
-
-/* 2️⃣ Reduce hero card padding */
-.hero .card{
   padding:10px !important;
 }
 
-/* =====================================================
-   BOOKING CALCULATOR — FORCE COMPACT
-===================================================== */
+/* =========================
+   BOOKING CALCULATOR (HARD SQUEEZE)
+========================= */
 
 /* Labels */
 .hero #bookingForm label{
+  justify-content:flex-start !important;
+  gap:8px !important;
   margin:4px 0 !important;
-  font-size:13px !important;
-  gap:6px !important;
+  font-size:12.5px !important;
 }
 
-/* Inputs */
+/* Fixed label width */
+.hero #bookingForm label > span{
+  width:100px !important;
+  flex-shrink:0 !important;
+}
+
+/* Inputs — FORCE SMALL */
 .hero #bookingForm input[type="date"],
 .hero #bookingForm input[type="number"]{
+  width:100px !important;
+  max-width:100px !important;
   height:26px !important;
   line-height:26px !important;
-  font-size:12px !important;
   padding:0 6px !important;
+  font-size:12px !important;
   border-radius:7px !important;
-  max-width:130px !important;
 }
 
-/* Stack calculator tighter */
+/* Tight calculator stacking */
 .booking-inner-left{
   gap:2px !important;
 }
 
-/* =====================================================
-   TOTAL PRICE — SMALLER
-===================================================== */
+/* =========================
+   INNER GRID (CALCULATOR + CALENDAR)
+========================= */
+.booking-inner-dual{
+  display:grid !important;
+  grid-template-columns: 1fr 190px !important;
+  gap:8px !important;
+  margin-top:6px !important;
+}
+
+/* =========================
+   GOOGLE CALENDAR — REAL SHRINK
+========================= */
+.booking-inner-right{
+  max-width:190px !important;
+  overflow:hidden !important;
+}
+
+.booking-inner-right iframe{
+  width:190px !important;
+  max-width:190px !important;
+  height:150px !important;
+  border-radius:8px !important;
+}
+
+/* Calendar note */
+.booking-inner-right .availability-note{
+  font-size:10.5px !important;
+  margin-top:2px !important;
+}
+
+/* =========================
+   TOTAL PRICE — COMPACT
+========================= */
 .hero .total-price-box{
   padding:8px !important;
   margin:6px auto 8px !important;
@@ -286,123 +263,27 @@ body[data-theme="dark"] #bookingForm input[type="number"]{
   font-size:14px !important;
 }
 
-/* =====================================================
-   GOOGLE CALENDAR — FORCE SMALLER VISUAL BOX
-   (even with consent overlay)
-===================================================== */
-
-/* Calendar container */
-.booking-inner-right{
-  max-width:260px !important;
-}
-
-/* IFRAME */
-.booking-inner-right iframe{
-  height:160px !important;
-  max-height:160px !important;
-  width:100% !important;
-  border-radius:8px !important;
-  overflow:hidden !important;
-}
-
-/* Hide extra Google padding */
-.booking-inner-right{
-  overflow:hidden !important;
-}
-
-/* Calendar note */
-.booking-inner-right .availability-note{
-  font-size:10.5px !important;
-  margin-top:2px !important;
-}
-
-/* =====================================================
-   INNER GRID — TIGHTER
-===================================================== */
-.booking-inner-dual{
-  gap:8px !important;
-  margin-top:6px !important;
-}
-  /* ✅ Total Price highlight box */
-
-#bookingForm input[type="date"],
-#bookingForm input[type="number"],
-#bookingForm input[type="tel"]{
-  width:160px;
-  max-width:55%;
-  padding:8px 10px;
-  border-radius:10px;
-  font-size:14px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,0.85);
-  color:var(--text);
-}
-
-body[data-theme="dark"] #bookingForm input[type="date"],
-body[data-theme="dark"] #bookingForm input[type="number"],
-body[data-theme="dark"] #bookingForm input[type="tel"]{
-  background:rgba(16,24,36,0.85);
-}
-
-#bookingForm input[type="date"]:focus,
-#bookingForm input[type="number"]:focus,
-#bookingForm input[type="tel"]:focus{
-  border-color:rgba(47,143,139,0.65);
-  transform:translateY(-1px);
-}
-    
-/* Two-line language layout */
-.btn-premium .lang{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  width:100%;
-}
-
-/* Main line */
-.btn-premium .btn-title{
-  font-size:17px;   /* was 15px */
-  font-weight:700;
-}
-
-/* Sub line (italic) */
-.btn-premium .btn-sub{
-  font-size:13px; /* was 13px */
-  font-weight:500;
-  opacity:0.9;
-  font-style:italic;
-}
-  .btn-premium .lang{
-  gap:1px; /* small vertical spacing */
-}
-    /* =========================
-   Booking layout consistency
+/* =========================
+   MOBILE FALLBACK
 ========================= */
-.booking-width{
-  width:100%;
-  max-width:420px;
-  margin-left:auto;
-  margin-right:auto;
-}
-.total-price-box{
-  width:100%;
-  max-width:420px;     /* SAME as buttons */
-  margin:0 auto 12px;  /* SAME spacing */
-  padding:12px 16px;   /* SAME padding */
-  border-radius:14px;  /* SAME radius */
-  background:var(--brand-soft);
-  text-align:center;
-}
-.total-price-label{
-  font-size:13px;      /* same as button sub */
-  font-weight:700;
-  line-height:1.1;
-}
+@media (max-width:768px){
+  .hero-left{
+    flex:1 1 100% !important;
+    min-width:0 !important;
+  }
 
-.total-price-value{
-  font-size:17px;      /* same as button title */
-  font-weight:800;
-  line-height:1.15;
+  .booking-inner-dual{
+    grid-template-columns:1fr !important;
+  }
+
+  .booking-inner-right{
+    max-width:100% !important;
+  }
+
+  .booking-inner-right iframe{
+    width:100% !important;
+    height:220px !important;
+  }
 }
 /* =========================
    WhatsApp buttons (CLEAN)
