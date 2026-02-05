@@ -168,30 +168,15 @@ body[data-theme="dark"] .container:before{
 /* =========================
    BOOKING FORM "HOTEL" UI
 ========================= */
+
+/* Base booking form (default size everywhere) */
 #bookingForm label{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;          /* ✅ smaller gap */
-  margin:8px 0;      /* ✅ smaller spacing */
-  font-size:15px;    /* ✅ smaller label text */
-}
-
-/* ✅ Force compact inputs (works on iOS/Safari too) */
-#bookingForm input[type="date"],
-#bookingForm input[type="number"]{
-  -webkit-appearance: none;
-  appearance: none;
-
-  height: 36px;
-  line-height: 36px;
-  padding: 0 10px;
-  font-size: 13px;
-
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.85);
-  color: var(--text);
+  gap:10px;
+  margin:8px 0;
+  font-size:15px;
 }
 
 #bookingForm input[type="date"],
@@ -199,26 +184,52 @@ body[data-theme="dark"] .container:before{
   -webkit-appearance:none;
   appearance:none;
 
-  height:36px !important;
-  line-height:36px !important;
-  padding:0 10px !important;
-  font-size:13px !important;
+  height:36px;
+  line-height:36px;
+  padding:0 10px;
+  font-size:13px;
 
   border-radius:10px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.85);
+  color:var(--text);
 }
 
-/* ✅ Even more compact on small phones */
+/* Dark mode inputs */
+body[data-theme="dark"] #bookingForm input[type="date"],
+body[data-theme="dark"] #bookingForm input[type="number"]{
+  background:rgba(16,24,36,0.85);
+}
+
+/* =========================
+   COMPACT VERSION (HERO ONLY)
+========================= */
+.hero #bookingForm label{
+  margin:6px 0;          /* tighter vertical spacing */
+  font-size:14px;        /* smaller label text */
+}
+
+.hero #bookingForm input[type="date"],
+.hero #bookingForm input[type="number"]{
+  height:32px;           /* smaller inputs */
+  line-height:32px;
+  padding:0 8px;
+  font-size:12.5px;
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
 @media (max-width:480px){
-  #bookingForm label{
-    font-size:14px;
-    margin:6px 0;
+  .hero #bookingForm label{
+    font-size:13.5px;
+    margin:5px 0;
   }
 
-  #bookingForm input[type="date"],
-  #bookingForm input[type="number"]{
-    width:140px;
-    padding:7px 9px;
-    font-size:13px;
+  .hero #bookingForm input[type="date"],
+  .hero #bookingForm input[type="number"]{
+    height:30px;
+    font-size:12px;
   }
 }
   /* ===== Season pricing note ===== */
