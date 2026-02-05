@@ -169,12 +169,6 @@ body[data-theme="dark"] .container:before{
    HERO BOOKING — FINAL CLEAN COMPACT (WORKING)
 ===================================================== */
 
-/* Lock hero width so gallery stays side-by-side */
-.hero-left{
-  flex:0 0 360px;
-  min-width:360px;
-}
-
 /* Compact hero card */
 .hero .card{
   padding:14px;
@@ -208,26 +202,6 @@ body[data-theme="dark"] .container:before{
 }
 
 /* =========================
-   GOOGLE CALENDAR — REAL SMALL
-========================= */
-.booking-inner-right{
-  width:160px !important;
-  margin-left:0 !important;
-}
-
-.booking-inner-right iframe{
-  width:100% !important;
-  height:160px !important;
-  border-radius:10px;
-}
-
-.booking-inner-right .availability-note{
-  font-size:11px;
-  text-align:center;
-  margin-top:4px;
-}
-
-/* =========================
    TOTAL PRICE
 ========================= */
 .hero .total-price-box{
@@ -241,28 +215,6 @@ body[data-theme="dark"] .container:before{
 
 .hero .total-price-value{
   font-size:15px;
-}
-
-/* =========================
-   MOBILE
-========================= */
-@media (max-width:768px){
-  .hero-left{
-    flex:1 1 100%;
-    min-width:0;
-  }
-
-  .booking-inner-dual{
-    grid-template-columns:1fr;
-  }
-
-  .booking-inner-right{
-    width:100%;
-  }
-
-  .booking-inner-right iframe{
-    height:220px;
-  }
 }
 /* =========================
    WhatsApp buttons (CLEAN)
@@ -397,13 +349,6 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
   align-items:flex-start;
   flex-wrap:nowrap; /* ✅ IMPORTANT: keep side-by-side on desktop */
 }
-.hero-left{
-  flex:0 0 420px;   /* left column fixed width */
-  min-width:420px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
 
 .hero-middle{
   flex:1 1 auto;    /* gallery takes remaining space */
@@ -411,7 +356,6 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
 }
 @media (max-width: 992px){
   .hero{ flex-wrap:wrap; }
-  .hero-left{ flex:1 1 100%; min-width:0; }
   .hero-middle{ flex:1 1 100%; }
 }
 /* Cards */
@@ -709,7 +653,7 @@ body:not([data-theme="dark"]) .site-footer{
 /* Responsive */
 @media (max-width:1100px){
   .hero{flex-direction:column}
-  .hero-left,.hero-middle{flex:1 1 100%}
+  .hero-middle{flex:1 1 100%}
   .gallery{grid-template-columns:repeat(2,1fr)}
   .split-row{flex-direction:column}
   .split-left,.split-right{flex:1 1 100%}
@@ -1031,131 +975,31 @@ body[data-theme="dark"] .about-seal img{
 .best-price strong{
   letter-spacing:0.2px;
 }
-/* === INNER DUAL LAYOUT: CALCULATOR + CALENDAR (COMPACT) === */
-
-
-/* Left: booking calculator */
-.booking-inner-left{
-  display:flex;
-  flex-direction:column;
-  gap:6px;                  /* ⬅️ tighter vertical spacing */
-}
-
-/* Right: availability calendar */
-.booking-inner-right{
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-}
-
-/* Calendar size — THIS is the main fix */
-
-/* Availability note */
-.booking-inner-right .availability-note{
-  font-size:11.5px;         /* ⬅️ smaller text */
-  color:var(--muted);
-  margin-top:4px;
-  text-align:center;
-}
-
-/* Mobile stack */
-@media (max-width:768px){
-  .booking-inner-dual{
-    grid-template-columns:1fr;
-  }
-
-  .booking-inner-right iframe{
-    height:260px;
-  }
-}
-    /* =========================
-   HERO — PRICE TEXT SIZE FIX
-   Make it same size as "Ideal untuk..."
-========================= */
-
-/* Pricing note */
-.hero .season-note{
-  font-size:13px !important;     /* SAME as ideal text */
-  line-height:1.6;
-  padding:8px 12px;              /* reduce vertical height */
-}
-
-/* High season line */
-.hero .season-note .season-high{
-  font-size:13px !important;
-  font-weight:600;
-}
-
-/* Italic confirmation line */
-.hero .season-note em{
-  font-size:12.5px;
-}
-
-/* Ideal text (reference size) */
-.hero .ideal-note{
-  margin-top:6px;
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.6;
-}
-    /* === CALCULATOR: ULTRA SQUEEZED === */
-
-/* Keep labels tight */
-.hero #bookingForm label{
-  justify-content:flex-start !important;
-  gap:6px !important;
-}
-
-/* Short label column */
-.hero #bookingForm label > span{
-  width:90px !important;
-}
-
-/* Date + number inputs VERY SMALL */
-.hero #bookingForm input[type="date"],
-.hero #bookingForm input[type="number"]{
-  width:90px !important;
-  max-width:90px !important;
-  height:24px !important;
-  line-height:24px !important;
-  font-size:11.5px !important;
-  padding:0 5px !important;
-}
-
-/* =========================
-   CALCULATOR + CALENDAR
-   REMOVE EMPTY SPACE
-========================= */
-
-/* Gallery REALLY squished */
-.gallery{
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 6px !important;
-}
-
-.gallery img{
-  height: 95px !important;
-}
-    /* =====================================================
-   FINAL — CALCULATOR + GOOGLE CALENDAR GAP (SINGLE SOURCE)
+/* =====================================================
+   FINAL — CALCULATOR + CALENDAR (SINGLE SOURCE OF TRUTH)
 ===================================================== */
 
+/* Let booking column shrink to content */
 .hero-left{
   flex: 0 0 auto;
   width: max-content;
+  min-width: 0;
 }
 
+/* Calculator + calendar layout */
 .booking-inner-dual{
   display: grid;
   grid-template-columns: max-content 160px;
-  gap: 16px;              /* ✅ GAP BETWEEN CALCULATOR & CALENDAR */
+  gap: 8px;                 /* tight, clean gap */
   align-items: start;
 }
 
+/* Calculator */
 .booking-inner-left{
   width: max-content;
 }
 
+/* Calendar */
 .booking-inner-right{
   width: 160px;
   margin-left: 0;
