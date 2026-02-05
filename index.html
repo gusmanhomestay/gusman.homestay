@@ -227,51 +227,101 @@ body[data-theme="dark"] #bookingForm input[type="number"]{
   margin:4px 0;
   font-size:12.5px;
 }
-
 /* =====================================================
-   FINAL HERO SIZE OVERRIDE (FORCE SMALL)
-   PUT THIS AT THE VERY END OF CSS
+   HERO BOOKING — HARD COMPACT OVERRIDE (FINAL)
+   This WILL reduce size. No guessing.
 ===================================================== */
 
-/* -------- Calculator inputs: REALLY SMALL -------- */
-.hero #bookingForm input[type="date"],
-.hero #bookingForm input[type="number"],
-.hero #bookingForm input[type="tel"]{
-  width:120px !important;     /* ⬅️ narrower */
-  max-width:48% !important;
-  height:24px !important;     /* ⬅️ shorter */
-  line-height:24px !important;
-  padding:0 6px !important;   /* ⬅️ squeeze */
-  font-size:11px !important;
-  border-radius:6px !important;
+/* 1️⃣ Reduce hero left column width */
+.hero-left{
+  flex: 0 0 360px !important;
+  min-width: 360px !important;
 }
 
-/* Labels tighter */
+/* 2️⃣ Reduce hero card padding */
+.hero .card{
+  padding:10px !important;
+}
+
+/* =====================================================
+   BOOKING CALCULATOR — FORCE COMPACT
+===================================================== */
+
+/* Labels */
 .hero #bookingForm label{
-  margin:3px 0 !important;
-  font-size:12px !important;
+  margin:4px 0 !important;
+  font-size:13px !important;
   gap:6px !important;
 }
 
-/* -------- Booking inner grid tighter -------- */
-.booking-inner-dual{
-  gap:8px !important;
+/* Inputs */
+.hero #bookingForm input[type="date"],
+.hero #bookingForm input[type="number"]{
+  height:26px !important;
+  line-height:26px !important;
+  font-size:12px !important;
+  padding:0 6px !important;
+  border-radius:7px !important;
+  max-width:130px !important;
 }
 
-/* -------- Google Calendar: REALLY SMALL -------- */
+/* Stack calculator tighter */
+.booking-inner-left{
+  gap:2px !important;
+}
+
+/* =====================================================
+   TOTAL PRICE — SMALLER
+===================================================== */
+.hero .total-price-box{
+  padding:8px !important;
+  margin:6px auto 8px !important;
+}
+
+.hero .total-price-label{
+  font-size:11px !important;
+}
+
+.hero .total-price-value{
+  font-size:14px !important;
+}
+
+/* =====================================================
+   GOOGLE CALENDAR — FORCE SMALLER VISUAL BOX
+   (even with consent overlay)
+===================================================== */
+
+/* Calendar container */
+.booking-inner-right{
+  max-width:260px !important;
+}
+
+/* IFRAME */
 .booking-inner-right iframe{
-  height:160px !important;    /* ⬅️ THIS is the real shrink */
+  height:160px !important;
+  max-height:160px !important;
+  width:100% !important;
+  border-radius:8px !important;
+  overflow:hidden !important;
 }
 
-/* Availability note smaller */
+/* Hide extra Google padding */
+.booking-inner-right{
+  overflow:hidden !important;
+}
+
+/* Calendar note */
 .booking-inner-right .availability-note{
   font-size:10.5px !important;
   margin-top:2px !important;
 }
 
-/* -------- Hero card padding tighter -------- */
-.hero .card{
-  padding:10px !important;
+/* =====================================================
+   INNER GRID — TIGHTER
+===================================================== */
+.booking-inner-dual{
+  gap:8px !important;
+  margin-top:6px !important;
 }
   /* ✅ Total Price highlight box */
 
