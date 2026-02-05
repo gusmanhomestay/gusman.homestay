@@ -1289,21 +1289,21 @@ body[data-theme="dark"] .about-seal img{
 
         <form id="bookingForm">
 
-          <label>
-            <span class="lang id">Check-in</span>
-            <span class="lang en" style="display:none;">Check-in</span>
-            <span class="lang de" style="display:none;">Check-in</span>
-            <span class="lang it" style="display:none;">Check-in</span>
-            <input type="text" id="checkin" required>
-          </label>
+        <label>
+  <span class="lang id">Check-in</span>
+  <span class="lang en" style="display:none;">Check-in</span>
+  <span class="lang de" style="display:none;">Check-in</span>
+  <span class="lang it" style="display:none;">Check-in</span>
+  <input type="text" id="checkin" placeholder="DD/MM/YY" maxlength="8" inputmode="numeric" required>
+</label>
 
-          <label>
-            <span class="lang id">Check-out</span>
-            <span class="lang en" style="display:none;">Check-out</span>
-            <span class="lang de" style="display:none;">Check-out</span>
-            <span class="lang it" style="display:none;">Check-out</span>
-            <input type="text" id="checkout" required>
-          </label>
+<label>
+  <span class="lang id">Check-out</span>
+  <span class="lang en" style="display:none;">Check-out</span>
+  <span class="lang de" style="display:none;">Check-out</span>
+  <span class="lang it" style="display:none;">Check-out</span>
+  <input type="text" id="checkout" placeholder="DD/MM/YY" maxlength="8" inputmode="numeric" required>
+</label>
 
           <label>
             <span class="lang id">Dewasa</span>
@@ -2988,7 +2988,7 @@ document.addEventListener('click', function(e){
   }
 });
 </script>
-  <script>
+<script>
 function formatDateInput(el){
   el.addEventListener('input', () => {
     let v = el.value.replace(/\D/g,'').slice(0,6);
