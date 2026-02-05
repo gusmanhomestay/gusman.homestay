@@ -1294,7 +1294,7 @@ body[data-theme="dark"] .about-seal img{
             <span class="lang en" style="display:none;">Check-in</span>
             <span class="lang de" style="display:none;">Check-in</span>
             <span class="lang it" style="display:none;">Check-in</span>
-            <input type="date" id="checkin" required>
+            <input type="text" id="checkin" required>
           </label>
 
           <label>
@@ -1302,7 +1302,7 @@ body[data-theme="dark"] .about-seal img{
             <span class="lang en" style="display:none;">Check-out</span>
             <span class="lang de" style="display:none;">Check-out</span>
             <span class="lang it" style="display:none;">Check-out</span>
-            <input type="date" id="checkout" required>
+            <input type="text" id="checkout" required>
           </label>
 
           <label>
@@ -2987,6 +2987,19 @@ document.addEventListener('click', function(e){
     }, 150);
   }
 });
+</script>
+  <script>
+function formatDateInput(el){
+  el.addEventListener('input', () => {
+    let v = el.value.replace(/\D/g,'').slice(0,6);
+    if(v.length >= 5) v = v.replace(/(\d{2})(\d{2})(\d{1,2})/, '$1/$2/$3');
+    else if(v.length >= 3) v = v.replace(/(\d{2})(\d{1,2})/, '$1/$2');
+    el.value = v;
+  });
+}
+
+formatDateInput(document.getElementById('checkin'));
+formatDateInput(document.getElementById('checkout'));
 </script>
 </body>
 </html>
