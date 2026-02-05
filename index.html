@@ -460,7 +460,7 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
 /* Top Hero layout */
 .hero{
   display:flex;
-  gap:28px;
+  gap:20px;
   align-items:flex-start;
   flex-wrap:nowrap; /* ✅ IMPORTANT: keep side-by-side on desktop */
 }
@@ -482,7 +482,18 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
   .hero-middle{ flex:1 1 100%; }
 }
 /* Cards */
-.card,.hero-card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow)}
+/* Default cards (outside hero) */
+.card,.hero-card{
+  background:var(--card);
+  padding:16px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+/* Compact cards INSIDE hero only */
+.hero .card{
+  padding:14px 14px;
+}
 h1{margin:0;font-size:28px}
 
 p.lead{
@@ -1107,6 +1118,18 @@ body[data-theme="dark"] .about-seal img{
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
+  overflow:hidden; /* 🔑 keeps calendar inside rectangle */
+}
+    /* Compact calculator inside hero */
+.hero #bookingForm label{
+  font-size:14px;
+  margin:6px 0;
+}
+
+.hero #bookingForm input[type="date"],
+.hero #bookingForm input[type="number"]{
+  height:34px !important;
+  font-size:12.5px !important;
 }
 
 /* Calendar fits perfectly inside rectangle */
