@@ -200,95 +200,121 @@ body[data-theme="dark"] #bookingForm input[type="number"]{
   background:rgba(16,24,36,0.85);
 }
 
-/* =========================
-   HERO — EXTRA COMPACT (≈25% smaller)
-   Calculator + Calendar
-========================= */
+/* =====================================================
+   HERO BOOKING — ULTRA COMPACT
+   (forces gallery to stay side-by-side)
+===================================================== */
 
-/* Hero card tighter padding */
-.hero .card{
-  padding:12px;
+/* HERO column must NOT grow too tall */
+.hero-left{
+  flex:0 0 360px;      /* ⬅️ was 420px */
+  min-width:360px;
 }
 
-/* --- Booking calculator (LEFT) --- */
+/* Reduce hero card padding */
+.hero .card{
+  padding:10px 10px;
+}
+
+/* =========================
+   BOOKING FORM (HERO ONLY)
+========================= */
 .hero #bookingForm label{
-  margin:5px 0;
-  font-size:13.5px;
-  gap:8px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+  margin:4px 0;
+  font-size:12.5px;
 }
 
 .hero #bookingForm input[type="date"],
 .hero #bookingForm input[type="number"]{
-  height:28px;            /* ⬅️ ~25% smaller */
-  line-height:28px;
+  height:26px;          /* ⬅️ smaller */
+  line-height:26px;
   padding:0 6px;
-  font-size:12px;
-  border-radius:8px;
-}
-
-/* Reduce internal calculator spacing */
-.booking-inner-left{
-  gap:4px;
-}
-
-/* --- Total price box --- */
-.hero .total-price-box{
-  padding:10px 12px;
-  margin:8px auto 10px;
-}
-
-.hero .total-price-label{
-  font-size:12px;
-}
-
-.hero .total-price-value{
-  font-size:15px;
-}
-
-/* --- Availability calendar (RIGHT) --- */
-.booking-inner-dual{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:8px;
-}
-
-.booking-inner-right iframe{
-  width:100%;
-  height:195px;           /* ⬅️ ~25% smaller */
-  border-radius:8px;
-  background:#fff;
-}
-
-.booking-inner-right .availability-note{
-  font-size:11px;
-  margin-top:3px;
-  color:var(--muted);
-  text-align:center;
+  font-size:11.5px;
+  border-radius:7px;
 }
 
 /* =========================
-   MOBILE ADJUSTMENTS
+   INNER DUAL LAYOUT
 ========================= */
-@media (max-width:768px){
-  .booking-inner-dual{
-    grid-template-columns:1fr;
+.booking-inner-dual{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:6px;
+}
+
+/* Left: calculator */
+.booking-inner-left{
+  gap:3px;
+}
+
+/* =========================
+   GOOGLE CALENDAR
+========================= */
+.booking-inner-right iframe{
+  height:170px;        /* ⬅️ KEY FIX */
+  border-radius:8px;
+}
+
+/* Calendar note */
+.booking-inner-right .availability-note{
+  font-size:10.5px;
+  margin-top:2px;
+}
+
+/* =========================
+   TOTAL PRICE
+========================= */
+.hero .total-price-box{
+  padding:8px 10px;
+  margin:6px auto 8px;
+}
+
+.hero .total-price-label{
+  font-size:11px;
+}
+
+.hero .total-price-value{
+  font-size:14px;
+}
+
+/* =========================
+   BUTTONS (SLIGHTLY SMALLER)
+========================= */
+.hero .btn-premium{
+  padding:10px 12px;
+}
+
+.hero .btn-premium .btn-title{
+  font-size:14.5px;
+}
+
+.hero .btn-premium .btn-sub{
+  font-size:11.5px;
+}
+
+/* =========================
+   MOBILE SAFETY
+========================= */
+@media (max-width:992px){
+  .hero{
+    flex-wrap:wrap;
   }
 
-  .booking-inner-right iframe{
-    height:230px;
+  .hero-left,
+  .hero-middle{
+    flex:1 1 100%;
+    min-width:0;
   }
 }
 
 @media (max-width:480px){
-  .hero #bookingForm label{
-    font-size:13px;
-  }
-
-  .hero #bookingForm input[type="date"],
-  .hero #bookingForm input[type="number"]{
-    height:26px;
-    font-size:11.5px;
+  .booking-inner-right iframe{
+    height:210px;
   }
 }
   /* ✅ Total Price highlight box */
