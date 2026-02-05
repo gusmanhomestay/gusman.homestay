@@ -2919,5 +2919,34 @@ document.addEventListener('keydown', e=>{
   }
 });
 </script>
+  <!-- =========================
+     GA4 CLICK TRACKING
+     WhatsApp + OTA
+========================= -->
+<script>
+document.addEventListener('click', function(e){
+  const el = e.target.closest('[data-track]');
+  if (!el) return;
+
+  // WhatsApp = direct booking lead
+  if (el.dataset.track === 'whatsapp') {
+    gtag('event', 'whatsapp_click', {
+      event_category: 'booking',
+      booking_location: el.dataset.location || 'unknown',
+      transport_type: 'beacon'
+    });
+  }
+
+  // OTA = Airbnb / Booking.com / Traveloka
+  if (el.dataset.track === 'ota') {
+    gtag('event', 'ota_click', {
+      event_category: 'booking',
+      event_label: el.dataset.ota,
+      booking_location: el.dataset.location || 'unknown',
+      transport_type: 'beacon'
+    });
+  }
+});
+</script>
 </body>
 </html>
