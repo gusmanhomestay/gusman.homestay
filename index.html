@@ -228,52 +228,50 @@ body[data-theme="dark"] #bookingForm input[type="number"]{
   font-size:12.5px;
 }
 
+/* =====================================================
+   FINAL HERO SIZE OVERRIDE (FORCE SMALL)
+   PUT THIS AT THE VERY END OF CSS
+===================================================== */
+
+/* -------- Calculator inputs: REALLY SMALL -------- */
 .hero #bookingForm input[type="date"],
-.hero #bookingForm input[type="number"]{
-  height:26px;          /* ⬅️ smaller */
-  line-height:26px;
-  padding:0 6px;
-  font-size:11.5px;
-  border-radius:7px;
+.hero #bookingForm input[type="number"],
+.hero #bookingForm input[type="tel"]{
+  width:120px !important;     /* ⬅️ narrower */
+  max-width:48% !important;
+  height:24px !important;     /* ⬅️ shorter */
+  line-height:24px !important;
+  padding:0 6px !important;   /* ⬅️ squeeze */
+  font-size:11px !important;
+  border-radius:6px !important;
 }
 
-/* === INNER DUAL LAYOUT (VERY COMPACT) === */
+/* Labels tighter */
+.hero #bookingForm label{
+  margin:3px 0 !important;
+  font-size:12px !important;
+  gap:6px !important;
+}
+
+/* -------- Booking inner grid tighter -------- */
 .booking-inner-dual{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:8px;
+  gap:8px !important;
 }
 
-/* LEFT: calculator tighter */
-.booking-inner-left{
-  gap:4px;
-}
-
-/* RIGHT: calendar REAL size control */
+/* -------- Google Calendar: REALLY SMALL -------- */
 .booking-inner-right iframe{
-  width:100%;
-  height:170px;          /* ⬅️ REAL reduction (works now) */
-  border-radius:8px;
-  background:#fff;
+  height:160px !important;    /* ⬅️ THIS is the real shrink */
 }
 
-/* Availability note */
+/* Availability note smaller */
 .booking-inner-right .availability-note{
-  font-size:11px;
-  margin-top:3px;
-  text-align:center;
+  font-size:10.5px !important;
+  margin-top:2px !important;
 }
 
-/* Mobile */
-@media (max-width:768px){
-  .booking-inner-dual{
-    grid-template-columns:1fr;
-  }
-
-  .booking-inner-right iframe{
-    height:220px;
-  }
+/* -------- Hero card padding tighter -------- */
+.hero .card{
+  padding:10px !important;
 }
   /* ✅ Total Price highlight box */
 
