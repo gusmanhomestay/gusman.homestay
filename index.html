@@ -1170,76 +1170,40 @@ body[data-theme="dark"] .about-seal img{
   max-width:160px !important;
   height:140px !important;
 }
-    /* =====================================
-   FINAL BALANCE FIX
-   Shrink gallery → booking gets space
-===================================== */
+    /* === FINAL HARD FIX === */
 
-/* Make booking column slightly wider */
+/* Booking column MUST be wide enough */
 .hero-left{
-  flex: 0 0 380px !important;
-  min-width: 380px !important;
+  flex: 0 0 440px !important;
+  min-width: 440px !important;
 }
 
-/* Slightly reduce gallery width pressure */
-.hero-middle{
-  flex: 1 1 auto;
-  max-width: calc(100% - 380px);
-}
-
-/* Make gallery tiles a bit smaller */
-.gallery{
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-}
-
-.gallery img{
-  height: 110px; /* was 120px */
-}
-    /* FINAL MICRO GAP FIX — calculator ↔ calendar */
-
+/* Calculator + calendar ALWAYS side by side */
 .booking-inner-dual{
+  display:grid !important;
   grid-template-columns: max-content 160px !important;
-  gap:6px !important;           /* ✅ small visible gap */
-  align-items:start;
+  gap: 8px !important;
+  align-items: start !important;
 }
 
-/* Calendar column */
+/* Calendar size */
 .booking-inner-right{
   width:160px !important;
-  margin-left:0 !important;     /* ❌ no negative margin */
 }
 
-/* Calendar iframe */
 .booking-inner-right iframe{
   width:160px !important;
-  height:140px !important;
-}
-    /* =====================================
-   FINAL FIX — GIVE BOOKING MORE SPACE
-   (gallery shrinks, calendar stays inline)
-===================================== */
-
-/* Booking column wider */
-.hero-left{
-  flex: 0 0 400px !important;
-  min-width: 400px !important;
+  height:150px !important;
 }
 
-/* Gallery column yields space */
-.hero-middle{
-  flex: 1 1 auto !important;
-  min-width: 0 !important;
-}
-
-/* Gallery tighter */
+/* Gallery REALLY squished */
 .gallery{
-  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-columns: repeat(2, 1fr) !important;
   gap: 6px !important;
 }
 
 .gallery img{
-  height: 100px !important; /* ⬅️ smaller tiles */
+  height: 95px !important;
 }
 </style>
 </head>
