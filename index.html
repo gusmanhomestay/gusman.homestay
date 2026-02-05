@@ -1131,6 +1131,26 @@ body[data-theme="dark"] .about-seal img{
   font-size:11.5px !important;
   padding:0 5px !important;
 }
+    /* === REMOVE GAP BETWEEN CALCULATOR & CALENDAR === */
+
+/* Force tighter grid */
+.booking-inner-dual{
+  grid-template-columns: auto 170px !important; /* calculator shrinks to content */
+  gap:4px !important;                            /* ⬅️ this removes the big space */
+  align-items:start;
+}
+
+/* Pull calendar closer to calculator */
+.booking-inner-right{
+  margin-left:-4px !important;  /* ⬅️ micro pull */
+}
+
+/* Make sure calendar stays small */
+.booking-inner-right iframe{
+  width:170px !important;
+  max-width:170px !important;
+  height:150px !important;
+}
 </style>
 </head>
 
