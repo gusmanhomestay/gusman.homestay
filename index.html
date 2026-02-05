@@ -1108,6 +1108,29 @@ body[data-theme="dark"] .about-seal img{
   color:var(--muted);
   line-height:1.6;
 }
+    /* === CALCULATOR: ULTRA SQUEEZED === */
+
+/* Keep labels tight */
+.hero #bookingForm label{
+  justify-content:flex-start !important;
+  gap:6px !important;
+}
+
+/* Short label column */
+.hero #bookingForm label > span{
+  width:90px !important;
+}
+
+/* Date + number inputs VERY SMALL */
+.hero #bookingForm input[type="date"],
+.hero #bookingForm input[type="number"]{
+  width:90px !important;
+  max-width:90px !important;
+  height:24px !important;
+  line-height:24px !important;
+  font-size:11.5px !important;
+  padding:0 5px !important;
+}
 </style>
 </head>
 
