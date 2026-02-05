@@ -1078,6 +1078,36 @@ body[data-theme="dark"] .about-seal img{
     height:260px;
   }
 }
+    /* =========================
+   HERO — PRICE TEXT SIZE FIX
+   Make it same size as "Ideal untuk..."
+========================= */
+
+/* Pricing note */
+.hero .season-note{
+  font-size:13px !important;     /* SAME as ideal text */
+  line-height:1.6;
+  padding:8px 12px;              /* reduce vertical height */
+}
+
+/* High season line */
+.hero .season-note .season-high{
+  font-size:13px !important;
+  font-weight:600;
+}
+
+/* Italic confirmation line */
+.hero .season-note em{
+  font-size:12.5px;
+}
+
+/* Ideal text (reference size) */
+.hero .ideal-note{
+  margin-top:6px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
 </style>
 </head>
 
@@ -1130,63 +1160,62 @@ body[data-theme="dark"] .about-seal img{
     </h3>
 
     <!-- Season pricing note -->
-    <div class="season-note">
-      <span class="lang id">
-        ℹ️💰 <strong>Harga normal:</strong> mulai dari 500K IDR / malam *<br>
-        <strong class="season-high">
-          Weekend & High season (Lebaran & liburan nasional):<br>
-          mulai dari 750K IDR / malam *
-        </strong><br>
-        <em>* Harga akhir dikonfirmasi via WhatsApp.</em>
-      </span>
+<div class="season-note">
+  <span class="lang id">
+    ℹ️💰 <strong>Harga normal:</strong> mulai dari 500K IDR / malam *<br>
+    <strong class="season-high">
+      Weekend & High season (Lebaran & liburan nasional):<br>
+      mulai dari 750K IDR / malam *
+    </strong><br>
+    <em>* Harga akhir dikonfirmasi via WhatsApp.</em>
+  </span>
 
-      <span class="lang en" style="display:none;">
-        ℹ️💰 <strong>Standard rate:</strong> Starting from 500K IDR / night*<br>
-        <strong class="season-high">
-          Weekend & High Season (Lebaran & public holidays):<br>
-          Starting from 750K IDR / night *
-        </strong><br>
-        <em>* Final price will be confirmed via WhatsApp.</em>
-      </span>
+  <span class="lang en" style="display:none;">
+    ℹ️💰 <strong>Standard rate:</strong> Starting from 500K IDR / night*<br>
+    <strong class="season-high">
+      Weekend & High Season (Lebaran & public holidays):<br>
+      Starting from 750K IDR / night *
+    </strong><br>
+    <em>* Final price will be confirmed via WhatsApp.</em>
+  </span>
 
-      <span class="lang de" style="display:none;">
-        ℹ️💰 <strong>Standardpreis:</strong> ab 500K IDR / Nacht *<br>
-        <strong class="season-high">
-          Wochenende & Hochsaison (Lebaran & Feiertage):<br>
-          ab 750K IDR / Nacht *
-        </strong><br>
-        <em>* Endpreis wird per WhatsApp bestätigt.</em>
-      </span>
+  <span class="lang de" style="display:none;">
+    ℹ️💰 <strong>Standardpreis:</strong> ab 500K IDR / Nacht *<br>
+    <strong class="season-high">
+      Wochenende & Hochsaison (Lebaran & Feiertage):<br>
+      ab 750K IDR / Nacht *
+    </strong><br>
+    <em>* Endpreis wird per WhatsApp bestätigt.</em>
+  </span>
 
-      <span class="lang it" style="display:none;">
-        ℹ️💰 <strong>Prezzo standard:</strong> da 500K IDR / notte *<br>
-        <strong class="season-high">
-          Fine Settimana & Alta stagione (Lebaran & festività):<br>
-          da 750K IDR / notte *
-        </strong><br>
-        <em>* Il prezzo finale verrà confermato via WhatsApp.</em>
-      </span>
-    </div>
+  <span class="lang it" style="display:none;">
+    ℹ️💰 <strong>Prezzo standard:</strong> da 500K IDR / notte *<br>
+    <strong class="season-high">
+      Fine Settimana & Alta stagione (Lebaran & festività):<br>
+      da 750K IDR / notte *
+    </strong><br>
+    <em>* Il prezzo finale verrà confermato via WhatsApp.</em>
+  </span>
+</div>
 
-    <p style="margin-top:6px;font-size:13px;color:var(--muted);line-height:1.6;">
-      <span class="lang id">
-        Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.
-        Maksimal <strong>6 tamu</strong>.
-      </span>
-      <span class="lang en" style="display:none;">
-        Ideal for <strong>2 adults + 2 children</strong> or <strong>3 adults</strong>.
-        Maximum <strong>6 guests</strong>.
-      </span>
-      <span class="lang de" style="display:none;">
-        Ideal für <strong>2 Erwachsene + 2 Kinder</strong> oder <strong>3 Erwachsene</strong>.
-        Maximal <strong>6 Gäste</strong>.
-      </span>
-      <span class="lang it" style="display:none;">
-        Ideale per <strong>2 adulti + 2 bambini</strong> o <strong>3 adulti</strong>.
-        Massimo <strong>6 ospiti</strong>.
-      </span>
-    </p>
-
+<p class="ideal-note">
+  <span class="lang id">
+    Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.
+    Maksimal <strong>6 tamu</strong>.
+  </span>
+  <span class="lang en" style="display:none;">
+    Ideal for <strong>2 adults + 2 children</strong> or <strong>3 adults</strong>.
+    Maximum <strong>6 guests</strong>.
+  </span>
+  <span class="lang de" style="display:none;">
+    Ideal für <strong>2 Erwachsene + 2 Kinder</strong> oder <strong>3 Erwachsene</strong>.
+    Maximal <strong>6 Gäste</strong>.
+  </span>
+  <span class="lang it" style="display:none;">
+    Ideale per <strong>2 adulti + 2 bambini</strong> o <strong>3 adulti</strong>.
+    Massimo <strong>6 ospiti</strong>.
+  </span>
+</p>
     <!-- DUAL INNER LAYOUT -->
     <div class="booking-inner-dual">
 
