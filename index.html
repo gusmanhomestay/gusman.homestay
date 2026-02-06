@@ -540,13 +540,6 @@ p.lead{
   max-width:80px;
   object-fit:contain;
 }
-    
-.btn-premium span{
-  display:block;
-  width:100%;
-  text-align:center;
-  letter-spacing:0.2px;
-}
 
 /* Reviews (left) + Amenities/Location (right) row */
 .split-row{
@@ -1081,26 +1074,40 @@ body[data-theme="dark"] .about-seal img{
 .best-price strong{
   letter-spacing:0.2px;
 }
-.wa-icon{
-  height:18px;
-  width:auto;
-  vertical-align:middle;
-  margin-right:6px;
-}
+/* ===== WhatsApp Button Layout (Desktop & Mobile) ===== */
 
-/* WhatsApp icon inside booking buttons */
-.btn-premium .wa-icon{
+/* WhatsApp icon */
+.wa-icon{
   height:28px;
+  width:auto;
   margin-right:10px;
 }
 
-/* Align icon with two-line text */
+/* Icon + text row */
 .btn-premium .btn-title{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
 
+/* Two-line text stack */
+.btn-premium .btn-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.2;
+}
+
+/* Subtitle line */
+.btn-premium .btn-text em{
+  font-size:0.85em;
+  opacity:0.9;
+  font-style:italic;
+}
+
+/* Bigger WhatsApp icon in Contact section only */
+.contact .wa-icon{
+  height:20px;
+}
 /* Bigger WhatsApp icon in Contact section only */
 .contact .wa-icon{
   height:20px;
