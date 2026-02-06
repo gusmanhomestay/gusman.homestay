@@ -1087,6 +1087,26 @@ body[data-theme="dark"] .about-seal img{
 .best-price strong{
   letter-spacing:0.2px;
 }
+    /* Booking info (OTA thumbnails + text) */
+.booking-info{
+  margin-top:8px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+  text-align:center;
+}
+
+.ota-icons{
+  display:inline-flex;
+  gap:8px;
+  vertical-align:middle;
+}
+
+.ota-icons img{
+  height:20px;
+  width:auto;
+  vertical-align:middle;
+}
 </style>
 </head>
 
@@ -1296,10 +1316,10 @@ body[data-theme="dark"] .about-seal img{
     <span class="btn-title">🛏️ Prenota su Airbnb *</span>
     <span class="btn-sub"><em>* (verifica disponibilità e prezzo)</em></span>
   </span>
-</a>
-<p style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6;">
+</a>  <!-- Airbnb link ends correctly -->
+</form>  <!-- Form ends correctly -->
 
-<p class="booking-info">
+<section class="booking-info">
 
   <!-- Indonesian -->
   <span class="lang id">
@@ -1390,10 +1410,7 @@ body[data-theme="dark"] .about-seal img{
     Per il miglior prezzo, prenota direttamente tramite il pulsante WhatsApp qui.<br>
     <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
   </span>
-
-</p>
-      </form>
-</div>
+</section>  
     <!-- Contact -->
     <div class="card">
       <h3>
@@ -1436,9 +1453,7 @@ body[data-theme="dark"] .about-seal img{
           🕘 Orari di risposta: 07:00 – 16:00 CET
         </span>
       </p>
-    </div>
-
-  </div><!-- end hero-left -->
+</div> <!-- closes .card -->
 
   <!-- Middle Column -->
   <div class="hero-middle">
