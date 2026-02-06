@@ -1036,11 +1036,13 @@ body[data-theme="dark"] .about-seal img{
 }
 
 /* Calculator + calendar layout */
+/* === Balanced calculator + calendar (ALL languages) === */
 .booking-inner-dual{
-  display: grid;
-  grid-template-columns: max-content 160px;
-  gap: 8px;                 /* tight, clean gap */
-  align-items: start;
+  display:grid;
+  grid-template-columns: minmax(320px, 420px) 160px;
+  gap:16px;
+  align-items:start;
+  justify-content:center; /* 🔑 visual balance */
 }
 
 /* Calculator */
