@@ -397,6 +397,11 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   .container{
     padding-bottom:calc(190px + env(safe-area-inset-bottom));
   }
+
+  /* Small spacing polish for OTA icons on mobile */
+  .ota-icons{
+    margin-bottom: 6px;
+  }
 }
 /* =========================
    HEADER FADE-IN (SLOW & ELEGANT)
@@ -1257,7 +1262,7 @@ body[data-theme="dark"] .about-seal img{
 </div>
 <button
   type="button"
-  class="btn btn-premium booking-width"
+  class="btn btn-premium booking-width wa-normal"
   onclick="bookWhatsApp()"
   data-track="whatsapp"
   data-location="booking_section">
