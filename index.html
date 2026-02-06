@@ -345,7 +345,7 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
 }
 /* Sticky container (mobile only) */
 .wa-sticky{
-  display:none;           /* hidden by default (desktop) */
+  display:none;
   position:fixed;
   left:12px;
   right:12px;
@@ -354,7 +354,7 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   justify-content:center;
 }
 
-/* Sticky button sizing (mobile) */
+/* Sticky button base */
 .wa-sticky .btn-premium{
   width:100%;
   max-width:360px;
@@ -364,19 +364,47 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   border-radius:16px;
 }
 
-/* Mobile behavior: show sticky, hide normal, add bottom space */
+/* =========================
+   Sticky WhatsApp (mobile)
+========================= */
 @media (max-width:768px){
-  .wa-sticky{ display:flex; }
-  .wa-normal{ display:none !important; }
 
-  /* IMPORTANT: add space so sticky never covers content */
+  .wa-sticky{
+    display:flex;
+    pointer-events:auto;
+  }
+
+  .wa-normal{
+    display:none !important;
+  }
+
+  /* perfect centering */
+  .wa-sticky .btn-premium{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .wa-sticky .btn-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+  }
+
+  .wa-sticky .wa-icon{
+    height:26px;
+    margin:0;
+  }
+
+  /* IMPORTANT: space so sticky never covers content */
   .container{
     padding-bottom:calc(190px + env(safe-area-inset-bottom));
   }
 
-  /* Small spacing polish for OTA icons on mobile */
   .ota-icons{
-    margin-bottom: 6px;
+    margin-bottom:6px;
   }
 }
 /* =========================
@@ -718,23 +746,29 @@ p.lead{
   font-size:14px;
   box-shadow:0 8px 18px rgba(0,0,0,0.25);
 }
-/* =========================
-   Map button – mobile sizing
-========================= */
-@media (max-width:768px){
-  .map-btn{
-    font-size:12.5px;
-    padding:8px 12px;
-    border-radius:999px;
-  }
+.map-btn{
+  position:absolute;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--brand);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.25);
+}
+/* Map button text switching (desktop vs mobile) */
+.map-text-mobile{
+  display:none;
 }
 
-@media (max-width:380px){
-  .map-btn{
-    font-size:12px;
-    bottom:10px;
-  }
+@media (max-width:768px){
+  .map-text-desktop{ display:none; }
+  .map-text-mobile{ display:inline; }
 }
+
 /* Hover (desktop only, safe) */
 .map-preview:hover .map-btn{
   background:var(--brand-dark);
@@ -2024,18 +2058,47 @@ body[data-theme="dark"] .about-seal img{
     <img src="images/map-preview.webp" alt="Gusman Homestay location map preview" loading="lazy" decoding="async">
     
   <div class="map-btn">
+
+  <!-- Indonesian -->
   <span class="lang id">
-    Buka di Google Maps atau scan QR Code di sebelah kiri
+    <span class="map-text-desktop">
+      Buka di Google Maps atau scan QR Code di sebelah kiri
+    </span>
+    <span class="map-text-mobile">
+      Buka di Google Maps
+    </span>
   </span>
+
+  <!-- English -->
   <span class="lang en" style="display:none;">
-    Open in Google Maps or scan the QR code on the left
+    <span class="map-text-desktop">
+      Open in Google Maps or scan the QR code on the left
+    </span>
+    <span class="map-text-mobile">
+      Open in Google Maps
+    </span>
   </span>
+
+  <!-- German -->
   <span class="lang de" style="display:none;">
-    In Google Maps öffnen oder den QR-Code links scannen
+    <span class="map-text-desktop">
+      In Google Maps öffnen oder QR-Code links scannen
+    </span>
+    <span class="map-text-mobile">
+      In Google Maps öffnen
+    </span>
   </span>
+
+  <!-- Italian -->
   <span class="lang it" style="display:none;">
-    Apri su Google Maps o scansiona il codice QR a sinistra
+    <span class="map-text-desktop">
+      Apri su Google Maps o scansiona il codice QR a sinistra
+    </span>
+    <span class="map-text-mobile">
+      Apri in Google Maps
+    </span>
   </span>
+
 </div>
 
   </a>
