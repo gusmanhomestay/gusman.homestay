@@ -1105,40 +1105,47 @@ body[data-theme="dark"] .about-seal img{
 .best-price strong{
   letter-spacing:0.2px;
 }
-    .wa-icon{
+.wa-icon{
   height:18px;
   width:auto;
   vertical-align:middle;
   margin-right:6px;
 }
-    /* WhatsApp icon inside booking buttons */
+
+/* WhatsApp icon inside booking buttons */
 .btn-premium .wa-icon{
-  height:28px;          /* main size */
+  height:28px;
   margin-right:10px;
-  vertical-align:middle;
 }
-    /* Align icon with two-line text */
+
+/* Align icon with two-line text */
 .btn-premium .btn-title{
   display:flex;
   align-items:center;
 }
 
-      /* Bigger WhatsApp icon in Contact section only */
-  .contact .wa-icon{
-    height:20px;
-  }
+/* Center icon + text block inside button */
+.btn-premium{
+  display:flex;
+  justify-content:center;
+}
 
-  /* Mobile behavior */
-  @media (max-width:768px){
-    .wa-sticky{ display:flex; }
-    .wa-normal{ display:none !important; }
-    .container{
-      padding-bottom:calc(190px + env(safe-area-inset-bottom));
-    }
-    .ota-icons{
-      margin-bottom: 6px;
-    }
+/* Bigger WhatsApp icon in Contact section only */
+.contact .wa-icon{
+  height:20px;
+}
+
+/* Mobile behavior */
+@media (max-width:768px){
+  .wa-sticky{ display:flex; }
+  .wa-normal{ display:none !important; }
+  .container{
+    padding-bottom:calc(190px + env(safe-area-inset-bottom));
   }
+  .ota-icons{
+    margin-bottom: 6px;
+  }
+}
 </style>
 </head>
 
