@@ -165,86 +165,176 @@ body[data-theme="dark"] .container:before{
   background:radial-gradient(closest-side, rgba(69,183,178,0.18), transparent 70%);
 }
 
-/* =====================================================
-   HERO BOOKING — FINAL CLEAN COMPACT (WORKING)
-===================================================== */
-
-/* Compact hero card */
-.hero .card{
-  padding:14px;
-}
-
 /* =========================
-   BOOKING CALCULATOR (VERTICAL – NOT HORIZONTAL)
+   BOOKING FORM "HOTEL" UI
 ========================= */
-.hero #bookingForm{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.hero #bookingForm label{
+#bookingForm label{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:10px;          /* ✅ smaller gap */
+  margin:8px 0;      /* ✅ smaller spacing */
+  font-size:15px;    /* ✅ smaller label text */
+}
+
+/* ✅ Force compact inputs (works on iOS/Safari too) */
+#bookingForm input[type="date"],
+#bookingForm input[type="number"]{
+  -webkit-appearance: none;
+  appearance: none;
+
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px;
+  font-size: 13px;
+
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.85);
+  color: var(--text);
+}
+
+#bookingForm input[type="date"],
+#bookingForm input[type="number"]{
+  -webkit-appearance:none;
+  appearance:none;
+
+  height:36px !important;
+  line-height:36px !important;
+  padding:0 10px !important;
+  font-size:13px !important;
+
+  border-radius:10px;
+}
+
+/* ✅ Even more compact on small phones */
+@media (max-width:480px){
+  #bookingForm label{
+    font-size:14px;
+    margin:6px 0;
+  }
+
+  #bookingForm input[type="date"],
+  #bookingForm input[type="number"]{
+    width:140px;
+    padding:7px 9px;
+    font-size:13px;
+  }
+}
+  /* ===== Season pricing note ===== */
+.season-note{
+  margin:10px 0 14px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:var(--brand-soft);
   font-size:13px;
-  margin:0;
+  line-height:1.6;
+  color:var(--text);
+}
+body[data-theme="dark"] .season-note{
+  background:rgba(69,183,178,0.12);
+}
+ /* High season line — slightly smaller to fit nicely */
+.season-high{
+  display:block;
+  font-size:12.5px;      /* smaller than normal */
+  font-weight:700;
+  white-space:nowrap;    /* keep it one line */
 }
 
-/* Inputs — SMALL but NOT stretched */
-.hero #bookingForm input[type="date"],
-.hero #bookingForm input[type="number"]{
-  width:120px;
-  height:28px;
-  font-size:12px;
-  padding:0 6px;
-  border-radius:8px;
+/* Extra safety for very small phones */
+@media (max-width: 380px){
+  .season-high{
+    font-size:12px;
+    white-space:normal;  /* allow wrap if screen is extremely small */
+  }
+} 
+
+  /* ✅ Total Price highlight box */
+
+#bookingForm input[type="date"],
+#bookingForm input[type="number"],
+#bookingForm input[type="tel"]{
+  width:160px;
+  max-width:55%;
+  padding:8px 10px;
+  border-radius:10px;
+  font-size:14px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.85);
+  color:var(--text);
 }
 
-/* =========================
-   TOTAL PRICE
-========================= */
-.hero .total-price-box{
-  padding:12px 16px;          /* SAME as buttons */
-  margin:14px auto;
-  border-radius:14px;
-  text-align:center;
+body[data-theme="dark"] #bookingForm input[type="date"],
+body[data-theme="dark"] #bookingForm input[type="number"],
+body[data-theme="dark"] #bookingForm input[type="tel"]{
+  background:rgba(16,24,36,0.85);
 }
 
-.hero .total-price-label{
-  font-size:15px;
-  line-height:1.25;
+#bookingForm input[type="date"]:focus,
+#bookingForm input[type="number"]:focus,
+#bookingForm input[type="tel"]:focus{
+  border-color:rgba(47,143,139,0.65);
+  transform:translateY(-1px);
+}
+    
+/* Two-line language layout */
+.btn-premium .lang{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:100%;
 }
 
-.hero .total-price-value{
-  font-size:15px;
+/* Main line */
+.btn-premium .btn-title{
+  font-size:17px;   /* was 15px */
   font-weight:700;
 }
-    /* Match pricing text size with OTA note */
-.season-note,
-.ideal-note{
-  font-size:12px;
-  line-height:1.6;
-  color:var(--muted);
+
+/* Sub line (italic) */
+.btn-premium .btn-sub{
+  font-size:13px; /* was 13px */
+  font-weight:500;
+  opacity:0.9;
+  font-style:italic;
+}
+  .btn-premium .lang{
+  gap:1px; /* small vertical spacing */
+}
+    /* =========================
+   Booking layout consistency
+========================= */
+.booking-width{
+  width:100%;
+  max-width:420px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.total-price-box{
+  width:100%;
+  max-width:420px;     /* SAME as buttons */
+  margin:0 auto 12px;  /* SAME spacing */
+  padding:12px 16px;   /* SAME padding */
+  border-radius:14px;  /* SAME radius */
+  background:var(--brand-soft);
+  text-align:center;
+}
+.total-price-label{
+  font-size:13px;      /* same as button sub */
+  font-weight:700;
+  line-height:1.1;
+}
+
+.total-price-value{
+  font-size:17px;      /* same as button title */
+  font-weight:800;
+  line-height:1.15;
 }
 /* =========================
    WhatsApp buttons (CLEAN)
 ========================= */
-/* === Unified width for price box & buttons === */
-.booking-width{
-  width:100%;
-  max-width:420px;      /* same as Airbnb */
-  margin-left:auto;
-  margin-right:auto;
-}
-/* === Unified font size for buttons & total price === */
-.btn-premium,
-.airbnb-btn{
-  font-size:15px;
-  line-height:1.25;
-  text-align:center;
-  justify-content:center;
-}
+
 /* Desktop/Tablet button inside booking card */
 #bookingForm .btn-premium.wa-normal{
   width:100%;
@@ -263,21 +353,10 @@ body[data-theme="dark"] .container:before{
   margin-bottom:12px;
 }
 
-/* Airbnb button – centered & two-line layout */
 .airbnb-btn{
   padding:12px 16px;
   border-radius:14px;
   margin-top:12px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-
-  font-size:15px;
-  line-height:1.25;
-  gap:2px;
 }
 
 /* text tightening */
@@ -287,19 +366,6 @@ body[data-theme="dark"] .container:before{
 
 .btn-premium .btn-sub{
   line-height:1.1;
-}
-    /* === WhatsApp button = Airbnb button === */
-button.btn-premium.booking-width{
-  padding:12px 16px;
-  border-radius:14px;
-  font-size:15px;
-  line-height:1.25;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
 }
 /* Sticky container (mobile only) */
 .wa-sticky{
@@ -394,9 +460,16 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
 /* Top Hero layout */
 .hero{
   display:flex;
-  gap:20px;
+  gap:28px;
   align-items:flex-start;
   flex-wrap:nowrap; /* ✅ IMPORTANT: keep side-by-side on desktop */
+}
+.hero-left{
+  flex:0 0 420px;   /* left column fixed width */
+  min-width:420px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
 .hero-middle{
@@ -405,21 +478,11 @@ header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bot
 }
 @media (max-width: 992px){
   .hero{ flex-wrap:wrap; }
+  .hero-left{ flex:1 1 100%; min-width:0; }
   .hero-middle{ flex:1 1 100%; }
 }
 /* Cards */
-/* Default cards (outside hero) */
-.card,.hero-card{
-  background:var(--card);
-  padding:16px;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-}
-
-/* Compact cards INSIDE hero only */
-.hero .card{
-  padding:14px 14px;
-}
+.card,.hero-card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow)}
 h1{margin:0;font-size:28px}
 
 p.lead{
@@ -702,7 +765,7 @@ body:not([data-theme="dark"]) .site-footer{
 /* Responsive */
 @media (max-width:1100px){
   .hero{flex-direction:column}
-  .hero-middle{flex:1 1 100%}
+  .hero-left,.hero-middle{flex:1 1 100%}
   .gallery{grid-template-columns:repeat(2,1fr)}
   .split-row{flex-direction:column}
   .split-left,.split-right{flex:1 1 100%}
@@ -1024,42 +1087,6 @@ body[data-theme="dark"] .about-seal img{
 .best-price strong{
   letter-spacing:0.2px;
 }
-    /* =========================
-   BOOKING LAYOUT (FINAL)
-========================= */
-
-.booking-inner{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-/* Top row: text + calendar */
-.booking-top{
-  display:grid;
-  grid-template-columns: 1fr 260px; /* text | calendar */
-  gap:20px;
-  align-items:start;
-}
-
-/* Calendar iframe */
-.booking-calendar iframe{
-  width:100%;
-  height:320px;
-  border-radius:14px;
-  border:0;
-}
-
-/* Mobile */
-@media (max-width:768px){
-  .booking-top{
-    grid-template-columns:1fr;
-  }
-
-  .booking-calendar iframe{
-    height:240px;
-  }
-}
 </style>
 </head>
 
@@ -1102,241 +1129,272 @@ body[data-theme="dark"] .about-seal img{
 <!-- ===================== TOP HERO ===================== -->
 <section class="hero">
 
-  <!-- LEFT COLUMN -->
+  <!-- Left Column -->
   <div class="hero-left">
+
+    <!-- Price & Book -->
     <div class="card">
+      <h3>
+        <span class="lang id">Harga & Pemesanan</span>
+        <span class="lang en" style="display:none;">Price & Book</span>
+        <span class="lang de" style="display:none;">Preis & Buchung</span>
+        <span class="lang it" style="display:none;">Prezzi & Prenotazioni</span>
+      </h3>
 
-    <h3>
-      <span class="lang id">Harga & Pemesanan</span>
-      <span class="lang en" style="display:none;">Price & Book</span>
-      <span class="lang de" style="display:none;">Preis & Buchung</span>
-      <span class="lang it" style="display:none;">Prezzi & Prenotazioni</span>
-    </h3>
-
-    <!-- Season pricing note -->
+     <!-- Season pricing note -->
 <div class="season-note">
   <span class="lang id">
-    ℹ️💰 <strong>Harga normal:</strong> mulai dari 500K IDR / malam *<br>
-    <strong class="season-high">
-      Weekend & High season (Lebaran & liburan nasional):<br>
-      mulai dari 750K IDR / malam *
-    </strong><br>
+  ℹ️💰 <strong>Harga normal:</strong> mulai dari 500K IDR / malam *<br>
+
+  <strong class="season-high">
+    Weekend & High season (Lebaran & liburan nasional):<br>
+    mulai dari 750K IDR / malam *
+  </strong>
+
     <em>* Harga akhir dikonfirmasi via WhatsApp.</em>
   </span>
 
   <span class="lang en" style="display:none;">
     ℹ️💰 <strong>Standard rate:</strong> Starting from 500K IDR / night*<br>
+
     <strong class="season-high">
       Weekend & High Season (Lebaran & public holidays):<br>
       Starting from 750K IDR / night *
-    </strong><br>
+    </strong>
+
     <em>* Final price will be confirmed via WhatsApp.</em>
   </span>
 
   <span class="lang de" style="display:none;">
     ℹ️💰 <strong>Standardpreis:</strong> ab 500K IDR / Nacht *<br>
+
     <strong class="season-high">
       Wochenende & Hochsaison (Lebaran & Feiertage):<br>
       ab 750K IDR / Nacht *
-    </strong><br>
+    </strong>
+
     <em>* Endpreis wird per WhatsApp bestätigt.</em>
   </span>
 
   <span class="lang it" style="display:none;">
     ℹ️💰 <strong>Prezzo standard:</strong> da 500K IDR / notte *<br>
+
     <strong class="season-high">
       Fine Settimana & Alta stagione (Lebaran & festività):<br>
       da 750K IDR / notte *
-    </strong><br>
+    </strong>
+
     <em>* Il prezzo finale verrà confermato via WhatsApp.</em>
   </span>
 </div>
+         <p style="margin-top:6px;font-size:13px;color:var(--muted);line-height:1.6;">
+          <span class="lang id">
+            Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.
+            Maksimal <strong>6 tamu</strong> (sofa di ruang tamu dapat digunakan sebagai tempat tidur tambahan).
+          </span>
+          <span class="lang en" style="display:none;">
+            Ideal for <strong>2 adults + 2 children</strong> or <strong>3 adults</strong>.
+            Maximum <strong>6 guests</strong> (living room sofas can be used as extra sleeping space).
+          </span>
+          <span class="lang de" style="display:none;">
+            Ideal für <strong>2 Erwachsene + 2 Kinder</strong> oder <strong>3 Erwachsene</strong>.
+            Maximal <strong>6 Gäste</strong> (Sofas im Wohnzimmer können als zusätzliche Schlafplätze genutzt werden).
+          </span>
+          <span class="lang it" style="display:none;">
+            Ideale per <strong>2 adulti + 2 bambini</strong> o <strong>3 adulti</strong>.
+            Massimo <strong>6 ospiti</strong> (i divani del soggiorno possono essere utilizzati come posti letto aggiuntivi).
+          </span>
+        </p>
+      <form id="bookingForm">
+  <label>
+    <span class="lang id">Check-in</span>
+    <span class="lang en" style="display:none;">Check-in</span>
+    <span class="lang de" style="display:none;">Check-in</span>
+    <span class="lang it" style="display:none;">Check-in</span>
+    <input type="date" id="checkin" required>
+  </label><br>
 
-<p class="ideal-note">
+  <label>
+    <span class="lang id">Check-out</span>
+    <span class="lang en" style="display:none;">Check-out</span>
+    <span class="lang de" style="display:none;">Check-out</span>
+    <span class="lang it" style="display:none;">Check-out</span>
+    <input type="date" id="checkout" required>
+  </label><br>
+
+  <label>
+    <span class="lang id">Dewasa</span>
+    <span class="lang en" style="display:none;">Adults</span>
+    <span class="lang de" style="display:none;">Erwachsene</span>
+    <span class="lang it" style="display:none;">Adulti</span>
+    <input type="number" id="adults" min="1" max="6" value="0" required inputmode="numeric">
+  </label><br>
+
+  <label>
+    <span class="lang id">Anak-anak (&lt;12)</span>
+    <span class="lang en" style="display:none;">Children (&lt;12)</span>
+    <span class="lang de" style="display:none;">Kinder (&lt;12)</span>
+    <span class="lang it" style="display:none;">Bambini (&lt;12)</span>
+    <input type="number" id="children" min="0" max="6" value="0" required inputmode="numeric">
+  </label><br>
+
+  <div class="total-price-box booking-width">
+  <div class="total-price-label">Total Harga</div>
+  <div class="total-price-value" id="totalPrice">500K IDR</div>
+</div>
+<button
+  type="button"
+  class="btn btn-premium booking-width"
+  onclick="bookWhatsApp()"
+  data-track="whatsapp"
+  data-location="booking_section">
+  
   <span class="lang id">
-    Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.<br>
-    Maksimal <strong>6 tamu</strong>.
+    <span class="btn-title">📱 Pesan via WhatsApp *</span>
+    <span class="btn-sub"><em>* (kami konfirmasi dulu)</em></span>
   </span>
 
   <span class="lang en" style="display:none;">
-    Ideal for <strong>2 adults + 2 children</strong> or <strong>3 adults</strong>.<br>
-    Maximum <strong>6 guests</strong>.
+    <span class="btn-title">📱 Book via WhatsApp *</span>
+    <span class="btn-sub"><em>* (we confirm first)</em></span>
   </span>
 
   <span class="lang de" style="display:none;">
-    Ideal für <strong>2 Erwachsene + 2 Kinder</strong> oder <strong>3 Erwachsene</strong>.<br>
-    Maximal <strong>6 Gäste</strong>.
+    <span class="btn-title">📱 Über WhatsApp buchen *</span>
+    <span class="btn-sub"><em>* (Bestätigung erforderlich)</em></span>
   </span>
 
   <span class="lang it" style="display:none;">
-    Ideale per <strong>2 adulti + 2 bambini</strong> o <strong>3 adulti</strong>.<br>
-    Massimo <strong>6 ospiti</strong>.
+    <span class="btn-title">📱 Prenota via WhatsApp *</span>
+    <span class="btn-sub"><em>* (confermiamo prima)</em></span>
   </span>
-</p>
-<!-- BOOKING INNER WRAPPER -->
-<div class="booking-inner">
-
-  <!-- TOP ROW: TEXT + CALENDAR -->
-  <div class="booking-top">
-
-    <!-- LEFT: PRICE / INFO TEXT -->
-    <div class="booking-text">
-
-      <p>
-        <span class="lang id">
-          ℹ️💰 <strong>Harga normal:</strong> mulai dari 500K IDR / malam *<br>
-          <strong>Weekend & High season</strong> (Lebaran & liburan nasional):<br>
-          mulai dari 750K IDR / malam *<br>
-          <em>* Harga akhir dikonfirmasi via WhatsApp.</em><br><br>
-          Ideal untuk <strong>2 dewasa + 2 anak</strong> atau <strong>3 dewasa</strong>.<br>
-          Maksimal <strong>6 tamu</strong>.
-        </span>
-
-        <span class="lang en" style="display:none;">
-          ℹ️💰 <strong>Standard rate:</strong> starting from 500K IDR / night *<br>
-          <strong>Weekend & High Season</strong> (Lebaran & public holidays):<br>
-          starting from 750K IDR / night *<br>
-          <em>* Final price will be confirmed via WhatsApp.</em><br><br>
-          Ideal for <strong>2 adults + 2 children</strong> or <strong>3 adults</strong>.<br>
-          Maximum <strong>6 guests</strong>.
-        </span>
-
-        <span class="lang de" style="display:none;">
-          ℹ️💰 <strong>Standardpreis:</strong> ab 500K IDR / Nacht *<br>
-          <strong>Wochenenden & Hochsaison</strong>:<br>
-          ab 750K IDR / Nacht *<br>
-          <em>* Endpreis wird per WhatsApp bestätigt.</em><br><br>
-          Ideal für <strong>2 Erwachsene + 2 Kinder</strong><br>
-          oder <strong>3 Erwachsene</strong>.<br>
-          Maximal <strong>6 Gäste</strong>.
-        </span>
-
-        <span class="lang it" style="display:none;">
-          ℹ️💰 <strong>Tariffa standard:</strong> da 500K IDR / notte *<br>
-          <strong>Weekend & alta stagione</strong>:<br>
-          da 750K IDR / notte *<br>
-          <em>* Il prezzo finale sarà confermato via WhatsApp.</em><br><br>
-          Ideale per <strong>2 adulti + 2 bambini</strong><br>
-          o <strong>3 adulti</strong>.<br>
-          Massimo <strong>6 ospiti</strong>.
-        </span>
-      </p>
-
-    </div>
-
-    <!-- RIGHT: GOOGLE CALENDAR -->
-    <div class="booking-calendar booking-inner-right">
-      <iframe
-        src="https://calendar.google.com/calendar/embed?wkst=2&ctz=Asia%2FJakarta&showTitle=0&showNav=0&showPrint=0&showCalendars=0&showTz=0&hl=en"
-        loading="lazy"
-        scrolling="no">
-      </iframe>
-
-      <p class="availability-note">
-        <span class="lang id">* Kalender hanya untuk cek ketersediaan</span>
-        <span class="lang en" style="display:none;">* Availability only</span>
-        <span class="lang de" style="display:none;">* Nur zur Anzeige</span>
-        <span class="lang it" style="display:none;">* Solo consultazione</span>
-      </p>
-    </div>
-
-  </div>
-
-  <!-- BOTTOM ROW: CALCULATOR -->
-  <div class="booking-calculator booking-inner-left">
-
-    <!-- TOTAL PRICE -->
-    <div class="total-price-box booking-width">
-      <div class="total-price-label">Total Harga</div>
-      <div class="total-price-value" id="totalPrice">500K IDR</div>
-    </div>
-
-    <!-- WHATSAPP BUTTON (UNCHANGED, 4 LANGUAGES) -->
-    <button
-      type="button"
-      class="btn btn-premium booking-width"
-      onclick="bookWhatsApp()"
-      data-track="whatsapp"
-      data-location="booking_section">
-
-      <span class="lang id">
-        <span class="btn-title">📱 Pesan via WhatsApp *</span>
-        <span class="btn-sub"><em>* (kami konfirmasi dulu)</em></span>
-      </span>
-
-      <span class="lang en" style="display:none;">
-        <span class="btn-title">📱 Book via WhatsApp *</span>
-        <span class="btn-sub"><em>* (we confirm first)</em></span>
-      </span>
-
-      <span class="lang de" style="display:none;">
-        <span class="btn-title">📱 Über WhatsApp buchen *</span>
-        <span class="btn-sub"><em>* (Bestätigung erforderlich)</em></span>
-      </span>
-
-      <span class="lang it" style="display:none;">
-        <span class="btn-title">📱 Prenota via WhatsApp *</span>
-        <span class="btn-sub"><em>* (confermiamo prima)</em></span>
-      </span>
-    </button>
-<!-- AIRBNB BUTTON (4 LANGUAGES) -->
+</button>
 <a class="btn btn-premium airbnb-btn booking-width"
    href="https://www.airbnb.com/h/gusmanhomestay"
    target="_blank"
    rel="noopener"
+   data-track="ota"
+   data-ota="airbnb"
+   data-location="booking_section"
    style="background:#ff5a5f;">
-  
   <span class="lang id">
     <span class="btn-title">🛏️ Pesan via Airbnb *</span>
-    <span class="btn-sub">(cek ketersediaan & harga)</span>
+    <span class="btn-sub"><em>* (cek ketersediaan & harga)</em></span>
   </span>
 
   <span class="lang en" style="display:none;">
     <span class="btn-title">🛏️ Book on Airbnb *</span>
-    <span class="btn-sub">(check availability & price)</span>
+    <span class="btn-sub"><em>* (check availability & price)</em></span>
   </span>
 
   <span class="lang de" style="display:none;">
     <span class="btn-title">🛏️ Über Airbnb buchen *</span>
-    <span class="btn-sub">(Verfügbarkeit & Preis)</span>
+    <span class="btn-sub"><em>* (Verfügbarkeit & Preis prüfen)</em></span>
   </span>
 
   <span class="lang it" style="display:none;">
     <span class="btn-title">🛏️ Prenota su Airbnb *</span>
-    <span class="btn-sub">(disponibilità e prezzo)</span>
+    <span class="btn-sub"><em>* (verifica disponibilità e prezzo)</em></span>
+  </span>
+</a>
+<p style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6;">
+
+  <!-- Indonesian -->
+  <span class="lang id">
+    Reservasi juga tersedia via
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
+    Namun untuk harga terbaik untuk booking langsung melalui tombol WhatsApp di sini.<br>
+    <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
   </span>
 
-</a>
+  <!-- English -->
+  <span class="lang en" style="display:none;">
+    Booking also available via
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
+    For the best price when booking directly via the WhatsApp button here.<br>
+    <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
+  </span>
 
-    <!-- OTA TEXT (4 LANGUAGES) -->
-    <p style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6;">
-      <span class="lang id">
-        Reservasi juga tersedia via Booking.com & Traveloka.<br>
-        Namun untuk harga terbaik booking langsung melalui WhatsApp.<br>
-        <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
-      </span>
+  <!-- German -->
+  <span class="lang de" style="display:none;">
+    Buchung auch verfügbar über
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
+    Für den besten Preis direkt über den WhatsApp-Button buchen.<br>
+    <span class="best-price">🔒 <strong>Bestpreis-Garantie</strong></span>
+  </span>
 
-      <span class="lang en" style="display:none;">
-        Booking is also available via Booking.com & Traveloka.<br>
-        For the best price, book directly via WhatsApp.<br>
-        <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
-      </span>
+  <!-- Italian -->
+  <span class="lang it" style="display:none;">
+    Prenotazione disponibile anche tramite
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
+    Per il miglior prezzo prenota direttamente tramite il pulsante WhatsApp qui.<br>
+    <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
+  </span>
 
-      <span class="lang de" style="display:none;">
-        Buchung auch verfügbar über Booking.com & Traveloka.<br>
-        Für den besten Preis direkt über WhatsApp buchen.<br>
-        <span class="best-price">🔒 <strong>Bestpreis-Garantie</strong></span>
-      </span>
+</p>
 
-      <span class="lang it" style="display:none;">
-        Prenotazione disponibile anche tramite Booking.com & Traveloka.<br>
-        Per il miglior prezzo prenota direttamente tramite WhatsApp.<br>
-        <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
-      </span>
-       </p>
-    </div> <!-- end card -->
-  
-   <!-- CONTACT CARD (NOW BELOW BOOKING) -->
+  <span class="lang it" style="display:none;">
+    Prenotazione disponibile anche tramite
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank" rel="noopener">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank" rel="noopener">Traveloka</a>.<br>
+    Per il miglior prezzo prenota direttamente tramite il pulsante WhatsApp qui.<br>
+    <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
+  </span>
+</p>
+      </form>
+</div>
+    <!-- Contact -->
     <div class="card">
       <h3>
         <span class="lang id">Kontak</span>
@@ -1378,11 +1436,11 @@ body[data-theme="dark"] .about-seal img{
           🕘 Orari di risposta: 07:00 – 16:00 CET
         </span>
       </p>
-    </div><!-- end contact card -->
+    </div>
 
   </div><!-- end hero-left -->
 
-  <!-- RIGHT / MIDDLE COLUMN (Hero title + gallery) -->
+  <!-- Middle Column -->
   <div class="hero-middle">
 
     <div class="hero-card">
@@ -1423,7 +1481,9 @@ body[data-theme="dark"] .about-seal img{
   <img src="images/20-exterior.jpg" alt="Gusman Homestay Garage Gate" width="400" height="300" loading="eager">
   <img src="images/21-garage.jpg" alt="Gusman Homestay Garaga" width="400" height="300" loading="eager">
 </div>
-    </div>
+
+    </div><!-- end hero-card -->
+
   </div><!-- end hero-middle -->
 
 </section><!-- end hero -->
