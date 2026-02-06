@@ -278,30 +278,6 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   transform:translateY(-1px);
 }
     
-/* Two-line language layout */
-.btn-premium .lang{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  width:100%;
-}
-
-/* Main line */
-.btn-premium .btn-title{
-  font-size:17px;   /* was 15px */
-  font-weight:700;
-}
-
-/* Sub line (italic) */
-.btn-premium .btn-sub{
-  font-size:13px; /* was 13px */
-  font-weight:500;
-  opacity:0.9;
-  font-style:italic;
-}
-  .btn-premium .lang{
-  gap:1px; /* small vertical spacing */
-}
     /* =========================
    Booking layout consistency
 ========================= */
@@ -1122,12 +1098,7 @@ body[data-theme="dark"] .about-seal img{
 .btn-premium .btn-title{
   display:flex;
   align-items:center;
-}
-
-/* Center icon + text block inside button */
-.btn-premium{
-  display:flex;
-  justify-content:center;
+  gap:10px;
 }
 
 /* Bigger WhatsApp icon in Contact section only */
@@ -1309,36 +1280,44 @@ body[data-theme="dark"] .about-seal img{
   data-location="booking_section">
   
   <span class="lang id">
-    <span class="btn-title">
-  <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-  Pesan via WhatsApp *
-</span>
-    <span class="btn-sub"><em>* (kami konfirmasi dulu)</em></span>
+  <span class="btn-title">
+    <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+    <span class="btn-text">
+      <strong>Pesan via WhatsApp *</strong>
+      <em>(kami konfirmasi dulu)</em>
+    </span>
   </span>
+</span>
 
-  <span class="lang en" style="display:none;">
-    <span class="btn-title">
-  <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-  Book via WhatsApp *
-</span>
-    <span class="btn-sub"><em>* (we confirm first)</em></span>
+  <span class="lang id">
+  <span class="btn-title">
+    <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+    <span class="btn-text">
+      <strong>Book via Whatsapp *</strong>
+      <em>(We'll confirm first)</em>
+    </span>
   </span>
+</span>
 
-  <span class="lang de" style="display:none;">
-    <span class="btn-title">
-  <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-  Über WhatsApp buchen *
-</span>
-    <span class="btn-sub"><em>* (Bestätigung erforderlich)</em></span>
+  <span class="lang id">
+  <span class="btn-title">
+    <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+    <span class="btn-text">
+      <strong>Über WhatsApp buchen *</strong>
+      <em>(Bestätigung Erfordlich)</em>
+    </span>
   </span>
+</span>
 
-  <span class="lang it" style="display:none;">
-    <span class="btn-title">
-  <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-  Prenota via WhatsApp *
-</span>
-    <span class="btn-sub"><em>* (confermiamo prima)</em></span>
+<span class="lang id">
+  <span class="btn-title">
+    <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+    <span class="btn-text">
+      <strong>Prenotare via WhatsApp *</strong>
+      <em>(Confermiamo prima)</em>
+    </span>
   </span>
+</span>
 </button>
 <p style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6;">
   <!-- Indonesian -->
