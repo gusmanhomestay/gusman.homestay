@@ -746,19 +746,6 @@ p.lead{
   font-size:14px;
   box-shadow:0 8px 18px rgba(0,0,0,0.25);
 }
-.map-btn{
-  position:absolute;
-  bottom:14px;
-  left:50%;
-  transform:translateX(-50%);
-  background:var(--brand);
-  color:#fff;
-  padding:10px 14px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:14px;
-  box-shadow:0 8px 18px rgba(0,0,0,0.25);
-}
 /* Map button text switching (desktop vs mobile) */
 .map-text-mobile{
   display:none;
@@ -1154,10 +1141,39 @@ body[data-theme="dark"] .about-seal img{
   opacity:0.9;
   font-style:italic;
 }
+/* ===== Sticky WhatsApp alignment fix (mobile only) ===== */
+@media (max-width:768px){
 
+  .wa-sticky .btn-title{
+    align-items:center;
+    line-height:1;          /* 🔑 fixes text sinking */
+  }
+
+  .wa-sticky .btn-title,
+  .wa-sticky .btn-title strong,
+  .wa-sticky .btn-title span{
+    line-height:1;
+  }
+
+  /* Optional micro optical fix */
+  .wa-sticky .btn-title{
+    transform: translateY(-1px);
+  }
+}
 /* Bigger WhatsApp icon in Contact section only */
 .contact .wa-icon{
   height:20px;
+}
+    /* Sticky WhatsApp alignment fix (mobile only) */
+@media (max-width:768px){
+  .wa-sticky .btn-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    line-height:1;
+    transform:translateY(-1px);
+  }
 }
 </style>
 </head>
