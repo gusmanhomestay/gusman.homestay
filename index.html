@@ -1002,16 +1002,6 @@ body[data-theme="dark"] .about-seal img{
   justify-content:center; /* ✅ centers text */
   text-align:center;      /* ✅ centers if it wraps */
 }
-/* Mobile rules */
-@media (max-width: 768px){
-  .wa-sticky{ display:flex; }
-  .wa-normal{ display:none !important; }
-
-  /* Give extra space so sticky never covers content */
-  .container{
-    padding-bottom: 180px;
-  }
-}
 
 /* QR under the Google Review button */
 .review-qr{
@@ -1141,38 +1131,43 @@ body[data-theme="dark"] .about-seal img{
   opacity:0.9;
   font-style:italic;
 }
-/* ===== Sticky WhatsApp alignment fix (mobile only) ===== */
-@media (max-width:768px){
-
-  .wa-sticky .btn-title{
-    align-items:center;
-    line-height:1;          /* 🔑 fixes text sinking */
-  }
-
-  .wa-sticky .btn-title,
-  .wa-sticky .btn-title strong,
-  .wa-sticky .btn-title span{
-    line-height:1;
-  }
-
-  /* Optional micro optical fix */
-  .wa-sticky .btn-title{
-    transform: translateY(-1px);
-  }
-}
 /* Bigger WhatsApp icon in Contact section only */
 .contact .wa-icon{
   height:20px;
 }
-    /* Sticky WhatsApp alignment fix (mobile only) */
+/* FINAL WhatsApp sticky alignment */
 @media (max-width:768px){
-  .wa-sticky .btn-title{
+
+  .wa-sticky{
+    display:flex;
+  }
+
+  .wa-normal{
+    display:none !important;
+  }
+
+  .wa-sticky .btn-premium{
+    height:56px;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
+  }
+
+  .wa-sticky .btn-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
     line-height:1;
-    transform:translateY(-1px);
+  }
+
+  .wa-sticky .wa-icon{
+    width:26px;
+    height:26px;
+    margin:0;
+  }
+
+  .container{
+    padding-bottom:190px;
   }
 }
 </style>
