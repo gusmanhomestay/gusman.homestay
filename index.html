@@ -762,6 +762,15 @@ body:not([data-theme="dark"]) .site-footer{
   }
 }
 
+/* Responsive */
+@media (max-width:1100px){
+  .hero{flex-direction:column}
+  .hero-left,.hero-middle{flex:1 1 100%}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .split-row{flex-direction:column}
+  .split-left,.split-right{flex:1 1 100%}
+}
+
 /* ====== Lightbox Gallery ====== */
 .lb-overlay{
   position:fixed;
@@ -1078,26 +1087,6 @@ body[data-theme="dark"] .about-seal img{
 .best-price strong{
   letter-spacing:0.2px;
 }
-    /* Booking info (OTA thumbnails + text) */
-.booking-info{
-  margin-top:8px;
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.6;
-  text-align:center;
-}
-
-.ota-icons{
-  display:inline-flex;
-  gap:8px;
-  vertical-align:middle;
-}
-
-.ota-icons img{
-  height:20px;
-  width:auto;
-  vertical-align:middle;
-}
 </style>
 </head>
 
@@ -1139,6 +1128,7 @@ body[data-theme="dark"] .about-seal img{
 
 <!-- ===================== TOP HERO ===================== -->
 <section class="hero">
+
   <!-- Left Column -->
   <div class="hero-left">
 
@@ -1306,9 +1296,105 @@ body[data-theme="dark"] .about-seal img{
     <span class="btn-title">🛏️ Prenota su Airbnb *</span>
     <span class="btn-sub"><em>* (verifica disponibilità e prezzo)</em></span>
   </span>
-</a>  <!-- Airbnb link ends correctly -->
-</form>  <!-- Form ends correctly -->
-<!-- Contact (LEFT column, below Harga & Pemesanan) -->
+</a>
+<p style="margin-top:8px;font-size:12px;color:var(--muted);text-align:center;line-height:1.6;">
+
+  <!-- Indonesian -->
+  <span class="lang id">
+    Reservasi juga tersedia via
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
+    Namun untuk harga terbaik untuk booking langsung melalui tombol WhatsApp di sini.<br>
+    <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
+  </span>
+
+  <!-- English -->
+  <span class="lang en" style="display:none;">
+    Booking also available via
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
+    For the best price when booking directly via the WhatsApp button here.<br>
+    <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
+  </span>
+
+  <!-- German -->
+  <span class="lang de" style="display:none;">
+    Buchung auch verfügbar über
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
+    Für den besten Preis direkt über den WhatsApp-Button buchen.<br>
+    <span class="best-price">🔒 <strong>Bestpreis-Garantie</strong></span>
+  </span>
+
+  <!-- Italian -->
+  <span class="lang it" style="display:none;">
+    Prenotazione disponibile anche tramite
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="booking.com"
+       data-location="booking_section">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank"
+       rel="noopener"
+       data-track="ota"
+       data-ota="traveloka"
+       data-location="booking_section">Traveloka</a>.<br>
+    Per il miglior prezzo prenota direttamente tramite il pulsante WhatsApp qui.<br>
+    <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
+  </span>
+
+</p>
+
+  <span class="lang it" style="display:none;">
+    Prenotazione disponibile anche tramite
+    <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
+       target="_blank" rel="noopener">Booking.com</a>
+    &
+    <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
+       target="_blank" rel="noopener">Traveloka</a>.<br>
+    Per il miglior prezzo prenota direttamente tramite il pulsante WhatsApp qui.<br>
+    <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
+  </span>
+</p>
+      </form>
+</div>
+    <!-- Contact -->
     <div class="card">
       <h3>
         <span class="lang id">Kontak</span>
@@ -1350,101 +1436,9 @@ body[data-theme="dark"] .about-seal img{
           🕘 Orari di risposta: 07:00 – 16:00 CET
         </span>
       </p>
-</div>
-<section class="booking-info">
+    </div>
 
-  <!-- Indonesian -->
-  <span class="lang id">
-    Reservasi juga tersedia via
-    <span class="ota-icons">
-      <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-         target="_blank" rel="noopener"
-         data-track="ota" data-ota="booking.com"
-         aria-label="Booking.com">
-        <img src="/images/ota/booking.png" alt="Booking.com" loading="lazy" width="44" height="22">
-      </a>
-      <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-         target="_blank" rel="noopener"
-         data-track="ota" data-ota="traveloka"
-         aria-label="Traveloka">
-        <img src="/images/ota/traveloka.png" alt="Traveloka" loading="lazy" width="44" height="22">
-      </a>
-      <a href="https://www.tiket.com/your-link"
-         target="_blank" rel="noopener"
-         data-track="ota" data-ota="tiket"
-         aria-label="Tiket.com">
-        <img src="/images/ota/tiket.png" alt="Tiket.com" loading="lazy" width="44" height="22">
-      </a>
-    </span><br>
-    Namun untuk harga terbaik, booking langsung melalui tombol WhatsApp di sini.<br>
-    <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
-  </span>
-
-  <!-- English -->
-  <span class="lang en" style="display:none;">
-    Booking also available via
-    <span class="ota-icons">
-      <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-         target="_blank" rel="noopener" data-track="ota" data-ota="booking.com">
-        <img src="/images/ota/booking.png" alt="Booking.com" loading="lazy" width="44" height="22">
-      </a>
-      <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-         target="_blank" rel="noopener" data-track="ota" data-ota="traveloka">
-        <img src="/images/ota/traveloka.png" alt="Traveloka" loading="lazy" width="44" height="22">
-      </a>
-      <a href="https://www.tiket.com/your-link"
-         target="_blank" rel="noopener" data-track="ota" data-ota="tiket">
-        <img src="/images/ota/tiket.png" alt="Tiket.com" loading="lazy" width="44" height="22">
-      </a>
-    </span><br>
-    For the best price, book directly via the WhatsApp button here.<br>
-    <span class="best-price">🔒 <strong>Best Price Guarantee</strong></span>
-  </span>
-
-  <!-- German -->
-  <span class="lang de" style="display:none;">
-    Buchung auch verfügbar über
-    <span class="ota-icons">
-      <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-         target="_blank" rel="noopener" data-track="ota" data-ota="booking.com">
-        <img src="/images/ota/booking.png" alt="Booking.com" loading="lazy" width="44" height="22">
-      </a>
-      <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-         target="_blank" rel="noopener" data-track="ota" data-ota="traveloka">
-        <img src="/images/ota/traveloka.png" alt="Traveloka" loading="lazy" width="44" height="22">
-      </a>
-      <a href="https://www.tiket.com/your-link"
-         target="_blank" rel="noopener" data-track="ota" data-ota="tiket">
-        <img src="/images/ota/tiket.png" alt="Tiket.com" loading="lazy" width="44" height="22">
-      </a>
-    </span><br>
-    Für den besten Preis direkt über den WhatsApp-Button buchen.<br>
-    <span class="best-price">🔒 <strong>Bestpreis-Garantie</strong></span>
-  </span>
-
-  <!-- Italian -->
-  <span class="lang it" style="display:none;">
-    Prenotazione disponibile anche tramite
-    <span class="ota-icons">
-      <a href="https://booking.com/Pulse-QeyL8R?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_bookingdotcom"
-         target="_blank" rel="noopener" data-track="ota" data-ota="booking.com">
-        <img src="/images/ota/booking.png" alt="Booking.com" loading="lazy" width="44" height="22">
-      </a>
-      <a href="https://www.traveloka.com/your-link?utm_source=website&utm_medium=ota_link&utm_campaign=direct_booking_page&utm_content=booking_section_traveloka"
-         target="_blank" rel="noopener" data-track="ota" data-ota="traveloka">
-        <img src="/images/ota/traveloka.png" alt="Traveloka" loading="lazy" width="44" height="22">
-      </a>
-      <a href="https://www.tiket.com/your-link"
-         target="_blank" rel="noopener" data-track="ota" data-ota="tiket">
-        <img src="/images/ota/tiket.png" alt="Tiket.com" loading="lazy" width="44" height="22">
-      </a>
-    </span><br>
-    Per il miglior prezzo, prenota direttamente tramite il pulsante WhatsApp qui.<br>
-    <span class="best-price">🔒 <strong>Garanzia Miglior Prezzo</strong></span>
-  </span>
-</section>
-</div><!-- end hero-left -->
-
+  </div><!-- end hero-left -->
 
   <!-- Middle Column -->
   <div class="hero-middle">
