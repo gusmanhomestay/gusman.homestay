@@ -1105,6 +1105,28 @@ body[data-theme="dark"] .about-seal img{
 .best-price strong{
   letter-spacing:0.2px;
 }
+    .wa-icon{
+  height:18px;
+  width:auto;
+  vertical-align:middle;
+  margin-right:6px;
+}
+      /* Bigger WhatsApp icon in Contact section only */
+  .contact .wa-icon{
+    height:20px;
+  }
+
+  /* Mobile behavior */
+  @media (max-width:768px){
+    .wa-sticky{ display:flex; }
+    .wa-normal{ display:none !important; }
+    .container{
+      padding-bottom:calc(190px + env(safe-area-inset-bottom));
+    }
+    .ota-icons{
+      margin-bottom: 6px;
+    }
+  }
 </style>
 </head>
 
@@ -1268,22 +1290,34 @@ body[data-theme="dark"] .about-seal img{
   data-location="booking_section">
   
   <span class="lang id">
-    <span class="btn-title">📱 Pesan via WhatsApp *</span>
+    <span class="btn-title">
+  <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+  Pesan via WhatsApp *
+</span>
     <span class="btn-sub"><em>* (kami konfirmasi dulu)</em></span>
   </span>
 
   <span class="lang en" style="display:none;">
-    <span class="btn-title">📱 Book via WhatsApp *</span>
+    <span class="btn-title">
+  <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+  Book via WhatsApp *
+</span>
     <span class="btn-sub"><em>* (we confirm first)</em></span>
   </span>
 
   <span class="lang de" style="display:none;">
-    <span class="btn-title">📱 Über WhatsApp buchen *</span>
+    <span class="btn-title">
+  <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+  Über WhatsApp buchen *
+</span>
     <span class="btn-sub"><em>* (Bestätigung erforderlich)</em></span>
   </span>
 
   <span class="lang it" style="display:none;">
-    <span class="btn-title">📱 Prenota via WhatsApp *</span>
+    <span class="btn-title">
+  <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+  Prenota via WhatsApp *
+</span>
     <span class="btn-sub"><em>* (confermiamo prima)</em></span>
   </span>
 </button>
@@ -1427,7 +1461,7 @@ body[data-theme="dark"] .about-seal img{
       </form>
 </div>
     <!-- Contact -->
-    <div class="card">
+   <div class="card contact">
       <h3>
         <span class="lang id">Kontak</span>
         <span class="lang en" style="display:none;">Contact</span>
@@ -1438,7 +1472,8 @@ body[data-theme="dark"] .about-seal img{
       <p style="margin:6px 0;color:var(--muted);line-height:1.7">
         <span class="lang id">
           Owner: B. Gusman<br>
-          📲 WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
+          <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+          WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
           ✉️ Email: <a href="mailto:booking@gusmanhomestay.com" style="color:inherit;text-decoration:underline;">booking@gusmanhomestay.com</a><br>
           📍 Lokasi: Nagreg, Kab. Bandung, Jawa Barat<br>
           🕘 Jam respon: 13:00 – 22:00 WIB
@@ -1446,7 +1481,8 @@ body[data-theme="dark"] .about-seal img{
 
         <span class="lang en" style="display:none;">
           Owner: B. Gusman<br>
-          📲 WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
+          <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+          WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
           ✉️ Email: <a href="mailto:booking@gusmanhomestay.com" style="color:inherit;text-decoration:underline;">booking@gusmanhomestay.com</a><br>
           📍 Location: Nagreg, Bandung, West Java<br>
           🕘 Response hours: 13:00 – 22:00 WIB (GMT+7)
@@ -1454,7 +1490,8 @@ body[data-theme="dark"] .about-seal img{
 
         <span class="lang de" style="display:none;">
           Inhaber: B. Gusman<br>
-          📲 WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
+          <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+          WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
           ✉️ E-Mail: <a href="mailto:booking@gusmanhomestay.com" style="color:inherit;text-decoration:underline;">booking@gusmanhomestay.com</a><br>
           📍 Ort: Nagreg, Bandung, Westjava<br>
           🕘 Antwortzeiten: 07:00 – 16:00 CET
@@ -1462,7 +1499,8 @@ body[data-theme="dark"] .about-seal img{
 
         <span class="lang it" style="display:none;">
           Proprietario: B. Gusman<br>
-          📲 WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
+          <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+          WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
           ✉️ Email: <a href="mailto:booking@gusmanhomestay.com" style="color:inherit;text-decoration:underline;">booking@gusmanhomestay.com</a><br>
           📍 Posizione: Nagreg, Bandung, Giava Occidentale<br>
           🕘 Orari di risposta: 07:00 – 16:00 CET
