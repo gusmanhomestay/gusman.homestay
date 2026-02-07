@@ -1192,36 +1192,27 @@ body[data-theme="dark"] .about-seal img{
     padding-bottom:190px;
   }
 }
-
 /* =========================
-   LOCATION BUTTONS (FIXED)
+   LOCATION BUTTONS — FINAL FIX
 ========================= */
 
-/* Desktop & tablet → SIDE BY SIDE */
-.location-buttons {
+/* Always side by side (desktop + mobile) */
+.location-buttons{
   display: flex;
   gap: 14px;
   margin-top: 18px;
-  max-width: 720px; 
+  max-width: 720px;
 }
 
-.location-buttons .btn {
-  flex: 1;
-  width: auto !important;
+/* Buttons */
+.location-buttons .btn{
+  flex: 1 1 0;
+  width: auto !important;     /* overrides btn width:100% */
+  min-width: 0 !important;    /* allows shrinking */
   display: flex;
   justify-content: center;
-}
-
-/* Mobile → STACKED */
-@media (max-width: 768px) {
-  .location-buttons {
-    flex-direction: column;
-  }
-
-  .location-buttons .btn {
-    width: 100% !important;
-    padding: 14px;
-  }
+  text-align: center;
+  padding: 14px;
 }
 </style>
 </head>
