@@ -1193,6 +1193,15 @@ body[data-theme="dark"] .about-seal img{
   .container{
     padding-bottom:190px;
   }
+  .action-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap; /* allows stacking on small screens */
+}
+
+.action-buttons .btn {
+  flex: 1; /* equal width buttons */
+}
 }
 </style>
 </head>
@@ -1931,6 +1940,7 @@ body[data-theme="dark"] .about-seal img{
     </span>
   </p>
 
+<div class="action-buttons">
   <!-- 📍 Directions button -->
   <button type="button"
     class="btn btn-premium directions-btn"
@@ -1940,6 +1950,17 @@ body[data-theme="dark"] .about-seal img{
     <span class="lang de" style="display:none;">📍 Anfahrt zum Gusman Homestay</span>
     <span class="lang it" style="display:none;">📍 Indicazioni per Gusman Homestay</span>
   </button>
+
+  <!-- 🚗 Attractions button -->
+  <button type="button"
+    class="btn btn-premium directions-btn"
+    onclick="openAttractions()">
+    <span class="lang id">🚗 Wisata Terdekat</span>
+    <span class="lang en" style="display:none;">🚗 Nearby Attractions</span>
+    <span class="lang de" style="display:none;">🚗 Sehenswürdigkeiten</span>
+    <span class="lang it" style="display:none;">🚗 Attrazioni Vicine</span>
+  </button>
+</div>
 
   <p style="margin-top:12px;color:var(--muted);">
     <span class="lang id"><strong>Check-in:</strong> 14:00 • <strong>Check-out:</strong> 12:00</span>
@@ -2140,7 +2161,6 @@ body[data-theme="dark"] .about-seal img{
 </div>
   </div>
 </section>
- </section> 
 <!-- ===================== ABOUT / STORY (FULL WIDTH) ===================== -->
 <section class="fullwidth-section" id="about">
   <div class="card">
@@ -2780,12 +2800,6 @@ function closeRules(){
   document.body.style.overflow = '';
 }
 
-/* ✅ Close modal with ESC key */
-document.addEventListener('keydown', e=>{
-  if(e.key === 'Escape'){
-    closeRules();
-  }
-});
 </script>
 <!-- ✅ SEO: FAQ Schema (ID + EN) -->
 <script type="application/ld+json">
@@ -3024,75 +3038,183 @@ document.addEventListener('keydown', e=>{
     </p>
   </div>
 </div>
-  <script>
-/* =========================
-   PRICE + OCCUPANCY
-========================= */
-function updatePrice(changedField){
-  const WEEKDAY_BASE = 500;   // K IDR
-  const WEEKEND_BASE = 750;   // K IDR
-  const EXTRA_ADULT = 50;     // K IDR
-  const MAX = 6;
+    <!-- Nearby Attractions Modal -->
+<div id="attractionsModal" class="rules-modal" aria-hidden="true">
+  <div class="rules-box">
+    <button class="rules-close" onclick="closeAttractions()">×</button>
 
-  const adultsEl = document.getElementById('adults');
-  const childrenEl = document.getElementById('children');
+    <!-- TITLE -->
+    <h3>
+      <span class="lang id">Wisata Terdekat & Jarak Tempuh</span>
+      <span class="lang en" style="display:none;">Nearby Attractions & Distances</span>
+      <span class="lang de" style="display:none;">Sehenswürdigkeiten & Entfernungen</span>
+      <span class="lang it" style="display:none;">Attrazioni Vicine & Distanze</span>
+    </h3>
 
-  let adults = parseInt(adultsEl.value || 1, 10);
-  let children = parseInt(childrenEl.value || 0, 10);
+    <!-- SUBTITLE -->
+    <p>
+      <span class="lang id"><strong>(dari Gusman Homestay – Nagreg)</strong></span>
+      <span class="lang en" style="display:none;"><strong>(from Gusman Homestay – Nagreg)</strong></span>
+      <span class="lang de" style="display:none;"><strong>(ab Gusman Homestay – Nagreg)</strong></span>
+      <span class="lang it" style="display:none;"><strong>(da Gusman Homestay – Nagreg)</strong></span>
+    </p>
 
-  if(adults < 1) adults = 1;
-  if(children < 0) children = 0;
+    <hr>
 
-  if(adults + children > MAX){
-    if(changedField === 'adults'){
-      children = Math.max(0, MAX - adults);
-    } else {
-      adults = Math.max(1, MAX - children);
-    }
-  }
+    <!-- INDONESIAN -->
+    <div class="lang id">
+      <p>
+        Beberapa destinasi wisata dapat dengan mudah dijangkau dari Gusman Homestay.
+        <strong>Curug Cinulang (Cicalengka)</strong> berjarak sekitar
+        <strong>14–18 km</strong> atau sekitar <strong>25–35 menit</strong> berkendara.
+      </p>
 
-  adultsEl.value = adults;
-  childrenEl.value = children;
+      <p>
+        Tamu juga dapat mengunjungi <strong>Situ Cangkuang (Leles)</strong> dengan waktu tempuh
+        sekitar <strong>45–55 menit</strong>. Destinasi budaya seperti
+        <strong>Saung Angklung Udjo</strong> berjarak sekitar <strong>32 km</strong>
+        (<strong>~1–1,25 jam</strong>). <strong>Trans Studio Bandung</strong> berjarak sekitar
+        <strong>35 km</strong> (<strong>~1,25–1,5 jam</strong>), diikuti
+        <strong>Gedung Sate</strong> (36 km),
+        <strong>Braga City Walk</strong> (38 km), dan
+        <strong>Stasiun Bandung</strong> (39 km) dengan waktu tempuh sekitar
+        <strong>~1,5 jam</strong>.
+      </p>
 
-  const ciVal = document.getElementById('checkin').value;
-  const coVal = document.getElementById('checkout').value;
+      <p>
+        Untuk wisata alam ikonik Jawa Barat, <strong>Gunung Tangkuban Perahu</strong> berjarak
+        sekitar <strong>70–80 km</strong> (<strong>~2–2,5 jam</strong>). Lebih ke selatan,
+        <strong>Kawah Putih</strong> dan <strong>Situ Patenggang</strong> berjarak sekitar
+        <strong>90–100 km</strong> (<strong>~3–3,5 jam</strong>).
+      </p>
 
-  let nights = 1;
-  let isWeekendStay = false;
+      <p>
+        Untuk menjelajahi pesisir selatan Jawa Barat, <strong>Pantai Pangandaran</strong>
+        berjarak sekitar <strong>200–220 km</strong> dan dapat ditempuh dalam waktu
+        sekitar <strong>6–7 jam</strong>, cocok untuk perjalanan lanjutan atau menginap semalam.
+      </p>
 
-  if(ciVal && coVal){
-    const ci = new Date(ciVal);
-    const co = new Date(coVal);
+      <p class="rules-note">
+        Jarak dan waktu tempuh bersifat perkiraan dan dapat berubah tergantung kondisi lalu lintas.
+      </p>
+    </div>
 
-    if(co > ci){
-      nights = Math.ceil((co - ci) / 86400000);
-      let d = new Date(ci);
-      for(let i=0;i<nights;i++){
-        const day = d.getDay();
-        if(day === 5 || day === 6){
-          isWeekendStay = true;
-          break;
-        }
-        d.setDate(d.getDate() + 1);
-      }
-    }
-  }
+    <!-- ENGLISH -->
+    <div class="lang en" style="display:none;">
+      <p>
+        Several popular attractions can be easily reached from Gusman Homestay.
+        <strong>Curug Cinulang (Cicalengka Waterfall)</strong> is located approximately
+        <strong>14–18 km</strong> away, or about <strong>25–35 minutes by car</strong>,
+        making it a convenient nearby nature escape.
+      </p>
 
-  const BASE = isWeekendStay ? WEEKEND_BASE : WEEKDAY_BASE;
-  const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
-  const total = (BASE + extra) * nights;
+      <p>
+        Guests can also visit <strong>Situ Cangkuang (Leles)</strong>, which is reachable in
+        approximately <strong>45–55 minutes by car</strong>. Cultural attractions such as
+        <strong>Saung Angklung Udjo</strong> are located around <strong>32 km</strong>
+        from the property (<strong>~1–1.25 hours by car</strong>). <strong>Trans Studio Bandung</strong>
+        is approximately <strong>35 km</strong> away (<strong>~1.25–1.5 hours by car</strong>),
+        followed by <strong>Gedung Sate</strong> (36 km),
+        <strong>Braga City Walk</strong> (38 km), and
+        <strong>Bandung Railway Station</strong> at around <strong>39 km</strong>
+        (<strong>~1.5 hours by car</strong>).
+      </p>
 
-  document.getElementById('totalPrice').innerText = total + 'K IDR';
-}
-</script>
+      <p>
+        For those interested in iconic West Java landscapes,
+        <strong>Tangkuban Perahu Volcano</strong> is approximately
+        <strong>70–80 km</strong> away (<strong>~2–2.5 hours by car</strong>). Further south,
+        <strong>Kawah Putih (White Crater)</strong> and <strong>Situ Patenggang Lake</strong>
+        are located about <strong>90–100 km</strong> away
+        (<strong>~3–3.5 hours by car</strong>).
+      </p>
+
+      <p>
+        For guests wishing to explore the southern coast of West Java,
+        <strong>Pangandaran Beach</strong> is located approximately
+        <strong>200–220 km</strong> from the property and can be reached in about
+        <strong>6–7 hours by car</strong>, making it ideal for an extended trip or overnight stay.
+      </p>
+
+      <p class="rules-note">
+        Distances and travel times are approximate and may vary depending on traffic and road conditions.
+      </p>
+    </div>
+
+    <!-- DE -->
+    <div class="lang de" style="display:none;">
+      <p>
+        Mehrere Sehenswürdigkeiten sind von Gusman Homestay gut erreichbar.
+        Der <strong>Wasserfall Curug Cinulang</strong> liegt etwa
+        <strong>14–18 km</strong> entfernt (<strong>25–35 Minuten</strong> mit dem Auto).
+      </p>
+      <p>
+        <strong>Situ Cangkuang (Leles)</strong> erreicht man in etwa
+        <strong>45–55 Minuten</strong>. <strong>Saung Angklung Udjo</strong> liegt ca.
+        <strong>32 km</strong> entfernt (~1–1,25 Std.).
+        Weitere Ziele sind <strong>Trans Studio Bandung</strong>,
+        <strong>Gedung Sate</strong>, <strong>Braga City Walk</strong>
+        und der <strong>Bahnhof Bandung</strong>.
+      </p>
+      <p>
+        Der Vulkan <strong>Tangkuban Perahu</strong> liegt ca.
+        <strong>70–80 km</strong> entfernt (~2–2,5 Std.).
+        <strong>Kawah Putih</strong> und <strong>Situ Patenggang</strong>
+        ca. <strong>90–100 km</strong> (~3–3,5 Std.).
+      </p>
+      <p>
+        Der Strand <strong>Pangandaran</strong> liegt ca.
+        <strong>200–220 km</strong> entfernt (~6–7 Std.) und eignet sich
+        für einen längeren Ausflug oder eine Übernachtung.
+      </p>
+      <p class="rules-note">
+        Entfernungen und Fahrzeiten sind ungefähre Angaben.
+      </p>
+    </div>
+
+    <!-- IT -->
+    <div class="lang it" style="display:none;">
+      <p>
+        Diverse attrazioni sono facilmente raggiungibili da Gusman Homestay.
+        La <strong>cascata Curug Cinulang</strong> dista circa
+        <strong>14–18 km</strong> (<strong>25–35 minuti</strong> in auto).
+      </p>
+      <p>
+        <strong>Situ Cangkuang (Leles)</strong> è raggiungibile in circa
+        <strong>45–55 minuti</strong>. <strong>Saung Angklung Udjo</strong>
+        dista circa <strong>32 km</strong> (~1–1,25 ore).
+        Altre mete includono <strong>Trans Studio Bandung</strong>,
+        <strong>Gedung Sate</strong>, <strong>Braga City Walk</strong>
+        e la <strong>Stazione di Bandung</strong>.
+      </p>
+      <p>
+        Il vulcano <strong>Tangkuban Perahu</strong> si trova a circa
+        <strong>70–80 km</strong> (~2–2,5 ore).
+        <strong>Kawah Putih</strong> e <strong>Situ Patenggang</strong>
+        distano circa <strong>90–100 km</strong> (~3–3,5 ore).
+      </p>
+      <p>
+        La <strong>Spiaggia di Pangandaran</strong> dista circa
+        <strong>200–220 km</strong> (~6–7 ore), ideale per un viaggio
+        più lungo o con pernottamento.
+      </p>
+      <p class="rules-note">
+        Distanze e tempi sono indicativi e possono variare in base al traffico.
+      </p>
+    </div>
+
+  </div>
+</div>
 <script>
+/* =========================
+   DIRECTIONS MODAL
+========================= */
 function openDirections(){
   const modal = document.getElementById('directionsModal');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 
-  // close when clicking outside the box
-  modal.addEventListener('click', e=>{
+  modal.addEventListener('click', e => {
     if(e.target === modal) closeDirections();
   }, { once:true });
 }
@@ -3103,14 +3225,38 @@ function closeDirections(){
   document.body.style.overflow = '';
 }
 
-// close with ESC key
-document.addEventListener('keydown', e=>{
-  if(e.key === 'Escape'){
-    const modal = document.getElementById('directionsModal');
-    if(modal.classList.contains('open')){
-      closeDirections();
-    }
-  }
+/* =========================
+   ATTRACTIONS MODAL
+========================= */
+function openAttractions(){
+  const modal = document.getElementById('attractionsModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  modal.addEventListener('click', e => {
+    if(e.target === modal) closeAttractions();
+  }, { once:true });
+}
+
+function closeAttractions(){
+  const modal = document.getElementById('attractionsModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* =========================
+   ESC KEY HANDLER (ALL MODALS)
+========================= */
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+
+  const rules = document.getElementById('rulesModal');
+  const directions = document.getElementById('directionsModal');
+  const attractions = document.getElementById('attractionsModal');
+
+  if (rules?.classList.contains('open')) closeRules();
+  if (directions?.classList.contains('open')) closeDirections();
+  if (attractions?.classList.contains('open')) closeAttractions();
 });
 </script>
 <!-- =========================
