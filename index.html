@@ -1214,6 +1214,19 @@ body[data-theme="dark"] .about-seal img{
   text-align: center;
   padding: 14px;
 }
+    /* =========================
+   MODAL READABILITY FIX (MOBILE)
+========================= */
+@media (max-width: 768px) {
+  .rules-box {
+    max-height: 88vh;
+    overflow-y: auto;
+
+    /* make modal ~10% smaller on mobile */
+    transform: scale(0.9);
+    transform-origin: top center;
+  }
+}
 </style>
 </head>
 
