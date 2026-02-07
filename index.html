@@ -1202,17 +1202,30 @@ body[data-theme="dark"] .about-seal img{
 .action-buttons .btn {
   flex: 1; /* equal width buttons */
 }
-  .location-buttons {
+/* =========================
+   LOCATION BUTTONS
+========================= */
+
+/* Desktop & tablet */
+.location-buttons {
   display: flex;
   gap: 14px;
-  flex-wrap: wrap;
   margin-top: 18px;
 }
 
 .location-buttons .btn {
   flex: 1;
-  min-width: 220px;
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .location-buttons {
+    flex-direction: column;
+  }
+
+  .location-buttons .btn {
+    width: 100%;
+  }
 }
 </style>
 </head>
