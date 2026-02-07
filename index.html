@@ -1038,17 +1038,31 @@ body[data-theme="dark"] .about-seal img{
 .contact .wa-icon{
   height:20px;
 }
-    /* ===== WHATSAPP STICKY — SINGLE SOURCE OF TRUTH ===== */
+/* ===== WHATSAPP STICKY (FIXED) ===== */
+
+/* 1) HIDE on desktop by default */
+.wa-sticky{
+  display:none;
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  z-index:9999;
+  justify-content:center;
+}
+
+/* keep WA images from ever being huge */
+.wa-icon{
+  height:28px;
+  width:auto;
+  display:block;
+}
+
+/* 2) MOBILE ONLY: show sticky + align content */
 @media (max-width:768px){
 
   .wa-sticky{
-    position:fixed;
-    left:12px;
-    right:12px;
-    bottom:12px;
-    z-index:9999;
     display:flex;
-    justify-content:center;
   }
 
   .wa-normal{
@@ -1066,10 +1080,11 @@ body[data-theme="dark"] .about-seal img{
     justify-content:center;
   }
 
+  /* your 4 language spans all have .btn-title -> force perfect center */
   .wa-sticky .btn-title{
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
     gap:12px;
     line-height:1;
   }
@@ -1079,6 +1094,7 @@ body[data-theme="dark"] .about-seal img{
     height:26px;
     margin:0;
     flex-shrink:0;
+    display:block;
   }
 
   .container{
