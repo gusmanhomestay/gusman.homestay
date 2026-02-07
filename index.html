@@ -1080,11 +1080,10 @@ body[data-theme="dark"] .about-seal img{
     justify-content:center;
   }
 
-  /* your 4 language spans all have .btn-title -> force perfect center */
   .wa-sticky .btn-title{
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     gap:12px;
     line-height:1;
   }
@@ -1099,6 +1098,15 @@ body[data-theme="dark"] .about-seal img{
 
   .container{
     padding-bottom:190px;
+  }
+
+  /* 🔑 FIX: language handling (MOBILE ONLY) */
+  .wa-sticky .lang{
+    display:none;
+  }
+
+  .wa-sticky .lang:not([style*="display:none"]){
+    display:flex;
   }
 }
 </style>
