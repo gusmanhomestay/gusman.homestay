@@ -1135,11 +1135,15 @@ body[data-theme="dark"] .about-seal img{
 .contact .wa-icon{
   height:20px;
 }
-/* FINAL WhatsApp sticky alignment */
+/* =========================
+   FINAL Sticky WhatsApp (Mobile)
+   Icon ABOVE text
+========================= */
 @media (max-width:768px){
 
   .wa-sticky{
     display:flex;
+    justify-content:center;
   }
 
   .wa-normal{
@@ -1147,23 +1151,43 @@ body[data-theme="dark"] .about-seal img{
   }
 
   .wa-sticky .btn-premium{
-    height:56px;
+    height:auto;
+    padding:12px 16px;
+    border-radius:18px;
     display:flex;
     align-items:center;
     justify-content:center;
+    text-align:center;
   }
 
   .wa-sticky .btn-title{
     display:flex;
+    flex-direction:column;   /* ✅ icon above text */
     align-items:center;
-    gap:12px;
-    line-height:1;
+    gap:6px;
+    line-height:1.2;
   }
 
   .wa-sticky .wa-icon{
-    width:26px;
-    height:26px;
+    width:28px;
+    height:28px;
     margin:0;
+  }
+
+  .wa-sticky .btn-text{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  .wa-sticky .btn-text strong{
+    font-size:14px;
+  }
+
+  .wa-sticky .btn-text em{
+    font-size:12px;
+    opacity:0.85;
   }
 
   .container{
