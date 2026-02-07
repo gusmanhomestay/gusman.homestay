@@ -1137,10 +1137,8 @@ body[data-theme="dark"] .about-seal img{
 }
 /* =========================
    FINAL Sticky WhatsApp (Mobile)
-   Icon ABOVE text
 ========================= */
-@media (max-width:768px){
-
+@media (max-width: 768px) {
   .wa-sticky{
     display:flex;
     justify-content:center;
@@ -1162,7 +1160,7 @@ body[data-theme="dark"] .about-seal img{
 
   .wa-sticky .btn-title{
     display:flex;
-    flex-direction:column;   /* ✅ icon above text */
+    flex-direction:column;
     align-items:center;
     gap:6px;
     line-height:1.2;
@@ -1193,38 +1191,36 @@ body[data-theme="dark"] .about-seal img{
   .container{
     padding-bottom:190px;
   }
-  .action-buttons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap; /* allows stacking on small screens */
 }
 
-.action-buttons .btn {
-  flex: 1; /* equal width buttons */
-}
 /* =========================
-   LOCATION BUTTONS
+   LOCATION BUTTONS (FIXED)
 ========================= */
 
-/* Desktop & tablet */
+/* Desktop & tablet → SIDE BY SIDE */
 .location-buttons {
   display: flex;
   gap: 14px;
   margin-top: 18px;
+  max-width: 720px; 
 }
 
 .location-buttons .btn {
   flex: 1;
+  width: auto !important;
+  display: flex;
+  justify-content: center;
 }
 
-/* Mobile */
+/* Mobile → STACKED */
 @media (max-width: 768px) {
   .location-buttons {
     flex-direction: column;
   }
 
   .location-buttons .btn {
-    width: 100%;
+    width: 100% !important;
+    padding: 14px;
   }
 }
 </style>
