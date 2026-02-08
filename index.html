@@ -3512,6 +3512,14 @@ function closeCancelModal(){
   modal.classList.remove('open');
   document.body.style.overflow = '';
 }
+document.addEventListener('keydown', function(e){
+  if (e.key !== 'Escape') return;
+
+  const cancelModal = document.getElementById('cancelModal');
+  if (cancelModal && cancelModal.classList.contains('open')) {
+    closeCancelModal();
+  }
+});
 </script>
 </body>
 </html>
