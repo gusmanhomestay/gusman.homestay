@@ -1382,6 +1382,18 @@ body[data-theme="dark"] .about-seal img{
   <div class="total-price-label">Total Harga</div>
   <div class="total-price-value" id="totalPrice">500K IDR</div>
 </div>
+        <!-- 🔽 ADD THIS HERE -->
+<button
+  type="button"
+  class="btn btn-outline booking-width rules-btn"
+  onclick="openCancelModal()">
+
+  <span class="lang id">ℹ️ Kebijakan Pembatalan</span>
+  <span class="lang en" style="display:none;">ℹ️ Cancellation Policy</span>
+  <span class="lang de" style="display:none;">ℹ️ Stornierungsbedingungen</span>
+  <span class="lang it" style="display:none;">ℹ️ Politica di cancellazione</span>
+
+</button>
 <button
   type="button"
   class="btn btn-premium booking-width wa-normal"
@@ -3401,5 +3413,88 @@ document.addEventListener('click', function(e){
 
   </button>
 </div>
+  <div class="rules-modal" id="cancelModal">
+
+  <div class="rules-box">
+    <button class="rules-close" onclick="closeCancelModal()">×</button>
+
+    <h3>
+      <span class="lang id">Kebijakan Pembatalan</span>
+      <span class="lang en" style="display:none;">Cancellation Policy</span>
+      <span class="lang de" style="display:none;">Stornierungsbedingungen</span>
+      <span class="lang it" style="display:none;">Politica di cancellazione</span>
+    </h3>
+
+    <!-- Indonesian -->
+    <div class="lang id">
+      <ul>
+        <li>Pembatalan <strong>H-3 atau lebih</strong> sebelum check-in: <strong>refund 100%</strong></li>
+        <li>Pembatalan <strong>H-1</strong> sebelum check-in: <strong>refund 50%</strong></li>
+        <li>Pembatalan di <strong>hari H</strong>: <strong>tidak ada refund</strong></li>
+      </ul>
+      <p class="rules-note">
+        Kebijakan ini dibuat untuk menjaga ketersediaan dan jadwal reservasi tetap rapi,
+        terutama pada periode ramai. Terima kasih atas pengertiannya 🙏
+      </p>
+    </div>
+
+    <!-- English -->
+    <div class="lang en" style="display:none;">
+      <ul>
+        <li>Cancellation <strong>3 days or more</strong> before check-in: <strong>100% refund</strong></li>
+        <li>Cancellation <strong>1 day</strong> before check-in: <strong>50% refund</strong></li>
+        <li>Cancellation on <strong>check-in day</strong>: <strong>no refund</strong></li>
+      </ul>
+      <p class="rules-note">
+        This policy helps us manage availability and booking schedules fairly,
+        especially during busy periods. Thank you for your understanding.
+      </p>
+    </div>
+
+    <!-- German -->
+    <div class="lang de" style="display:none;">
+      <ul>
+        <li>Stornierung <strong>3 Tage oder früher</strong> vor Check-in: <strong>100% Rückerstattung</strong></li>
+        <li>Stornierung <strong>1 Tag</strong> vor Check-in: <strong>50% Rückerstattung</strong></li>
+        <li>Stornierung am <strong>Anreisetag</strong>: <strong>keine Rückerstattung</strong></li>
+      </ul>
+      <p class="rules-note">
+        Diese Regelung dient der fairen Planung von Verfügbarkeiten,
+        insbesondere in der Hochsaison. Vielen Dank für Ihr Verständnis.
+      </p>
+    </div>
+
+    <!-- Italian -->
+    <div class="lang it" style="display:none;">
+      <ul>
+        <li>Cancellazione <strong>3 giorni o prima</strong> del check-in: <strong>rimborso 100%</strong></li>
+        <li>Cancellazione <strong>1 giorno</strong> prima del check-in: <strong>rimborso 50%</strong></li>
+        <li>Cancellazione il <strong>giorno del check-in</strong>: <strong>nessun rimborso</strong></li>
+      </ul>
+      <p class="rules-note">
+        Questa politica ci aiuta a gestire al meglio le disponibilità,
+        soprattutto nei periodi di alta stagione. Grazie per la comprensione.
+      </p>
+    </div>
+
+  </div>
+</div>
+<script>
+function openCancelModal(){
+  const modal = document.getElementById('cancelModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeCancelModal();
+  }, { once:true });
+}
+
+function closeCancelModal(){
+  const modal = document.getElementById('cancelModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
 </body>
 </html>
