@@ -1244,6 +1244,17 @@ body[data-theme="dark"] .about-seal img{
   text-align: center;
   cursor: pointer;
 }
+.site-footer img,
+.contact img {
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.site-footer a:hover img,
+.contact a:hover img {
+  opacity: 1;
+}
 </style>
 </head>
 
@@ -1602,56 +1613,144 @@ body[data-theme="dark"] .about-seal img{
 </p>
       </form>
 </div>
-    <!-- Contact -->
-   <div class="card contact">
-      <h3>
-        <span class="lang id">Kontak</span>
-        <span class="lang en" style="display:none;">Contact</span>
-        <span class="lang de" style="display:none;">Kontakt</span>
-        <span class="lang it" style="display:none;">Contatto</span>
-      </h3>
+<!-- Contact -->
+<div class="card contact">
+  <h3>
+    <span class="lang id">Kontak</span>
+    <span class="lang en" style="display:none;">Contact</span>
+    <span class="lang de" style="display:none;">Kontakt</span>
+    <span class="lang it" style="display:none;">Contatto</span>
+  </h3>
 
-      <p style="margin:6px 0;color:var(--muted);line-height:1.7">
-        <span class="lang id">
-          Owner: B. Gusman<br>
-          <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-          WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
-          ✉️ Email: <a href="mailto:booking@gusmanhomestay.com" style="color:inherit;text-decoration:underline;">booking@gusmanhomestay.com</a><br>
-          📍 Lokasi: Nagreg, Kab. Bandung, Jawa Barat<br>
-          🕘 Jam respon: 13:00 – 22:00 WIB
-        </span>
+  <p style="margin:6px 0;color:var(--muted);line-height:1.7">
 
-        <span class="lang en" style="display:none;">
-          Owner: B. Gusman<br>
-          <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-          WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
-          ✉️ Email: <a href="mailto:booking@gusmanhomestay.com" style="color:inherit;text-decoration:underline;">booking@gusmanhomestay.com</a><br>
-          📍 Location: Nagreg, Bandung, West Java<br>
-          🕘 Response hours: 13:00 – 22:00 WIB (GMT+7)
-        </span>
+    <!-- Indonesian -->
+    <span class="lang id">
+      Owner: B. Gusman<br>
 
-        <span class="lang de" style="display:none;">
-          Inhaber: B. Gusman<br>
-          <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-          WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
-          ✉️ E-Mail: <a href="mailto:booking@gusmanhomestay.com" style="color:inherit;text-decoration:underline;">booking@gusmanhomestay.com</a><br>
-          📍 Ort: Nagreg, Bandung, Westjava<br>
-          🕘 Antwortzeiten: 07:00 – 16:00 CET
-        </span>
+      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+      WhatsApp:
+      <a href="https://wa.me/6281230015529"
+         style="color:inherit;text-decoration:underline;">
+        +62 812 3001 5529
+      </a><br>
 
-        <span class="lang it" style="display:none;">
-          Proprietario: B. Gusman<br>
-          <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-          WhatsApp: <a href="https://wa.me/6281230015529" style="color:inherit;text-decoration:underline;">+62 812 3001 5529</a><br>
-          ✉️ Email: <a href="mailto:booking@gusmanhomestay.com" style="color:inherit;text-decoration:underline;">booking@gusmanhomestay.com</a><br>
-          📍 Posizione: Nagreg, Bandung, Giava Occidentale<br>
-          🕘 Orari di risposta: 07:00 – 16:00 CET
-        </span>
-      </p>
-    </div>
+      <img src="/images/instagram.png" alt="Instagram" class="wa-icon">
+      Instagram:
+      <a href="https://www.instagram.com/gusmanhomestay"
+         target="_blank"
+         rel="noopener"
+         aria-label="Instagram Gusman Homestay"
+         style="color:inherit;text-decoration:underline;">
+        @gusmanhomestay
+      </a><br>
 
+      ✉️ Email:
+      <a href="mailto:booking@gusmanhomestay.com"
+         style="color:inherit;text-decoration:underline;">
+        booking@gusmanhomestay.com
+      </a><br>
+
+      📍 Lokasi: Nagreg, Kab. Bandung, Jawa Barat<br>
+      🕘 Jam respon: 13:00 – 22:00 WIB
+    </span>
+
+    <!-- English -->
+    <span class="lang en" style="display:none;">
+      Owner: B. Gusman<br>
+
+      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+      WhatsApp:
+      <a href="https://wa.me/6281230015529"
+         style="color:inherit;text-decoration:underline;">
+        +62 812 3001 5529
+      </a><br>
+
+      <img src="/images/instagram.png" alt="Instagram" class="wa-icon">
+      Instagram:
+      <a href="https://www.instagram.com/gusmanhomestay"
+         target="_blank"
+         rel="noopener"
+         aria-label="Instagram Gusman Homestay"
+         style="color:inherit;text-decoration:underline;">
+        @gusmanhomestay
+      </a><br>
+
+      ✉️ Email:
+      <a href="mailto:booking@gusmanhomestay.com"
+         style="color:inherit;text-decoration:underline;">
+        booking@gusmanhomestay.com
+      </a><br>
+
+      📍 Location: Nagreg, Bandung, West Java<br>
+      🕘 Response hours: 13:00 – 22:00 WIB (GMT+7)
+    </span>
+
+    <!-- German -->
+    <span class="lang de" style="display:none;">
+      Inhaber: B. Gusman<br>
+
+      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+      WhatsApp:
+      <a href="https://wa.me/6281230015529"
+         style="color:inherit;text-decoration:underline;">
+        +62 812 3001 5529
+      </a><br>
+
+      <img src="/images/instagram.png" alt="Instagram" class="wa-icon">
+      Instagram:
+      <a href="https://www.instagram.com/gusmanhomestay"
+         target="_blank"
+         rel="noopener"
+         aria-label="Instagram Gusman Homestay"
+         style="color:inherit;text-decoration:underline;">
+        @gusmanhomestay
+      </a><br>
+
+      ✉️ E-Mail:
+      <a href="mailto:booking@gusmanhomestay.com"
+         style="color:inherit;text-decoration:underline;">
+        booking@gusmanhomestay.com
+      </a><br>
+
+      📍 Ort: Nagreg, Bandung, Westjava<br>
+      🕘 Antwortzeiten: 07:00 – 16:00 CET
+    </span>
+
+    <!-- Italian -->
+    <span class="lang it" style="display:none;">
+      Proprietario: B. Gusman<br>
+
+      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
+      WhatsApp:
+      <a href="https://wa.me/6281230015529"
+         style="color:inherit;text-decoration:underline;">
+        +62 812 3001 5529
+      </a><br>
+
+      <img src="/images/instagram.png" alt="Instagram" class="wa-icon">
+      Instagram:
+      <a href="https://www.instagram.com/gusmanhomestay"
+         target="_blank"
+         rel="noopener"
+         aria-label="Instagram Gusman Homestay"
+         style="color:inherit;text-decoration:underline;">
+        @gusmanhomestay
+      </a><br>
+
+      ✉️ Email:
+      <a href="mailto:booking@gusmanhomestay.com"
+         style="color:inherit;text-decoration:underline;">
+        booking@gusmanhomestay.com
+      </a><br>
+
+      📍 Posizione: Nagreg, Bandung, Giava Occidentale<br>
+      🕘 Orari di risposta: 07:00 – 16:00 CET
+    </span>
+
+  </p>
+</div>
   </div><!-- end hero-left -->
-
   <!-- Middle Column -->
   <div class="hero-middle">
 
@@ -2281,66 +2380,153 @@ body[data-theme="dark"] .about-seal img{
         <em>Speriamo che Gusman Homestay possa essere una piccola parte speciale del vostro viaggio.</em>
       </span>
     </p>
-  <div class="about-meta">
-      <span class="lang id">
-        <strong>Owner:</strong> B. Gusman • Tinggal di Jerman • Loves traveling •
-        <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
-      </span>
+<div class="about-meta">
 
-      <span class="lang en" style="display:none;">
-        <strong>Owner:</strong> B. Gusman • Based in Germany • Loves traveling •
-        <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
-      </span>
+  <span class="lang id">
+    <strong>Owner:</strong> B. Gusman • Tinggal di Jerman • Loves traveling •
+    <a href="https://www.instagram.com/baigusman"
+       target="_blank"
+       rel="noopener"
+       aria-label="Instagram B. Gusman">
+      <img src="/images/instagram.png"
+           alt="Instagram"
+           style="height:14px;vertical-align:middle;margin-left:4px;">
+    </a>
+  </span>
 
-      <span class="lang de" style="display:none;">
-        <strong>Inhaber:</strong> B. Gusman • Wohnhaft in Deutschland • Reiseliebhaber •
-        <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
-      </span>
+  <span class="lang en" style="display:none;">
+    <strong>Owner:</strong> B. Gusman • Based in Germany • Loves traveling •
+    <a href="https://www.instagram.com/baigusman"
+       target="_blank"
+       rel="noopener"
+       aria-label="Instagram B. Gusman">
+      <img src="/images/instagram.png"
+           alt="Instagram"
+           style="height:14px;vertical-align:middle;margin-left:4px;">
+    </a>
+  </span>
 
-      <span class="lang it" style="display:none;">
-        <strong>Proprietario:</strong> B. Gusman • Vive in Germania • Ama viaggiare •
-        <a href="https://www.instagram.com/baigusman" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Instagram</a>
-      </span>
-    </div>
+  <span class="lang de" style="display:none;">
+    <strong>Inhaber:</strong> B. Gusman • Wohnhaft in Deutschland • Reiseliebhaber •
+    <a href="https://www.instagram.com/baigusman"
+       target="_blank"
+       rel="noopener"
+       aria-label="Instagram B. Gusman">
+      <img src="/images/instagram.png"
+           alt="Instagram"
+           style="height:14px;vertical-align:middle;margin-left:4px;">
+    </a>
+  </span>
+
+  <span class="lang it" style="display:none;">
+    <strong>Proprietario:</strong> B. Gusman • Vive in Germania • Ama viaggiare •
+    <a href="https://www.instagram.com/baigusman"
+       target="_blank"
+       rel="noopener"
+       aria-label="Instagram B. Gusman">
+      <img src="/images/instagram.png"
+           alt="Instagram"
+           style="height:14px;vertical-align:middle;margin-left:4px;">
+    </a>
+  </span>
+
+</div>
   </div>
 </div>
 </section>
 <footer>
   <div class="site-footer">
+
+    <!-- Indonesian -->
     <span class="lang id">
       © <span class="year"></span> Gusman Homestay — Modern minimalis dengan sentuhan tradisional.
-      Booking langsung via
-      <a href="https://wa.me/6281230015529" target="_blank" rel="noopener">WhatsApp</a>
-      • Follow on
-      <a href="https://www.instagram.com/gusmanhomestay" target="_blank" rel="noopener">Instagram</a>.
+      <a href="https://wa.me/6281230015529"
+         target="_blank"
+         rel="noopener"
+         aria-label="WhatsApp Booking">
+        <img src="/images/whatsapp.png"
+             alt="WhatsApp"
+             style="height:14px;vertical-align:middle;">
+      </a>
+      &nbsp; Booking langsung via WhatsApp &nbsp;•&nbsp;
+      <a href="https://www.instagram.com/gusmanhomestay"
+         target="_blank"
+         rel="noopener"
+         aria-label="Instagram Gusman Homestay">
+        <img src="/images/instagram.png"
+             alt="Instagram"
+             style="height:14px;vertical-align:middle;">
+      </a>
     </span>
 
+    <!-- English -->
     <span class="lang en" style="display:none;">
       © <span class="year"></span> Gusman Homestay — Modern minimalist with a traditional touch.
-      Book direct via
-      <a href="https://wa.me/6281230015529" target="_blank" rel="noopener">WhatsApp</a>
-      • Follow on
-      <a href="https://www.instagram.com/gusmanhomestay" target="_blank" rel="noopener">Instagram</a>.
+      <a href="https://wa.me/6281230015529"
+         target="_blank"
+         rel="noopener"
+         aria-label="WhatsApp Booking">
+        <img src="/images/whatsapp.png"
+             alt="WhatsApp"
+             style="height:14px;vertical-align:middle;">
+      </a>
+      &nbsp; Book direct via WhatsApp &nbsp;•&nbsp;
+      <a href="https://www.instagram.com/gusmanhomestay"
+         target="_blank"
+         rel="noopener"
+         aria-label="Instagram Gusman Homestay">
+        <img src="/images/instagram.png"
+             alt="Instagram"
+             style="height:14px;vertical-align:middle;">
+      </a>
     </span>
 
+    <!-- German -->
     <span class="lang de" style="display:none;">
       © <span class="year"></span> Gusman Homestay — Modern-minimalistisch mit traditionellem Touch.
-      Direkt buchen via
-      <a href="https://wa.me/6281230015529" target="_blank" rel="noopener">WhatsApp</a>
-      • Folge uns auf
-      <a href="https://www.instagram.com/gusmanhomestay" target="_blank" rel="noopener">Instagram</a>.
+      <a href="https://wa.me/6281230015529"
+         target="_blank"
+         rel="noopener"
+         aria-label="WhatsApp Buchung">
+        <img src="/images/whatsapp.png"
+             alt="WhatsApp"
+             style="height:14px;vertical-align:middle;">
+      </a>
+      &nbsp; Direkt buchen via WhatsApp &nbsp;•&nbsp;
+      <a href="https://www.instagram.com/gusmanhomestay"
+         target="_blank"
+         rel="noopener"
+         aria-label="Instagram Gusman Homestay">
+        <img src="/images/instagram.png"
+             alt="Instagram"
+             style="height:14px;vertical-align:middle;">
+      </a>
     </span>
 
+    <!-- Italian -->
     <span class="lang it" style="display:none;">
       © <span class="year"></span> Gusman Homestay — Moderno e minimalista con un tocco tradizionale.
-      Prenota direttamente su
-      <a href="https://wa.me/6281230015529" target="_blank" rel="noopener">WhatsApp</a>
-      • Seguici su
-      <a href="https://www.instagram.com/gusmanhomestay" target="_blank" rel="noopener">Instagram</a>.
+      <a href="https://wa.me/6281230015529"
+         target="_blank"
+         rel="noopener"
+         aria-label="Prenotazione WhatsApp">
+        <img src="/images/whatsapp.png"
+             alt="WhatsApp"
+             style="height:14px;vertical-align:middle;">
+      </a>
+      &nbsp; Prenota direttamente via WhatsApp &nbsp;•&nbsp;
+      <a href="https://www.instagram.com/gusmanhomestay"
+         target="_blank"
+         rel="noopener"
+         aria-label="Instagram Gusman Homestay">
+        <img src="/images/instagram.png"
+             alt="Instagram"
+             style="height:14px;vertical-align:middle;">
+      </a>
     </span>
+
   </div>
 </footer>
-
 </div><!-- end container -->
 
 <!-- Lightbox Overlay (Next/Prev) -->
