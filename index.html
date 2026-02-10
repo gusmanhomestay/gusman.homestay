@@ -435,14 +435,13 @@ header.fade-in > *:nth-child(2) { animation-delay: 0.22s; } /* title */
 header.fade-in > *:nth-child(3) { animation-delay: 0.44s; } /* subtitle */
 header.fade-in > *:nth-child(4) { animation-delay: 0.66s; } /* language flags */
 /* Header */
-header{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:20px}
+header{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:20px}
 .logo-img{
-  width:360px;          /* wider */
-  max-width:92vw;
+  width:420px;          /* ⬅ VERY BIG on desktop */
+  max-width:95vw;
   height:auto;
 
-  min-height:110px;    /* ⬅ THIS is the game changer */
-  margin-bottom:0;     /* ⬅ remove fake spacing */
+  margin-bottom:-24px; /* ⬅ FORCE logo closer to title */
 }
 .brand{
   font-family:'Playfair Display', serif;
@@ -451,7 +450,7 @@ header{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bott
   text-align:center;
   letter-spacing:0.2px;
 
-  margin-top:10px;   /* subtle optical alignment */
+  margin-top:-18px;   /* subtle optical alignment */
 }
 .tag{color:var(--muted);font-size:16px;text-align:center}
 
@@ -927,13 +926,14 @@ body:not([data-theme="dark"]) .site-footer{
 /* Mobile adjustments */
 @media (max-width:480px){
   .logo-img{
-    width:300px;
-    min-height:90px;
+    width:340px;
+    margin-bottom:-20px;
   }
 
   .brand{
-    margin-top:-8px;
+    margin-top:-14px;
   }
+}
 
   .about-seal img{
     width:210px;     /* About logo on mobile ONLY */
