@@ -422,11 +422,26 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
     filter: blur(0);
   }
 }
+    @keyframes logoPop {
+  from {
+    opacity: 0;
+    transform: translateY(42px) scale(0.94);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
 
 /* Start hidden */
 header.fade-in > * {
   opacity: 0;
   animation: headerPop 1.6s cubic-bezier(.22,1,.36,1) both;
+}
+    header.fade-in > .logo-img{
+  animation: logoPop 1.6s cubic-bezier(.22,1,.36,1) both;
 }
 
 /* Slower, more luxurious staggering */
