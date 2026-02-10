@@ -436,7 +436,12 @@ header.fade-in > *:nth-child(3) { animation-delay: 0.44s; } /* subtitle */
 header.fade-in > *:nth-child(4) { animation-delay: 0.66s; } /* language flags */
 /* Header */
 header{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:20px}
-.logo-img{width:200px;height:auto;margin-bottom:8px}
+.logo-img{
+  width:260px;        /* ⬅ bigger logo */
+  max-width:90vw;     /* ⬅ safe on mobile */
+  height:auto;
+  margin-bottom:12px; /* a bit more spacing */
+}
 .brand{
   font-family:'Playfair Display', serif;
   font-weight:600;
@@ -903,10 +908,23 @@ body:not([data-theme="dark"]) .site-footer{
 }
 
 .about-seal img{
-  width:140px;           /* adjust 120–160px if needed */
+  width:200px;        /* ⬅ bigger About logo */
   max-width:100%;
   opacity:0.9;
-  border-radius:10px;
+  border-radius:12px;
+}
+    .logo-img,
+.about-seal img{
+  transition: width 0.25s ease;
+}
+    @media (max-width:480px){
+  .logo-img{
+    width:220px;
+  }
+
+  .about-seal img{
+    width:170px;
+  }
 }
 
 /* Slightly softer in dark mode */
