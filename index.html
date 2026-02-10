@@ -599,7 +599,7 @@ p.lead{
 }
 .fullwidth-section .card h3{
   text-align:center;
-  margin:0 0 12px 0;
+  margin:0 0 4px 0;   /* ⬅ MUCH tighter */
 }
 
 /* Video */
@@ -884,6 +884,8 @@ body:not([data-theme="dark"]) .site-footer{
 .about-text{
   flex:1 1 auto;
   min-width:0;
+
+  margin-top:-12px;   /* ⬅ pulls text closer to logo */
 }
 
 .about-meta{
@@ -907,14 +909,14 @@ body:not([data-theme="dark"]) .site-footer{
  /* Small brand seal in About section */
 .about-seal{
   text-align:center;
-  margin:14px 0 22px; /* ⬅ slightly more embedded */
+  margin:6px 0 14px;   /* ⬅ tighter top, controlled bottom */
 }
     
 .about-seal img{
-  width:340px;          /* ⬅ noticeably bigger on desktop */
-  max-width:100%;
+  width:420px;          /* ⬅ BIG and confident */
+  max-width:95%;
   opacity:0.95;
-  border-radius:14px;
+  border-radius:16px;
 }
 
 /* Smooth resize animation */
@@ -936,7 +938,7 @@ body:not([data-theme="dark"]) .site-footer{
 }
 
   .about-seal img{
-    width:260px;     /* About logo on mobile ONLY */
+    width:300px;     /* About logo on mobile ONLY */
   }
 }
     
