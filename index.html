@@ -2763,7 +2763,8 @@ function updatePrice(changedField){
 
   const total = (BASE + extra) * nights;
 
-  document.getElementById('totalPrice').innerText = total + 'K IDR';
+document.getElementById('totalPrice').innerText =
+  total.toLocaleString('id-ID') + ' IDR';
 }
 function setDefaultDates(){
   const checkinEl = document.getElementById("checkin");
@@ -3164,7 +3165,7 @@ function closeRules(){
           "name": "Berapa harga menginap di Gusman Homestay?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Harga mulai dari 500K IDR per malam. Harga terbaik jika pesan langsung via WhatsApp."
+            "text": "Harga mulai dari 750.000 IDR per malam. Harga terbaik jika pesan langsung via WhatsApp."
           }
         },
         {
@@ -3229,7 +3230,7 @@ function closeRules(){
           "name": "How much does it cost to stay at Gusman Homestay?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Prices start from 500K IDR per night. Best rates when booking directly via WhatsApp."
+            "text": "Prices start from 750.000 IDR per night. Best rates when booking directly via WhatsApp."
           }
         },
         {
