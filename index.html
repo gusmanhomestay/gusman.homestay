@@ -1363,6 +1363,44 @@ footer a:focus,
 footer a:active {
   text-decoration: none;
 }
+<style>
+  /* existing CSS */
+  .site-footer{ ... }
+  .footer-line{ ... }
+
+  /* ADD THIS AT THE END */
+  .header-meta{
+    margin-top:12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    opacity:0.75;
+    font-size:13px;
+  }
+
+  .header-datetime{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    white-space:nowrap;
+  }
+
+  .header-lang{
+    display:flex;
+    gap:8px;
+  }
+
+  .header-lang img{
+    width:22px;
+    height:auto;
+    cursor:pointer;
+    opacity:0.85;
+  }
+
+  .header-lang img:hover{
+    opacity:1;
+  }
 </style>
 </head>
 
