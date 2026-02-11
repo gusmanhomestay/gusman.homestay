@@ -1379,27 +1379,32 @@ footer a:active {
     <span class="lang de" style="display:none;">Moderner Komfort mit traditionellem Touch — Nagreg, Westjava. Preise ab 750.000 IDR pro Nacht. Maximal 4–6 Gäste.</span>
     <span class="lang it" style="display:none;">Confort moderno con un tocco tradizionale — Nagreg, West Java. Prezzi a partire da 750.000 IDR a notte. Max 4–6 ospiti.</span>
   </div>
- <!-- ✅ WIB Time -->
-  <div class="site-time">
-  <span class="time-icon" aria-hidden="true">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-      xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 2v3M16 2v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M3 9h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </span>
+<div class="header-meta">
 
-  <span id="timeWIB">--</span>
-</div>
-  
-  <div class="lang-selector">
-    <img src="flags/id.png" alt="Indonesian" onclick="setLanguage('id')">
-    <img src="flags/en.png" alt="English" onclick="setLanguage('en')">
-    <img src="flags/de.png" alt="German" onclick="setLanguage('de')">
-    <img src="flags/it.png" alt="Italian" onclick="setLanguage('it')">
+  <div class="header-datetime">
+    <span class="time-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 2v3M16 2v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M3 9h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+
+    <span id="currentDate"></span>
+    <span class="dot">•</span>
+    <span id="timeWIB"></span>
   </div>
+
+  <div class="header-lang">
+    <img src="flags/id.png" alt="Indonesian" class="lang-btn" onclick="setLanguage('id')">
+    <img src="flags/en.png" alt="English" class="lang-btn" onclick="setLanguage('en')">
+    <img src="flags/de.png" alt="German" class="lang-btn" onclick="setLanguage('de')">
+    <img src="flags/it.png" alt="Italian" class="lang-btn" onclick="setLanguage('it')">
+  </div>
+
+</div>
 </header>
 
 <!-- ===================== TOP HERO ===================== -->
