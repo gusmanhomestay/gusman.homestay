@@ -847,6 +847,21 @@ body:not([data-theme="dark"]) .site-footer{
   opacity:0.85;
   white-space:normal; /* allows wrapping even on desktop */
 }
+    .footer-icons{
+  margin-top:6px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+}
+
+.footer-icons img{
+  height:16px;
+  opacity:0.8;
+}
+
+.footer-icons img:hover{
+  opacity:1;
+}
 
 /* Responsive */
 @media (max-width:1100px){
@@ -2533,107 +2548,49 @@ footer a:active {
 </section>
 <footer>
   <div class="site-footer">
-    <!-- Indonesian -->
+
+    <!-- Language text (short) -->
     <span class="lang id">
-      © <span class="year"></span> Gusman Homestay — Modern minimalis dengan sentuhan tradisional.
-      Booking langsung via WhatsApp
+      © <span class="year"></span> Gusman Homestay
+    </span>
+
+    <span class="lang en" style="display:none;">
+      © <span class="year"></span> Gusman Homestay
+    </span>
+
+    <span class="lang de" style="display:none;">
+      © <span class="year"></span> Gusman Homestay
+    </span>
+
+    <span class="lang it" style="display:none;">
+      © <span class="year"></span> Gusman Homestay
+    </span>
+
+    <!-- Icons (language-agnostic) -->
+    <div class="footer-icons">
       <a href="https://wa.me/6281230015529"
          target="_blank"
          rel="noopener"
-         aria-label="Booking via WhatsApp">
-        <img src="/images/whatsapp.png"
-             alt="WhatsApp"
-             style="height:14px;vertical-align:middle;margin-left:4px;">
+         aria-label="WhatsApp">
+        <img src="/images/whatsapp.png" alt="WhatsApp">
       </a>
-      &nbsp;•&nbsp;
-      Follow us on
+
       <a href="https://www.instagram.com/gusmanhomestay"
          target="_blank"
          rel="noopener"
-         aria-label="Follow Gusman Homestay on Instagram">
-        <img src="/images/instagram.png"
-             alt="Instagram"
-             style="height:14px;vertical-align:middle;margin-left:4px;">
+         aria-label="Instagram">
+        <img src="/images/instagram.png" alt="Instagram">
       </a>
-    </span>
+    </div>
 
-    <!-- English -->
-    <span class="lang en" style="display:none;">
-  © <span class="year"></span> Gusman Homestay — Modern minimalist with a traditional touch.
-  Book direct via WhatsApp
-  <a href="https://wa.me/6281230015529"
-     target="_blank"
-     rel="noopener"
-     aria-label="WhatsApp Booking">
-    <img src="/images/whatsapp.png"
-         alt="WhatsApp"
-         style="height:14px;vertical-align:middle;margin-left:4px;">
-  </a>
-  &nbsp;•&nbsp;
-  Follow us on
-  <a href="https://www.instagram.com/gusmanhomestay"
-     target="_blank"
-     rel="noopener"
-     aria-label="Instagram Gusman Homestay">
-    <img src="/images/instagram.png"
-         alt="Instagram"
-         style="height:14px;vertical-align:middle;margin-left:4px;">
-  </a>
-</span>
+    <!-- Address (quiet, same for all languages) -->
+    <p class="footer-address">
+      <strong>Gusman Homestay – Nagreg</strong><br>
+      Perumahan Rahayu Regency Nagreg No.5, KP Mekar Baru RT1/RW14<br>
+      Nagreg, Kabupaten Bandung, Jawa Barat 40215<br>
+      Phone / WhatsApp: +62 812-3001-5529
+    </p>
 
-    <!-- German -->
-    <span class="lang de" style="display:none;">
-  © <span class="year"></span> Gusman Homestay — Modern-minimalistisch mit traditionellem Touch.
-  Direkt buchen via WhatsApp
-  <a href="https://wa.me/6281230015529"
-     target="_blank"
-     rel="noopener"
-     aria-label="WhatsApp Buchung">
-    <img src="/images/whatsapp.png"
-         alt="WhatsApp"
-         style="height:14px;vertical-align:middle;margin-left:4px;">
-  </a>
-  &nbsp;•&nbsp;
-  Folge uns auf
-  <a href="https://www.instagram.com/gusmanhomestay"
-     target="_blank"
-     rel="noopener"
-     aria-label="Instagram Gusman Homestay">
-    <img src="/images/instagram.png"
-         alt="Instagram"
-         style="height:14px;vertical-align:middle;margin-left:4px;">
-  </a>
-</span>
-
-    <!-- Italian -->
-   <span class="lang it" style="display:none;">
-  © <span class="year"></span> Gusman Homestay — Moderno e minimalista con un tocco tradizionale.
-  Prenota direttamente via WhatsApp
-  <a href="https://wa.me/6281230015529"
-     target="_blank"
-     rel="noopener"
-     aria-label="Prenotazione WhatsApp">
-    <img src="/images/whatsapp.png"
-         alt="WhatsApp"
-         style="height:14px;vertical-align:middle;margin-left:4px;">
-  </a>
-  &nbsp;•&nbsp;
-  Seguici su
-  <a href="https://www.instagram.com/gusmanhomestay"
-     target="_blank"
-     rel="noopener"
-     aria-label="Instagram Gusman Homestay">
-    <img src="/images/instagram.png"
-         alt="Instagram"
-         style="height:14px;vertical-align:middle;margin-left:4px;">
-  </a>
-</span>
- <p class="footer-address">
-  <strong>Gusman Homestay – Nagreg</strong><br>
-  Perumahan Rahayu Regency Nagreg No.5, KP Mekar Baru RT1/RW14<br>
-  Nagreg, Kabupaten Bandung, Jawa Barat 40215<br>
-  Phone / WhatsApp: +62 812-3001-5529
-</p>
   </div>
 </footer>
 </div><!-- end container -->
