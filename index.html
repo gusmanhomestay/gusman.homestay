@@ -498,8 +498,17 @@ header{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom
 
   margin-top:-18px;   /* subtle optical alignment */
 }
-.tag{color:var(--muted);font-size:16px;text-align:center}
+.tag{
+  font-size:16px;
+  text-align:center;
+  color:var(--text);   /* same color as Gusman Homestay */
+  font-weight:600;
+}
 
+/* Dark mode stays white automatically */
+body[data-theme="dark"] .tag{
+  color:var(--text);
+}
 .site-time{
   font-size:13px;
   color:var(--muted);
@@ -513,6 +522,8 @@ header{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom
 
 .site-time .time-icon{
   display:inline-flex;
+  align-items:center;
+  margin-right:2px;   /* tighter spacing before date */
   opacity:.85;
 }
 
@@ -856,8 +867,8 @@ body:not([data-theme="dark"]) .site-footer{
 }
 
 .dot{
+  margin:0 2px;         /* reduce dot spacing */
   opacity:0.6;
-  margin:0 4px;
 }
 /* Responsive */
 @media (max-width:1100px){
@@ -1375,12 +1386,12 @@ footer a:active {
     font-size:13px;
   }
 
-  .header-datetime{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    white-space:nowrap;
-  }
+.header-datetime{
+  display:flex;
+  align-items:center;
+  gap:4px;              /* tighter spacing */
+  white-space:nowrap;
+}
 
   .header-lang{
     display:flex;
