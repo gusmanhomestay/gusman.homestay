@@ -899,6 +899,16 @@ body:not([data-theme="dark"]) .site-footer{
   .split-row{flex-direction:column}
   .split-left,.split-right{flex:1 1 100%}
 }
+    @media (max-width: 992px){
+  .hero-left{
+    align-items: center;
+  }
+
+  .hero-left .card{
+    width: 100%;
+    max-width: 420px;
+  }
+}
 
 /* ====== Lightbox Gallery ====== */
 .lb-overlay{
