@@ -132,26 +132,21 @@ body{
   --glass:rgba(255,255,255,0.75);
 }
 
-/* Dark theme variables (TEAL VERSION) */
+/* Dark theme variables (activated by JS with body[data-theme="dark"]) */
 body[data-theme="dark"]{
-  /* Page background (your teal color) */
-  --bg:#243f42;
-
-  /* Cards slightly darker for depth */
-  --card:#1b3235;
-
-  --text:rgba(255,255,255,0.92);
+  --bg:#0b0f14;
+  --card:#101824;
   --muted:rgba(255,255,255,0.70);
+  --text:rgba(255,255,255,0.92);
 
   --brand:#2f8f8b;
   --brand-dark:#257874;
-  --brand-soft:rgba(47,143,139,0.18);
+  --brand-soft:rgba(47,143,139,0.12);
 
-  --border:rgba(255,255,255,0.12);
-  --card-border:rgba(255,255,255,0.14);
-
+  --border:rgba(255,255,255,0.10);
+  --card-border:rgba(255,255,255,0.10);
   --shadow:0 14px 40px rgba(0,0,0,0.45);
-  --glass:rgba(27,50,53,0.60);
+  --glass:rgba(16,24,36,0.60);
 }
 
 /* Apply theme colors */
@@ -301,33 +296,17 @@ body[data-theme="dark"] .season-note{
   color:var(--text);
 }
 
-/* Dark theme inputs */
 body[data-theme="dark"] #bookingForm input[type="date"],
 body[data-theme="dark"] #bookingForm input[type="number"],
 body[data-theme="dark"] #bookingForm input[type="tel"]{
-  background:#1b3235;
-  color:rgba(255,255,255,0.95);
-  border:1px solid rgba(255,255,255,0.18);
+  background:rgba(16,24,36,0.85);
 }
 
-#bookingForm input{
-  -webkit-appearance:none;
-  appearance:none;
-}
-    body[data-theme="dark"] #bookingForm input::-webkit-inner-spin-button,
-body[data-theme="dark"] #bookingForm input::-webkit-outer-spin-button{
-  filter:invert(1) opacity(0.6);
-}
-    /* Unified focus style */
-#bookingForm input:focus{
-  outline:none;
+#bookingForm input[type="date"]:focus,
+#bookingForm input[type="number"]:focus,
+#bookingForm input[type="tel"]:focus{
   border-color:rgba(47,143,139,0.65);
-  transform:translateY(-0,5px);
-}
-
-/* Dark-mode only glow */
-body[data-theme="dark"] #bookingForm input:focus{
-  box-shadow:0 0 0 2px rgba(47,143,139,0.35);
+  transform:translateY(-1px);
 }
     
     /* =========================
@@ -568,16 +547,9 @@ body[data-theme="dark"] .tag{
   min-width:0;
 }
 @media (max-width: 992px){
-  .hero{
-    flex-direction:column;
-  }
-
-  .hero-left,
-  .hero-middle{
-    width:100%;
-    max-width:100%;
-    min-width:0;
-  }
+  .hero{ flex-wrap:wrap; }
+  .hero-left{ flex:1 1 100%; min-width:0; }
+  .hero-middle{ flex:1 1 100%; }
 }
 /* Cards */
 .card,.hero-card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow)}
@@ -905,16 +877,6 @@ body:not([data-theme="dark"]) .site-footer{
   .gallery{grid-template-columns:repeat(2,1fr)}
   .split-row{flex-direction:column}
   .split-left,.split-right{flex:1 1 100%}
-}
-    @media (max-width: 992px){
-  .hero-left{
-    align-items: center;
-  }
-
-  .hero-left .card{
-    width: 100%;
-    max-width: 420px;
-  }
 }
 
 /* ====== Lightbox Gallery ====== */
@@ -1446,35 +1408,6 @@ footer a:active {
   .header-lang img:hover{
     opacity:1;
   }
-    @media (max-width: 992px){
-  .hero-left .card{
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-      /* FINAL mobile optical centering fix */
-  @media (max-width: 768px){
-    .hero-left{
-      padding-left: 4px;
-      padding-right: 4px;
-    }
-  }
-    /* =========================
-   MOBILE LANDSCAPE FIX
-========================= */
-@media (max-width: 992px) and (orientation: landscape){
-  .hero{
-    display:flex;
-    flex-direction:column;
-  }
-
-  .hero-left,
-  .hero-middle{
-    width:100%;
-    max-width:100%;
-    min-width:0;
-  }
-}
 </style>
 </head>
 
