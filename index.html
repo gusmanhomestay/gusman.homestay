@@ -1409,6 +1409,21 @@ footer a:active {
     opacity:1;
   }
 </style>
+  <script>
+(function () {
+  const savedTheme = localStorage.getItem('theme');
+  const body = document.body;
+
+  if (savedTheme) {
+    body.setAttribute('data-theme', savedTheme);
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      body.setAttribute('data-theme', 'dark');
+    }
+  }
+})();
+</script>
 </head>
 
 <body data-theme="light">
@@ -1474,21 +1489,6 @@ footer a:active {
   </div>
 
 </div>
- <script>
-(function () {
-  const savedTheme = localStorage.getItem('theme');
-  const body = document.body;
-
-  if (savedTheme) {
-    body.setAttribute('data-theme', savedTheme);
-  } else {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark) {
-      body.setAttribute('data-theme', 'dark');
-    }
-  }
-})();
-</script>
 </header>
 
 <!-- ===================== TOP HERO ===================== -->
