@@ -1066,11 +1066,7 @@ body[data-theme="dark"] .about-seal img{
     font-size:12px;
     opacity:0.85;
   }
-@media (max-width: 768px) {
-  .container{
-    padding-bottom: 190px;
-  }
-}
+
 /* =========================
    LOCATION BUTTONS — FINAL FIX
 ========================= */
