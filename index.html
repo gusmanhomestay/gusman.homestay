@@ -1528,16 +1528,15 @@ footer a:active {
 </button>
 <div class="header-datetime pill">
   <span class="time-icon-group">
-  <span class="time-icon" aria-hidden="true">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-    xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 2v3M16 2v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    <path d="M3 9h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    <path d="M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</span>
-    <span class="dot">•</span>
+    <span class="time-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 2v3M16 2v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M3 9h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
   </span>
 
   <span id="currentDate"></span>
@@ -2810,13 +2809,13 @@ function setLanguage(lang){
   });
 
   // ✅ language button active state
-  document.querySelectorAll('.lang-btn').forEach(img=>{
-    img.classList.remove('active');
-  });
+ document.querySelectorAll('.lang-pill').forEach(btn=>{
+  btn.classList.remove('active');
+});
 
-  document
-    .querySelector(`.lang-btn[onclick*="${lang}"]`)
-    ?.classList.add('active');
+document
+  .querySelector(`.lang-pill[onclick*="${lang}"]`)
+  ?.classList.add('active');
 
   // ✅ keep these INSIDE the function
   restartHeaderAnimation();
