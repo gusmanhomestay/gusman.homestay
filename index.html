@@ -1408,41 +1408,55 @@ footer a:active {
   align-items:center;
   gap:4px;
 }
-
 .header-datetime{
-  gap:2px; /* override pill gap */
+  gap:2px;
+  background: var(--brand-soft);
+  border-color: transparent;
+  border-radius:16px;
 }
 .header-datetime .dot{
   margin:0 1px;
+}
+body[data-theme="dark"] .header-datetime{
+  background: rgba(69,183,178,0.12);
 }
 
 #currentDate{
   letter-spacing:-0.01em;
   margin-right:2px;
 }
-
 /* Language pills */
+/* Language pills — info-card style */
 .lang-pill{
   display:inline-flex;
   align-items:center;
   padding:6px 8px;
-  border:1px solid var(--border);
   border-radius:999px;
-  background:transparent;
+  background: var(--brand-soft);
+  border:1px solid transparent;
   cursor:pointer;
-  opacity:0.5;
-  transition:opacity .2s ease, transform .2s ease;
-}
-
-.lang-pill.active{
-  opacity:1;
-  transform:scale(1.05);
+  opacity:0.6;
+  transition:all .2s ease;
 }
 
 .lang-pill img{
   width:22px;
   height:auto;
 }
+
+.lang-pill.active{
+  opacity:1;
+  background: var(--brand);
+}
+
+  body[data-theme="dark"] .lang-pill{
+  background: rgba(69,183,178,0.12);
+}
+
+body[data-theme="dark"] .lang-pill.active{
+  background: var(--brand);
+}
+
     .theme-switch{
   display:inline-flex;
   align-items:center;
