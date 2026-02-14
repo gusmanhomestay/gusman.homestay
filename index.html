@@ -46,7 +46,7 @@
   
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-
+  <link rel="preload" as="image" href="images/gusman-logo-light.webp">
   <title>Gusman Homestay — Nagreg, Bandung | Private Boutique Homestay • Modern Minimalist Comfort • Ideal for Mudik Stopover</title>
 
   <meta name="description"
@@ -445,7 +445,7 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   from {
     opacity: 0;
     transform: translateY(28px) scale(0.985);
-    filter: blur(6px);
+    filter: blur(2px);
   }
   to {
     opacity: 1;
@@ -457,7 +457,7 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   from {
     opacity: 0;
     transform: translateY(42px) scale(0.94);
-    filter: blur(8px);
+    filter: blur(2px);
   }
   to {
     opacity: 1;
@@ -483,9 +483,9 @@ header.fade-in > *:nth-child(4) { animation-delay: 0.66s; } /* language flags */
 /* Header */
 header{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:20px}
 .logo-img{
-  width:420px;          /* ⬅ VERY BIG on desktop */
-  max-width:95vw;
+  width: min(420px, 90vw);
   height:auto;
+}
 
   margin-bottom:-24px; /* ⬅ FORCE logo closer to title */
 }
@@ -1493,6 +1493,13 @@ body[data-theme="dark"] .theme-btn.active{
 .logo-img{
   transition: opacity .25s ease, transform .25s ease;
 }
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+}
 </style>
   <script>
 (function () {
@@ -2062,24 +2069,24 @@ body[data-theme="dark"] .theme-btn.active{
   <img src="images/01-exterior-front.webp" alt="Gusman Homestay exterior view" width="400" height="300" loading="eager">
   <img src="images/02-exterior-front.webp" alt="Gusman Homestay garden area" width="400" height="300" loading="eager">
   <img src="images/03-living-room.webp" alt="Living room at Gusman Homestay" width="400" height="300" loading="eager">
-  <img src="images/04-living-room.webp" alt="Living room seating area" width="400" height="300" loading="eager">
-  <img src="images/05-kitchen-dining.webp" alt="Kitchen and dining area" width="400" height="300" loading="eager">
-  <img src="images/06-kitchen.webp" alt="Fully equipped kitchen" width="400" height="300" loading="eager">
-  <img src="images/07-bedroom-main.webp" alt="Main bedroom" width="400" height="300" loading="eager">
-  <img src="images/08-bedroom-second.webp" alt="Second bedroom" width="400" height="300" loading="eager">
-  <img src="images/09-bathroom-main.webp" alt="Main bathroom" width="400" height="300" loading="eager">
-  <img src="images/10-bathroom-main.webp" alt="Main bathroom sink" width="400" height="300" loading="eager">
-  <img src="images/11-bathroom-second.webp" alt="Second bathroom toilet" width="400" height="300" loading="eager">
-  <img src="images/12-bathroom-second.webp" alt="Second bathroom sink" width="400" height="300" loading="eager">
-  <img src="images/13-bathroom-second.webp" alt="Second bathroom shower" width="400" height="300" loading="eager">
-  <img src="images/14-bamboo-bank.webp" alt="Bamboo seating area" width="400" height="300" loading="eager">
-  <img src="images/15-bamboo-daybed.webp" alt="Bamboo daybed" width="400" height="300" loading="eager">
-  <img src="images/16-amenities.webp" alt="Guest amenities" width="400" height="300" loading="eager">
-  <img src="images/17-towel-amenities.webp" alt="Towel amenities" width="400" height="300" loading="eager">
-  <img src="images/18-sandal-amenities.webp" alt="Guest slippers" width="400" height="300" loading="eager">
-  <img src="images/19-exterior.webp" alt="Gusman Homestay Gate" width="400" height="300" loading="eager">
-  <img src="images/20-exterior.webp" alt="Gusman Homestay Garage Gate" width="400" height="300" loading="eager">
-  <img src="images/21-garage.webp" alt="Gusman Homestay Garaga" width="400" height="300" loading="eager">
+  <img src="images/04-living-room.webp" alt="Living room seating area" width="400" height="300" loading="lazy">
+  <img src="images/05-kitchen-dining.webp" alt="Kitchen and dining area" width="400" height="300" loading="lazy">
+  <img src="images/06-kitchen.webp" alt="Fully equipped kitchen" width="400" height="300" loading="lazy">
+  <img src="images/07-bedroom-main.webp" alt="Main bedroom" width="400" height="300" loading="lazy">
+  <img src="images/08-bedroom-second.webp" alt="Second bedroom" width="400" height="300" loading="lazy">
+  <img src="images/09-bathroom-main.webp" alt="Main bathroom" width="400" height="300" loading="lazy">
+  <img src="images/10-bathroom-main.webp" alt="Main bathroom sink" width="400" height="300" loading="lazy">
+  <img src="images/11-bathroom-second.webp" alt="Second bathroom toilet" width="400" height="300" loading="lazy">
+  <img src="images/12-bathroom-second.webp" alt="Second bathroom sink" width="400" height="300" loading="lazy">
+  <img src="images/13-bathroom-second.webp" alt="Second bathroom shower" width="400" height="300" loading="lazy">
+  <img src="images/14-bamboo-bank.webp" alt="Bamboo seating area" width="400" height="300" loading="lazy">
+  <img src="images/15-bamboo-daybed.webp" alt="Bamboo daybed" width="400" height="300" loading="lazy">
+  <img src="images/16-amenities.webp" alt="Guest amenities" width="400" height="300" loading="lazy">
+  <img src="images/17-towel-amenities.webp" alt="Towel amenities" width="400" height="300" loading="lazy">
+  <img src="images/18-sandal-amenities.webp" alt="Guest slippers" width="400" height="300" loading="lazy">
+  <img src="images/19-exterior.webp" alt="Gusman Homestay Gate" width="400" height="300" loading="lazy">
+  <img src="images/20-exterior.webp" alt="Gusman Homestay Garage Gate" width="400" height="300" loading="lazy">
+  <img src="images/21-garage.webp" alt="Gusman Homestay Garaga" width="400" height="300" loading="lazy">
 </div>
 
     </div><!-- end hero-card -->
