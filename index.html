@@ -2657,8 +2657,7 @@ body[data-theme="dark"] .theme-btn.active{
     </h3>
 <!-- Brand seal -->
 <div class="about-seal">
-  <img src="images/gusman-logo-dark.webp"
-       alt="Gusman Homestay brand seal">
+  <img id="aboutLogo" src="images/gusman-logo-dark.webp" alt="Gusman Homestay Logo">
 </div>
     <div class="about-grid">
   <!-- LEFT: Photo -->
@@ -4066,29 +4065,33 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 </script>
 <script>
-function updateLogoByTheme(theme) {
-  const logo = document.getElementById('siteLogo');
-  if (!logo) return;
+function updateLogosByTheme(theme) {
+  const headerLogo = document.getElementById('siteLogo');
+  const aboutLogo  = document.getElementById('aboutLogo');
 
-  // light theme → logo #1
-  // dark theme  → logo #2
-  logo.src = (theme === 'dark')
-    ? 'images/gusman-logo-light.webp'
-    : 'images/gusman-logo-dark.webp';
+  const lightLogo = 'images/gusman-logo-dark.webp';  // light theme
+  const darkLogo  = 'images/gusman-logo-light.webp'; // dark theme
+
+  if (headerLogo) {
+    headerLogo.src = theme === 'dark' ? darkLogo : lightLogo;
+  }
+
+  if (aboutLogo) {
+    aboutLogo.src = theme === 'dark' ? darkLogo : lightLogo;
+  }
 }
 
 /* Run on page load */
 document.addEventListener('DOMContentLoaded', () => {
   const theme = document.body.getAttribute('data-theme') || 'light';
-  updateLogoByTheme(theme);
+  updateLogosByTheme(theme);
 });
 
-/* Theme switch (keep this if you already use it) */
+/* Theme switch */
 function setTheme(theme) {
   document.body.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
-
-  updateLogoByTheme(theme);
+  updateLogosByTheme(theme);
 
   document.querySelectorAll('.theme-btn').forEach(btn =>
     btn.classList.toggle('active', btn.classList.contains(theme))
