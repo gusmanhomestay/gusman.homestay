@@ -1409,6 +1409,20 @@ footer a:active {
     opacity:1;
   }
 </style>
+  <button
+  onclick="toggleTheme()"
+  style="
+    margin-top:6px;
+    background:none;
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:6px 10px;
+    font-size:12px;
+    cursor:pointer;
+    color:var(--text);
+  ">
+  🌙 / ☀️
+</button>
 </head>
 
 <body>
@@ -1461,6 +1475,20 @@ footer a:active {
   </div>
 
 </div>
+  <script>
+(function () {
+  const savedTheme = localStorage.getItem('theme');
+
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }
+})();
+</script>
 </header>
 
 <!-- ===================== TOP HERO ===================== -->
@@ -3874,6 +3902,15 @@ document.addEventListener('keydown', function(e){
     closeCancelModal();
   }
 });
+</script>
+  <script>
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+}
 </script>
 </body>
 </html>
