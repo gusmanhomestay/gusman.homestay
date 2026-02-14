@@ -1515,11 +1515,7 @@ body[data-theme="dark"] .theme-btn.active{
 <div class="container">
 
 <header class="fade-in">
-  <img
-  src="images/gusman-logo-light.png"
-  alt="Gusman Homestay Logo"
-  class="logo-img"
-  id="siteLogo">
+ <img id="siteLogo" class="logo-img" src="images/gusman-logo-dark.png" alt="Gusman Homestay Logo">
   <div class="brand">Gusman Homestay</div>
 
 <div class="tag">
@@ -4027,26 +4023,29 @@ document.addEventListener('DOMContentLoaded', ()=>{
   document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
 });
 </script>
-  <script>
+<script>
 function updateLogoByTheme(theme) {
   const logo = document.getElementById('siteLogo');
   if (!logo) return;
 
-  logo.src = theme === 'dark'
-    ? 'images/gusman-logo-dark.png'
-    : 'images/gusman-logo-light.png';
+  // light theme → logo #1
+  // dark theme  → logo #2
+  logo.src = (theme === 'dark')
+    ? 'images/gusman-logo-light.png'
+    : 'images/gusman-logo-dark.png';
 }
 
 /* Run on page load */
 document.addEventListener('DOMContentLoaded', () => {
-  const currentTheme = document.body.getAttribute('data-theme') || 'light';
-  updateLogoByTheme(currentTheme);
+  const theme = document.body.getAttribute('data-theme') || 'light';
+  updateLogoByTheme(theme);
 });
 
-/* Hook into your existing theme switch */
+/* Theme switch (keep this if you already use it) */
 function setTheme(theme) {
   document.body.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
+
   updateLogoByTheme(theme);
 
   document.querySelectorAll('.theme-btn').forEach(btn =>
