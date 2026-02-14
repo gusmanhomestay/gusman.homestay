@@ -842,7 +842,6 @@ body:not([data-theme="dark"]) .site-footer{
 .about-seal img{
   transition: width 0.25s ease;
 }
-
 /* Mobile adjustments */
 @media (max-width:480px){
   .logo-img{
@@ -857,8 +856,7 @@ body:not([data-theme="dark"]) .site-footer{
   .about-seal img{
     width:300px;     /* About logo on mobile ONLY */
   }
-}
-    
+}    
 /* Slightly softer in dark mode */
 body[data-theme="dark"] .about-seal img{
   opacity:0.85;
