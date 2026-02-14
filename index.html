@@ -1409,20 +1409,6 @@ footer a:active {
     opacity:1;
   }
 </style>
-  <button
-  onclick="toggleTheme()"
-  style="
-    margin-top:6px;
-    background:none;
-    border:1px solid var(--border);
-    border-radius:999px;
-    padding:6px 10px;
-    font-size:12px;
-    cursor:pointer;
-    color:var(--text);
-  ">
-  🌙 / ☀️
-</button>
 </head>
 
 <body>
@@ -1450,7 +1436,20 @@ footer a:active {
   </span>
 </div>
 <div class="header-meta">
-
+<button
+  onclick="toggleTheme()"
+  style="
+    margin-top:6px;
+    background:none;
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:6px 10px;
+    font-size:12px;
+    cursor:pointer;
+    color:var(--text);
+  ">
+  🌙 / ☀️
+</button>
   <div class="header-datetime">
     <span class="time-icon" aria-hidden="true">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -1476,15 +1475,17 @@ footer a:active {
 
 </div>
   <script>
+<script>
 (function () {
   const savedTheme = localStorage.getItem('theme');
+  const body = document.body;
 
   if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
+    body.setAttribute('data-theme', savedTheme);
   } else {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (prefersDark) {
-      document.documentElement.setAttribute('data-theme', 'dark');
+      body.setAttribute('data-theme', 'dark');
     }
   }
 })();
@@ -3909,6 +3910,16 @@ function toggleTheme() {
   const next = current === 'dark' ? 'light' : 'dark';
 
   document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+}
+</script>
+  <script>
+function toggleTheme() {
+  const body = document.body;
+  const current = body.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+
+  body.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
 }
 </script>
