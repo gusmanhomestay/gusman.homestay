@@ -2592,16 +2592,6 @@ document.addEventListener('keydown', function(e){
 });
 </script>
 <script>
-function setTheme(theme){
-  document.body.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-
-  document.querySelectorAll('.theme-btn').forEach(btn=>{
-    btn.classList.remove('active');
-  });
-
-  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
-}
 
 /* Sync active button on load */
 document.addEventListener('DOMContentLoaded', ()=>{
