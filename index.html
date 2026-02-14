@@ -1501,28 +1501,41 @@ body[data-theme="dark"] .theme-btn.active{
   }
 }
 @media (max-width: 640px) {
-  .header {
-    padding-top: 16px;
-    padding-bottom: 20px;
+
+  /* Space around logo */
+  .logo-img {
+    margin-bottom: 18px;
   }
 
-  .header-logo {
-    margin-bottom: 14px;
-  }
-
-  .header-title {
+  /* Title spacing */
+  h1 {
     margin-bottom: 12px;
   }
 
-  .header-subtitle {
-    margin-bottom: 14px;
-    line-height: 1.5;
+  /* Tagline spacing */
+  .tagline {
+    margin-bottom: 18px;
+    line-height: 1.55;
+    padding: 0 14px;
+    text-align: center;
   }
 
+  /* Space between pills (theme, date, flags) */
   .header-meta {
-    gap: 10px; /* space between theme, date, flags */
+    margin-top: 10px;
+    gap: 12px;
+  }
+
+  /* Add breathing room below header */
+  .hero {
+    padding-bottom: 24px;
   }
 }
+  @media (max-width: 640px) {
+    .logo-img {
+      max-width: 340px;
+    }
+  }
 </style>
   <script>
 (function () {
