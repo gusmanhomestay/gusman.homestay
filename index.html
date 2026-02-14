@@ -1443,6 +1443,36 @@ footer a:active {
   width:22px;
   height:auto;
 }
+    .theme-switch{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px;
+}
+
+.theme-btn{
+  border:none;
+  background:transparent;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  color:var(--text);
+  opacity:0.6;
+  transition:all .2s ease;
+}
+
+.theme-btn.active{
+  background:var(--brand-soft);
+  color:var(--brand-dark);
+  opacity:1;
+}
+
+body[data-theme="dark"] .theme-btn.active{
+  background:rgba(69,183,178,0.18);
+  color:#fff;
+}
 </style>
   <script>
 (function () {
@@ -1486,20 +1516,17 @@ footer a:active {
   </span>
 </div>
 <div class="header-meta">
-<button
-  onclick="toggleTheme()"
-  style="
-    margin-top:6px;
-    background:none;
-    border:1px solid var(--border);
-    border-radius:999px;
-    padding:6px 10px;
-    font-size:12px;
-    cursor:pointer;
-    color:var(--text);
-  ">
-  ☀️ Light • 🌙 Dark 
-</button>
+<div class="theme-switch pill">
+  <button class="theme-btn light" onclick="setTheme('light')">
+    ☀️ Light
+  </button>
+
+  <span class="dot">•</span>
+
+  <button class="theme-btn dark" onclick="setTheme('dark')">
+    🌙 Dark
+  </button>
+</div>
 <div class="header-datetime pill">
   <span class="time-icon-group">
     <span class="time-icon" aria-hidden="true">
@@ -3958,15 +3985,23 @@ document.addEventListener('keydown', function(e){
   }
 });
 </script>
-  <script>
-function toggleTheme() {
-  const body = document.body;
-  const current = body.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
+<script>
+function setTheme(theme){
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
 
-  body.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
+  document.querySelectorAll('.theme-btn').forEach(btn=>{
+    btn.classList.remove('active');
+  });
+
+  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
 }
+
+/* Sync active button on load */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const theme = document.body.getAttribute('data-theme') || 'light';
+  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
+});
 </script>
 </body>
 </html>
