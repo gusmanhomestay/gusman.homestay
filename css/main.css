@@ -853,7 +853,6 @@ body:not([data-theme="dark"]) .site-footer{
   .brand{
     margin-top:-14px;
   }
-}
 
   .about-seal img{
     width:300px;     /* About logo on mobile ONLY */
