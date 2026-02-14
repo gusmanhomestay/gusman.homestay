@@ -210,25 +210,20 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
 .btn-premium .btn-sub{
   line-height:1.1;
 }
-/* Sticky button base */
-.wa-sticky .btn-premium{
-  width:100%;
-  max-width:360px;
-  padding:12px 16px;
-  font-size:14px;
-  font-weight:800;
-  border-radius:16px;
-}
+/* Sticky WhatsApp (mobile only) */
+@media (max-width:768px){
+
   .wa-normal{
     display:none !important;
   }
 
-  /* perfect centering */
   .wa-sticky .btn-premium{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
+    width:100%;
+    max-width:360px;
+    padding:12px 16px;
+    font-size:14px;
+    font-weight:800;
+    border-radius:16px;
   }
 
   .wa-sticky .btn-title{
