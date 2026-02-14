@@ -1422,6 +1422,11 @@ footer a:active {
   opacity:1;
   transform:scale(1.05);
 }
+    .time-icon-group{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
     .pill{
   display:inline-flex;
   align-items:center;
@@ -1432,6 +1437,27 @@ footer a:active {
   font-size:12px;
   color:var(--text);
   background:transparent;
+}
+    .lang-pill{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 8px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:transparent;
+  cursor:pointer;
+  opacity:0.5;
+  transition:opacity .2s ease, transform .2s ease;
+}
+
+.lang-pill.active{
+  opacity:1;
+  transform:scale(1.05);
+}
+
+.lang-pill img{
+  width:22px;
+  height:auto;
 }
 </style>
   <script>
@@ -1490,28 +1516,33 @@ footer a:active {
   ">
   ☀️ Light • 🌙 Dark 
 </button>
-  <div class="header-datetime pill">
+<div class="header-datetime pill">
+  <span class="time-icon-group">
     <span class="time-icon" aria-hidden="true">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-        xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 2v3M16 2v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M3 9h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        <path d="M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <!-- same svg -->
     </span>
-
-    <span id="currentDate"></span>
     <span class="dot">•</span>
-    <span id="timeWIB"></span>
-  </div>
+  </span>
 
-  <div class="header-lang pill">
-    <img src="flags/id.png" alt="Indonesian" class="lang-btn" onclick="setLanguage('id')">
-    <img src="flags/en.png" alt="English" class="lang-btn" onclick="setLanguage('en')">
-    <img src="flags/de.png" alt="German" class="lang-btn" onclick="setLanguage('de')">
-    <img src="flags/it.png" alt="Italian" class="lang-btn" onclick="setLanguage('it')">
-  </div>
+  <span id="currentDate"></span>
+  <span class="dot">•</span>
+  <span id="timeWIB"></span>
+</div>
+
+<div class="header-lang">
+  <button class="lang-pill active" onclick="setLanguage('id')">
+    <img src="flags/id.png" alt="Indonesian">
+  </button>
+  <button class="lang-pill" onclick="setLanguage('en')">
+    <img src="flags/en.png" alt="English">
+  </button>
+  <button class="lang-pill" onclick="setLanguage('de')">
+    <img src="flags/de.png" alt="German">
+  </button>
+  <button class="lang-pill" onclick="setLanguage('it')">
+    <img src="flags/it.png" alt="Italian">
+  </button>
+</div>
 
 </div>
 </header>
