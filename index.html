@@ -1459,19 +1459,22 @@ footer a:active {
   font-weight:600;
   cursor:pointer;
   color:var(--text);
-  opacity:0.6;
+  opacity:0.4;
   transition:all .2s ease;
+}
+  .theme-btn:hover{
+  opacity:0.8;
 }
 
 .theme-btn.active{
-  background:var(--brand-soft);
-  color:var(--brand-dark);
+  background:#e9f6f3;       /* same as info card */
+  color:#0f3d3a;            /* dark readable text */
   opacity:1;
 }
 
 body[data-theme="dark"] .theme-btn.active{
-  background:rgba(69,183,178,0.18);
-  color:#fff;
+  background:rgba(233,246,243,0.15); /* soft green tint */
+  color:#ffffff;
 }
 </style>
   <script>
