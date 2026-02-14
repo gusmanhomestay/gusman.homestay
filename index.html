@@ -44,34 +44,24 @@
 }
 </script>
   
- <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="preload" as="image" href="images/gusman-logo-light.webp">
+  <title>Gusman Homestay — Nagreg, Bandung | Private Boutique Homestay • Modern Minimalist Comfort • Ideal for Mudik Stopover</title>
 
-<link rel="preload" href="/images/gusman-logo-light.webp" as="image">
+  <meta name="description"
+    content="Private boutique homestay di Nagreg, Bandung. Ideal sebagai tempat istirahat saat mudik Lebaran melalui jalur Nagreg. Rumah privat 2 kamar, parkir tersedia." />
 
-<title>
-  Gusman Homestay — Nagreg, Bandung | Private Boutique Homestay • Modern Minimalist Comfort • Ideal for Mudik Stopover
-</title>
-
-<meta name="description"
-  content="Private boutique homestay di Nagreg, Bandung. Ideal sebagai tempat istirahat saat mudik Lebaran melalui jalur Nagreg. Rumah privat 2 kamar, parkir tersedia." />
-
-<!-- Preload main CSS -->
-<link rel="preload" href="/css/main.css" as="style">
-
-<!-- Main CSS -->
-<link rel="stylesheet" href="/css/main.css">
-
-<!-- Open Graph / WhatsApp Preview -->
-<meta property="og:type" content="website">
-<meta property="og:locale" content="id_ID">
-<meta property="og:url" content="https://www.gusmanhomestay.com/">
-<meta property="og:title" content="Gusman Homestay Nagreg – Rumah Privat untuk Singgah Mudik">
-<meta property="og:description"
-  content="Rumah privat 2 kamar di Nagreg. Cocok untuk singgah mudik Bandung–Garut. Dekat Stasiun Nagreg, parkir tersedia.">
-<meta property="og:image" content="https://www.gusmanhomestay.com/images/og-cover.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:url" content="https://www.gusmanhomestay.com/">
+  <meta property="og:title" content="Gusman Homestay Nagreg – Rumah Privat untuk Singgah Mudik">
+  <meta property="og:description"
+    content="Rumah privat 2 kamar di Nagreg. Cocok untuk singgah mudik Bandung–Garut. Dekat Stasiun Nagreg, parkir tersedia.">
+  <meta property="og:image" content="https://www.gusmanhomestay.com/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter / WhatsApp fallback -->
   <meta name="twitter:card" content="summary_large_image">
@@ -82,6 +72,1471 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <style>
+:root{
+  --bg:#fbfbfa;
+  --card:#ffffff;
+  --muted:#6b6b6b;
+  --accent:#b87a3a;
+  --wood:#f3e7da;
+  --maxw:1200px;
+
+  --brand:#2f8f8b;
+  --brand-dark:#257874;
+  --brand-soft:#e6f3f2;
+
+  --radius:14px;
+  --shadow:0 8px 24px rgba(16,24,40,0.06);
+
+  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+}
+
+*{box-sizing:border-box}
+  /* 🔒 Prevent horizontal scroll on mobile Safari */
+html, body{
+  max-width:100%;
+  overflow-x:hidden;
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.45;
+}
+.container{
+  max-width:var(--maxw);
+  margin:32px auto;
+  padding:20px;
+}
+/* =========================
+   THEME (Light + Dark)
+========================= */
+
+/* Light theme defaults */
+:root{
+  --bg:#fbfbfa;
+  --card:#ffffff;
+  --muted:#6b6b6b;
+  --text:#0b1220;
+
+  --brand:#2f8f8b;
+  --brand-dark:#257874;
+  --brand-soft:#e6f3f2;
+
+  --radius:14px;
+  --shadow:0 10px 30px rgba(16,24,40,0.08);
+
+  /* Hotel vibe */
+  --border:rgba(16,24,40,0.08);
+  --card-border:rgba(16,24,40,0.08);
+  --glass:rgba(255,255,255,0.75);
+}
+
+/* Dark theme variables (activated by JS with body[data-theme="dark"]) */
+body[data-theme="dark"]{
+  --bg:#243f42;
+  --card:#1b2f33;
+  --muted:rgba(255,255,255,0.70);
+  --text:rgba(255,255,255,0.92);
+
+  --brand:#2f8f8b;
+  --brand-dark:#257874;
+  --brand-soft:rgba(47,143,139,0.12);
+
+  --border:rgba(255,255,255,0.10);
+  --card-border:rgba(255,255,255,0.10);
+  --shadow:0 14px 40px rgba(0,0,0,0.45);
+  --glass:rgba(16,24,36,0.60);
+}
+
+/* Apply theme colors */
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+/* ===== Reviews: readable in light + dark mode ===== */
+.review-author{
+  color:var(--text);
+  font-weight:700;
+}
+
+.review-stars{
+  color:var(--text);
+}
+
+/* Slightly softer in dark mode (more elegant) */
+body[data-theme="dark"] .review-author{
+  color:rgba(255,255,255,.9);
+}
+
+body[data-theme="dark"] .review-stars{
+  color:rgba(255,255,255,.8);
+}
+/* Cards look more premium */
+.card, .hero-card{
+  border:1px solid var(--card-border);
+  background:var(--card);
+  box-shadow:var(--shadow);
+}
+
+/* Soft background glow (hotel feel) */
+.container{
+  position:relative;
+}
+.container:before{
+  content:"";
+  position:absolute;
+  inset:-120px -80px auto -80px;
+  height:260px;
+  background:radial-gradient(closest-side, rgba(47,143,139,0.18), transparent 70%);
+  pointer-events:none;
+  filter:blur(2px);
+}
+body[data-theme="dark"] .container:before{
+  background:radial-gradient(closest-side, rgba(69,183,178,0.18), transparent 70%);
+}
+
+/* =========================
+   BOOKING FORM "HOTEL" UI
+========================= */
+#bookingForm label{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;          /* ✅ smaller gap */
+  margin:8px 0;      /* ✅ smaller spacing */
+  font-size:15px;    /* ✅ smaller label text */
+}
+
+/* ✅ Force compact inputs (works on iOS/Safari too) */
+#bookingForm input[type="date"],
+#bookingForm input[type="number"]{
+  -webkit-appearance: none;
+  appearance: none;
+
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px;
+  font-size: 13px;
+
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.85);
+  color: var(--text);
+}
+
+#bookingForm input[type="date"],
+#bookingForm input[type="number"]{
+  -webkit-appearance:none;
+  appearance:none;
+
+  height:36px !important;
+  line-height:36px !important;
+  padding:0 10px !important;
+  font-size:13px !important;
+
+  border-radius:10px;
+}
+
+/* ✅ Even more compact on small phones */
+@media (max-width:480px){
+  #bookingForm label{
+    font-size:14px;
+    margin:6px 0;
+  }
+
+  #bookingForm input[type="date"],
+  #bookingForm input[type="number"]{
+    width:140px;
+    padding:7px 9px;
+    font-size:13px;
+  }
+}
+  /* ===== Season pricing note ===== */
+.season-note{
+  margin:10px 0 14px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:var(--brand-soft);
+  font-size:13px;
+  line-height:1.6;
+  color:var(--text);
+}
+body[data-theme="dark"] .season-note{
+  background:rgba(69,183,178,0.12);
+}
+ /* High season line — slightly smaller to fit nicely */
+.season-high{
+  display:block;
+  font-size:12.5px;      /* smaller than normal */
+  font-weight:700;
+  white-space:nowrap;    /* keep it one line */
+}
+
+/* Extra safety for very small phones */
+@media (max-width: 380px){
+  .season-high{
+    font-size:12px;
+    white-space:normal;  /* allow wrap if screen is extremely small */
+  }
+} 
+
+  /* ✅ Total Price highlight box */
+
+#bookingForm input[type="date"],
+#bookingForm input[type="number"],
+#bookingForm input[type="tel"]{
+  width:160px;
+  max-width:55%;
+  padding:8px 10px;
+  border-radius:10px;
+  font-size:14px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.85);
+  color:var(--text);
+}
+
+body[data-theme="dark"] #bookingForm input[type="date"],
+body[data-theme="dark"] #bookingForm input[type="number"],
+body[data-theme="dark"] #bookingForm input[type="tel"]{
+  background:#1b2f33;
+}
+
+#bookingForm input[type="date"]:focus,
+#bookingForm input[type="number"]:focus,
+#bookingForm input[type="tel"]:focus{
+  border-color:rgba(47,143,139,0.65);
+  transform:translateY(-1px);
+}
+    
+    /* =========================
+   Booking layout consistency
+========================= */
+.booking-width{
+  width:100%;
+  max-width:420px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.total-price-box{
+  width:100%;
+  max-width:420px;     /* SAME as buttons */
+  margin:0 auto 12px;  /* SAME spacing */
+  padding:12px 16px;   /* SAME padding */
+  border-radius:14px;  /* SAME radius */
+  background:var(--brand-soft);
+  text-align:center;
+}
+.total-price-label{
+  font-size:13px;      /* same as button sub */
+  font-weight:700;
+  line-height:1.1;
+}
+
+.total-price-value{
+  font-size:17px;      /* same as button title */
+  font-weight:800;
+  line-height:1.15;
+}
+/* =========================
+   WhatsApp buttons (CLEAN)
+========================= */
+
+/* Desktop/Tablet button inside booking card */
+#bookingForm .btn-premium.wa-normal{
+  width:100%;
+  max-width:420px;
+  margin:14px auto 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:12px 16px;          /* SAME as Airbnb */
+  font-size:15px;
+  border-radius:14px;
+}
+
+/* spacing between buttons */
+.wa-normal{
+  margin-bottom:12px;
+}
+
+.airbnb-btn{
+  padding:12px 16px;
+  border-radius:14px;
+  margin-top:12px;
+}
+
+/* text tightening */
+.btn-premium .btn-title{
+  line-height:1.15;
+}
+
+.btn-premium .btn-sub{
+  line-height:1.1;
+}
+/* Sticky container (mobile only) */
+.wa-sticky{
+  display:none;
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  z-index:9999;
+  justify-content:center;
+}
+
+/* Sticky button base */
+.wa-sticky .btn-premium{
+  width:100%;
+  max-width:360px;
+  padding:12px 16px;
+  font-size:14px;
+  font-weight:800;
+  border-radius:16px;
+}
+
+/* =========================
+   Sticky WhatsApp (mobile)
+========================= */
+@media (max-width:768px){
+
+  .wa-sticky{
+    display:flex;
+    pointer-events:auto;
+  }
+
+  .wa-normal{
+    display:none !important;
+  }
+
+  /* perfect centering */
+  .wa-sticky .btn-premium{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .wa-sticky .btn-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+  }
+
+  .wa-sticky .wa-icon{
+    height:26px;
+    margin:0;
+  }
+
+  /* IMPORTANT: space so sticky never covers content */
+  .container{
+    padding-bottom:calc(190px + env(safe-area-inset-bottom));
+  }
+
+  .ota-icons{
+    margin-bottom:6px;
+  }
+}
+/* =========================
+   HEADER FADE-IN (SLOW & ELEGANT)
+========================= */
+@keyframes headerPop {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.985);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+    @keyframes logoPop {
+  from {
+    opacity: 0;
+    transform: translateY(42px) scale(0.94);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Start hidden */
+header.fade-in > * {
+  opacity: 0;
+  animation: headerPop 1.6s cubic-bezier(.22,1,.36,1) both;
+}
+    header.fade-in > .logo-img{
+  animation: logoPop 1.6s cubic-bezier(.22,1,.36,1) both;
+}
+
+/* Slower, more luxurious staggering */
+header.fade-in > *:nth-child(1) { animation-delay: 0.00s; } /* logo */
+header.fade-in > *:nth-child(2) { animation-delay: 0.22s; } /* title */
+header.fade-in > *:nth-child(3) { animation-delay: 0.44s; } /* subtitle */
+header.fade-in > *:nth-child(4) { animation-delay: 0.66s; } /* language flags */
+/* Header */
+header{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:20px}
+.logo-img{
+  width: min(420px, 90vw);
+  height:auto;
+}
+
+  margin-bottom:-24px; /* ⬅ FORCE logo closer to title */
+}
+.brand{
+  font-family:'Playfair Display', serif;
+  font-weight:600;
+  font-size:clamp(36px, 5vw, 52px);
+  text-align:center;
+  letter-spacing:0.2px;
+
+  margin-top:-18px;   /* subtle optical alignment */
+}
+.tag{
+  font-size:16px;
+  text-align:center;
+  color:var(--text);   /* same color as Gusman Homestay */
+  font-weight:600;
+}
+
+/* Dark mode stays white automatically */
+body[data-theme="dark"] .tag{
+  color:var(--text);
+}
+.site-time{
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+  margin-top:4px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+
+.site-time .time-icon{
+  display:inline-flex;
+  align-items:center;
+  margin-right:2px;   /* tighter spacing before date */
+  opacity:.85;
+}
+
+/* Top Hero layout */
+.hero{
+  display:flex;
+  gap:28px;
+  align-items:flex-start;
+  flex-wrap:nowrap; /* ✅ IMPORTANT: keep side-by-side on desktop */
+}
+.hero-left{
+  flex:0 0 420px;   /* left column fixed width */
+  min-width:420px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.hero-middle{
+  flex:1 1 auto;    /* gallery takes remaining space */
+  min-width:0;
+}
+@media (max-width: 992px){
+  .hero{ flex-wrap:wrap; }
+  .hero-left{ flex:1 1 100%; min-width:0; }
+  .hero-middle{ flex:1 1 100%; }
+}
+/* Cards */
+.card,.hero-card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow)}
+h1{margin:0;font-size:28px}
+
+p.lead{
+  color:var(--muted);
+  margin-top:8px;
+  text-align:center; /* ✅ center subtitle text */
+}
+
+.hero-card h1{
+  text-align:center;
+  white-space:normal !important;
+  overflow:visible !important;
+  text-overflow:unset !important;
+  line-height:1.2;
+}
+
+/* ✅ On small phones, allow wrap (better than cutting) */
+@media (max-width:480px){
+  .hero-card h1{
+    white-space:normal;
+  }
+}
+/* =========================
+   GALLERY (FAST + STABLE)
+========================= */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:14px;
+}
+
+.gallery img{
+  width:100%;
+  height:120px;                 /* ✅ keep your preferred size */
+  aspect-ratio: 4 / 3;          /* ✅ optional safety (prevents jump) */
+  object-fit:cover;
+  object-position:center;
+  border-radius:10px;
+  cursor:pointer;
+  background:#eaeaea;            /* ✅ prevents half-render flash */
+}
+
+/* Mobile: 2 columns */
+@media (max-width:700px){
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery img{
+    height:140px;               /* ✅ your mobile size */
+  }
+}
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+}
+/* OTA logos (Booking / Tiket / Traveloka) */
+.ota-icons{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+
+.ota-icons img{
+  height:22px;
+  width:auto;
+  max-width:80px;
+  object-fit:contain;
+}
+
+/* Reviews (left) + Amenities/Location (right) row */
+.split-row{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+.split-left{flex:1 1 420px;min-width:300px}
+.split-right{
+  flex:2 1 580px;
+  min-width:300px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* Full-width sections (Video + Map + About) */
+.fullwidth-section{
+  margin-top:28px;
+}
+.fullwidth-section .card h3{
+  text-align:center;
+  margin:0 0 4px 0;   /* ⬅ MUCH tighter */
+}
+
+/* Video */
+.video-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+
+.video-item{
+  margin:0;
+  position:relative; /* ✅ needed for next/prev overlay */
+}
+
+.video-item video{
+  width:100%;
+  max-width:100%;
+  aspect-ratio:16/9;
+  height:auto;
+  border-radius:12px;
+  display:block;
+  background:#000;
+}
+
+.video-item figcaption{
+  margin-top:6px;
+  font-size:14px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* Video selection buttons */
+.video-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  margin-top:12px;
+  max-width:100%;
+}
+
+.video-btn{
+  appearance:none;
+  border:1px solid #e5e7eb;
+  background:#f3f4f6;
+  color:#111827;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:600;
+  cursor:pointer;
+  line-height:1.2;
+  width:auto;
+  max-width:100%;
+  text-align:center;
+  white-space:normal;     /* ✅ allow wrap */
+  word-break:break-word;  /* ✅ safety */
+  box-shadow:0 2px 6px rgba(16,24,40,0.06);
+}
+
+.video-btn:hover{ background:#e5e7eb; }
+
+.video-btn.active{
+  background:var(--brand);
+  border-color:var(--brand);
+  color:#fff;
+}
+
+/* Next/Prev overlay */
+.video-nav{
+  position:absolute;
+  inset:0;
+  pointer-events:none; /* only buttons clickable */
+}
+
+.video-nav-btn{
+  pointer-events:auto;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,0.35);
+  color:#fff;
+  font-size:26px;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  backdrop-filter:blur(6px);
+}
+
+.video-nav-btn.prev{ left:14px; }
+.video-nav-btn.next{ right:14px; }
+
+.video-nav-btn:hover{ background:rgba(0,0,0,0.5); }
+
+/* Mobile tweaks */
+@media (max-width:600px){
+  .video-nav-btn{
+    width:38px;
+    height:38px;
+    font-size:22px;
+  }
+}
+
+@media (max-width:480px){
+  .video-btn{
+    padding:9px 12px;
+    font-size:13px;
+  }
+}
+
+/* Optional: prevent anything pushing card wider */
+.fullwidth-section .card{
+  overflow:hidden;
+}
+/* Map */
+.map-embed{
+  width:100%;
+  height:380px;
+  border-radius:12px;
+  border:0;
+  display:block;
+}
+/* ✅ Map preview (fast) */
+.map-preview{
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+}
+
+.map-preview img{
+  width:100%;
+  display:block;
+  border-radius:12px;
+}
+
+.map-btn{
+  position:absolute;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--brand);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.25);
+}
+/* Map button text switching (desktop vs mobile) */
+.map-text-mobile{
+  display:none;
+}
+
+@media (max-width:768px){
+  .map-text-desktop{ display:none; }
+  .map-text-mobile{ display:inline; }
+}
+
+/* Hover (desktop only, safe) */
+.map-preview:hover .map-btn{
+  background:var(--brand-dark);
+}
+  
+.site-footer{
+  width:100%;
+  margin:18px 0 0;
+  padding:0 12px;
+  color:rgba(255,255,255,0.55);
+  text-align:center;
+  font-size:12px;
+  line-height:1.6;
+  letter-spacing:0.2px;
+}
+
+body:not([data-theme="dark"]) .site-footer{
+  color:rgba(11,18,32,0.55);
+}
+
+.site-footer a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.footer-line{
+  display:flex;
+  flex-wrap:wrap;          /* mobile wraps */
+  justify-content:center;
+  align-items:center;
+  gap:6px;
+}
+
+@media (min-width:768px){
+  .footer-line{
+    white-space:nowrap;    /* ONE line on desktop */
+  }
+}
+
+.footer-icon img{
+  height:14px;
+  vertical-align:middle;
+  opacity:0.85;
+}
+
+.footer-icon:hover img{
+  opacity:1;
+}
+
+.dot{
+  margin:0 2px;         /* reduce dot spacing */
+  opacity:0.6;
+}
+/* Responsive */
+@media (max-width:1100px){
+  .hero{flex-direction:column}
+  .hero-left,.hero-middle{flex:1 1 100%}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .split-row{flex-direction:column}
+  .split-left,.split-right{flex:1 1 100%}
+}
+
+/* ====== Lightbox Gallery ====== */
+.lb-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  padding:24px;
+}
+.lb-overlay.open{ display:flex; }
+.lb-img{
+  max-width:min(92vw, 1100px);
+  max-height:82vh;
+  border-radius:12px;
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+  background:#000;
+}
+.lb-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  border:0;
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  font-size:28px;
+  width:52px;
+  height:52px;
+  border-radius:999px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  user-select:none;
+}
+.lb-btn:hover{ background:rgba(255,255,255,.22); }
+.lb-prev{ left:16px; }
+.lb-next{ right:16px; }
+.lb-close{
+  position:absolute;
+  top:16px;
+  right:16px;
+  transform:none;
+  font-size:26px;
+  width:46px;
+  height:46px;
+}
+.lb-counter{
+  position:absolute;
+  bottom:16px;
+  left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.85);
+  font-size:14px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+}
+
+/* --- About section layout --- */
+.about-grid{
+  display:flex;
+  gap:22px;
+  align-items:flex-start;
+  flex-wrap:nowrap; /* ✅ keeps side-by-side on desktop */
+}
+
+.about-photo{
+  flex:0 0 240px;
+  width:240px;
+  height:240px;
+  border-radius:14px;
+  object-fit:cover;
+  box-shadow:var(--shadow);
+  margin:0; /* ✅ do NOT center the photo */
+}
+
+.about-text{
+  flex:1 1 auto;
+  min-width:0;
+
+  margin-top:-12px;   /* ⬅ pulls text closer to logo */
+}
+
+.about-meta{
+  margin-top:10px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width:820px){
+  .about-grid{
+    flex-wrap:wrap;
+  }
+  .about-photo{
+    width:220px;
+    height:220px;
+    margin:0 auto; /* center photo on mobile */
+  }
+}
+ /* Small brand seal in About section */
+.about-seal{
+  text-align:center;
+  margin:6px 0 14px;   /* ⬅ tighter top, controlled bottom */
+}
+    
+.about-seal img{
+  width:420px;          /* ⬅ BIG and confident */
+  max-width:95%;
+  opacity:0.95;
+  border-radius:16px;
+}
+
+/* Smooth resize animation */
+.logo-img,
+.about-seal img{
+  transition: width 0.25s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width:480px){
+  .logo-img{
+    width:340px;
+    margin-bottom:-20px;
+  }
+
+  .brand{
+    margin-top:-14px;
+  }
+}
+
+  .about-seal img{
+    width:300px;     /* About logo on mobile ONLY */
+  }
+}
+    
+/* Slightly softer in dark mode */
+body[data-theme="dark"] .about-seal img{
+  opacity:0.85;
+}
+  
+/* ===== Smooth section animations ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .75s cubic-bezier(.2,.8,.2,1),
+             transform .75s cubic-bezier(.2,.8,.2,1);
+  will-change:opacity, transform;
+}
+
+.reveal.is-visible{
+  opacity:1;
+  transform:none;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+}
+/* Airbnb button stays visible on mobile */
+@media (max-width:768px){
+  .airbnb-btn{
+    display:flex !important;
+    opacity:0.95;
+  }
+}
+.rules-btn{
+  opacity:0.9;
+}
+
+.rules-btn:hover{
+  opacity:1;
+  transform:translateY(-1px);
+}
+/* Directions button (Location & Access) */
+.directions-btn{
+  margin:16px 0 18px; /* spacing fix */
+  font-size:14px;
+}
+/* =========================
+   WhatsApp buttons (CLEAN)
+========================= */
+
+/* ===== Premium brand button (MASTER) ===== */
+.btn-premium{
+  background:var(--brand);
+  color:#fff;
+  border:none;
+  box-shadow:0 6px 16px rgba(47,143,139,0.25);
+  cursor:pointer;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+
+  line-height:1.3;
+  gap:0;
+}
+
+/* Sticky WhatsApp container (mobile only) */
+.wa-sticky{
+  display:none;
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  z-index:9999;
+  justify-content:center;
+}
+
+/* Sticky WhatsApp button (mobile only) */
+.wa-sticky .btn-premium{
+  width:100%;
+  max-width:360px;
+  padding:14px 18px;
+  font-size:14px;
+  font-weight:800;
+  border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center; /* ✅ centers text */
+  text-align:center;      /* ✅ centers if it wraps */
+}
+
+/* QR under the Google Review button */
+.review-qr{
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+/* Better responsive QR sizing */
+.review-qr img{
+  width: min(180px, 70vw);
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 10px;
+}
+
+/* Supporting text */
+.review-qr-text{
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.35;
+  max-width: 320px; /* keeps it tidy on wide screens */
+}
+
+/* Outline button base */
+.btn-outline{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--text);
+  margin-top:12px;
+}
+
+/* House Rules button */
+.rules-btn{
+  font-size:14px;
+  opacity:0.9;
+}
+
+.rules-btn:hover{
+  opacity:1;
+}
+
+/* House Rules modal */
+.rules-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
+  padding:20px;
+}
+
+.rules-modal.open{ display:flex; }
+
+.rules-box{
+  background:var(--card);
+  border-radius:14px;
+  max-width:520px;
+  width:100%;
+  padding:18px 20px;
+  box-shadow:var(--shadow);
+}
+
+.rules-box ul{
+  padding-left:18px;
+  margin:12px 0;
+  line-height:1.6;
+}
+
+.rules-close{
+  position:absolute;
+  right:20px;
+  top:16px;
+  background:none;
+  border:none;
+  font-size:22px;
+  cursor:pointer;
+  color:var(--muted);
+}
+
+.rules-note{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:12px;
+}
+/* Subtle Best Price Guarantee badge */
+.best-price{
+  opacity:0.9;
+}
+
+.best-price strong{
+  letter-spacing:0.2px;
+}
+/* ===== WhatsApp Button Layout (Desktop & Mobile) ===== */
+
+/* WhatsApp icon */
+.wa-icon{
+  height:28px;
+  width:auto;
+  margin-right:10px;
+}
+
+/* Icon + text row */
+.btn-premium .btn-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* Two-line text stack */
+.btn-premium .btn-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.2;
+}
+
+/* Subtitle line */
+.btn-premium .btn-text em{
+  font-size:0.85em;
+  opacity:0.9;
+  font-style:italic;
+}
+/* Bigger WhatsApp icon in Contact section only */
+.contact .wa-icon{
+  height:20px;
+}
+/* =========================
+   FINAL Sticky WhatsApp (Mobile)
+========================= */
+@media (max-width: 768px) {
+  .wa-sticky{
+    display:flex;
+    justify-content:center;
+  }
+
+  .wa-normal{
+    display:none !important;
+  }
+
+  .wa-sticky .btn-premium{
+    height:auto;
+    padding:12px 16px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .wa-sticky .btn-title{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    line-height:1.2;
+  }
+
+  .wa-sticky .wa-icon{
+    width:28px;
+    height:28px;
+    margin:0;
+  }
+
+  .wa-sticky .btn-text{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+
+  .wa-sticky .btn-text strong{
+    font-size:14px;
+  }
+
+  .wa-sticky .btn-text em{
+    font-size:12px;
+    opacity:0.85;
+  }
+
+  .container{
+    padding-bottom:190px;
+  }
+}
+/* =========================
+   LOCATION BUTTONS — FINAL FIX
+========================= */
+
+/* Always side by side (desktop + mobile) */
+.location-buttons{
+  display: flex;
+  gap: 14px;
+  margin-top: 18px;
+  max-width: 720px;
+}
+
+/* Buttons */
+.location-buttons .btn{
+  flex: 1 1 0;
+  width: auto !important;     /* overrides btn width:100% */
+  min-width: 0 !important;    /* allows shrinking */
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 14px;
+}
+    /* =========================
+   MODAL READABILITY FIX (MOBILE)
+========================= */
+@media (max-width: 768px) {
+  .rules-box {
+    max-height: 88vh;
+    overflow-y: auto;
+
+    /* make modal ~2% smaller on mobile */
+    transform: scale(0.98);
+    transform-origin: top center;
+  }
+}
+.cancel-info-btn {
+  background: #e9f5f3;
+  color: #123;
+  border-radius: 14px;
+  padding: 14px 16px;
+  border: 1px solid rgba(0,0,0,0.05);
+
+  font-size: 15px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  text-align: center;
+  cursor: pointer;
+}
+.site-footer img,
+.contact img {
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.site-footer a:hover img,
+.contact a:hover img {
+  opacity: 1;
+}
+footer a,
+footer a:hover,
+footer a:focus,
+footer a:active {
+  text-decoration: none;
+}
+<style>
+  /* existing CSS */
+  .site-footer{ ... }
+  .footer-line{ ... }
+
+  /* ADD THIS AT THE END */
+.header-meta{
+  margin-top:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  opacity:0.75;
+  font-size:13px;
+}
+
+.header-lang{
+  display:flex;
+  gap:8px;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  font-size:12px;
+  color:var(--text);
+  background:transparent;
+}
+
+.time-icon-group{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.header-datetime{
+  gap:2px;
+  background: var(--brand-soft);
+  border-color: transparent;
+  border-radius:16px;
+}
+.header-datetime .dot{
+  margin:0 1px;
+}
+body[data-theme="dark"] .header-datetime{
+  background: rgba(69,183,178,0.12);
+}
+
+#currentDate{
+  letter-spacing:-0.01em;
+  margin-right:2px;
+}
+/* Language pills */
+/* Language pills — info-card style */
+.lang-pill{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 8px;
+  border-radius:999px;
+  background: var(--brand-soft);
+  border:1px solid transparent;
+  cursor:pointer;
+  opacity:0.6;
+  transition:all .2s ease;
+}
+
+.lang-pill img{
+  width:22px;
+  height:auto;
+}
+
+.lang-pill.active{
+  opacity:1;
+  background: var(--brand);
+}
+
+  body[data-theme="dark"] .lang-pill{
+  background: rgba(69,183,178,0.12);
+}
+
+body[data-theme="dark"] .lang-pill.active{
+  background: var(--brand);
+}
+
+    .theme-switch{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px;
+}
+
+.theme-btn{
+  border:none;
+  background:transparent;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  color:var(--text);
+  opacity:0.4;
+  transition:all .2s ease;
+}
+  .theme-btn:hover{
+  opacity:0.8;
+}
+
+.theme-btn.active{
+  background:#e9f6f3;       /* same as info card */
+  color:#0f3d3a;            /* dark readable text */
+  opacity:1;
+}
+
+body[data-theme="dark"] .theme-btn.active{
+  background:rgba(233,246,243,0.15); /* soft green tint */
+  color:#ffffff;
+}
+.logo-img{
+  transition: opacity .25s ease, transform .25s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+}
+@media (max-width: 640px) {
+
+  /* Space around logo */
+  .logo-img {
+    margin-bottom: 18px;
+  }
+
+  /* Title spacing */
+  h1 {
+    margin-bottom: 12px;
+  }
+
+  /* Tagline spacing */
+  .tagline {
+    margin-bottom: 18px;
+    line-height: 1.55;
+    padding: 0 14px;
+    text-align: center;
+  }
+
+  /* Space between pills (theme, date, flags) */
+  .header-meta {
+    margin-top: 10px;
+    gap: 12px;
+  }
+
+  /* Add breathing room below header */
+  .hero {
+    padding-bottom: 24px;
+  }
+}
+  @media (max-width: 640px) {
+    .logo-img {
+      max-width: 340px;
+    }
+  }
+</style>
   <script>
 (function () {
   const savedTheme = localStorage.getItem('theme');
@@ -101,10 +1556,9 @@
 
 <body data-theme="light">
 <div class="container">
-<div class="page-card">
 
 <header class="fade-in">
- <img id="siteLogo" class="logo-img" src="/images/gusman-logo-dark.webp">
+ <img id="siteLogo" class="logo-img" src="images/gusman-logo-dark.webp" alt="Gusman Homestay Logo">
 
 <div class="tag">
   <span class="lang id">
@@ -155,16 +1609,16 @@
 
 <div class="header-lang">
   <button class="lang-pill active" onclick="setLanguage('id')">
-    <img src="/flags/id.png" alt="Indonesian">
+    <img src="flags/id.png" alt="Indonesian">
   </button>
   <button class="lang-pill" onclick="setLanguage('en')">
-    <img src="/flags/en.png" alt="English">
+    <img src="flags/en.png" alt="English">
   </button>
   <button class="lang-pill" onclick="setLanguage('de')">
-    <img src="/flags/de.png" alt="German">
+    <img src="flags/de.png" alt="German">
   </button>
   <button class="lang-pill" onclick="setLanguage('it')">
-    <img src="/flags/it.png" alt="Italian">
+    <img src="flags/it.png" alt="Italian">
   </button>
 </div>
 
@@ -647,27 +2101,27 @@
       </p>
 
 <div class="gallery">
-  <img src="/images/01-exterior-front.webp" alt="Gusman Homestay exterior view" width="400" height="300" loading="eager">
-  <img src="/images/02-exterior-front.webp" alt="Gusman Homestay garden area" width="400" height="300" loading="eager">
-  <img src="/images/03-living-room.webp" alt="Living room at Gusman Homestay" width="400" height="300" loading="eager">
-  <img src="/images/04-living-room.webp" alt="Living room seating area" width="400" height="300" loading="lazy">
-  <img src="/images/05-kitchen-dining.webp" alt="Kitchen and dining area" width="400" height="300" loading="lazy">
-  <img src="/images/06-kitchen.webp" alt="Fully equipped kitchen" width="400" height="300" loading="lazy">
-  <img src="/images/07-bedroom-main.webp" alt="Main bedroom" width="400" height="300" loading="lazy">
-  <img src="/images/08-bedroom-second.webp" alt="Second bedroom" width="400" height="300" loading="lazy">
-  <img src="/images/09-bathroom-main.webp" alt="Main bathroom" width="400" height="300" loading="lazy">
-  <img src="/images/10-bathroom-main.webp" alt="Main bathroom sink" width="400" height="300" loading="lazy">
-  <img src="/images/11-bathroom-second.webp" alt="Second bathroom toilet" width="400" height="300" loading="lazy">
-  <img src="/images/12-bathroom-second.webp" alt="Second bathroom sink" width="400" height="300" loading="lazy">
-  <img src="/images/13-bathroom-second.webp" alt="Second bathroom shower" width="400" height="300" loading="lazy">
-  <img src="/images/14-bamboo-bank.webp" alt="Bamboo seating area" width="400" height="300" loading="lazy">
-  <img src="/images/15-bamboo-daybed.webp" alt="Bamboo daybed" width="400" height="300" loading="lazy">
-  <img src="/images/16-amenities.webp" alt="Guest amenities" width="400" height="300" loading="lazy">
-  <img src="/images/17-towel-amenities.webp" alt="Towel amenities" width="400" height="300" loading="lazy">
-  <img src="/images/18-sandal-amenities.webp" alt="Guest slippers" width="400" height="300" loading="lazy">
-  <img src="/images/19-exterior.webp" alt="Gusman Homestay Gate" width="400" height="300" loading="lazy">
-  <img src="/images/20-exterior.webp" alt="Gusman Homestay Garage Gate" width="400" height="300" loading="lazy">
-  <img src="/images/21-garage.webp" alt="Gusman Homestay Garaga" width="400" height="300" loading="lazy">
+  <img src="images/01-exterior-front.webp" alt="Gusman Homestay exterior view" width="400" height="300" loading="eager">
+  <img src="images/02-exterior-front.webp" alt="Gusman Homestay garden area" width="400" height="300" loading="eager">
+  <img src="images/03-living-room.webp" alt="Living room at Gusman Homestay" width="400" height="300" loading="eager">
+  <img src="images/04-living-room.webp" alt="Living room seating area" width="400" height="300" loading="lazy">
+  <img src="images/05-kitchen-dining.webp" alt="Kitchen and dining area" width="400" height="300" loading="lazy">
+  <img src="images/06-kitchen.webp" alt="Fully equipped kitchen" width="400" height="300" loading="lazy">
+  <img src="images/07-bedroom-main.webp" alt="Main bedroom" width="400" height="300" loading="lazy">
+  <img src="images/08-bedroom-second.webp" alt="Second bedroom" width="400" height="300" loading="lazy">
+  <img src="images/09-bathroom-main.webp" alt="Main bathroom" width="400" height="300" loading="lazy">
+  <img src="images/10-bathroom-main.webp" alt="Main bathroom sink" width="400" height="300" loading="lazy">
+  <img src="images/11-bathroom-second.webp" alt="Second bathroom toilet" width="400" height="300" loading="lazy">
+  <img src="images/12-bathroom-second.webp" alt="Second bathroom sink" width="400" height="300" loading="lazy">
+  <img src="images/13-bathroom-second.webp" alt="Second bathroom shower" width="400" height="300" loading="lazy">
+  <img src="images/14-bamboo-bank.webp" alt="Bamboo seating area" width="400" height="300" loading="lazy">
+  <img src="images/15-bamboo-daybed.webp" alt="Bamboo daybed" width="400" height="300" loading="lazy">
+  <img src="images/16-amenities.webp" alt="Guest amenities" width="400" height="300" loading="lazy">
+  <img src="images/17-towel-amenities.webp" alt="Towel amenities" width="400" height="300" loading="lazy">
+  <img src="images/18-sandal-amenities.webp" alt="Guest slippers" width="400" height="300" loading="lazy">
+  <img src="images/19-exterior.webp" alt="Gusman Homestay Gate" width="400" height="300" loading="lazy">
+  <img src="images/20-exterior.webp" alt="Gusman Homestay Garage Gate" width="400" height="300" loading="lazy">
+  <img src="images/21-garage.webp" alt="Gusman Homestay Garaga" width="400" height="300" loading="lazy">
 </div>
 
     </div><!-- end hero-card -->
@@ -792,7 +2246,7 @@
       </div>
     <!-- QR code under the Google Review button -->
 <div class="review-qr">
-  <img src="/images/google-review-qr.png"
+  <img src="images/google-review-qr.png"
        alt="QR code to Google Review page"
        loading="lazy">
 
@@ -1021,8 +2475,8 @@
           controls
           playsinline
           preload="metadata"
-          poster="/images/video-brand-poster.jpg">
-          <source id="tourSource" src="/videos/01-day-overview.mp4" type="video/mp4">
+          poster="images/video-brand-poster.jpg">
+          <source id="tourSource" src="videos/01-day-overview.mp4" type="video/mp4">
         </video>
           <!-- ✅ NEXT/PREV BUTTONS ON TOP OF VIDEO -->
   <div class="video-nav">
@@ -1036,8 +2490,8 @@
   
 <!-- 1️⃣ Day overview -->
  <button type="button" class="video-btn active"
-  data-src="/videos/01-day-overview.mp4"
-  data-poster="/images/video-day.jpg"
+  data-src="videos/01-day-overview.mp4"
+  data-poster="images/video-day.jpg"
   onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
   <span class="lang id">Tour Siang hari</span>
   <span class="lang en" style="display:none;">Day overview</span>
@@ -1047,8 +2501,8 @@
   
 <!-- 2️⃣ Night overview -->
   <button type="button" class="video-btn"
-  data-src="/videos/02-night-overview.mp4"
-  data-poster="/images/video-night.jpg"
+  data-src="videos/02-night-overview.mp4"
+  data-poster="images/video-night.jpg"
   onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
   <span class="lang id">Tour Malam hari</span>
   <span class="lang en" style="display:none;">Night overview</span>
@@ -1058,8 +2512,8 @@
 
 <!-- 3️⃣ Terrace at night -->
 <button type="button" class="video-btn"
-  data-src="/videos/03-terrace-night.mp4"
-  data-poster="/images/video-terrace.jpg"
+  data-src="videos/03-terrace-night.mp4"
+  data-poster="images/video-terrace.jpg"
   onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
   <span class="lang id">View Teras malam</span>
   <span class="lang en" style="display:none;">View Terrace at night</span>
@@ -1069,8 +2523,8 @@
 
 <!-- 4️⃣ Kitchen & dining -->
 <button type="button" class="video-btn"
-  data-src="/videos/04-kitchen-night.mp4"
-  data-poster="/images/video-kitchen.jpg"
+  data-src="videos/04-kitchen-night.mp4"
+  data-poster="images/video-kitchen.jpg"
   onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
   <span class="lang id">Tour Dapur & ruang makan</span>
   <span class="lang en" style="display:none;">Kitchen & dining</span>
@@ -1080,8 +2534,8 @@
 
 <!-- 5️⃣ Main bedroom -->
 <button type="button" class="video-btn"
-  data-src="/videos/05-bedroom-main.mp4"
-  data-poster="/images/video-bedroom-main.jpg"
+  data-src="videos/05-bedroom-main.mp4"
+  data-poster="images/video-bedroom-main.jpg"
   onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
   <span class="lang id">Kamar Tidur utama</span>
   <span class="lang en" style="display:none;">Main bedroom</span>
@@ -1091,8 +2545,8 @@
 
 <!-- 6️⃣ Second bedroom -->
 <button type="button" class="video-btn"
-  data-src="/videos/06-bedroom-second.mp4"
-  data-poster="/images/video-bedroom-second.jpg"
+  data-src="videos/06-bedroom-second.mp4"
+  data-poster="images/video-bedroom-second.jpg"
   onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
   <span class="lang id">Kamar Tidur kedua</span>
   <span class="lang en" style="display:none;">Second bedroom</span>
@@ -1102,8 +2556,8 @@
 
 <!-- 7️⃣ Amenities -->
 <button type="button" class="video-btn"
-  data-src="/videos/07-amenities.mp4"
-  data-poster="/images/video-amenities.jpg"
+  data-src="videos/07-amenities.mp4"
+  data-poster="images/video-amenities.jpg"
   onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
   <span class="lang id">Amenities</span>
   <span class="lang en" style="display:none;">Amenities</span>
@@ -1141,7 +2595,7 @@
 
 <div class="map-preview">
   <a href="https://maps.google.com/?q=Gusman+Homestay+Nagreg" target="_blank" rel="noopener noreferrer">
-    <img src="/images/map-preview.webp" alt="Gusman Homestay location map preview" loading="lazy" decoding="async">
+    <img src="images/map-preview.webp" alt="Gusman Homestay location map preview" loading="lazy" decoding="async">
     
   <div class="map-btn">
 
@@ -1203,11 +2657,11 @@
     </h3>
 <!-- Brand seal -->
 <div class="about-seal">
-  <img id="aboutLogo" src="/images/gusman-logo-dark.webp" alt="Gusman Homestay Logo">
+  <img id="aboutLogo" src="images/gusman-logo-dark.webp" alt="Gusman Homestay Logo">
 </div>
     <div class="about-grid">
   <!-- LEFT: Photo -->
-  <img class="about-photo" src="/images/owner-1.webp" alt="Owner of Gusman Homestay" loading="lazy" decoding="async">
+  <img class="about-photo" src="images/owner-1.webp" alt="Owner of Gusman Homestay" loading="lazy" decoding="async">
 
   <!-- RIGHT: Text -->
   <div class="about-text">
@@ -1314,7 +2768,6 @@
   </div>
 </div>
 </section>
-</div> <!-- end page-card -->
 <footer>
   <div class="site-footer footer-line">
 
@@ -2594,6 +4047,16 @@ document.addEventListener('keydown', function(e){
 });
 </script>
 <script>
+function setTheme(theme){
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+
+  document.querySelectorAll('.theme-btn').forEach(btn=>{
+    btn.classList.remove('active');
+  });
+
+  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
+}
 
 /* Sync active button on load */
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -2606,8 +4069,8 @@ function updateLogosByTheme(theme) {
   const headerLogo = document.getElementById('siteLogo');
   const aboutLogo  = document.getElementById('aboutLogo');
 
-  const lightLogo = '/images/gusman-logo-dark.webp';  // light theme
-  const darkLogo  = '/images/gusman-logo-light.webp'; // dark theme
+  const lightLogo = 'images/gusman-logo-dark.webp';  // light theme
+  const darkLogo  = 'images/gusman-logo-light.webp'; // dark theme
 
   if (headerLogo) {
     headerLogo.src = theme === 'dark' ? darkLogo : lightLogo;
