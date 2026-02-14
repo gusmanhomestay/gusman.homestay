@@ -1411,16 +1411,26 @@ footer a:active {
   display:flex;
   gap:8px;
 }
-.header-lang img{
-  width:22px;
-  height:auto;
+.lang-pill{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 8px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:transparent;
   cursor:pointer;
   opacity:0.5;
   transition:opacity .2s ease, transform .2s ease;
 }
-.header-lang img.active{
+
+.lang-pill.active{
   opacity:1;
   transform:scale(1.05);
+}
+
+.lang-pill img{
+  width:22px;
+  height:auto;
 }
     .time-icon-group{
   display:inline-flex;
@@ -1518,9 +1528,15 @@ footer a:active {
 </button>
 <div class="header-datetime pill">
   <span class="time-icon-group">
-    <span class="time-icon" aria-hidden="true">
-      <!-- same svg -->
-    </span>
+  <span class="time-icon" aria-hidden="true">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 2v3M16 2v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M3 9h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M5 5h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</span>
     <span class="dot">•</span>
   </span>
 
