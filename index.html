@@ -209,19 +209,6 @@ body[data-theme="dark"] .container:before{
   color: var(--text);
 }
 
-#bookingForm input[type="date"],
-#bookingForm input[type="number"]{
-  -webkit-appearance:none;
-  appearance:none;
-
-  height:36px !important;
-  line-height:36px !important;
-  padding:0 10px !important;
-  font-size:13px !important;
-
-  border-radius:10px;
-}
-
 /* ✅ Even more compact on small phones */
 @media (max-width:480px){
   #bookingForm label{
@@ -369,40 +356,6 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   border-radius:16px;
 }
 
-/* =========================
-   Sticky WhatsApp (mobile)
-========================= */
-@media (max-width:768px){
-
-  .wa-sticky{
-    display:flex;
-    pointer-events:auto;
-  }
-
-  .wa-normal{
-    display:none !important;
-  }
-
-  /* perfect centering */
-  .wa-sticky .btn-premium{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-  }
-
-  .wa-sticky .btn-title{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-  }
-
-  .wa-sticky .wa-icon{
-    height:26px;
-    margin:0;
-  }
-
   /* IMPORTANT: space so sticky never covers content */
   .container{
     padding-bottom:calc(190px + env(safe-area-inset-bottom));
@@ -461,8 +414,6 @@ header{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom
   height:auto;
 }
 
-  margin-bottom:-24px; /* ⬅ FORCE logo closer to title */
-}
 .brand{
   font-family:'Playfair Display', serif;
   font-weight:600;
@@ -1057,32 +1008,6 @@ body[data-theme="dark"] .about-seal img{
 
   line-height:1.3;
   gap:0;
-}
-
-/* Sticky WhatsApp container (mobile only) */
-.wa-sticky{
-  display:none;
-  position:fixed;
-  left:12px;
-  right:12px;
-  bottom:12px;
-  z-index:9999;
-  justify-content:center;
-}
-
-/* Sticky WhatsApp button (mobile only) */
-.wa-sticky .btn-premium{
-  width:100%;
-  max-width:360px;
-  padding:14px 18px;
-  font-size:14px;
-  font-weight:800;
-  border-radius:16px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center; /* ✅ centers text */
-  text-align:center;      /* ✅ centers if it wraps */
 }
 
 /* QR under the Google Review button */
