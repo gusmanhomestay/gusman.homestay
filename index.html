@@ -1536,6 +1536,24 @@ body[data-theme="dark"] .theme-btn.active{
       max-width: 340px;
     }
   }
+/* === THEME SWITCH: KEEP COMPACT (NO LAYOUT SHIFT) === */
+.theme-switch.pill {
+  max-width: fit-content;     /* prevents stretching */
+  white-space: nowrap;        /* single line always */
+  padding: 4px 6px;           /* tighter pill */
+}
+
+.theme-btn {
+  font-size: 11.5px;          /* slightly smaller text */
+  padding: 4px 8px;           /* tighter buttons */
+  line-height: 1.1;
+}
+
+/* Prevent header from pushing content down */
+.header-meta {
+  margin-top: 6px;            /* reduce vertical gap */
+  gap: 6px;                   /* tighter stack */
+}
 </style>
   <script>
 (function () {
@@ -1585,10 +1603,10 @@ body[data-theme="dark"] .theme-btn.active{
     onclick="setTheme('light')"
     title="Change website theme">
 
-    <span class="lang id">☀️ Tema Terang</span>
-    <span class="lang en" style="display:none;">☀️ Light Theme</span>
-    <span class="lang de" style="display:none;">☀️ Helles Design</span>
-    <span class="lang it" style="display:none;">☀️ Tema Chiaro</span>
+    <span class="lang id">☀️ Terang</span>
+    <span class="lang en" style="display:none;">☀️ Light</span>
+    <span class="lang de" style="display:none;">☀️ Hell</span>
+    <span class="lang it" style="display:none;">☀️ Chiaro</span>
 
   </button>
 
@@ -1599,10 +1617,10 @@ body[data-theme="dark"] .theme-btn.active{
     onclick="setTheme('dark')"
     title="Change website theme">
 
-    <span class="lang id">🌙 Tema Gelap</span>
-    <span class="lang en" style="display:none;">🌙 Dark Theme</span>
-    <span class="lang de" style="display:none;">🌙 Dunkles Design</span>
-    <span class="lang it" style="display:none;">🌙 Tema Scuro</span>
+    <span class="lang id">🌙 Gelap</span>
+    <span class="lang en" style="display:none;">🌙 Dark</span>
+    <span class="lang de" style="display:none;">🌙 Dunkel</span>
+    <span class="lang it" style="display:none;">🌙 Scuro</span>
 
   </button>
 
