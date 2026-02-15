@@ -4066,30 +4066,12 @@ document.addEventListener('keydown', function(e){
 });
 </script>
 <script>
-function setTheme(theme){
-  document.body.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-
-  document.querySelectorAll('.theme-btn').forEach(btn=>{
-    btn.classList.remove('active');
-  });
-
-  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
-}
-
-/* Sync active button on load */
-document.addEventListener('DOMContentLoaded', ()=>{
-  const theme = document.body.getAttribute('data-theme') || 'light';
-  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
-});
-</script>
-<script>
 function updateLogosByTheme(theme) {
   const headerLogo = document.getElementById('siteLogo');
   const aboutLogo  = document.getElementById('aboutLogo');
 
-  const lightLogo = 'images/gusman-logo-dark.webp';  // light theme
-  const darkLogo  = 'images/gusman-logo-light.webp'; // dark theme
+  const lightLogo = 'images/gusman-logo-dark.webp';
+  const darkLogo  = 'images/gusman-logo-light.webp';
 
   if (headerLogo) {
     headerLogo.src = theme === 'dark' ? darkLogo : lightLogo;
@@ -4100,13 +4082,7 @@ function updateLogosByTheme(theme) {
   }
 }
 
-/* Run on page load */
-document.addEventListener('DOMContentLoaded', () => {
-  const theme = document.body.getAttribute('data-theme') || 'light';
-  updateLogosByTheme(theme);
-});
-
-/* Theme switch */
+/* Theme switch (FINAL, SINGLE SOURCE OF TRUTH) */
 function setTheme(theme) {
   document.body.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
@@ -4116,6 +4092,13 @@ function setTheme(theme) {
     btn.classList.toggle('active', btn.classList.contains(theme))
   );
 }
+
+/* Sync on load */
+document.addEventListener('DOMContentLoaded', () => {
+  const theme = document.body.getAttribute('data-theme') || 'light';
+  updateLogosByTheme(theme);
+  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
+});
 </script>
 </body>
 </html>
