@@ -1536,71 +1536,6 @@ body[data-theme="dark"] .theme-btn.active{
       max-width: 340px;
     }
   }
-/* ================================
-   FINAL HEADER + THEME STYLES
-   (CLEAN, NO LAYOUT SHIFT)
-================================ */
-
-/* Theme switch */
-.theme-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px;
-  white-space: nowrap;
-}
-
-.theme-btn {
-  border: none;
-  background: transparent;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--text);
-  opacity: 0.4;
-  transition: all .2s ease;
-}
-
-.theme-btn:hover {
-  opacity: 0.8;
-}
-
-.theme-btn.active {
-  background: #e9f6f3;
-  color: #0f3d3a;
-  opacity: 1;
-}
-
-body[data-theme="dark"] .theme-btn.active {
-  background: rgba(233,246,243,0.15);
-  color: #ffffff;
-}
-
-/* Header meta spacing */
-.header-meta {
-  margin-top: 6px;
-  gap: 6px;
-}
-
-/* Hero spacing (desktop) */
-.hero {
-  padding-bottom: 12px;
-  min-height: unset;
-}
-
-/* Mobile only */
-@media (max-width: 640px) {
-  .header-meta {
-    margin-top: 10px;
-    gap: 12px;
-  }
-
-  .hero {
-    padding-bottom: 24px;
-  }
-}
 </style>
   <script>
 (function () {
@@ -1644,34 +1579,15 @@ body[data-theme="dark"] .theme-btn.active {
 </div>
 <div class="header-meta">
 <div class="theme-switch pill">
-
-  <button
-    class="theme-btn light"
-    onclick="setTheme('light')"
-    title="Change website theme">
-
-    <span class="lang id">☀️ Terang</span>
-    <span class="lang en" style="display:none;">☀️ Light</span>
-    <span class="lang de" style="display:none;">☀️ Hell</span>
-    <span class="lang it" style="display:none;">☀️ Chiaro</span>
-
+  <button class="theme-btn light" onclick="setTheme('light')">
+    ☀️ Light
   </button>
 
   <span class="dot">•</span>
 
-  <button
-    class="theme-btn dark"
-    onclick="setTheme('dark')"
-    title="Change website theme">
-
-    <span class="lang id">🌙 Gelap</span>
-    <span class="lang en" style="display:none;">🌙 Dark</span>
-    <span class="lang de" style="display:none;">🌙 Dunkel</span>
-    <span class="lang it" style="display:none;">🌙 Scuro</span>
-
+  <button class="theme-btn dark" onclick="setTheme('dark')">
+    🌙 Dark
   </button>
-
-</div>
 </div>
 <div class="header-datetime pill">
   <span class="time-icon-group">
@@ -4131,12 +4047,30 @@ document.addEventListener('keydown', function(e){
 });
 </script>
 <script>
+function setTheme(theme){
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+
+  document.querySelectorAll('.theme-btn').forEach(btn=>{
+    btn.classList.remove('active');
+  });
+
+  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
+}
+
+/* Sync active button on load */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const theme = document.body.getAttribute('data-theme') || 'light';
+  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
+});
+</script>
+<script>
 function updateLogosByTheme(theme) {
   const headerLogo = document.getElementById('siteLogo');
   const aboutLogo  = document.getElementById('aboutLogo');
 
-  const lightLogo = 'images/gusman-logo-dark.webp';
-  const darkLogo  = 'images/gusman-logo-light.webp';
+  const lightLogo = 'images/gusman-logo-dark.webp';  // light theme
+  const darkLogo  = 'images/gusman-logo-light.webp'; // dark theme
 
   if (headerLogo) {
     headerLogo.src = theme === 'dark' ? darkLogo : lightLogo;
@@ -4147,7 +4081,13 @@ function updateLogosByTheme(theme) {
   }
 }
 
-/* Theme switch (FINAL, SINGLE SOURCE OF TRUTH) */
+/* Run on page load */
+document.addEventListener('DOMContentLoaded', () => {
+  const theme = document.body.getAttribute('data-theme') || 'light';
+  updateLogosByTheme(theme);
+});
+
+/* Theme switch */
 function setTheme(theme) {
   document.body.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
@@ -4157,13 +4097,6 @@ function setTheme(theme) {
     btn.classList.toggle('active', btn.classList.contains(theme))
   );
 }
-
-/* Sync on load */
-document.addEventListener('DOMContentLoaded', () => {
-  const theme = document.body.getAttribute('data-theme') || 'light';
-  updateLogosByTheme(theme);
-  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
-});
 </script>
 </body>
 </html>
