@@ -1559,6 +1559,22 @@ body[data-theme="dark"] .theme-btn.active{
 .header-datetime {
   order: 3;
 }
+/* MOBILE: stack header-meta nicely and centered */
+@media (max-width: 640px) {
+  .header-meta {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .theme-switch,
+  .header-lang,
+  .header-datetime {
+    order: unset;
+    margin: 0 auto;
+  }
+}
 </style>
   <script>
 (function () {
