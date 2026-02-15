@@ -73,24 +73,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-:root{
-  --bg:#fbfbfa;
-  --card:#ffffff;
-  --muted:#6b6b6b;
-  --accent:#b87a3a;
-  --wood:#f3e7da;
-  --maxw:1200px;
-
-  --brand:#2f8f8b;
-  --brand-dark:#257874;
-  --brand-soft:#e6f3f2;
-
-  --radius:14px;
-  --shadow:0 8px 24px rgba(16,24,40,0.06);
-
-  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
-}
-
 *{box-sizing:border-box}
   /* 🔒 Prevent horizontal scroll on mobile Safari */
 html, body{
@@ -130,6 +112,8 @@ body{
   --border:rgba(16,24,40,0.08);
   --card-border:rgba(16,24,40,0.08);
   --glass:rgba(255,255,255,0.75);
+  
+  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
 }
 
 /* Dark theme variables (activated by JS with body[data-theme="dark"]) */
@@ -373,16 +357,6 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
 
 .btn-premium .btn-sub{
   line-height:1.1;
-}
-/* Sticky container (mobile only) */
-.wa-sticky{
-  display:none;
-  position:fixed;
-  left:12px;
-  right:12px;
-  bottom:12px;
-  z-index:9999;
-  justify-content:center;
 }
 
 /* Sticky button base */
