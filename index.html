@@ -73,6 +73,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+:root{
+  --bg:#fbfbfa;
+  --card:#ffffff;
+  --muted:#6b6b6b;
+  --accent:#b87a3a;
+  --wood:#f3e7da;
+  --maxw:1200px;
+
+  --brand:#2f8f8b;
+  --brand-dark:#257874;
+  --brand-soft:#e6f3f2;
+
+  --radius:14px;
+  --shadow:0 8px 24px rgba(16,24,40,0.06);
+
+  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+}
+
 *{box-sizing:border-box}
   /* 🔒 Prevent horizontal scroll on mobile Safari */
 html, body{
@@ -112,8 +130,6 @@ body{
   --border:rgba(16,24,40,0.08);
   --card-border:rgba(16,24,40,0.08);
   --glass:rgba(255,255,255,0.75);
-  
-  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
 }
 
 /* Dark theme variables (activated by JS with body[data-theme="dark"]) */
@@ -207,6 +223,19 @@ body[data-theme="dark"] .container:before{
   border: 1px solid var(--border);
   background: rgba(255,255,255,0.85);
   color: var(--text);
+}
+
+#bookingForm input[type="date"],
+#bookingForm input[type="number"]{
+  -webkit-appearance:none;
+  appearance:none;
+
+  height:36px !important;
+  line-height:36px !important;
+  padding:0 10px !important;
+  font-size:13px !important;
+
+  border-radius:10px;
 }
 
 /* ✅ Even more compact on small phones */
@@ -345,6 +374,16 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
 .btn-premium .btn-sub{
   line-height:1.1;
 }
+/* Sticky container (mobile only) */
+.wa-sticky{
+  display:none;
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  z-index:9999;
+  justify-content:center;
+}
 
 /* Sticky button base */
 .wa-sticky .btn-premium{
@@ -356,19 +395,47 @@ body[data-theme="dark"] #bookingForm input[type="tel"]{
   border-radius:16px;
 }
 
-    .ota-icons{
-    margin-bottom:6px;
+/* =========================
+   Sticky WhatsApp (mobile)
+========================= */
+@media (max-width:768px){
+
+  .wa-sticky{
+    display:flex;
+    pointer-events:auto;
   }
-}
-/* Desktop sticky WhatsApp — centered */
-@media (min-width: 769px) {
-  .wa-sticky {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-    justify-content: center;
+
+  .wa-normal{
+    display:none !important;
+  }
+
+  /* perfect centering */
+  .wa-sticky .btn-premium{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+
+  .wa-sticky .btn-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+  }
+
+  .wa-sticky .wa-icon{
+    height:26px;
+    margin:0;
+  }
+
+  /* IMPORTANT: space so sticky never covers content */
+  .container{
+    padding-bottom:calc(190px + env(safe-area-inset-bottom));
+  }
+
+  .ota-icons{
+    margin-bottom:6px;
   }
 }
 /* =========================
@@ -420,6 +487,8 @@ header{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom
   height:auto;
 }
 
+  margin-bottom:-24px; /* ⬅ FORCE logo closer to title */
+}
 .brand{
   font-family:'Playfair Display', serif;
   font-weight:600;
@@ -441,12 +510,14 @@ body[data-theme="dark"] .tag{
   color:var(--text);
 }
 .site-time{
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+  margin-top:4px;
+  display:flex;
+  align-items:center;
   justify-content:center;
-  background:var(--brand-soft);
-  padding:6px 12px;
-  border-radius:999px;
-  font-size:12.5px;
-  margin-top:10px;
+  gap:6px;
 }
 
 .site-time .time-icon{
@@ -980,7 +1051,14 @@ body[data-theme="dark"] .about-seal img{
     opacity:0.95;
   }
 }
+.rules-btn{
+  opacity:0.9;
+}
 
+.rules-btn:hover{
+  opacity:1;
+  transform:translateY(-1px);
+}
 /* Directions button (Location & Access) */
 .directions-btn{
   margin:16px 0 18px; /* spacing fix */
@@ -1005,6 +1083,32 @@ body[data-theme="dark"] .about-seal img{
 
   line-height:1.3;
   gap:0;
+}
+
+/* Sticky WhatsApp container (mobile only) */
+.wa-sticky{
+  display:none;
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:12px;
+  z-index:9999;
+  justify-content:center;
+}
+
+/* Sticky WhatsApp button (mobile only) */
+.wa-sticky .btn-premium{
+  width:100%;
+  max-width:360px;
+  padding:14px 18px;
+  font-size:14px;
+  font-weight:800;
+  border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center; /* ✅ centers text */
+  text-align:center;      /* ✅ centers if it wraps */
 }
 
 /* QR under the Google Review button */
@@ -1266,76 +1370,172 @@ footer a:focus,
 footer a:active {
   text-decoration: none;
 }
+<style>
+  /* existing CSS */
+  .site-footer{ ... }
+  .footer-line{ ... }
 
-.tag {
-  display: block;
-  margin-top: 8px;
-}
-    
- - .tagline {
-+ .tag {   
-  
-.header-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-.theme-switch{
+  /* ADD THIS AT THE END */
+.header-meta{
+  margin-top:12px;
   display:flex;
-  justify-content:center;
+  flex-direction:column;
   align-items:center;
-  gap:10px;
-  margin-top:10px;
+  gap:6px;
+  opacity:0.75;
+  font-size:13px;
 }
 
-.theme-btn{
-  padding:6px 14px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:var(--glass);
-  font-size:12px;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:0 4px 12px rgba(0,0,0,0.08);
-  transition:all .2s ease;
-}
-
-.theme-btn:hover{
-  transform:translateY(-1px);
-}
-
-.theme-btn.active{
-  background:var(--brand);
-  color:#fff;
-  border-color:var(--brand);
-}
-  .header-lang{
+.header-lang{
   display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:10px;
+  gap:8px;
 }
 
-.lang-pill{
-  padding:6px;
-  border-radius:999px;
-  background:var(--glass);
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
   border:1px solid var(--border);
+  border-radius:999px;
+  font-size:12px;
+  color:var(--text);
+  background:transparent;
+}
+
+.time-icon-group{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.header-datetime{
+  gap:2px;
+  background: var(--brand-soft);
+  border-color: transparent;
+  border-radius:16px;
+}
+.header-datetime .dot{
+  margin:0 1px;
+}
+body[data-theme="dark"] .header-datetime{
+  background: rgba(69,183,178,0.12);
+}
+
+#currentDate{
+  letter-spacing:-0.01em;
+  margin-right:2px;
+}
+/* Language pills */
+/* Language pills — info-card style */
+.lang-pill{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 8px;
+  border-radius:999px;
+  background: var(--brand-soft);
+  border:1px solid transparent;
   cursor:pointer;
-  opacity:0.55;
+  opacity:0.6;
   transition:all .2s ease;
 }
 
 .lang-pill img{
-  width:20px;
+  width:22px;
   height:auto;
 }
 
 .lang-pill.active{
   opacity:1;
-  background:var(--brand);
+  background: var(--brand);
 }
+
+  body[data-theme="dark"] .lang-pill{
+  background: rgba(69,183,178,0.12);
+}
+
+body[data-theme="dark"] .lang-pill.active{
+  background: var(--brand);
+}
+
+    .theme-switch{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px;
+}
+
+.theme-btn{
+  border:none;
+  background:transparent;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  color:var(--text);
+  opacity:0.4;
+  transition:all .2s ease;
+}
+  .theme-btn:hover{
+  opacity:0.8;
+}
+
+.theme-btn.active{
+  background:#e9f6f3;       /* same as info card */
+  color:#0f3d3a;            /* dark readable text */
+  opacity:1;
+}
+
+body[data-theme="dark"] .theme-btn.active{
+  background:rgba(233,246,243,0.15); /* soft green tint */
+  color:#ffffff;
+}
+.logo-img{
+  transition: opacity .25s ease, transform .25s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+}
+@media (max-width: 640px) {
+
+  /* Space around logo */
+  .logo-img {
+    margin-bottom: 18px;
+  }
+
+  /* Title spacing */
+  h1 {
+    margin-bottom: 12px;
+  }
+
+  /* Tagline spacing */
+  .tagline {
+    margin-bottom: 18px;
+    line-height: 1.55;
+    padding: 0 14px;
+    text-align: center;
+  }
+
+  /* Space between pills (theme, date, flags) */
+  .header-meta {
+    margin-top: 10px;
+    gap: 12px;
+  }
+
+  /* Add breathing room below header */
+  .hero {
+    padding-bottom: 24px;
+  }
+}
+  @media (max-width: 640px) {
+    .logo-img {
+      max-width: 340px;
+    }
+  }
 </style>
   <script>
 (function () {
@@ -3844,6 +4044,24 @@ document.addEventListener('keydown', function(e){
   if (cancelModal && cancelModal.classList.contains('open')) {
     closeCancelModal();
   }
+});
+</script>
+<script>
+function setTheme(theme){
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+
+  document.querySelectorAll('.theme-btn').forEach(btn=>{
+    btn.classList.remove('active');
+  });
+
+  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
+}
+
+/* Sync active button on load */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const theme = document.body.getAttribute('data-theme') || 'light';
+  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
 });
 </script>
 <script>
