@@ -1579,15 +1579,34 @@ body[data-theme="dark"] .theme-btn.active{
 </div>
 <div class="header-meta">
 <div class="theme-switch pill">
-  <button class="theme-btn light" onclick="setTheme('light')">
-    ☀️ Light
+
+  <button
+    class="theme-btn light"
+    onclick="setTheme('light')"
+    title="Change website theme">
+
+    <span class="lang id">☀️ Tema Terang</span>
+    <span class="lang en" style="display:none;">☀️ Light Theme</span>
+    <span class="lang de" style="display:none;">☀️ Helles Design</span>
+    <span class="lang it" style="display:none;">☀️ Tema Chiaro</span>
+
   </button>
 
   <span class="dot">•</span>
 
-  <button class="theme-btn dark" onclick="setTheme('dark')">
-    🌙 Dark
+  <button
+    class="theme-btn dark"
+    onclick="setTheme('dark')"
+    title="Change website theme">
+
+    <span class="lang id">🌙 Tema Gelap</span>
+    <span class="lang en" style="display:none;">🌙 Dark Theme</span>
+    <span class="lang de" style="display:none;">🌙 Dunkles Design</span>
+    <span class="lang it" style="display:none;">🌙 Tema Scuro</span>
+
   </button>
+
+</div>
 </div>
 <div class="header-datetime pill">
   <span class="time-icon-group">
