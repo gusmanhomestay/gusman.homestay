@@ -1580,15 +1580,21 @@ body[data-theme="dark"] .theme-btn.active{
   margin-top: 4px;
   margin-bottom: 12px;
   font-family: 'Dancing Script', cursive;
-  font-size: 40px;     /* bigger */
-  font-weight: 800;    /* bolder */
+  font-size: 40px;
+  font-weight: 800;
   letter-spacing: 0.8px;
   text-align: center;
   color: var(--text);
+
+  width: 100%;
+  max-width: 720px;      /* matches logo visual width */
+  margin-left: auto;
+  margin-right: auto;
 }
 @media (max-width: 640px) {
   .brand-subtitle{
     font-size: 30px;
+    max-width: 90%;
   }
 }
 </style>
