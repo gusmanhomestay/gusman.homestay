@@ -2565,10 +2565,9 @@ body[data-theme="dark"] .theme-btn.active{
 <div class="video-buttons">
   
 <!-- 1️⃣ Day overview -->
- <button type="button" class="video-btn active"
+  <button type="button" class="video-btn"
   data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257194/01-day-overview_bkmohy.mp4"
-  data-poster="images/video-day.jpg"
-  onclick="setTourVideo(this.dataset.src, this.dataset.poster, this)">
+  onclick="setTourVideo(this.dataset.src, null, this)">
   <span class="lang id">Tour Siang hari</span>
   <span class="lang en" style="display:none;">Day overview</span>
   <span class="lang de" style="display:none;">Tagesübersicht</span>
@@ -4117,56 +4116,40 @@ document.addEventListener('keydown', function(e){
 });
 </script>
 <script>
-function setTheme(theme){
-  document.body.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-
-  document.querySelectorAll('.theme-btn').forEach(btn=>{
-    btn.classList.remove('active');
-  });
-
-  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
-}
-
-/* Sync active button on load */
-document.addEventListener('DOMContentLoaded', ()=>{
-  const theme = document.body.getAttribute('data-theme') || 'light';
-  document.querySelector(`.theme-btn.${theme}`)?.classList.add('active');
-});
-</script>
-<script>
 function updateLogosByTheme(theme) {
   const headerLogo = document.getElementById('siteLogo');
   const aboutLogo  = document.getElementById('aboutLogo');
 
-  const lightLogo = 'images/gusman-logo-dark.webp';  // light theme
-  const darkLogo  = 'images/gusman-logo-light.webp'; // dark theme
+  const lightLogo = 'images/gusman-logo-dark.webp';
+  const darkLogo  = 'images/gusman-logo-light.webp';
 
   if (headerLogo) {
     headerLogo.src = theme === 'dark' ? darkLogo : lightLogo;
   }
-
   if (aboutLogo) {
     aboutLogo.src = theme === 'dark' ? darkLogo : lightLogo;
   }
 }
 
-/* Run on page load */
-document.addEventListener('DOMContentLoaded', () => {
-  const theme = document.body.getAttribute('data-theme') || 'light';
-  updateLogosByTheme(theme);
-});
-
-/* Theme switch */
 function setTheme(theme) {
   document.body.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
   updateLogosByTheme(theme);
 
-  document.querySelectorAll('.theme-btn').forEach(btn =>
-    btn.classList.toggle('active', btn.classList.contains(theme))
-  );
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.classList.contains(theme));
+  });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.body.setAttribute('data-theme', savedTheme);
+  updateLogosByTheme(savedTheme);
+
+  document
+    .querySelector(`.theme-btn.${savedTheme}`)
+    ?.classList.add('active');
+});
 </script>
 </body>
 </html>
