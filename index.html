@@ -4123,12 +4123,8 @@ function updateLogosByTheme(theme) {
   const lightLogo = 'images/gusman-logo-dark.webp';
   const darkLogo  = 'images/gusman-logo-light.webp';
 
-  if (headerLogo) {
-    headerLogo.src = theme === 'dark' ? darkLogo : lightLogo;
-  }
-  if (aboutLogo) {
-    aboutLogo.src = theme === 'dark' ? darkLogo : lightLogo;
-  }
+  if (headerLogo) headerLogo.src = theme === 'dark' ? darkLogo : lightLogo;
+  if (aboutLogo)  aboutLogo.src  = theme === 'dark' ? darkLogo : lightLogo;
 }
 
 function setTheme(theme) {
@@ -4142,12 +4138,20 @@ function setTheme(theme) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  document.body.setAttribute('data-theme', savedTheme);
-  updateLogosByTheme(savedTheme);
+  let theme = localStorage.getItem('theme');
+
+  // First visit → follow device preference
+  if (!theme) {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  }
+
+  document.body.setAttribute('data-theme', theme);
+  updateLogosByTheme(theme);
 
   document
-    .querySelector(`.theme-btn.${savedTheme}`)
+    .querySelector(`.theme-btn.${theme}`)
     ?.classList.add('active');
 });
 </script>
