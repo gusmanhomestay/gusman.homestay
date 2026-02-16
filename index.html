@@ -4116,21 +4116,9 @@ document.addEventListener('keydown', function(e){
 });
 </script>
 <script>
-function updateLogosByTheme(theme) {
-  const headerLogo = document.getElementById('siteLogo');
-  const aboutLogo  = document.getElementById('aboutLogo');
-
-  const lightLogo = 'images/gusman-logo-dark.webp';
-  const darkLogo  = 'images/gusman-logo-dark.webp';
-
-  if (headerLogo) headerLogo.src = theme === 'dark' ? darkLogo : lightLogo;
-  if (aboutLogo)  aboutLogo.src  = theme === 'dark' ? darkLogo : lightLogo;
-}
-
 function setTheme(theme) {
   document.body.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
-  updateLogosByTheme(theme);
 
   document.querySelectorAll('.theme-btn').forEach(btn => {
     btn.classList.toggle('active', btn.classList.contains(theme));
@@ -4148,7 +4136,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.body.setAttribute('data-theme', theme);
-  updateLogosByTheme(theme);
 
   document
     .querySelector(`.theme-btn.${theme}`)
