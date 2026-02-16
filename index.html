@@ -1577,8 +1577,9 @@ body[data-theme="dark"] .theme-btn.active{
   }
 }
 .brand-subtitle{
-  margin-top: 4px;
+  margin-top: -22px;   /* ⬅ pulls text into logo canvas */
   margin-bottom: 12px;
+
   font-family: 'Dancing Script', cursive;
   font-size: 40px;
   font-weight: 800;
@@ -1587,12 +1588,14 @@ body[data-theme="dark"] .theme-btn.active{
   color: var(--text);
 
   width: 100%;
-  max-width: 720px;      /* matches logo visual width */
+  max-width: 720px;
   margin-left: auto;
   margin-right: auto;
 }
+
 @media (max-width: 640px) {
   .brand-subtitle{
+    margin-top: -16px; /* slightly less pull on mobile */
     font-size: 30px;
     max-width: 90%;
   }
