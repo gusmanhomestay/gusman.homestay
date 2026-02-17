@@ -1636,23 +1636,29 @@ body[data-theme="dark"] .theme-btn.active{
   height:20px;
   flex-shrink:0;
 }
-/* === MAP BUTTON: FORCE ONE LINE + NO UNDERLINE === */
-.map-btn{
-  white-space: nowrap;        /* 🔑 one line only */
-  text-decoration: none !important;
-  display: inline-flex;
+/* === MAP BUTTON — FORCE SINGLE LINE, NO UNDERLINE === */
+.map-btn {
+  display: inline-flex !important;
+  flex-direction: row !important;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+
+  white-space: nowrap !important;
+  text-decoration: none !important;
 }
 
-.map-btn *,
-.map-btn span{
-  white-space: nowrap;        /* prevent inner wrap */
+/* prevent inner spans from stacking */
+.map-btn span,
+.map-btn img {
+  display: inline !important;
+  white-space: nowrap !important;
 }
 
+/* kill underline in all states */
+.map-btn,
 .map-btn:hover,
 .map-btn:focus,
-.map-btn:active{
+.map-btn:active {
   text-decoration: none !important;
 }
 </style>
