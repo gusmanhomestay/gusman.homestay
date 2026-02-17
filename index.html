@@ -1636,36 +1636,26 @@ body[data-theme="dark"] .theme-btn.active{
   height:20px;
   flex-shrink:0;
 }
-/* === MAP BUTTON: FORCE SINGLE LINE, NO UNDERLINE, EVER === */
-.map-btn{
-  display:inline-flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-
-  white-space:nowrap !important;
-  text-decoration:none !important;
-
-  gap:6px;
-  max-width:100%;
+/* ✅ Only the active language is visible */
+.map-btn .lang{
+  display:none;
 }
 
-/* Inner language spans MUST NOT wrap */
-.map-btn span{
-  display:inline-flex !important;
-  align-items:center !important;
-  white-space:nowrap !important;
+.map-btn .lang.active{
+  display:inline-flex;
+  align-items:center;
+  white-space:nowrap;
 }
 
-/* Icon inline with text */
+/* Icon stays inline */
 .map-icon{
   width:18px;
   height:18px;
   margin:0 4px;
-  flex-shrink:0;
   vertical-align:middle;
 }
 
-/* Kill underline in all states */
+/* Kill underline in ALL states */
 .map-btn,
 .map-btn:hover,
 .map-btn:focus,
@@ -3032,27 +3022,31 @@ let currentLang = 'id';
 ========================= */
 function setLanguage(lang){
   currentLang = lang;
+  document.body.dataset.lang = lang;
 
-  document.body.dataset.lang = lang; 
-
+  // 1️⃣ Normal language elements (EXCEPT map button)
   document.querySelectorAll('.lang').forEach(el=>{
+    if (el.closest('.map-btn')) return; // 🚫 skip map button
     el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
   });
 
-  // ✅ language button active state
- document.querySelectorAll('.lang-pill').forEach(btn=>{
-  btn.classList.remove('active');
-});
+  // 2️⃣ Map button language (ONLY ONE ACTIVE)
+  document.querySelectorAll('.map-btn .lang').forEach(el=>{
+    el.classList.toggle('active', el.classList.contains(lang));
+  });
 
-document
-  .querySelector(`.lang-pill[onclick*="${lang}"]`)
-  ?.classList.add('active');
+  // 3️⃣ Language selector buttons
+  document.querySelectorAll('.lang-pill').forEach(btn=>{
+    btn.classList.remove('active');
+  });
 
-  // ✅ keep these INSIDE the function
+  document
+    .querySelector(`.lang-pill[onclick*="${lang}"]`)
+    ?.classList.add('active');
+
   restartHeaderAnimation();
-  updateTimeWIB(); // update time when language changes
+  updateTimeWIB();
 }
-
 function updateTimeWIB(){
   const el = document.getElementById('timeWIB');
   if(!el) return;
