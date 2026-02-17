@@ -1636,19 +1636,24 @@ body[data-theme="dark"] .theme-btn.active{
   height:20px;
   flex-shrink:0;
 }
-.map-btn {
-  white-space: nowrap;          /* force single line */
+/* === MAP BUTTON: FORCE ONE LINE + NO UNDERLINE === */
+.map-btn{
+  white-space: nowrap;        /* 🔑 one line only */
+  text-decoration: none !important;
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.map-btn span {
-  white-space: nowrap;          /* prevent inner wrap */
+.map-btn *,
+.map-btn span{
+  white-space: nowrap;        /* prevent inner wrap */
 }
 
-.map-btn img {
-  flex-shrink: 0;               /* icon never moves to next line */
+.map-btn:hover,
+.map-btn:focus,
+.map-btn:active{
+  text-decoration: none !important;
 }
 </style>
   <script>
@@ -2756,45 +2761,40 @@ body[data-theme="dark"] .theme-btn.active{
 
   <!-- MAP BUTTON -->
   <a
-    href="https://www.google.com/maps/place/Gusman+Homestay+Nagreg"
-    target="_blank"
-    rel="noopener"
-    class="map-btn btn-premium"
-  >
+  class="btn btn-premium map-btn"
+  href="https://www.google.com/maps/place/Gusman+Homestay+Nagreg"
+  target="_blank"
+  rel="noopener">
 
-    <!-- Indonesian -->
-    <span class="lang id">
-      Buka di
-      <img src="images/googlemaps.png" alt="Google Maps"
-           style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-      atau scan QR Code di sebelah kiri
-    </span>
+  <span class="lang id">
+    Buka di
+    <img src="images/googlemaps.png" alt="Google Maps"
+         style="width:18px;height:18px;vertical-align:-3px;">
+    atau scan QR Code di sebelah kiri
+  </span>
 
-    <!-- English -->
-    <span class="lang en" style="display:none;">
-      Open in
-      <img src="images/googlemaps.png" alt="Google Maps"
-           style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-      or scan the QR code on the left
-    </span>
+  <span class="lang en" style="display:none;">
+    Open in
+    <img src="images/googlemaps.png" alt="Google Maps"
+         style="width:18px;height:18px;vertical-align:-3px;">
+    or scan the QR code on the left
+  </span>
 
-    <!-- German -->
-    <span class="lang de" style="display:none;">
-      In
-      <img src="images/googlemaps.png" alt="Google Maps"
-           style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-      öffnen oder QR-Code links scannen
-    </span>
+  <span class="lang de" style="display:none;">
+    In
+    <img src="images/googlemaps.png" alt="Google Maps"
+         style="width:18px;height:18px;vertical-align:-3px;">
+    öffnen oder QR-Code links scannen
+  </span>
 
-    <!-- Italian -->
-    <span class="lang it" style="display:none;">
-      Apri su
-      <img src="images/googlemaps.png" alt="Google Maps"
-           style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-      o scansiona il codice QR a sinistra
-    </span>
+  <span class="lang it" style="display:none;">
+    Apri su
+    <img src="images/googlemaps.png" alt="Google Maps"
+         style="width:18px;height:18px;vertical-align:-3px;">
+    o scansiona il codice QR a sinistra
+  </span>
 
-  </a>
+</a>
 </div>
 </section>
 <!-- ===================== ABOUT / STORY (FULL WIDTH) ===================== -->
