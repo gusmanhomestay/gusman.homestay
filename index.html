@@ -1669,12 +1669,18 @@ body[data-theme="dark"] .theme-btn.active{
 /* Google Maps button */
 .map-btn {
   position: absolute;
-  bottom: 24px;   /* ⬅ move UP (increase number = higher) */
+  bottom: 36px;   /* ⬅ higher = more inside the map */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 5;
+  z-index: 10;
 
   text-decoration: none;
+}
+/* FORCE Map title centered in all languages */
+.map-container h3,
+.map-container h2,
+.map-container h1 {
+  text-align: center !important;
 }
 </style>
   <script>
