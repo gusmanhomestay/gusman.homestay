@@ -1681,6 +1681,19 @@ body[data-theme="dark"] .theme-btn.active{
   text-align: center !important;
   width: 100%;
 }
+/* Contact list icon alignment fix */
+.contact-row{
+  display:flex;
+  align-items:center;   /* 🔑 vertical centering */
+  gap:10px;
+}
+
+.contact-row img{
+  width:20px;
+  height:20px;
+  flex-shrink:0;
+  vertical-align:middle; /* safety */
+}
 </style>
   <script>
 (function () {
