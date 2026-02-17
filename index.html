@@ -1220,7 +1220,10 @@ body[data-theme="dark"] .about-seal img{
   margin-right:10px;
   vertical-align:middle;
 }
-
+.big-wa{
+  width:34px;   /* bigger icon */
+  height:auto;
+}
 /* Icon + text row */
 .btn-premium .btn-title{
   display:flex;
@@ -1695,6 +1698,16 @@ body[data-theme="dark"] .theme-btn.active{
   flex-shrink:0;
   vertical-align:middle; /* safety */
 }
+/* Contact links should look like normal text */
+.contact a,
+.contact a:visited {
+  color: inherit;          /* same color as text (white/gray) */
+  text-decoration: none;  /* remove underline */
+}
+
+.contact a:hover {
+  text-decoration: underline; /* optional: show underline on hover */
+}
 </style>
   <script>
 (function () {
@@ -1934,45 +1947,37 @@ body[data-theme="dark"] .theme-btn.active{
   <!-- Indonesian -->
   <span class="lang id">
     <span class="btn-title">
-      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-      <span class="btn-text">
-        <strong>Pesan via WhatsApp *</strong>
-        <em>* (kami konfirmasi dulu)</em>
-      </span>
+      <strong>Pesan via</strong>
+      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
     </span>
+    <em>* (kami konfirmasi dulu)</em>
   </span>
 
   <!-- English -->
   <span class="lang en" style="display:none;">
     <span class="btn-title">
-      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-      <span class="btn-text">
-        <strong>Book via WhatsApp *</strong>
-        <em>* (we’ll confirm first)</em>
-      </span>
+      <strong>Book via</strong>
+      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
     </span>
+    <em>* (we’ll confirm first)</em>
   </span>
 
   <!-- German -->
   <span class="lang de" style="display:none;">
     <span class="btn-title">
-      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-      <span class="btn-text">
-        <strong>Über WhatsApp buchen *</strong>
-        <em>* (Bestätigung erforderlich)</em>
-      </span>
+      <strong>Buchen via</strong>
+      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
     </span>
+    <em>* (Bestätigung erforderlich)</em>
   </span>
 
   <!-- Italian -->
   <span class="lang it" style="display:none;">
     <span class="btn-title">
-      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-      <span class="btn-text">
-        <strong>Prenota via WhatsApp *</strong>
-        <em>* (confermiamo prima)</em>
-      </span>
+      <strong>Prenota via</strong>
+      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
     </span>
+    <em>* (confermiamo prima)</em>
   </span>
 
 </button>
