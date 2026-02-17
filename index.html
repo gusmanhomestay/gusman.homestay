@@ -1085,7 +1085,28 @@ body[data-theme="dark"] .about-seal img{
   line-height:1.3;
   gap:0;
 }
+.btn-premium{
+  display:flex;
+  flex-direction:column;   /* stack lines */
+  align-items:center;      /* center horizontally */
+  justify-content:center;  /* center vertically */
+  text-align:center;
+}
 
+/* First line (text + icon) */
+.btn-premium .btn-title{
+  display:flex;
+  align-items:center;
+  justify-content:center;  /* 🔥 THIS centers "Pesan via + icon" */
+  gap:10px;
+}
+
+/* Second line */
+.btn-premium em{
+  display:block;
+  text-align:center;
+  margin-top:4px;
+}
 /* Sticky WhatsApp container (mobile only) */
 .wa-sticky{
   display:none;
@@ -1950,7 +1971,7 @@ body[data-theme="dark"] .theme-btn.active{
       <strong>Pesan via</strong>
       <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
     </span>
-    <em>* (kami konfirmasi dulu)</em>
+    <em>(kami konfirmasi dulu)</em>
   </span>
 
   <!-- English -->
@@ -1959,7 +1980,7 @@ body[data-theme="dark"] .theme-btn.active{
       <strong>Book via</strong>
       <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
     </span>
-    <em>* (we’ll confirm first)</em>
+    <em>(we’ll confirm first)</em>
   </span>
 
   <!-- German -->
@@ -1968,7 +1989,7 @@ body[data-theme="dark"] .theme-btn.active{
       <strong>Buchen via</strong>
       <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
     </span>
-    <em>* (Bestätigung erforderlich)</em>
+    <em>(Bestätigung erforderlich)</em>
   </span>
 
   <!-- Italian -->
@@ -1977,7 +1998,7 @@ body[data-theme="dark"] .theme-btn.active{
       <strong>Prenota via</strong>
       <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
     </span>
-    <em>* (confermiamo prima)</em>
+    <em>(confermiamo prima)</em>
   </span>
 
 </button>
