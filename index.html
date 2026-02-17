@@ -1729,45 +1729,41 @@ body[data-theme="dark"] .theme-btn.active{
 .contact a:hover {
   text-decoration: underline; /* optional: show underline on hover */
 }
-/* ✅ ONE-LINE WhatsApp button */
+/* 🔒 FINAL WhatsApp button spacing fix */
 .btn-title.oneline{
-  display:flex;
+  display:inline-flex;
   align-items:center;
-  justify-content:center;
+  gap:4px;              /* 🔑 only spacing control */
   white-space:nowrap;
-}
-
-/* Text before icon */
-.btn-title.oneline strong{
-  margin-right:4px;   /* ✅ tighter spacing */
-}
-
-/* WhatsApp icon */
-.btn-title.oneline .big-wa{
-  width:28px;
-  height:28px;
-  margin-right:4px;   /* ✅ tighter spacing */
-  flex-shrink:0;
-}
-
-/* Make WhatsApp booking button text match other primary buttons */
-.btn-premium .btn-title.oneline{
   font-size:18px;
   font-weight:700;
 }
 
+/* WhatsApp icon – kill hidden spacing */
+.btn-title.oneline img{
+  width:24px;
+  height:24px;
+  display:inline-block;
+  vertical-align:middle;
+  margin:0;             /* 🔑 remove ALL margins */
+  padding:0;
+}
+
 /* Confirmation text */
-.btn-premium .btn-title.oneline em{
-  font-style: italic;
-  font-size: 0.95em;
-  font-weight: 600;
-  opacity: 0.9;
+.btn-title.oneline em{
+  font-style:italic;
+  font-size:0.95em;
+  font-weight:600;
+  opacity:0.9;
 }
 
 @media (max-width:480px){
-  .btn-premium .btn-title.oneline{
+  .btn-title.oneline{
     font-size:16px;
   }
+}
+.btn-title.oneline img{
+  outline:1px solid red;
 }
 </style>
   <script>
