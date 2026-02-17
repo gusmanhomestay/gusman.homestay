@@ -2741,68 +2741,60 @@ body[data-theme="dark"] .theme-btn.active{
   </div>
 </section>
 
+<div class="card fullwidth-section">
+  <h3>
+    <span class="lang id">Peta</span>
+    <span class="lang en" style="display:none;">Map</span>
+    <span class="lang de" style="display:none;">Karte</span>
+    <span class="lang it" style="display:none;">Mappa</span>
+  </h3>
 
-<!-- ===================== FULL-WIDTH MAP (CENTERED SECTION) ===================== -->
-<section class="fullwidth-section">
-  <div class="card">
-    <h3>
-      <span class="lang id">Peta</span>
-      <span class="lang en" style="display:none;">Map</span>
-      <span class="lang de" style="display:none;">Karte</span>
-      <span class="lang it" style="display:none;">Mappa</span>
-    </h3>
+  <!-- LIVE GOOGLE MAP -->
+  <iframe
+    class="map-embed"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.770292682659!2d107.8813245!3d-7.0165307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c9df6ada6155:0x37e2fd8bf58f8eee!2sGusman%20Homestay%20-%20Nagreg!5e0!3m2!1sen!2sid!4v1707640000000">
+  </iframe>
 
-<div class="map-preview">
+  <!-- OPEN IN GOOGLE MAPS BUTTON -->
+  <div style="text-align:center;margin-top:14px;">
+    <a
+      href="https://www.google.com/maps/place/Gusman+Homestay+-+Nagreg/@-7.0165307,107.8813245,17z"
+      target="_blank"
+      rel="noopener"
+      class="btn btn-premium map-btn">
 
-  <!-- MAP PREVIEW IMAGE -->
-  <a
-    href="https://www.google.com/maps/place/Gusman+Homestay+Nagreg"
-    target="_blank"
-    rel="noopener"
-  >
-    <img
-      src="images/map-preview.webp"
-      alt="Map preview Gusman Homestay"
-      loading="lazy"
-    >
-  </a>
+      <!-- Indonesian -->
+      <span class="lang id active">
+        Buka di
+        <img src="images/googlemaps.png" class="map-icon" alt="">
+        Google Maps
+      </span>
 
-  <!-- MAP BUTTON -->
-<a
-  href="https://www.google.com/maps/place/Gusman+Homestay+-+Nagreg/@-7.0165307,107.8813245,17z/data=!3m1!4b1!4m6!3m5!1s0x2e68c9df6ada6155:0x37e2fd8bf58f8eee!8m2!3d-7.016536!4d107.8839048!16s%2Fg%2F11r3l6ksf7?entry=ttu"
-  target="_blank"
-  rel="noopener"
-  class="btn btn-premium map-btn">
+      <!-- English -->
+      <span class="lang en">
+        Open in
+        <img src="images/googlemaps.png" class="map-icon" alt="">
+        Google Maps
+      </span>
 
-  <!-- Indonesian -->
-  <span class="lang id">
-    Buka di
-    <img src="images/googlemaps.png" class="map-icon" alt="Google Maps">
-    atau scan QR Code di sebelah kiri
-  </span>
+      <!-- German -->
+      <span class="lang de">
+        In
+        <img src="images/googlemaps.png" class="map-icon" alt="">
+        Google Maps öffnen
+      </span>
 
-  <!-- English -->
-  <span class="lang en">
-    Open in
-    <img src="images/googlemaps.png" class="map-icon" alt="Google Maps">
-    or scan the QR code on the left
-  </span>
+      <!-- Italian -->
+      <span class="lang it">
+        Apri su
+        <img src="images/googlemaps.png" class="map-icon" alt="">
+        Google Maps
+      </span>
 
-  <!-- German -->
-  <span class="lang de">
-    In
-    <img src="images/googlemaps.png" class="map-icon" alt="Google Maps">
-    öffnen oder QR-Code links scannen
-  </span>
-
-  <!-- Italian -->
-  <span class="lang it">
-    Apri su
-    <img src="images/googlemaps.png" class="map-icon" alt="Google Maps">
-    o scansiona il codice QR a sinistra
-  </span>
-
-</a>
+    </a>
+  </div>
 </div>
 </section>
 <!-- ===================== ABOUT / STORY (FULL WIDTH) ===================== -->
@@ -3027,7 +3019,7 @@ function setLanguage(lang){
 
   // 1️⃣ Normal language elements (EXCEPT map button)
   document.querySelectorAll('.lang').forEach(el=>{
-    if (el.closest('.map-btn')) return; // 🚫 skip map button
+    if (el.closest('.map-btn')) return;
     el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
   });
 
