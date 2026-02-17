@@ -1636,6 +1636,14 @@ body[data-theme="dark"] .theme-btn.active{
   height:20px;
   flex-shrink:0;
 }
+.map-btn{
+  white-space: nowrap;      /* ONE line */
+  text-decoration: none;    /* no underline */
+}
+
+.map-btn img{
+  pointer-events: none;     /* avoid underline quirks */
+}
 </style>
   <script>
 (function () {
@@ -2727,78 +2735,57 @@ body[data-theme="dark"] .theme-btn.active{
 
 <div class="map-preview">
 
-  <!-- MAP IMAGE PREVIEW -->
-  <img
-    src="images/map-preview.webp"
-    alt="Map preview of Gusman Homestay Nagreg"
-    loading="lazy">
-
-  <!-- MAP BUTTON (TEXT + ICON IN MIDDLE, SAME COLOR AS BEFORE) -->
+  <!-- MAP PREVIEW IMAGE -->
   <a
     href="https://www.google.com/maps/place/Gusman+Homestay+Nagreg"
     target="_blank"
     rel="noopener"
-    class="map-btn btn-premium">
+  >
+    <img
+      src="images/map-preview.webp"
+      alt="Map preview Gusman Homestay"
+      loading="lazy"
+    >
+  </a>
+
+  <!-- MAP BUTTON -->
+  <a
+    href="https://www.google.com/maps/place/Gusman+Homestay+Nagreg"
+    target="_blank"
+    rel="noopener"
+    class="map-btn btn-premium"
+  >
 
     <!-- Indonesian -->
     <span class="lang id">
-      <span class="map-text-desktop">
-        Buka di
-        <img src="images/googlemaps.png" alt="Google Maps"
-             style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-        atau scan QR Code di sebelah kiri
-      </span>
-      <span class="map-text-mobile">
-        Buka di
-        <img src="images/googlemaps.png" alt="Google Maps"
-             style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-      </span>
+      Buka di
+      <img src="images/googlemaps.png" alt="Google Maps"
+           style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
+      atau scan QR Code di sebelah kiri
     </span>
 
     <!-- English -->
     <span class="lang en" style="display:none;">
-      <span class="map-text-desktop">
-        Open in
-        <img src="images/googlemaps.png" alt="Google Maps"
-             style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-        or scan the QR code on the left
-      </span>
-      <span class="map-text-mobile">
-        Open in
-        <img src="images/googlemaps.png" alt="Google Maps"
-             style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-      </span>
+      Open in
+      <img src="images/googlemaps.png" alt="Google Maps"
+           style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
+      or scan the QR code on the left
     </span>
 
     <!-- German -->
     <span class="lang de" style="display:none;">
-      <span class="map-text-desktop">
-        In
-        <img src="images/googlemaps.png" alt="Google Maps"
-             style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-        öffnen oder QR-Code links scannen
-      </span>
-      <span class="map-text-mobile">
-        In
-        <img src="images/googlemaps.png" alt="Google Maps"
-             style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-        öffnen
-      </span>
+      In
+      <img src="images/googlemaps.png" alt="Google Maps"
+           style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
+      öffnen oder QR-Code links scannen
     </span>
 
     <!-- Italian -->
     <span class="lang it" style="display:none;">
-      <span class="map-text-desktop">
-        Apri su
-        <img src="images/googlemaps.png" alt="Google Maps"
-             style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-        o scansiona il codice QR a sinistra
-      </span>
-      <span class="map-text-mobile">
-        Apri su
-        <img src="images/googlemaps.png" alt="Google Maps"
-             style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
-      </span>
+      Apri su
+      <img src="images/googlemaps.png" alt="Google Maps"
+           style="width:18px;height:18px;vertical-align:-3px;margin:0 4px;">
+      o scansiona il codice QR a sinistra
     </span>
 
   </a>
