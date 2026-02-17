@@ -1734,22 +1734,27 @@ body[data-theme="dark"] .theme-btn.active{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
   white-space:nowrap;
 }
 
-/* Subtitle inline */
+/* Text before icon */
+.btn-title.oneline strong{
+  margin-right:8px;
+}
+
+/* WhatsApp icon */
+.btn-title.oneline .big-wa{
+  width:28px;
+  height:28px;
+  margin-right:6px;   /* ⬅ smaller gap after icon */
+  flex-shrink:0;
+}
+
+/* Confirmation text */
 .btn-title.oneline em{
   font-style:italic;
   font-size:0.9em;
   opacity:0.9;
-}
-
-/* Bigger WhatsApp icon */
-.big-wa{
-  width:28px;
-  height:28px;
-  flex-shrink:0;
 }
 </style>
   <script>
