@@ -1636,30 +1636,41 @@ body[data-theme="dark"] .theme-btn.active{
   height:20px;
   flex-shrink:0;
 }
-/* === MAP BUTTON — FORCE SINGLE LINE, NO UNDERLINE === */
-.map-btn {
-  display: inline-flex !important;
-  flex-direction: row !important;
-  align-items: center;
-  justify-content: center;
+/* === MAP BUTTON: FORCE SINGLE LINE, NO UNDERLINE, EVER === */
+.map-btn{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
 
-  white-space: nowrap !important;
-  text-decoration: none !important;
+  white-space:nowrap !important;
+  text-decoration:none !important;
+
+  gap:6px;
+  max-width:100%;
 }
 
-/* prevent inner spans from stacking */
-.map-btn span,
-.map-btn img {
-  display: inline !important;
-  white-space: nowrap !important;
+/* Inner language spans MUST NOT wrap */
+.map-btn span{
+  display:inline-flex !important;
+  align-items:center !important;
+  white-space:nowrap !important;
 }
 
-/* kill underline in all states */
+/* Icon inline with text */
+.map-icon{
+  width:18px;
+  height:18px;
+  margin:0 4px;
+  flex-shrink:0;
+  vertical-align:middle;
+}
+
+/* Kill underline in all states */
 .map-btn,
 .map-btn:hover,
 .map-btn:focus,
-.map-btn:active {
-  text-decoration: none !important;
+.map-btn:active{
+  text-decoration:none !important;
 }
 </style>
   <script>
@@ -2767,36 +2778,36 @@ body[data-theme="dark"] .theme-btn.active{
 
   <!-- MAP BUTTON -->
   <a
-  class="btn btn-premium map-btn"
   href="https://www.google.com/maps/place/Gusman+Homestay+Nagreg"
   target="_blank"
-  rel="noopener">
+  rel="noopener"
+  class="map-btn btn-premium">
 
+  <!-- Indonesian -->
   <span class="lang id">
     Buka di
-    <img src="images/googlemaps.png" alt="Google Maps"
-         style="width:18px;height:18px;vertical-align:-3px;">
+    <img src="images/googlemaps.png" alt="Google Maps" class="map-icon">
     atau scan QR Code di sebelah kiri
   </span>
 
+  <!-- English -->
   <span class="lang en" style="display:none;">
     Open in
-    <img src="images/googlemaps.png" alt="Google Maps"
-         style="width:18px;height:18px;vertical-align:-3px;">
+    <img src="images/googlemaps.png" alt="Google Maps" class="map-icon">
     or scan the QR code on the left
   </span>
 
+  <!-- German -->
   <span class="lang de" style="display:none;">
     In
-    <img src="images/googlemaps.png" alt="Google Maps"
-         style="width:18px;height:18px;vertical-align:-3px;">
+    <img src="images/googlemaps.png" alt="Google Maps" class="map-icon">
     öffnen oder QR-Code links scannen
   </span>
 
+  <!-- Italian -->
   <span class="lang it" style="display:none;">
     Apri su
-    <img src="images/googlemaps.png" alt="Google Maps"
-         style="width:18px;height:18px;vertical-align:-3px;">
+    <img src="images/googlemaps.png" alt="Google Maps" class="map-icon">
     o scansiona il codice QR a sinistra
   </span>
 
