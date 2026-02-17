@@ -1729,32 +1729,27 @@ body[data-theme="dark"] .theme-btn.active{
 .contact a:hover {
   text-decoration: underline; /* optional: show underline on hover */
 }
-/* WhatsApp booking button layout fix */
-.btn-title{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px; /* space between main line & em */
+/* ✅ ONE-LINE WhatsApp button */
+.btn-title.oneline{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  white-space:nowrap;
 }
 
-/* Line with text + icon */
-.btn-main{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px; /* 🔑 controls space between "via" and icon */
+/* Subtitle inline */
+.btn-title.oneline em{
+  font-style:italic;
+  font-size:0.9em;
+  opacity:0.9;
 }
 
 /* Bigger WhatsApp icon */
 .big-wa{
-  width: 26px;
-  height: 26px;
-}
-
-/* Subtitle text */
-.btn-title em{
-  font-size: 13px;
-  opacity: 0.9;
-  font-style: italic;
+  width:28px;
+  height:28px;
+  flex-shrink:0;
 }
 </style>
   <script>
@@ -1994,45 +1989,37 @@ body[data-theme="dark"] .theme-btn.active{
 
   <!-- Indonesian -->
 <span class="lang id">
-  <span class="btn-title">
-    <span class="btn-main">
-      <strong>Pesan via</strong>
-      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
-    </span>
-    <em>(kami konfirmasi dulu)</em>
+  <span class="btn-title oneline">
+    <strong>Pesan via</strong>
+    <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
+    <em>*(kami konfirmasi dulu)</em>
   </span>
 </span>
 
   <!-- English -->
 <span class="lang en" style="display:none;">
-  <span class="btn-title">
-    <span class="btn-main">
-      <strong>Book via</strong>
-      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
-    </span>
-    <em>(we’ll confirm first)</em>
+  <span class="btn-title oneline">
+    <strong>Book via</strong>
+    <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
+    <em>*(we’ll confirm first)</em>
   </span>
 </span>
 
   <!-- German -->
 <span class="lang de" style="display:none;">
-  <span class="btn-title">
-    <span class="btn-main">
-      <strong>Buchen via</strong>
-      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
-    </span>
-    <em>(Bestätigung erforderlich)</em>
+  <span class="btn-title oneline">
+    <strong>Buchen via</strong>
+    <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
+    <em>*(Bestätigung erforderlich)</em>
   </span>
 </span>
 
   <!-- Italian -->
 <span class="lang it" style="display:none;">
-  <span class="btn-title">
-    <span class="btn-main">
-      <strong>Prenota via</strong>
-      <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
-    </span>
-    <em>(confermiamo prima)</em>
+  <span class="btn-title oneline">
+    <strong>Prenota via</strong>
+    <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon big-wa">
+    <em>*(confermiamo prima)</em>
   </span>
 </span>
 
