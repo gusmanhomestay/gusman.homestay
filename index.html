@@ -1833,6 +1833,21 @@ body[data-theme="dark"] .theme-btn.active{
     height: 120px;
   }
 }
+/* 🔒 FORCE gallery to stay inside the card */
+.hero-card{
+  overflow: hidden;
+}
+
+/* 🔒 Prevent row from exceeding card width */
+.gallery-row{
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* 🔒 Images must shrink instead of pushing out */
+.gallery-row img{
+  min-width: 0;
+}
 </style>
 </head>
 
