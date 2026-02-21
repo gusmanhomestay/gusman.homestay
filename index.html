@@ -579,10 +579,9 @@ p.lead{
 /* =========================
    GALLERY (FAST + STABLE)
 ========================= */
+/* 🔑 Disable old grid gallery completely */
 .gallery{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
+  display:block;
   margin-top:14px;
 }
 
@@ -1779,34 +1778,31 @@ body[data-theme="dark"] .theme-btn.active{
   margin-bottom: 1.8rem;
 }
 
-.gallery-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+/* 🔥 DESKTOP: ALWAYS ONE LINE */
+.gallery-row{
+  display:flex;
+  gap:10px;
+  flex-wrap:nowrap;
 }
 
-.gallery-row img {
-  flex: 1 1 calc(20% - 10px);
-  height: 130px;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+.gallery-row img{
+  flex:1 1 0;
+  height:130px;
+  object-fit:cover;
+  border-radius:10px;
 }
 
+/* Hover effect (desktop only) */
 @media (hover: hover) {
   .gallery-row img:hover {
     transform: scale(1.03);
   }
 }
 
-@media (max-width: 1024px) {
-  .gallery-row img {
-    flex: 1 1 calc(33.333% - 10px);
-  }
-}
+/* 📱 MOBILE: 2 PER ROW */
 @media (max-width: 640px) {
   .gallery-row {
+    flex-wrap: wrap;
     gap: 12px;
   }
 
