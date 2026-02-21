@@ -1781,7 +1781,7 @@ body[data-theme="dark"] .theme-btn.active{
   margin-bottom: 2rem;
 }
 
-/* One row per group */
+/* One horizontal row per group */
 .gallery-row {
   display: flex;
   gap: 10px;
@@ -1794,7 +1794,7 @@ body[data-theme="dark"] .theme-btn.active{
   display: none;                /* Chrome / Safari */
 }
 
-/* Thumbnails (desktop default) */
+/* Thumbnails (desktop) */
 .gallery-row img {
   flex: 1 1 0;
   height: 130px;
@@ -1804,18 +1804,19 @@ body[data-theme="dark"] .theme-btn.active{
   transition: transform 0.2s ease;
 }
 
-/* Hover (desktop only) */
+/* Hover effect (desktop only) */
 .gallery-row img:hover {
   transform: scale(1.03);
 }
 
+/* Disable hover on touch devices */
 @media (hover: none) {
   .gallery-row img:hover {
     transform: none;
   }
 }
 
-/* Mobile behavior */
+/* Mobile behavior: horizontal scroll */
 @media (max-width: 768px) {
   .gallery-row {
     overflow-x: auto;
@@ -2342,11 +2343,11 @@ body[data-theme="dark"] .theme-btn.active{
   <div class="gallery-group">
     <div class="gallery-section-label">Exterior & Akses</div>
     <div class="gallery-row">
-      <img src="images/thumbs/01-exterior-front.webp" data-full="images/full/01-exterior-front.webp" alt="">
-      <img src="images/thumbs/02-exterior-front.webp" data-full="images/full/02-exterior-front.webp" alt="">
-      <img src="images/thumbs/19-exterior.webp" data-full="images/full/19-exterior.webp" alt="">
-      <img src="images/thumbs/20-exterior.webp" data-full="images/full/20-exterior.webp" alt="">
-      <img src="images/thumbs/21-garage.webp" data-full="images/full/21-garage.webp" alt="">
+      <img src="images/thumbs/01-exterior-front.webp" data-full="images/full/01-exterior-front.webp">
+      <img src="images/thumbs/02-exterior-front.webp" data-full="images/full/02-exterior-front.webp">
+      <img src="images/thumbs/19-exterior.webp" data-full="images/full/19-exterior.webp">
+      <img src="images/thumbs/20-exterior.webp" data-full="images/full/20-exterior.webp">
+      <img src="images/thumbs/21-garage.webp" data-full="images/full/21-garage.webp">
     </div>
   </div>
 
@@ -2354,8 +2355,8 @@ body[data-theme="dark"] .theme-btn.active{
   <div class="gallery-group">
     <div class="gallery-section-label">Ruang Tamu</div>
     <div class="gallery-row">
-      <img src="images/thumbs/03-living-room.webp" data-full="images/full/03-living-room.webp" alt="">
-      <img src="images/thumbs/04-living-room.webp" data-full="images/full/04-living-room.webp" alt="">
+      <img src="images/thumbs/03-living-room.webp" data-full="images/full/03-living-room.webp">
+      <img src="images/thumbs/04-living-room.webp" data-full="images/full/04-living-room.webp">
     </div>
   </div>
 
@@ -2363,8 +2364,8 @@ body[data-theme="dark"] .theme-btn.active{
   <div class="gallery-group">
     <div class="gallery-section-label">Kamar Tidur</div>
     <div class="gallery-row">
-      <img src="images/thumbs/07-bedroom-main.webp" data-full="images/full/07-bedroom-main.webp" alt="">
-      <img src="images/thumbs/08-bedroom-second.webp" data-full="images/full/08-bedroom-second.webp" alt="">
+      <img src="images/thumbs/07-bedroom-main.webp" data-full="images/full/07-bedroom-main.webp">
+      <img src="images/thumbs/08-bedroom-second.webp" data-full="images/full/08-bedroom-second.webp">
     </div>
   </div>
 
@@ -2372,8 +2373,8 @@ body[data-theme="dark"] .theme-btn.active{
   <div class="gallery-group">
     <div class="gallery-section-label">Dapur & Makan</div>
     <div class="gallery-row">
-      <img src="images/thumbs/05-kitchen-dining.webp" data-full="images/full/05-kitchen-dining.webp" alt="">
-      <img src="images/thumbs/06-kitchen.webp" data-full="images/full/06-kitchen.webp" alt="">
+      <img src="images/thumbs/05-kitchen-dining.webp" data-full="images/full/05-kitchen-dining.webp">
+      <img src="images/thumbs/06-kitchen.webp" data-full="images/full/06-kitchen.webp">
     </div>
   </div>
 
@@ -2381,11 +2382,11 @@ body[data-theme="dark"] .theme-btn.active{
   <div class="gallery-group">
     <div class="gallery-section-label">Kamar Mandi</div>
     <div class="gallery-row">
-      <img src="images/thumbs/09-bathroom-main.webp" data-full="images/full/09-bathroom-main.webp" alt="">
-      <img src="images/thumbs/10-bathroom-main.webp" data-full="images/full/10-bathroom-main.webp" alt="">
-      <img src="images/thumbs/11-bathroom-second.webp" data-full="images/full/11-bathroom-second.webp" alt="">
-      <img src="images/thumbs/12-bathroom-second.webp" data-full="images/full/12-bathroom-second.webp" alt="">
-      <img src="images/thumbs/13-bathroom-second.webp" data-full="images/full/13-bathroom-second.webp" alt="">
+      <img src="images/thumbs/09-bathroom-main.webp" data-full="images/full/09-bathroom-main.webp">
+      <img src="images/thumbs/10-bathroom-main.webp" data-full="images/full/10-bathroom-main.webp">
+      <img src="images/thumbs/11-bathroom-second.webp" data-full="images/full/11-bathroom-second.webp">
+      <img src="images/thumbs/12-bathroom-second.webp" data-full="images/full/12-bathroom-second.webp">
+      <img src="images/thumbs/13-bathroom-second.webp" data-full="images/full/13-bathroom-second.webp">
     </div>
   </div>
 
@@ -2393,11 +2394,11 @@ body[data-theme="dark"] .theme-btn.active{
   <div class="gallery-group">
     <div class="gallery-section-label">Amenities</div>
     <div class="gallery-row">
-      <img src="images/thumbs/14-bamboo-bank.webp" data-full="images/full/14-bamboo-bank.webp" alt="">
-      <img src="images/thumbs/15-bamboo-daybed.webp" data-full="images/full/15-bamboo-daybed.webp" alt="">
-      <img src="images/thumbs/16-amenities.webp" data-full="images/full/16-amenities.webp" alt="">
-      <img src="images/thumbs/17-towel-amenities.webp" data-full="images/full/17-towel-amenities.webp" alt="">
-      <img src="images/thumbs/18-sandal-amenities.webp" data-full="images/full/18-sandal-amenities.webp" alt="">
+      <img src="images/thumbs/14-bamboo-bank.webp" data-full="images/full/14-bamboo-bank.webp">
+      <img src="images/thumbs/15-bamboo-daybed.webp" data-full="images/full/15-bamboo-daybed.webp">
+      <img src="images/thumbs/16-amenities.webp" data-full="images/full/16-amenities.webp">
+      <img src="images/thumbs/17-towel-amenities.webp" data-full="images/full/17-towel-amenities.webp">
+      <img src="images/thumbs/18-sandal-amenities.webp" data-full="images/full/18-sandal-amenities.webp">
     </div>
   </div>
 
@@ -4374,30 +4375,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .querySelector(`.theme-btn.${theme}`)
     ?.classList.add('active');
 });
-</script>
-
-<script>
-(function () {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('gallery') !== 'labels') return;
-
-  const gallery = document.querySelector('.gallery');
-  if (!gallery) return;
-
-  const imgs = Array.from(gallery.querySelectorAll('img'));
-  let lastGroup = null;
-
-  imgs.forEach(img => {
-    const group = img.dataset.group;
-    if (group && group !== lastGroup) {
-      const label = document.createElement('div');
-      label.className = 'gallery-section-label';
-      label.textContent = group;
-      gallery.insertBefore(label, img);
-      lastGroup = group;
-    }
-  });
-})();
 </script>
 
 </body>
