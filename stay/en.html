@@ -233,6 +233,14 @@
   opacity:1;
   background:rgba(255,255,255,.12);
 }
+.button{
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.button:active{
+  transform: scale(0.97);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
   </style>
 </head>
 
@@ -302,7 +310,7 @@
     <h2>📍 Nearby Attractions</h2>
     <div class="muted">View the full travel guide and distance details:</div>
     <a class="button review" href="https://www.gusmanhomestay.com/files/panduan-wisata-en.pdf" target="_blank">
-      View Travel Guide
+      Open Travel Guide
     </a>
   </div>
 
