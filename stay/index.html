@@ -274,26 +274,35 @@
 .subtitle-line{
   display:block;     /* always moves to next line */
 }
+    
 .lang-switch{
   display:flex;
   justify-content:center;
-  gap:12px;
-  margin-bottom:14px;
+  gap:14px;
+  margin-bottom:18px;
 }
 
 .lang{
-  text-decoration:none;
-  font-weight:700;
-  font-size:14px;
-  padding:6px 10px;
-  border-radius:10px;
-  color:var(--text);
-  opacity:.6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px;
+  border-radius:12px;
   border:1px solid rgba(255,255,255,.25);
+  opacity:.6;
+  transition:.2s ease;
+}
+
+.lang img{
+  width:26px;
+  height:auto;
+  display:block;
+  border-radius:4px;
 }
 
 .lang:hover{
   opacity:1;
+  transform:translateY(-2px);
 }
 
 .lang.active{
@@ -313,8 +322,12 @@
       </div>
       
 <div class="lang-switch">
-  <a href="/stay/" class="lang active" onclick="localStorage.setItem('langChosen','id')">🇮🇩</a>
-  <a href="/stay/en.html" class="lang" onclick="localStorage.setItem('langChosen','en')">🇬🇧</a>
+  <a href="/stay/" class="lang active" onclick="localStorage.setItem('langChosen','id')">
+    <img src="/flags/id.png" alt="Indonesian">
+  </a>
+  <a href="/stay/en.html" class="lang" onclick="localStorage.setItem('langChosen','en')">
+    <img src="/flags/en.png" alt="English">
+  </a>
 </div>
       
       <h1>Selamat Datang di Gusman Homestay</h1>
