@@ -2358,9 +2358,9 @@ body[data-theme="dark"] .theme-btn.active{
 
 <div class="gallery">
 
-  <!-- Exterior & Akses -->
+  <!-- Exterior & Access -->
   <div class="gallery-group">
-    <div class="gallery-section-label">Exterior & Akses</div>
+    <div class="gallery-section-label" data-i18n="gallery.exterior"></div>
     <div class="gallery-row">
       <img src="images/thumbs/01-exterior-front.webp" data-full="images/full/01-exterior-front.webp">
       <img src="images/thumbs/02-exterior-front.webp" data-full="images/full/02-exterior-front.webp">
@@ -2370,36 +2370,36 @@ body[data-theme="dark"] .theme-btn.active{
     </div>
   </div>
 
-  <!-- Ruang Tamu -->
+  <!-- Living Room -->
   <div class="gallery-group">
-    <div class="gallery-section-label">Ruang Tamu</div>
+    <div class="gallery-section-label" data-i18n="gallery.living"></div>
     <div class="gallery-row">
       <img src="images/thumbs/03-living-room.webp" data-full="images/full/03-living-room.webp">
       <img src="images/thumbs/04-living-room.webp" data-full="images/full/04-living-room.webp">
     </div>
   </div>
 
-  <!-- Kamar Tidur -->
+  <!-- Bedrooms -->
   <div class="gallery-group">
-    <div class="gallery-section-label">Kamar Tidur</div>
+    <div class="gallery-section-label" data-i18n="gallery.bedroom"></div>
     <div class="gallery-row">
       <img src="images/thumbs/07-bedroom-main.webp" data-full="images/full/07-bedroom-main.webp">
       <img src="images/thumbs/08-bedroom-second.webp" data-full="images/full/08-bedroom-second.webp">
     </div>
   </div>
 
-  <!-- Dapur & Makan -->
+  <!-- Kitchen & Dining -->
   <div class="gallery-group">
-    <div class="gallery-section-label">Dapur & Makan</div>
+    <div class="gallery-section-label" data-i18n="gallery.kitchen"></div>
     <div class="gallery-row">
       <img src="images/thumbs/05-kitchen-dining.webp" data-full="images/full/05-kitchen-dining.webp">
       <img src="images/thumbs/06-kitchen.webp" data-full="images/full/06-kitchen.webp">
     </div>
   </div>
 
-  <!-- Kamar Mandi -->
+  <!-- Bathrooms -->
   <div class="gallery-group">
-    <div class="gallery-section-label">Kamar Mandi</div>
+    <div class="gallery-section-label" data-i18n="gallery.bathroom"></div>
     <div class="gallery-row">
       <img src="images/thumbs/09-bathroom-main.webp" data-full="images/full/09-bathroom-main.webp">
       <img src="images/thumbs/10-bathroom-main.webp" data-full="images/full/10-bathroom-main.webp">
@@ -2411,7 +2411,7 @@ body[data-theme="dark"] .theme-btn.active{
 
   <!-- Amenities -->
   <div class="gallery-group">
-    <div class="gallery-section-label">Amenities</div>
+    <div class="gallery-section-label" data-i18n="gallery.amenities"></div>
     <div class="gallery-row">
       <img src="images/thumbs/14-bamboo-bank.webp" data-full="images/full/14-bamboo-bank.webp">
       <img src="images/thumbs/15-bamboo-daybed.webp" data-full="images/full/15-bamboo-daybed.webp">
@@ -4395,6 +4395,57 @@ document.addEventListener('DOMContentLoaded', () => {
     ?.classList.add('active');
 });
 </script>
+<script>
+/* 🔽 PASTE THE GALLERY TRANSLATION SCRIPT HERE */
+const galleryTranslations = {
+  id: {
+    "gallery.exterior": "Exterior & Akses",
+    "gallery.living": "Ruang Tamu",
+    "gallery.bedroom": "Kamar Tidur",
+    "gallery.kitchen": "Dapur & Makan",
+    "gallery.bathroom": "Kamar Mandi",
+    "gallery.amenities": "Amenities"
+  },
+  en: {
+    "gallery.exterior": "Exterior & Access",
+    "gallery.living": "Living Room",
+    "gallery.bedroom": "Bedrooms",
+    "gallery.kitchen": "Kitchen & Dining",
+    "gallery.bathroom": "Bathrooms",
+    "gallery.amenities": "Amenities"
+  },
+  de: {
+    "gallery.exterior": "Außenbereich & Zugang",
+    "gallery.living": "Wohnzimmer",
+    "gallery.bedroom": "Schlafzimmer",
+    "gallery.kitchen": "Küche & Essbereich",
+    "gallery.bathroom": "Badezimmer",
+    "gallery.amenities": "Ausstattung"
+  },
+  it: {
+    "gallery.exterior": "Esterni & Accesso",
+    "gallery.living": "Soggiorno",
+    "gallery.bedroom": "Camere da letto",
+    "gallery.kitchen": "Cucina & Zona pranzo",
+    "gallery.bathroom": "Bagni",
+    "gallery.amenities": "Servizi"
+  }
+};
 
+function updateGalleryLanguage(lang) {
+  document.querySelectorAll('.gallery-section-label').forEach(el => {
+    const key = el.dataset.i18n;
+    if (galleryTranslations[lang]?.[key]) {
+      el.textContent = galleryTranslations[lang][key];
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = localStorage.getItem('lang') || 'id';
+  updateGalleryLanguage(lang);
+});
+</script>
+  
 </body>
 </html>
