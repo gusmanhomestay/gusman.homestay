@@ -1790,20 +1790,18 @@ body[data-theme="dark"] .theme-btn.active{
 /* One horizontal row per group */
 .gallery-row {
   display: flex;
-  gap: 10px;
-
-  /* hide scrollbar */
-  scrollbar-width: none;        /* Firefox */
+  gap: 8px;                 /* slightly tighter */
+  scrollbar-width: none;
 }
 
 .gallery-row::-webkit-scrollbar {
-  display: none;                /* Chrome / Safari */
+  display: none;
 }
 
-/* Thumbnails (desktop) */
+/* Thumbnails (same size for ALL groups) */
 .gallery-row img {
   flex: 1 1 0;
-  height: 100px;        /* 👈 smaller so 5 fit perfectly */
+  height: 100px;            /* 👈 tighter so 5 fit perfectly */
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
