@@ -432,15 +432,5 @@
     </div>
 
   </div>
-  <script>
-  (function () {
-    if (localStorage.getItem('langChosen')) return;
-
-    const lang = navigator.language || navigator.userLanguage;
-    if (lang && lang.toLowerCase().startsWith('en')) {
-      window.location.href = '/stay/en.html';
-    }
-  })();
-</script>
 </body>
 </html>
