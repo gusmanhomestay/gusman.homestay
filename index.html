@@ -3170,29 +3170,37 @@ let currentLang = 'id';
 /* =========================
    LANGUAGE
 ========================= */
+<script>
 function setLanguage(lang){
   currentLang = lang;
   document.body.dataset.lang = lang;
 
-  // 1️⃣ Normal language elements (EXCEPT map button)
+  /* 🔥 SAVE language so gallery can read it */
+  localStorage.setItem('lang', lang);
+
+  /* Normal language elements */
   document.querySelectorAll('.lang').forEach(el=>{
     if (el.closest('.map-btn')) return;
     el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
   });
 
-  // 2️⃣ Map button language (ONLY ONE ACTIVE)
+  /* Map button language */
   document.querySelectorAll('.map-btn .lang').forEach(el=>{
     el.classList.toggle('active', el.classList.contains(lang));
   });
 
-  // 3️⃣ Language selector buttons
+  /* Language pills */
   document.querySelectorAll('.lang-pill').forEach(btn=>{
     btn.classList.remove('active');
   });
-
   document
     .querySelector(`.lang-pill[onclick*="${lang}"]`)
     ?.classList.add('active');
+
+  /* 🔥 UPDATE GALLERY TITLES */
+  if (typeof updateGalleryLanguage === 'function') {
+    updateGalleryLanguage(lang);
+  }
 
   restartHeaderAnimation();
   updateTimeWIB();
