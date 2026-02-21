@@ -1762,6 +1762,14 @@ body[data-theme="dark"] .theme-btn.active{
     font-size:16px;
   }
 }
+.gallery-section-label {
+  grid-column: 1 / -1;
+  margin: 1.5rem 0 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  letter-spacing: 0.3px;
+}
 </style>
   <script>
 (function () {
@@ -1778,7 +1786,6 @@ body[data-theme="dark"] .theme-btn.active{
   }
 })();
 </style>
-</script>
 </head>
 
 <body data-theme="light">
@@ -2287,27 +2294,38 @@ body[data-theme="dark"] .theme-btn.active{
       </p>
 
 <div class="gallery">
-  <img src="images/thumbs/01-exterior-front.webp" data-full="images/full/01-exterior-front.webp" alt="Exterior front view" loading="lazy">
-  <img src="images/thumbs/02-exterior-front.webp" data-full="images/full/02-exterior-front.webp" alt="Exterior front view" loading="lazy">
-  <img src="images/thumbs/03-living-room.webp" data-full="images/full/03-living-room.webp" alt="Living room" loading="lazy">
-  <img src="images/thumbs/04-living-room.webp" data-full="images/full/04-living-room.webp" alt="Living room" loading="lazy">
-  <img src="images/thumbs/05-kitchen-dining.webp" data-full="images/full/05-kitchen-dining.webp" alt="Kitchen and dining area" loading="lazy">
-  <img src="images/thumbs/06-kitchen.webp" data-full="images/full/06-kitchen.webp" alt="Kitchen" loading="lazy">
-  <img src="images/thumbs/07-bedroom-main.webp" data-full="images/full/07-bedroom-main.webp" alt="Main bedroom" loading="lazy">
-  <img src="images/thumbs/08-bedroom-second.webp" data-full="images/full/08-bedroom-second.webp" alt="Second bedroom" loading="lazy">
-  <img src="images/thumbs/09-bathroom-main.webp" data-full="images/full/09-bathroom-main.webp" alt="Main bathroom" loading="lazy">
-  <img src="images/thumbs/10-bathroom-main.webp" data-full="images/full/10-bathroom-main.webp" alt="Bathroom" loading="lazy">
-  <img src="images/thumbs/11-bathroom-second.webp" data-full="images/full/11-bathroom-second.webp" alt="Second bathroom" loading="lazy">
-  <img src="images/thumbs/12-bathroom-second.webp" data-full="images/full/12-bathroom-second.webp" alt="Bathroom" loading="lazy">
-  <img src="images/thumbs/13-bathroom-second.webp" data-full="images/full/13-bathroom-second.webp" alt="Bathroom" loading="lazy">
-  <img src="images/thumbs/14-bamboo-bank.webp" data-full="images/full/14-bamboo-bank.webp" alt="Amenities" loading="lazy">
-  <img src="images/thumbs/15-bamboo-daybed.webp" data-full="images/full/15-bamboo-daybed.webp" alt="Outdoor area" loading="lazy">
-  <img src="images/thumbs/16-amenities.webp" data-full="images/full/16-amenities.webp" alt="Amenities" loading="lazy">
-  <img src="images/thumbs/17-towel-amenities.webp" data-full="images/full/17-towel-amenities.webp" alt="Towel amenities" loading="lazy">
-  <img src="images/thumbs/18-sandal-amenities.webp" data-full="images/full/18-sandal-amenities.webp" alt="Sandal amenities" loading="lazy">
-  <img src="images/thumbs/19-exterior.webp" data-full="images/full/19-exterior.webp" alt="Exterior" loading="lazy">
-  <img src="images/thumbs/20-exterior.webp" data-full="images/full/20-exterior.webp" alt="Exterior" loading="lazy">
-  <img src="images/thumbs/21-garage.webp" data-full="images/full/21-garage.webp" alt="Garage" loading="lazy">
+  <!-- Exterior & Akses -->
+  <img src="images/thumbs/01-exterior-front.webp" data-full="images/full/01-exterior-front.webp" data-group="Exterior & Akses" alt="">
+  <img src="images/thumbs/02-exterior-front.webp" data-full="images/full/02-exterior-front.webp" data-group="Exterior & Akses" alt="">
+  <img src="images/thumbs/19-exterior.webp" data-full="images/full/19-exterior.webp" data-group="Exterior & Akses" alt="">
+  <img src="images/thumbs/20-exterior.webp" data-full="images/full/20-exterior.webp" data-group="Exterior & Akses" alt="">
+  <img src="images/thumbs/21-garage.webp" data-full="images/full/21-garage.webp" data-group="Exterior & Akses" alt="">
+
+  <!-- Ruang Tamu -->
+  <img src="images/thumbs/03-living-room.webp" data-full="images/full/03-living-room.webp" data-group="Ruang Tamu" alt="">
+  <img src="images/thumbs/04-living-room.webp" data-full="images/full/04-living-room.webp" data-group="Ruang Tamu" alt="">
+
+  <!-- Dapur -->
+  <img src="images/thumbs/05-kitchen-dining.webp" data-full="images/full/05-kitchen-dining.webp" data-group="Dapur & Makan" alt="">
+  <img src="images/thumbs/06-kitchen.webp" data-full="images/full/06-kitchen.webp" data-group="Dapur & Makan" alt="">
+
+  <!-- Kamar Tidur -->
+  <img src="images/thumbs/07-bedroom-main.webp" data-full="images/full/07-bedroom-main.webp" data-group="Kamar Tidur" alt="">
+  <img src="images/thumbs/08-bedroom-second.webp" data-full="images/full/08-bedroom-second.webp" data-group="Kamar Tidur" alt="">
+
+  <!-- Kamar Mandi -->
+  <img src="images/thumbs/09-bathroom-main.webp" data-full="images/full/09-bathroom-main.webp" data-group="Kamar Mandi" alt="">
+  <img src="images/thumbs/10-bathroom-main.webp" data-full="images/full/10-bathroom-main.webp" data-group="Kamar Mandi" alt="">
+  <img src="images/thumbs/11-bathroom-second.webp" data-full="images/full/11-bathroom-second.webp" data-group="Kamar Mandi" alt="">
+  <img src="images/thumbs/12-bathroom-second.webp" data-full="images/full/12-bathroom-second.webp" data-group="Kamar Mandi" alt="">
+  <img src="images/thumbs/13-bathroom-second.webp" data-full="images/full/13-bathroom-second.webp" data-group="Kamar Mandi" alt="">
+
+  <!-- Amenities -->
+  <img src="images/thumbs/14-bamboo-bank.webp" data-full="images/full/14-bamboo-bank.webp" data-group="Amenities" alt="">
+  <img src="images/thumbs/15-bamboo-daybed.webp" data-full="images/full/15-bamboo-daybed.webp" data-group="Amenities" alt="">
+  <img src="images/thumbs/16-amenities.webp" data-full="images/full/16-amenities.webp" data-group="Amenities" alt="">
+  <img src="images/thumbs/17-towel-amenities.webp" data-full="images/full/17-towel-amenities.webp" data-group="Amenities" alt="">
+  <img src="images/thumbs/18-sandal-amenities.webp" data-full="images/full/18-sandal-amenities.webp" data-group="Amenities" alt="">
 </div>
 
     </div><!-- end hero-card -->
@@ -4269,7 +4287,6 @@ function setTheme(theme) {
 document.addEventListener('DOMContentLoaded', () => {
   let theme = localStorage.getItem('theme');
 
-  // First visit → follow device preference
   if (!theme) {
     theme = window.matchMedia('(prefers-color-scheme: dark)').matches
       ? 'dark'
@@ -4283,5 +4300,30 @@ document.addEventListener('DOMContentLoaded', () => {
     ?.classList.add('active');
 });
 </script>
+
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('gallery') !== 'labels') return;
+
+  const gallery = document.querySelector('.gallery');
+  if (!gallery) return;
+
+  const imgs = Array.from(gallery.querySelectorAll('img'));
+  let lastGroup = null;
+
+  imgs.forEach(img => {
+    const group = img.dataset.group;
+    if (group && group !== lastGroup) {
+      const label = document.createElement('div');
+      label.className = 'gallery-section-label';
+      label.textContent = group;
+      gallery.insertBefore(label, img);
+      lastGroup = group;
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
