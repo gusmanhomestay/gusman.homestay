@@ -1771,21 +1771,6 @@ body[data-theme="dark"] .theme-btn.active{
   letter-spacing: 0.3px;
 }
 </style>
-  <script>
-(function () {
-  const savedTheme = localStorage.getItem('theme');
-  const body = document.body;
-
-  if (savedTheme) {
-    body.setAttribute('data-theme', savedTheme);
-  } else {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark) {
-      body.setAttribute('data-theme', 'dark');
-    }
-  }
-})();
-</style>
 </head>
 
 <body data-theme="light">
