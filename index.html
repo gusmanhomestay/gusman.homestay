@@ -1811,6 +1811,20 @@ body[data-theme="dark"] .theme-btn.active{
     height: 125px;
   }
 }
+/* 🔒 HARD STOP: prevent gallery from escaping card */
+.hero-card {
+  overflow: hidden;
+}
+
+/* 🔒 Prevent flex items from forcing overflow */
+.gallery-row {
+  max-width: 100%;
+}
+
+/* 🔑 THIS IS THE MOST IMPORTANT LINE */
+.gallery-row img {
+  min-width: 0;
+}
 </style>
 </head>
 
