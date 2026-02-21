@@ -1764,89 +1764,53 @@ body[data-theme="dark"] .theme-btn.active{
 }
 
 /* =========================
-   GALLERY (LABELED ROW STYLE) – FINAL
+   GALLERY (RESPONSIVE WRAP)
 ========================= */
 
-/* 🔑 IMPORTANT: disable old grid gallery */
-.gallery {
-  display: block;
-  margin-top: 14px;
-}
-
-/* Section title */
 .gallery-section-label {
-  margin: 1.8rem 0 0.7rem;
+  margin: 1.4rem 0 0.6rem;
   font-weight: 600;
   font-size: 0.95rem;
   opacity: 0.85;
   letter-spacing: 0.3px;
 }
 
-/* Group wrapper */
 .gallery-group {
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 }
 
-/* One horizontal row per group */
 .gallery-row {
   display: flex;
-  gap: 8px;                 /* slightly tighter */
-  scrollbar-width: none;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.gallery-row::-webkit-scrollbar {
-  display: none;
-}
-
-/* Thumbnails (same size for ALL groups) */
 .gallery-row img {
-  flex: 1 1 0;
-  height: 100px;            /* 👈 tighter so 5 fit perfectly */
+  flex: 1 1 calc(20% - 10px);
+  height: 130px;
   object-fit: cover;
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
 
-/* Hover effect (desktop only) */
-.gallery-row img:hover {
-  transform: scale(1.03);
-}
-
-/* Disable hover on touch devices */
-@media (hover: none) {
+@media (hover: hover) {
   .gallery-row img:hover {
-    transform: none;
+    transform: scale(1.03);
   }
 }
 
-/* Mobile behavior: horizontal scroll */
-@media (max-width: 768px) {
-  .gallery-row {
-    overflow-x: auto;
-    padding-bottom: 5px;
-  }
-
+@media (max-width: 1024px) {
   .gallery-row img {
-    flex: 0 0 auto;
-    width: 180px;
+    flex: 1 1 calc(33.333% - 10px);
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-row img {
+    flex: 1 1 calc(50% - 10px);
     height: 120px;
   }
-}
-/* 🔒 FORCE gallery to stay inside the card */
-.hero-card{
-  overflow: hidden;
-}
-
-/* 🔒 Prevent row from exceeding card width */
-.gallery-row{
-  max-width: 100%;
-  overflow: hidden;
-}
-
-/* 🔒 Images must shrink instead of pushing out */
-.gallery-row img{
-  min-width: 0;
 }
 </style>
 </head>
