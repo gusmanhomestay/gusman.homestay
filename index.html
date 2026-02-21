@@ -1763,6 +1763,10 @@ body[data-theme="dark"] .theme-btn.active{
   }
 }
 
+/* =========================
+   GALLERY (LABELED ROW STYLE)
+========================= */
+
 /* Section title */
 .gallery-section-label {
   margin: 1.8rem 0 0.7rem;
@@ -1781,14 +1785,16 @@ body[data-theme="dark"] .theme-btn.active{
 .gallery-row {
   display: flex;
   gap: 10px;
-  scrollbar-width: none;       /* Firefox */
+
+  /* hide scrollbar */
+  scrollbar-width: none;        /* Firefox */
 }
 
 .gallery-row::-webkit-scrollbar {
-  display: none;               /* Chrome / Safari */
+  display: none;                /* Chrome / Safari */
 }
 
-/* Thumbnails */
+/* Thumbnails (desktop default) */
 .gallery-row img {
   flex: 1 1 0;
   height: 130px;
@@ -1810,7 +1816,7 @@ body[data-theme="dark"] .theme-btn.active{
 }
 
 /* Mobile behavior */
-@media (max-width:768px){
+@media (max-width: 768px) {
   .gallery-row {
     overflow-x: auto;
     padding-bottom: 5px;
