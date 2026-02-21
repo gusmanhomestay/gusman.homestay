@@ -1,111 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Welcome – Gusman Homestay</title>
 
 <style>
 :root{
   --bg1:#0f2f2f;
   --bg2:#163c3c;
-  --text:#f2f6f6;
-  --muted:rgba(242,246,246,.75);
+  --text:#f2f7f7;
+  --muted:rgba(242,247,247,.75);
   --line:rgba(255,255,255,.35);
 }
 
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  width:1920px;
-  height:1080px;
-  font-family:"Georgia", serif;
-  color:var(--text);
-  background:
-    linear-gradient(180deg,var(--bg2),var(--bg1));
-}
-
-.wrapper{
-  display:grid;
-  grid-template-columns: 1fr 60px 1fr;
+/* HARD LOCK FOR CHROMECAST */
+html, body{
+  width:100%;
   height:100%;
-  padding:90px 120px;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  background:linear-gradient(180deg,var(--bg2),var(--bg1));
+  font-family: "Georgia", serif;
+  color:var(--text);
 }
 
-/* LEFT */
-.left{
+/* SAFE AREA – prevents cropping */
+.tv-wrapper{
+  width:100vw;
+  height:100vh;
+  padding:8vh 8vw;
+  box-sizing:border-box;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.logo{
-  margin-bottom:40px;
-}
-.logo img{
-  width:420px;
-}
-
-.title{
-  font-size:64px;
-  margin-bottom:20px;
-}
-
-.guest{
-  font-size:86px;
-  font-weight:bold;
-  margin-bottom:50px;
-}
-
-/* INFO */
-.info{
-  font-size:40px;
-  line-height:1.6;
-}
-.info strong{font-weight:bold}
-
-/* DIVIDER */
-.divider{
-  display:flex;
-  justify-content:center;
-}
-.divider span{
-  width:4px;
-  background:var(--line);
-  border-radius:4px;
-}
-
-/* RIGHT */
-.right{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+}
+
+/* CONTENT */
+.tv-content{
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap:5vw;
+  align-items:center;
+}
+
+/* LEFT SIDE */
+.left h1{
+  font-size:4vw;
+  margin:0 0 3vh;
+  font-weight:700;
+}
+
+.left .guest{
+  font-size:3.2vw;
+  margin-bottom:3vh;
+}
+
+.info{
+  font-size:2.2vw;
+  line-height:1.5;
+}
+
+.info strong{
+  font-weight:700;
+}
+
+/* RIGHT SIDE */
+.right{
   text-align:center;
 }
 
-.scan-title{
-  font-size:52px;
-  margin-bottom:10px;
+.right h2{
+  font-size:2.6vw;
+  margin-bottom:2vh;
 }
 
-.scan-sub{
-  font-size:32px;
+.right p{
+  font-size:1.6vw;
   color:var(--muted);
-  margin-bottom:30px;
+  margin-bottom:3vh;
 }
 
+/* QR CODE – TRANSPARENT */
 .qr{
-  width:420px;
-  background:#fff;
-  padding:20px;
-  border-radius:22px;
+  width:30vw;
+  max-width:360px;
+  height:auto;
+  background:transparent;
 }
 
-.note{
-  font-size:30px;
-  margin-top:24px;
+/* DIVIDER LINE */
+.divider{
+  position:absolute;
+  left:50%;
+  top:10%;
+  bottom:10%;
+  width:2px;
+  background:var(--line);
+}
+
+/* FOOTER */
+.footer{
+  position:absolute;
+  bottom:3vh;
+  left:0;
+  right:0;
+  text-align:center;
+  font-size:1.2vw;
   color:var(--muted);
 }
 </style>
@@ -113,49 +117,52 @@ body{
 
 <body>
 
-<div class="wrapper">
+<div class="tv-wrapper">
+  <div class="divider"></div>
 
-  <!-- LEFT -->
-  <div class="left">
+  <div class="tv-content">
 
-    <div class="logo">
-      <img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
+    <!-- LEFT -->
+    <div class="left">
+      <h1>Welcome to Gusman Homestay</h1>
+
+      <!-- CHANGE GUEST NAME HERE -->
+      <div class="guest">Mr. John Family</div>
+
+      <div class="info">
+        Wi-Fi: <strong>Gusman-HomeStay</strong><br>
+        Password: <strong>Nagreg2025!</strong><br><br>
+
+        Check-out: <strong>12:00 PM</strong><br><br>
+
+        Contact during stay:<br>
+        <strong>Ibu Yayah</strong><br>
+        WhatsApp: <strong>0813-2275-0517</strong>
+      </div>
     </div>
 
-    <div class="title">WELCOME TO</div>
-    <div class="guest">MR. JOHN & FAMILY</div>
+    <!-- RIGHT -->
+    <div class="right">
+      <h2>Scan QR Code for Guest Guide</h2>
+      <p>House rules, Wi-Fi info & local recommendations</p>
 
-    <div class="info">
-      Wi-Fi: <strong>Gusman-HomeStay</strong><br>
-      Password: <strong>Nagreg2025!</strong><br><br>
+      <!-- GUIDE QR (TRANSPARENT PNG) -->
+      <img
+        class="qr"
+        src="/images/guide-qr.png"
+        alt="Guest Guide QR Code"
+      />
 
-      Check-out: <strong>12.00 WIB</strong><br><br>
-
-      Contact during stay:<br>
-      <strong>Ibu Yayah</strong><br>
-      0813-2275-0517
+      <p style="margin-top:2vh">
+        Google reviews & 10% discount available 😊
+      </p>
     </div>
 
   </div>
+</div>
 
-  <!-- DIVIDER -->
-  <div class="divider">
-    <span></span>
-  </div>
-
-  <!-- RIGHT -->
-  <div class="right">
-    <div class="scan-title">Scan QR Code</div>
-    <div class="scan-sub">Guest Guide & 10% Review Discount</div>
-
-    <img class="qr" src="/images/guide-qr.png" alt="Guest Guide QR Code">
-
-    <div class="note">
-      House rules, Wi-Fi info<br>
-      & local recommendations
-    </div>
-  </div>
-
+<div class="footer">
+  © 2026 Gusman Homestay • www.gusmanhomestay.com
 </div>
 
 </body>
