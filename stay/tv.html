@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080, initial-scale=1.0" />
+<title>Welcome – Gusman Homestay</title>
 
+<style>
+:root{
+  --bg1:#0f2f2f;
+  --bg2:#163c3c;
+  --text:#f2f6f6;
+  --muted:rgba(242,246,246,.75);
+  --line:rgba(255,255,255,.35);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  width:1920px;
+  height:1080px;
+  font-family:"Georgia", serif;
+  color:var(--text);
+  background:
+    linear-gradient(180deg,var(--bg2),var(--bg1));
+}
+
+.wrapper{
+  display:grid;
+  grid-template-columns: 1fr 60px 1fr;
+  height:100%;
+  padding:90px 120px;
+}
+
+/* LEFT */
+.left{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.logo{
+  margin-bottom:40px;
+}
+.logo img{
+  width:420px;
+}
+
+.title{
+  font-size:64px;
+  margin-bottom:20px;
+}
+
+.guest{
+  font-size:86px;
+  font-weight:bold;
+  margin-bottom:50px;
+}
+
+/* INFO */
+.info{
+  font-size:40px;
+  line-height:1.6;
+}
+.info strong{font-weight:bold}
+
+/* DIVIDER */
+.divider{
+  display:flex;
+  justify-content:center;
+}
+.divider span{
+  width:4px;
+  background:var(--line);
+  border-radius:4px;
+}
+
+/* RIGHT */
+.right{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.scan-title{
+  font-size:52px;
+  margin-bottom:10px;
+}
+
+.scan-sub{
+  font-size:32px;
+  color:var(--muted);
+  margin-bottom:30px;
+}
+
+.qr{
+  width:420px;
+  background:#fff;
+  padding:20px;
+  border-radius:22px;
+}
+
+.note{
+  font-size:30px;
+  margin-top:24px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <!-- LEFT -->
+  <div class="left">
+
+    <div class="logo">
+      <img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
+    </div>
+
+    <div class="title">WELCOME TO</div>
+    <div class="guest">MR. JOHN & FAMILY</div>
+
+    <div class="info">
+      Wi-Fi: <strong>Gusman-HomeStay</strong><br>
+      Password: <strong>Nagreg2025!</strong><br><br>
+
+      Check-out: <strong>12.00 WIB</strong><br><br>
+
+      Contact during stay:<br>
+      <strong>Ibu Yayah</strong><br>
+      0813-2275-0517
+    </div>
+
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="divider">
+    <span></span>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="scan-title">Scan QR Code</div>
+    <div class="scan-sub">Guest Guide & 10% Review Discount</div>
+
+    <img class="qr" src="/images/google-review-qr.png" alt="QR Code">
+
+    <div class="note">
+      House rules, Wi-Fi info<br>
+      & local recommendations
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
