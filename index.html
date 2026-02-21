@@ -1764,8 +1764,14 @@ body[data-theme="dark"] .theme-btn.active{
 }
 
 /* =========================
-   GALLERY (LABELED ROW STYLE)
+   GALLERY (LABELED ROW STYLE) – FINAL
 ========================= */
+
+/* 🔑 IMPORTANT: disable old grid gallery */
+.gallery {
+  display: block;
+  margin-top: 14px;
+}
 
 /* Section title */
 .gallery-section-label {
@@ -1796,7 +1802,7 @@ body[data-theme="dark"] .theme-btn.active{
 
 /* Thumbnails (desktop) */
 .gallery-row img {
-  flex: 1 1 0;
+  flex: 1 1 0;                  /* 🔑 equal width per row */
   height: 130px;
   object-fit: cover;
   border-radius: 10px;
