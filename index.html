@@ -1762,13 +1762,65 @@ body[data-theme="dark"] .theme-btn.active{
     font-size:16px;
   }
 }
+
+/* Section title */
 .gallery-section-label {
-  grid-column: 1 / -1;
-  margin: 1.5rem 0 0.5rem;
+  margin: 1.8rem 0 0.7rem;
   font-weight: 600;
   font-size: 0.95rem;
   opacity: 0.85;
   letter-spacing: 0.3px;
+}
+
+/* Group wrapper */
+.gallery-group {
+  margin-bottom: 2rem;
+}
+
+/* One row per group */
+.gallery-row {
+  display: flex;
+  gap: 10px;
+  scrollbar-width: none;       /* Firefox */
+}
+
+.gallery-row::-webkit-scrollbar {
+  display: none;               /* Chrome / Safari */
+}
+
+/* Thumbnails */
+.gallery-row img {
+  flex: 1 1 0;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Hover (desktop only) */
+.gallery-row img:hover {
+  transform: scale(1.03);
+}
+
+@media (hover: none) {
+  .gallery-row img:hover {
+    transform: none;
+  }
+}
+
+/* Mobile behavior */
+@media (max-width:768px){
+  .gallery-row {
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+
+  .gallery-row img {
+    flex: 0 0 auto;
+    width: 180px;
+    height: 120px;
+  }
 }
 </style>
 </head>
@@ -2279,38 +2331,70 @@ body[data-theme="dark"] .theme-btn.active{
       </p>
 
 <div class="gallery">
+
   <!-- Exterior & Akses -->
-  <img src="images/thumbs/01-exterior-front.webp" data-full="images/full/01-exterior-front.webp" data-group="Exterior & Akses" alt="">
-  <img src="images/thumbs/02-exterior-front.webp" data-full="images/full/02-exterior-front.webp" data-group="Exterior & Akses" alt="">
-  <img src="images/thumbs/19-exterior.webp" data-full="images/full/19-exterior.webp" data-group="Exterior & Akses" alt="">
-  <img src="images/thumbs/20-exterior.webp" data-full="images/full/20-exterior.webp" data-group="Exterior & Akses" alt="">
-  <img src="images/thumbs/21-garage.webp" data-full="images/full/21-garage.webp" data-group="Exterior & Akses" alt="">
+  <div class="gallery-group">
+    <div class="gallery-section-label">Exterior & Akses</div>
+    <div class="gallery-row">
+      <img src="images/thumbs/01-exterior-front.webp" data-full="images/full/01-exterior-front.webp" alt="">
+      <img src="images/thumbs/02-exterior-front.webp" data-full="images/full/02-exterior-front.webp" alt="">
+      <img src="images/thumbs/19-exterior.webp" data-full="images/full/19-exterior.webp" alt="">
+      <img src="images/thumbs/20-exterior.webp" data-full="images/full/20-exterior.webp" alt="">
+      <img src="images/thumbs/21-garage.webp" data-full="images/full/21-garage.webp" alt="">
+    </div>
+  </div>
 
   <!-- Ruang Tamu -->
-  <img src="images/thumbs/03-living-room.webp" data-full="images/full/03-living-room.webp" data-group="Ruang Tamu" alt="">
-  <img src="images/thumbs/04-living-room.webp" data-full="images/full/04-living-room.webp" data-group="Ruang Tamu" alt="">
+  <div class="gallery-group">
+    <div class="gallery-section-label">Ruang Tamu</div>
+    <div class="gallery-row">
+      <img src="images/thumbs/03-living-room.webp" data-full="images/full/03-living-room.webp" alt="">
+      <img src="images/thumbs/04-living-room.webp" data-full="images/full/04-living-room.webp" alt="">
+    </div>
+  </div>
 
-  <!-- Dapur -->
-  <img src="images/thumbs/05-kitchen-dining.webp" data-full="images/full/05-kitchen-dining.webp" data-group="Dapur & Makan" alt="">
-  <img src="images/thumbs/06-kitchen.webp" data-full="images/full/06-kitchen.webp" data-group="Dapur & Makan" alt="">
+  <!-- Dapur & Makan -->
+  <div class="gallery-group">
+    <div class="gallery-section-label">Dapur & Makan</div>
+    <div class="gallery-row">
+      <img src="images/thumbs/05-kitchen-dining.webp" data-full="images/full/05-kitchen-dining.webp" alt="">
+      <img src="images/thumbs/06-kitchen.webp" data-full="images/full/06-kitchen.webp" alt="">
+    </div>
+  </div>
 
   <!-- Kamar Tidur -->
-  <img src="images/thumbs/07-bedroom-main.webp" data-full="images/full/07-bedroom-main.webp" data-group="Kamar Tidur" alt="">
-  <img src="images/thumbs/08-bedroom-second.webp" data-full="images/full/08-bedroom-second.webp" data-group="Kamar Tidur" alt="">
+  <div class="gallery-group">
+    <div class="gallery-section-label">Kamar Tidur</div>
+    <div class="gallery-row">
+      <img src="images/thumbs/07-bedroom-main.webp" data-full="images/full/07-bedroom-main.webp" alt="">
+      <img src="images/thumbs/08-bedroom-second.webp" data-full="images/full/08-bedroom-second.webp" alt="">
+    </div>
+  </div>
 
   <!-- Kamar Mandi -->
-  <img src="images/thumbs/09-bathroom-main.webp" data-full="images/full/09-bathroom-main.webp" data-group="Kamar Mandi" alt="">
-  <img src="images/thumbs/10-bathroom-main.webp" data-full="images/full/10-bathroom-main.webp" data-group="Kamar Mandi" alt="">
-  <img src="images/thumbs/11-bathroom-second.webp" data-full="images/full/11-bathroom-second.webp" data-group="Kamar Mandi" alt="">
-  <img src="images/thumbs/12-bathroom-second.webp" data-full="images/full/12-bathroom-second.webp" data-group="Kamar Mandi" alt="">
-  <img src="images/thumbs/13-bathroom-second.webp" data-full="images/full/13-bathroom-second.webp" data-group="Kamar Mandi" alt="">
+  <div class="gallery-group">
+    <div class="gallery-section-label">Kamar Mandi</div>
+    <div class="gallery-row">
+      <img src="images/thumbs/09-bathroom-main.webp" data-full="images/full/09-bathroom-main.webp" alt="">
+      <img src="images/thumbs/10-bathroom-main.webp" data-full="images/full/10-bathroom-main.webp" alt="">
+      <img src="images/thumbs/11-bathroom-second.webp" data-full="images/full/11-bathroom-second.webp" alt="">
+      <img src="images/thumbs/12-bathroom-second.webp" data-full="images/full/12-bathroom-second.webp" alt="">
+      <img src="images/thumbs/13-bathroom-second.webp" data-full="images/full/13-bathroom-second.webp" alt="">
+    </div>
+  </div>
 
   <!-- Amenities -->
-  <img src="images/thumbs/14-bamboo-bank.webp" data-full="images/full/14-bamboo-bank.webp" data-group="Amenities" alt="">
-  <img src="images/thumbs/15-bamboo-daybed.webp" data-full="images/full/15-bamboo-daybed.webp" data-group="Amenities" alt="">
-  <img src="images/thumbs/16-amenities.webp" data-full="images/full/16-amenities.webp" data-group="Amenities" alt="">
-  <img src="images/thumbs/17-towel-amenities.webp" data-full="images/full/17-towel-amenities.webp" data-group="Amenities" alt="">
-  <img src="images/thumbs/18-sandal-amenities.webp" data-full="images/full/18-sandal-amenities.webp" data-group="Amenities" alt="">
+  <div class="gallery-group">
+    <div class="gallery-section-label">Amenities</div>
+    <div class="gallery-row">
+      <img src="images/thumbs/14-bamboo-bank.webp" data-full="images/full/14-bamboo-bank.webp" alt="">
+      <img src="images/thumbs/15-bamboo-daybed.webp" data-full="images/full/15-bamboo-daybed.webp" alt="">
+      <img src="images/thumbs/16-amenities.webp" data-full="images/full/16-amenities.webp" alt="">
+      <img src="images/thumbs/17-towel-amenities.webp" data-full="images/full/17-towel-amenities.webp" alt="">
+      <img src="images/thumbs/18-sandal-amenities.webp" data-full="images/full/18-sandal-amenities.webp" alt="">
+    </div>
+  </div>
+
 </div>
 
     </div><!-- end hero-card -->
