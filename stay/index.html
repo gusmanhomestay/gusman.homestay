@@ -201,12 +201,11 @@
     }
 
     /* Accordion (Aturan Rumah) */
-   details{
-  border-radius:14px;
-  overflow:hidden;
-  text-align:center;   /* center the title */
+  details{
+  position:relative;
+  text-align:left; /* rules stay left */
 }
-
+    
 .rules{
   margin-top:12px;
   color:var(--text);
@@ -232,7 +231,16 @@
       font-size:18px;
     }
     details[open] .chev{ transform: rotate(180deg); }
+    
+    summary{
+    justify-content:center;     /* center content */
+    text-align:center;
+    }
 
+    summary .chev{
+    position:absolute;
+    right:18px;                /* keep arrow on the right */
+    }
     .rules{
       margin-top:12px;
       color:var(--text);
@@ -257,6 +265,15 @@
       h1{ font-size:26px; }
       .logo img{ width:250px; }
     }
+    
+    .subtitle{
+  max-width:520px;   /* prevents ugly wrapping */
+  margin:0 auto 22px;
+}
+
+.subtitle-line{
+  display:block;     /* always moves to next line */
+}
   </style>
 </head>
 
@@ -270,7 +287,10 @@
       </div>
 
       <h1>Selamat Datang di Gusman Homestay</h1>
-      <p class="subtitle">Selamat menikmati waktu istirahat di Nagreg — semoga betah dan nyaman 😊</p>
+      <p class="subtitle">
+      Selamat menikmati waktu istirahat di Nagreg —
+    <span class="subtitle-line">semoga betah dan nyaman 😊</span>
+    </p>
     </div>
 
     <div class="card">
