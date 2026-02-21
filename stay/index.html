@@ -1,220 +1,256 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Panduan Tamu – Gusman Homestay</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panduan Tamu – Gusman Homestay</title>
 
-<style>
-  :root{
-    --bg1:#0f2f2f;
-    --bg2:#163c3c;
-    --card: rgba(255,255,255,0.08);
-    --cardBorder: rgba(255,255,255,0.10);
-    --text:#eaf2f2;
-    --muted: rgba(234,242,242,0.75);
-    --shadow: 0 10px 30px rgba(0,0,0,0.35);
-    --radius: 18px;
-  }
+  <style>
+    :root{
+      --bg1:#0f2f2f;
+      --bg2:#163c3c;
 
-  *{ box-sizing:border-box; }
+      --card: rgba(255,255,255,0.08);
+      --cardBorder: rgba(255,255,255,0.10);
 
-  body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    color:var(--text);
-    background:
-      radial-gradient(1000px 500px at 50% -50%, rgba(255,255,255,0.12), transparent 60%),
-      linear-gradient(180deg, var(--bg2), var(--bg1));
-    min-height:100vh;
-  }
+      --text:#eaf2f2;
+      --muted: rgba(234,242,242,0.75);
 
-  .container{
-    max-width:760px;
-    margin:auto;
-    padding:34px 18px 90px;
-  }
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
 
-  /* Header */
-  .header{
-    text-align:center;
-    margin:10px 0 26px;
-  }
+      /* brand-ish teal (less neon than WhatsApp green) */
+      --brandTeal:#2b6f6b;
+      --brandTealHover:#2f7a75;
 
-.logo{
-  text-align:center;
-  margin-bottom:28px;
-}
+      --blue:#4285F4;
+      --blueHover:#4b93ff;
+    }
 
-.logo img{
-  width:260px;              /* 🔥 bigger logo */
-  max-width:90%;
-  display:block;
-  margin:0 auto 10px;
-}
+    *{ box-sizing:border-box; }
 
-.tagline{
-  font-family: "Georgia", serif;
-  font-size:20px;
-  color:#dfeeee;
-  opacity:0.9;
-}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 500px at 50% -50%, rgba(255,255,255,0.12), transparent 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg1));
+      min-height:100vh;
+    }
 
-h1{
-  text-align:center;
-  font-size:30px;
-  margin-bottom:6px;
-  color:#ffffff;
-}
+    .container{
+      max-width:760px;
+      margin:auto;
+      padding:34px 18px 90px;
+    }
 
-.subtitle{
-  text-align:center;
-  color:#cfdede;
-  margin-bottom:34px;
-  font-size:15px;
-}
+    /* Header */
+    .header{
+      text-align:center;
+      margin:10px 0 26px;
+    }
 
-  /* Cards */
-  .card{
-    background:var(--card);
-    border:1px solid var(--cardBorder);
-    padding:18px 18px;
-    border-radius:var(--radius);
-    margin-bottom:16px;
-    box-shadow:var(--shadow);
-    backdrop-filter: blur(10px);
-  }
+    .logo{
+      text-align:center;
+      margin-bottom:18px;
+    }
 
-  .card h2{
-    margin:0 0 10px;
-    font-size:18px;
-    letter-spacing:0.2px;
-  }
+    .logo img{
+      width:320px;          /* bigger logo */
+      max-width:92%;
+      height:auto;
+      display:block;
+      margin:0 auto 10px;
+    }
 
-  .wifi{
-    font-size:18px;
-    font-weight:700;
-    margin-bottom:2px;
-  }
+    .tagline{
+      font-family: "Georgia", serif;
+      font-size:34px;
+      color:#dfeeee;
+      opacity:0.95;
+      margin: 0 0 14px;
+      animation: floaty 2.8s ease-in-out infinite; /* dancing */
+    }
 
-  .muted{
-    color:var(--muted);
-  }
+    @keyframes floaty{
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-6px); }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .tagline{ animation:none; }
+    }
 
-  /* Buttons */
-  .button{
-    display:block;
-    text-align:center;
-    padding:14px 14px;
-    border-radius:14px;
-    text-decoration:none;
-    font-weight:700;
-    margin-top:12px;
-    border:1px solid rgba(255,255,255,0.14);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.25);
-    transition: transform .15s ease, opacity .15s ease;
-  }
-  @media (hover:hover){
-    .button:hover{ transform: translateY(-1px); }
-  }
+    h1{
+      text-align:center;
+      font-size:30px;
+      margin:0 0 6px;
+      color:#ffffff;
+    }
 
-  .whatsapp{ background:#25D366; color:#fff; }
-  .review{ background:#4285F4; color:#fff; }
+    .subtitle{
+      text-align:center;
+      color:#cfdede;
+      margin:0 0 22px;
+      font-size:15px;
+    }
 
-  /* Review button small note */
-  .btn-title{ font-size:16px; line-height:1.2; }
-  .btn-note{
-    margin-top:6px;
-    font-size:12px;
-    font-weight:600;
-    opacity:0.85;      /* 🔥 smaller + softer */
-    line-height:1.25;
-  }
+    /* Cards */
+    .card{
+      background:var(--card);
+      border:1px solid var(--cardBorder);
+      padding:18px;
+      border-radius:var(--radius);
+      margin-bottom:16px;
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      text-align:center; /* centered like you wanted */
+    }
 
-  /* QR in review card */
-  .qr-wrap{
-    margin-top:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .qr{
-    width:170px;
-    max-width:70%;
-    height:auto;
-    border-radius:14px;
-    background:#fff;
-    padding:10px;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.25);
-  }
+    .card h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:0.2px;
 
-  /* Accordion (Aturan Rumah) */
-  details{
-    border-radius:14px;
-    overflow:hidden;
-  }
-  summary{
-    cursor:pointer;
-    list-style:none;
-    user-select:none;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    font-weight:800;
-  }
-  summary::-webkit-details-marker{ display:none; }
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+    }
 
-  .chev{
-    opacity:0.8;
-    transition: transform .2s ease;
-    font-size:18px;
-  }
-  details[open] .chev{ transform: rotate(180deg); }
+    .wifi{
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:2px;
+    }
 
-  .rules{
-    margin-top:12px;
-    color:var(--text);
-    line-height:1.55;
-  }
-  .rules ul{
-    margin:0;
-    padding-left:18px;
-  }
-  .rules li{ margin:6px 0; }
+    .muted{ color:var(--muted); }
 
-  /* Footer */
-  .footer{
-    text-align:center;
-    font-size:13px;
-    color:rgba(234,242,242,0.65);
-    margin-top:34px;
-  }
+    /* Buttons */
+    .button{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
 
-  @media (max-width:420px){
-    .tagline{ font-size:30px; }
-    h1{ font-size:26px; }
-    .logo img{ width:200px; }
-  }
-  
-  .whatsapp{
-  background:#25D366;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-}
+      text-align:center;
+      padding:14px 14px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:800;
+      margin-top:12px;
 
-.wa-icon{
-  width:18px;
-  height:18px;
-  vertical-align:middle;
-}
-.card{
-  text-align:left;
-}
-</style>
+      border:1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+      transition: transform .15s ease, opacity .15s ease, background .15s ease;
+    }
+    @media (hover:hover){
+      .button:hover{ transform: translateY(-1px); }
+    }
+
+    /* WhatsApp button (teal, not neon green) */
+    .whatsapp{
+      background:var(--brandTeal);
+      color:#fff;
+    }
+    .whatsapp:hover{ background:var(--brandTealHover); }
+
+    .review{
+      background:var(--blue);
+      color:#fff;
+    }
+    .review:hover{ background:var(--blueHover); }
+
+    /* WhatsApp icon inside button */
+    .wa-icon{
+      width:18px;
+      height:18px;
+      display:inline-block;
+      vertical-align:middle;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+    }
+
+    /* Review button small note */
+    .btn-title{
+      font-size:16px;
+      line-height:1.2;
+    }
+    .btn-note{
+      margin-top:6px;
+      font-size:12px;
+      font-weight:600;
+      opacity:0.82;      /* smaller + softer */
+      line-height:1.25;
+    }
+
+    /* QR in review card */
+    .qr-wrap{
+      margin-top:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .qr{
+      width:170px;
+      max-width:70%;
+      height:auto;
+      border-radius:14px;
+      background:#fff;
+      padding:10px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+    }
+
+    /* Accordion (Aturan Rumah) */
+    details{
+      border-radius:14px;
+      overflow:hidden;
+      text-align:left; /* rules look better left aligned */
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      user-select:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      font-weight:900;
+      padding:2px 0;
+    }
+    summary::-webkit-details-marker{ display:none; }
+
+    .chev{
+      opacity:0.8;
+      transition: transform .2s ease;
+      font-size:18px;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+
+    .rules{
+      margin-top:12px;
+      color:var(--text);
+      line-height:1.55;
+    }
+    .rules ul{
+      margin:0;
+      padding-left:18px;
+    }
+    .rules li{ margin:6px 0; }
+
+    /* Footer */
+    .footer{
+      text-align:center;
+      font-size:13px;
+      color:rgba(234,242,242,0.65);
+      margin-top:34px;
+    }
+
+    @media (max-width:420px){
+      .tagline{ font-size:28px; }
+      h1{ font-size:26px; }
+      .logo img{ width:250px; }
+    }
+  </style>
 </head>
 
 <body>
@@ -222,12 +258,11 @@ h1{
 
     <div class="header">
       <div class="logo">
-  <img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
-  <div class="tagline">Private Boutique Homestay</div>
-</div>
+        <img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
+        <div class="tagline">Private Boutique Homestay</div>
+      </div>
 
       <h1>Selamat Datang di Gusman Homestay</h1>
-      <!-- 🔥 less robot -->
       <p class="subtitle">Selamat menikmati waktu istirahat di Nagreg — semoga betah dan nyaman 😊</p>
     </div>
 
@@ -267,7 +302,8 @@ h1{
             <li>Jaga kebersihan rumah dan seluruh fasilitas.</li>
             <li>Matikan lampu, gas, dan perangkat elektronik saat meninggalkan rumah.</li>
             <li>Handuk/sprei/selimut bekas pakai: mohon letakkan di area yang disediakan (dekat mesin cuci).</li>
-            <li>Tekanan air toilet/bidet: buka keran wastafel sedikit dulu, lalu gunakan bidet perlahan agar stabil.</li>
+            <li>Tekanan air toilet/bidet: buka keran wastafel sedikit dulu, lalu gunakan bidet perlahan agar tekanan air keras/stabil.</li>
+            <li>Mohon tidak meninggalkan barang berharga tanpa pengawasan. Kehilangan akibat kelalaian tamu menjadi tanggung jawab masing-masing.</li>
             <li>Jika ada kerusakan atau kehilangan barang, mohon segera laporkan ke PIC.</li>
             <li>Amenities hanya untuk digunakan selama menginap (yang boleh dibawa pulang: sandal tamu serta sikat & pasta gigi).</li>
             <li>Smart TV & streaming: gunakan profil “Gusman Homestay”/“Homestay” dan mohon tidak mengubah akun/pengaturan.</li>
@@ -289,25 +325,25 @@ h1{
       <div class="muted">
         Jika ada kebutuhan selama menginap, silakan hubungi PIC kami: <strong style="color:var(--text)">Ibu Yayah</strong>.
       </div>
-     <a class="button whatsapp" href="https://wa.me/6281322750517">
-  Chat via
-  <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon">
-  disini
-</a>
+
+      <a class="button whatsapp" href="https://wa.me/6281322750517" target="_blank" rel="noopener">
+        Chat via <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon"> disini
+      </a>
     </div>
 
     <div class="card">
       <h2>⭐ Berikan Ulasan</h2>
       <div class="muted">Kalau berkenan, ulasan Anda sangat membantu kami 🙏</div>
 
-      <!-- 🔥 QR image -->
       <div class="qr-wrap">
         <img class="qr" src="/images/google-review-qr.png" alt="QR Google Review">
       </div>
 
       <a class="button review" href="https://g.page/r/Ce6Oj_WL_eI3EBM/review" target="_blank" rel="noopener">
-        <div class="btn-title">Tinggalkan Review di Google</div>
-        <div class="btn-note">Setiap ulasan mendapatkan diskon 10% untuk kunjungan berikutnya.</div>
+        <div>
+          <div class="btn-title">Tinggalkan Review di Google</div>
+          <div class="btn-note">Setiap ulasan mendapatkan diskon 10% untuk kunjungan berikutnya.</div>
+        </div>
       </a>
     </div>
 
