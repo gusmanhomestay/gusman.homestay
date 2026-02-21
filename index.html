@@ -3385,17 +3385,27 @@ function initLightbox(){
   if(!overlay || !imgs.length) return;
 
   let index = 0;
+
   function show(i){
     index = (i + imgs.length) % imgs.length;
-    img.src = imgs[index].src;
-    counter.textContent = `${index+1} / ${imgs.length}`;
+    img.src = imgs[index].dataset.full || imgs[index].src;
+    counter.textContent = `${index + 1} / ${imgs.length}`;
   }
 
-  imgs.forEach((el,i)=>el.onclick=()=>{show(i);overlay.classList.add('open');});
-  prev.onclick=()=>show(index-1);
-  next.onclick=()=>show(index+1);
-  close.onclick=()=>overlay.classList.remove('open');
-  overlay.onclick=e=>{if(e.target===overlay) close.onclick();}
+  imgs.forEach((el, i) => {
+    el.onclick = () => {
+      show(i);
+      overlay.classList.add('open');
+    };
+  });
+
+  prev.onclick = () => show(index - 1);
+  next.onclick = () => show(index + 1);
+  close.onclick = () => overlay.classList.remove('open');
+
+  overlay.onclick = (e) => {
+    if (e.target === overlay) close.onclick();
+  };
 }
 
 /* =========================
