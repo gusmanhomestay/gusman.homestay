@@ -178,51 +178,46 @@ h1{
 <div class="footer">
   © 2026 Gusman Homestay • www.gusmanhomestay.com
 </div>
-<!-- YOUR EXISTING GUEST SCRIPT ABOVE -->
-
+  
+<!-- ========================= -->
+<!-- Guest Name (Universal JS) -->
+<!-- ========================= -->
 <script>
 (function () {
-  var query = window.location.search.substring(1);
-  var parts = query.split("&");
-  var guest = "";
+  const params = new URLSearchParams(window.location.search);
+  const guest = params.get("guest");
+  if (!guest) return;
 
-  for (var i = 0; i < parts.length; i++) {
-    var pair = parts[i].split("=");
-    if (pair[0] === "guest") {
-      guest = decodeURIComponent(pair[1].replace(/\+/g, " "));
-      break;
-    }
-  }
+  const el = document.getElementById("guestName");
+  if (!el) return;
 
-  if (guest) {
-    var el = document.getElementById("guestName");
-    if (el) {
-      el.innerHTML = guest;
-    }
-  }
+  el.textContent = decodeURIComponent(guest.replace(/\+/g, " "));
 })();
 </script>
 
 
-<!-- 🎵 BACKGROUND MUSIC -->
+<!-- ========================= -->
+<!-- Background Music -->
+<!-- ========================= -->
 <audio id="bgMusic" loop>
   <source src="/music/welcome.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 (function () {
-  var music = document.getElementById('bgMusic');
+  const music = document.getElementById('bgMusic');
+  if (!music) return;
+
   music.volume = 0.3;
 
-  var playPromise = music.play();
+  const tryPlay = () => {
+    music.play().catch(() => {});
+  };
 
-  if (playPromise !== undefined) {
-    playPromise.catch(function () {
-      document.addEventListener('click', function () {
-        music.play();
-      }, { once: true });
-    });
-  }
+  tryPlay();
+
+  document.addEventListener('click', tryPlay, { once: true });
+  document.addEventListener('touchstart', tryPlay, { once: true });
 })();
 </script>
 
