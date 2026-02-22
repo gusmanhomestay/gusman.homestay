@@ -1825,6 +1825,119 @@ body[data-theme="dark"] .theme-btn.active{
 .gallery-row img {
   min-width: 0;
 }
+/* =====================
+   NEARBY MODAL STYLE
+===================== */
+
+.nearby-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.nearby-modal{
+  width:min(92vw, 820px);
+  max-height:90vh;
+  background:rgba(15,47,47,.96);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+.nearby-close{
+  position:absolute;
+  top:14px;
+  right:16px;
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:20px;
+  cursor:pointer;
+  opacity:.7;
+}
+.nearby-close:hover{ opacity:1; }
+
+.nearby-head{
+  padding:20px 22px 14px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.nearby-title{
+  font-size:20px;
+  font-weight:800;
+}
+
+.nearby-sub{
+  margin-top:4px;
+  font-size:14px;
+  opacity:.75;
+}
+
+.nearby-tabs{
+  display:flex;
+  gap:8px;
+  padding:12px;
+  overflow-x:auto;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.nearby-tab{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:12px;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+  opacity:.7;
+}
+.nearby-tab.active{
+  opacity:1;
+  background:rgba(255,255,255,.18);
+}
+
+.nearby-body{
+  padding:16px 22px 20px;
+  overflow:auto;
+}
+
+.nearby-status{
+  font-size:14px;
+  opacity:.7;
+  margin-bottom:12px;
+}
+
+.nearby-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.nearby-item{
+  padding:12px 14px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+}
+
+.nearby-name{
+  font-weight:800;
+}
+
+.nearby-distance{
+  font-size:14px;
+  opacity:.8;
+  margin-top:4px;
+}
 </style>
 </head>
 
@@ -2904,40 +3017,41 @@ body[data-theme="dark"] .theme-btn.active{
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.770292682659!2d107.8813245!3d-7.0165307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c9df6ada6155:0x37e2fd8bf58f8eee!2sGusman%20Homestay%20-%20Nagreg!5e0!3m2!1sen!2sid!4v1707640000000">
   </iframe>
 
-  <!-- OPEN IN GOOGLE MAPS BUTTON -->
-  <div style="text-align:center;margin-top:14px;">
-<a
-  class="map-btn btn-premium"
-  href="https://maps.app.goo.gl/XmVP7FrznLSLhbZd9?g_st=ic"
-  target="_blank"
-  rel="noopener">
-      <!-- Indonesian -->
-      <span class="lang id active">
-        Buka di
-        <img src="images/googlemaps.png" class="map-icon" alt="">
-      </span>
+ <!-- MAP BUTTONS -->
+<div style="text-align:center;margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+  <!-- Nearby button (opens modal) -->
+  <button type="button" class="btn btn-premium" onclick="openNearbyModal()">
+    <span class="lang id">📍 Lihat Sekitar</span>
+    <span class="lang en" style="display:none;">📍 Nearby</span>
+    <span class="lang de" style="display:none;">📍 In der Nähe</span>
+    <span class="lang it" style="display:none;">📍 Nelle vicinanze</span>
+  </button>
 
-      <!-- English -->
-      <span class="lang en">
-        Open in
-        <img src="images/googlemaps.png" class="map-icon" alt="">
-      </span>
-
-      <!-- German -->
-      <span class="lang de">
-        In
-        <img src="images/googlemaps.png" class="map-icon" alt="">
-        Öffnen
-      </span>
-
-      <!-- Italian -->
-      <span class="lang it">
-        Apri su
-        <img src="images/googlemaps.png" class="map-icon" alt="">
-      </span>
-
-    </a>
-  </div>
+  <!-- Open Google Maps -->
+  <a
+    class="btn btn-premium"
+    href="https://maps.app.goo.gl/XmVP7FrznLSLhbZd9?g_st=ic"
+    target="_blank"
+    rel="noopener">
+    <span class="lang id active">
+      Buka di
+      <img src="images/googlemaps.png" class="map-icon" alt="">
+    </span>
+    <span class="lang en" style="display:none;">
+      Open in
+      <img src="images/googlemaps.png" class="map-icon" alt="">
+    </span>
+    <span class="lang de" style="display:none;">
+      In
+      <img src="images/googlemaps.png" class="map-icon" alt="">
+      Öffnen
+    </span>
+    <span class="lang it" style="display:none;">
+      Apri su
+      <img src="images/googlemaps.png" class="map-icon" alt="">
+    </span>
+  </a>
+</div>
 </div>
 </section>
 <!-- ===================== ABOUT / STORY (FULL WIDTH) ===================== -->
@@ -4156,7 +4270,41 @@ function closeRules(){
     Le distanze e i tempi di percorrenza sono indicativi e possono variare in base al traffico.
   </p>
 </div>
+<!-- =====================
+     NEARBY MODAL (Step 1)
+===================== -->
+<div id="nearbyOverlay" class="nearby-overlay" style="display:none;">
+  <div class="nearby-modal" role="dialog" aria-modal="true" aria-label="Nearby places">
+    <button class="nearby-close" type="button" onclick="closeNearbyModal()">✕</button>
 
+    <div class="nearby-head">
+      <div class="nearby-title">
+        <span class="lang id">Sekitar Gusman Homestay</span>
+        <span class="lang en" style="display:none;">Nearby Gusman Homestay</span>
+        <span class="lang de" style="display:none;">In der Nähe (Gusman Homestay)</span>
+        <span class="lang it" style="display:none;">Nelle vicinanze (Gusman Homestay)</span>
+      </div>
+      <div class="nearby-sub">
+        <span class="lang id">Pilih kategori untuk lihat jarak</span>
+        <span class="lang en" style="display:none;">Pick a category to see distances</span>
+        <span class="lang de" style="display:none;">Kategorie wählen, um Entfernungen zu sehen</span>
+        <span class="lang it" style="display:none;">Scegli una categoria per vedere le distanze</span>
+      </div>
+    </div>
+
+    <div class="nearby-tabs">
+      <button type="button" class="nearby-tab active" data-cat="transport" onclick="selectNearbyCategory('transport', this)">🚆 Transport</button>
+      <button type="button" class="nearby-tab" data-cat="shopping" onclick="selectNearbyCategory('shopping', this)">🛍 Shopping</button>
+      <button type="button" class="nearby-tab" data-cat="food" onclick="selectNearbyCategory('food', this)">🍽 Food</button>
+      <button type="button" class="nearby-tab" data-cat="health" onclick="selectNearbyCategory('health', this)">🏥 Health</button>
+      <button type="button" class="nearby-tab" data-cat="atm" onclick="selectNearbyCategory('atm', this)">💳 ATM</button>
+      <button type="button" class="nearby-tab" data-cat="attractions" onclick="selectNearbyCategory('attractions', this)">🏞 Attractions</button>
+    </div>
+
+    <div class="nearby-body">
+      <div id="nearbyStatus" class="nearby-status">Ready.</div>
+      <div id="nearbyList" class="nearby-list"></div>
+    </div>
   </div>
 </div>
 <script>
