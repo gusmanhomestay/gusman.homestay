@@ -30,7 +30,7 @@ html,body{
   height:100vh;
   display:flex;
   align-items:center;
-  justify-content:center
+  justify-content:center;
 }
 
 .tv-card{
@@ -39,40 +39,40 @@ html,body{
   display:grid;
   grid-template-columns:1.2fr 0.8fr;
   gap:3vw;
-  align-items:center
+  align-items:center;
 }
 
-/* LEFT – MAIN INFO (BIGGER) */
+/* LEFT */
 .left{
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
-  gap:2.2vh;
-  padding-top:2vh
+  gap:2vh;
+  padding-top:1.5vh;
 }
 
 .logo{
   max-width:30vw;
-  margin-bottom:1vh
+  margin-bottom:.6vh;
 }
 
 h1{
   font-size:3.8vw;
-  line-height:1.15
+  line-height:1.15;
 }
 
 .guest{
   font-size:2.8vw;
-  margin-bottom:1vh
+  margin-bottom:.6vh;
 }
 
 .info{
   font-size:1.75vw;
   line-height:1.6;
-  opacity:.95
+  opacity:.95;
 }
 
-/* RIGHT – STATUS + QR */
+/* RIGHT */
 .right{
   height:100%;
   display:flex;
@@ -80,46 +80,47 @@ h1{
   align-items:center;
   border-left:2px solid rgba(255,255,255,.35);
   padding-left:3vw;
-  gap:1.6vh
+  gap:1.4vh;
 }
 
+/* STATUS */
 .status{
   width:100%;
   text-align:center;
   font-size:1.45vw;
   line-height:1.6;
-  margin-top:1vh;
-  margin-bottom:1.2vh
+  margin-top:.5vh;
+  margin-bottom:1vh;
 }
 
 .qr-title{
   font-size:2.1vw;
-  margin-top:1vh
+  margin-top:.8vh;
 }
 
 .qr-sub{
   font-size:1.35vw;
   opacity:.85;
-  margin-bottom:1.6vh
+  margin-bottom:1.2vh;
 }
 
 .qr{
-  width:clamp(360px,28vw,560px)
+  width:clamp(360px,28vw,560px);
 }
 
 .qr-note{
-  margin-top:1.4vh;
+  margin-top:1.2vh;
   font-size:1.3vw;
-  opacity:.9
+  opacity:.9;
 }
 
 .footer{
   position:absolute;
-  bottom:1.4vh;
+  bottom:1.2vh;
   width:100%;
   text-align:center;
   font-size:1.1vw;
-  opacity:.7
+  opacity:.7;
 }
 
 /* MUSIC BUTTON */
@@ -134,7 +135,7 @@ h1{
   color:#fff;
   font-size:13px;
   cursor:pointer;
-  box-shadow:0 8px 20px rgba(0,0,0,.3)
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
 }
 </style>
 </head>
@@ -147,7 +148,7 @@ h1{
     <!-- LEFT -->
     <div class="left">
 
-      <img src="/images/gusman-logo-dark.webp" class="logo">
+      <img src="/images/gusman-logo-dark.webp" class="logo" alt="Gusman Homestay">
 
       <h1>
         <span class="lang-id">Selamat Datang di<br>Gusman Homestay</span>
@@ -184,7 +185,6 @@ h1{
     <!-- RIGHT -->
     <div class="right">
 
-      <!-- STATUS MOVED HERE -->
       <div class="status">
         <div id="clock"></div>
         <div id="weather"></div>
@@ -201,7 +201,7 @@ h1{
         <span class="lang-en" style="display:none">House rules, Wi-Fi & local tips</span>
       </div>
 
-      <img src="/images/guide-qr.png" class="qr">
+      <img src="/images/guide-qr.png" class="qr" alt="QR Guide">
 
       <div class="qr-note">
         <span class="lang-id">Ulasan Google & diskon 10% 😊</span>
@@ -225,10 +225,10 @@ h1{
 <!-- GUEST NAME -->
 <script>
 (()=>{const p=new URLSearchParams(location.search).get("guest");
-if(p){guestName.textContent=decodeURIComponent(p.replace(/\+/g," "))}})();
+if(p){document.getElementById("guestName").textContent=decodeURIComponent(p.replace(/\+/g," "))}})();
 </script>
 
-<!-- LANGUAGE SWITCH -->
+<!-- LANGUAGE AUTO SWITCH -->
 <script>
 (()=>{let c='id';setInterval(()=>{
 document.querySelectorAll('.lang-id').forEach(e=>e.style.display=c==='id'?'':'none');
@@ -237,14 +237,14 @@ c=c==='id'?'en':'id';
 },30000)})();
 </script>
 
-<!-- CLOCK & WEATHER -->
+<!-- CLOCK & WEATHER (REAL DATA) -->
 <script>
 (async()=>{
-const clockEl=document.getElementById("clock"),
-weatherEl=document.getElementById("weather"),
-forecastEl=document.getElementById("forecast");
+const clockEl=document.getElementById("clock");
+const weatherEl=document.getElementById("weather");
+const forecastEl=document.getElementById("forecast");
 
-function clock(){
+function updateClock(){
 const n=new Date();
 clockEl.textContent=
 n.toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Jakarta"})
@@ -252,24 +252,27 @@ n.toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"nu
 n.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Jakarta"})
 +" WIB";
 }
-clock(); setInterval(clock,1000);
+updateClock();
+setInterval(updateClock,1000);
 
 try{
 const r=await fetch("https://api.open-meteo.com/v1/forecast?latitude=-7.0165&longitude=107.8839&current_weather=true&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Asia/Jakarta");
 const d=await r.json();
 
 weatherEl.textContent=`🌡 ${d.current_weather.temperature}°C${d.daily.precipitation_sum[0]>0?" • 🌧 Hujan sekarang":""}`;
+
 forecastEl.textContent=
 d.daily.precipitation_sum[1]>0
 ?`🌦 Besok hujan • ${d.daily.temperature_2m_min[1]}–${d.daily.temperature_2m_max[1]}°C`
 :`🌤 Besok cerah • ${d.daily.temperature_2m_min[1]}–${d.daily.temperature_2m_max[1]}°C`;
-}catch{}
+}catch(e){}
 })();
 </script>
 
 <!-- MUSIC -->
 <script>
-(()=>{const m=bgMusic,b=enableMusicBtn;
+(()=>{const m=document.getElementById("bgMusic");
+const b=document.getElementById("enableMusicBtn");
 b.onclick=()=>m.play().then(()=>b.style.display="none").catch(()=>{});})();
 </script>
 
