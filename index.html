@@ -4543,11 +4543,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const lang = localStorage.getItem('lang') || 'id';
   updateGalleryLanguage(lang);
 });
-  
-const HOME_COORDS = {
-  lat: -7.01652,
-  lng: 107.88391
-};
+
+const HOME_PLACE_ID = "ChIJVWHaat_JaC4R7o6P9Yv94jc";
 
 const NEARBY_CATEGORIES = {
   transport: "train station OR bus stop near Nagreg Bandung",
@@ -4575,7 +4572,10 @@ function selectNearbyCategory(cat, btn){
   btn.classList.add('active');
 
   const q = NEARBY_CATEGORIES[cat];
-  const url = `https://www.google.com/maps/dir/?api=1&origin=${HOME_COORDS.lat},${HOME_COORDS.lng}&destination=${encodeURIComponent(q)}`;
+  const url =
+  `https://www.google.com/maps/dir/?api=1` +
+  `&origin=place_id:${HOME_PLACE_ID}` +
+  `&destination=${encodeURIComponent(q)}`;
 
   document.getElementById('nearbyList').innerHTML = `
     <a href="${url}" target="_blank" class="btn btn-premium" style="margin-top:12px">
