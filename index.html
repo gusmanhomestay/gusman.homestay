@@ -1893,6 +1893,25 @@ body[data-theme="dark"] .theme-btn.active{
 .nearby-tabs{
   justify-content: center;
 }
+.map-container{
+  position: relative;
+}
+
+.map-embed{
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* 🔥 THIS FIXES EVERYTHING */
+}
+
+.map-buttons{
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 5;
+}
 </style>
 </head>
 
@@ -2966,58 +2985,54 @@ body[data-theme="dark"] .theme-btn.active{
       <span class="lang it" style="display:none;">Mappa</span>
     </h3>
 
-    <!-- GOOGLE MAP -->
-    <iframe
-      class="map-embed"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.770292682659!2d107.8813245!3d-7.0165307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c9df6ada6155:0x37e2fd8bf58f8eee!2sGusman%20Homestay%20-%20Nagreg!5e0!3m2!1sen!2sid!4v1707640000000">
-    </iframe>
+   <!-- MAP WRAPPER -->
+<div class="map-container">
 
-    <!-- MAP BUTTONS -->
-    <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+  <!-- GOOGLE MAP -->
+  <iframe
+    class="map-embed"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.770292682659!2d107.8813245!3d-7.0165307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c9df6ada6155:0x37e2fd8bf58f8eee!2sGusman%20Homestay%20-%20Nagreg!5e0!3m2!1sen!2sid!4v1707640000000">
+  </iframe>
 
-      <!-- LIHAT TEMPAT SEKITAR -->
-      <button
-        type="button"
-        class="btn btn-premium"
-        onclick="openNearbyModal()">
+  <!-- MAP BUTTONS -->
+  <div class="map-buttons">
 
-        <span class="lang id">📍 Lihat Tempat Sekitar</span>
-        <span class="lang en" style="display:none;">📍 See Nearby Places</span>
-        <span class="lang de" style="display:none;">📍 Orte in der Nähe</span>
-        <span class="lang it" style="display:none;">📍 Luoghi nelle vicinanze</span>
-      </button>
+    <!-- LIHAT TEMPAT SEKITAR -->
+    <button
+      type="button"
+      class="btn btn-premium"
+      onclick="openNearbyModal()">
 
-      <!-- OPEN IN GOOGLE MAPS -->
-      <a
-        class="btn btn-premium"
-        href="https://maps.app.goo.gl/XmVP7FrznLSLhbZd9?g_st=ic"
-        target="_blank"
-        rel="noopener">
+      <span class="lang id">📍 Lihat Tempat Sekitar</span>
+      <span class="lang en" style="display:none;">📍 See Nearby Places</span>
+      <span class="lang de" style="display:none;">📍 Orte in der Nähe</span>
+      <span class="lang it" style="display:none;">📍 Luoghi nelle vicinanze</span>
+    </button>
 
-        <span class="lang id active">
-          Buka di <img src="images/googlemaps.png" class="map-icon" alt="">
-        </span>
-
-        <span class="lang en" style="display:none;">
-          Open in <img src="images/googlemaps.png" class="map-icon" alt="">
-        </span>
-
-        <span class="lang de" style="display:none;">
-          In <img src="images/googlemaps.png" class="map-icon" alt=""> öffnen
-        </span>
-
-        <span class="lang it" style="display:none;">
-          Apri su <img src="images/googlemaps.png" class="map-icon" alt="">
-        </span>
-      </a>
-
-    </div>
+    <!-- OPEN IN GOOGLE MAPS -->
+    <a
+      class="btn btn-premium"
+      href="https://maps.app.goo.gl/XmVP7FrznLSLhbZd9?g_st=ic"
+      target="_blank"
+      rel="noopener">
+      <span class="lang id active">
+        Buka di <img src="images/googlemaps.png" class="map-icon" alt="">
+      </span>
+      <span class="lang en" style="display:none;">
+        Open in <img src="images/googlemaps.png" class="map-icon" alt="">
+      </span>
+      <span class="lang de" style="display:none;">
+        In <img src="images/googlemaps.png" class="map-icon" alt=""> öffnen
+      </span>
+      <span class="lang it" style="display:none;">
+        Apri su <img src="images/googlemaps.png" class="map-icon" alt="">
+      </span>
+    </a>
 
   </div>
-</section>
-
+</div>
 <!-- ===================== ABOUT / STORY (FULL WIDTH) ===================== -->
 <section class="fullwidth-section" id="about">
   <div class="card">
@@ -3222,14 +3237,9 @@ body[data-theme="dark"] .theme-btn.active{
 
     <button class="nearby-close" onclick="closeNearbyModal()">✕</button>
 
-    <div class="nearby-head">
-      <div class="nearby-title">
-        <span class="lang id">Sekitar Gusman Homestay</span>
-        <span class="lang en" style="display:none;">Nearby Gusman Homestay</span>
-        <span class="lang de" style="display:none;">In der Nähe</span>
-        <span class="lang it" style="display:none;">Nelle vicinanze</span>
-      </div>
-    </div>
+    <h3 style="text-align:center;margin-bottom:12px;">
+      Sekitar Gusman Homestay
+    </h3>
 
     <div class="nearby-tabs">
       <button class="nearby-tab active" onclick="selectNearbyCategory('transport', this)">🚆 Transport</button>
@@ -3240,14 +3250,14 @@ body[data-theme="dark"] .theme-btn.active{
       <button class="nearby-tab" onclick="selectNearbyCategory('attractions', this)">🏞 Attractions</button>
     </div>
 
-   <a
-  id="nearbyMapsBtn"
-  class="btn btn-premium"
-  target="_blank"
-  rel="noopener"
-  style="display:none;margin-top:16px;">
-  Open in Google Maps →
-</a>
+    <a
+      id="nearbyMapsLink"
+      class="btn btn-premium"
+      target="_blank"
+      rel="noopener"
+      style="margin-top:16px;">
+      Open in Google Maps →
+    </a>
 
   </div>
 </div>
@@ -4576,39 +4586,47 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 <script>
-/* =========================
-   NEARBY MODAL – FINAL FIX
-========================= */
+/* =====================
+   NEARBY MODAL — FINAL
+===================== */
 
-const MAP_CENTER = "-7.016526,107.883903"; // Gusman Homestay coords
+const ORIGIN = "Gusman Homestay - Nagreg";
 
-const nearbyLinks = {
-  transport: `https://www.google.com/maps/search/transport/@${MAP_CENTER},15z`,
-  shopping:  `https://www.google.com/maps/search/shopping/@${MAP_CENTER},15z`,
-  food:      `https://www.google.com/maps/search/restaurants/@${MAP_CENTER},15z`,
-  health:    `https://www.google.com/maps/search/hospital/@${MAP_CENTER},15z`,
-  atm:       `https://www.google.com/maps/search/atm/@${MAP_CENTER},15z`,
-  attractions:`https://www.google.com/maps/search/tourist+attractions/@${MAP_CENTER},15z`
+const NEARBY_CATEGORIES = {
+  transport: "transport near Gusman Homestay Nagreg",
+  shopping: "shopping near Gusman Homestay Nagreg",
+  food: "restaurants near Gusman Homestay Nagreg",
+  health: "hospital pharmacy near Gusman Homestay Nagreg",
+  atm: "ATM near Gusman Homestay Nagreg",
+  attractions: "tourist attractions near Nagreg Bandung"
 };
 
 function openNearbyModal(){
   document.getElementById("nearbyOverlay").classList.add("show");
-  selectNearbyCategory("transport");
+
+  // default category
+  const firstBtn = document.querySelector(".nearby-tab");
+  selectNearbyCategory("transport", firstBtn);
 }
 
 function closeNearbyModal(){
   document.getElementById("nearbyOverlay").classList.remove("show");
 }
 
-function selectNearbyCategory(category, btn){
-  // tabs active state
-  document.querySelectorAll(".nearby-tab").forEach(b => b.classList.remove("active"));
-  if(btn) btn.classList.add("active");
+function selectNearbyCategory(cat, btn){
+  document.querySelectorAll(".nearby-tab")
+    .forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
 
-  // update Google Maps button
-  const mapBtn = document.getElementById("nearbyMapsBtn");
-  mapBtn.href = nearbyLinks[category];
-  mapBtn.style.display = "flex";
+  const query = NEARBY_CATEGORIES[cat];
+
+  const url =
+    "https://www.google.com/maps/search/?api=1" +
+    "&query=" + encodeURIComponent(query) +
+    "&origin=" + encodeURIComponent(ORIGIN);
+
+  const link = document.getElementById("nearbyMapsLink");
+  link.href = url;
 }
 </script>
 </body>
