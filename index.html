@@ -1981,6 +1981,42 @@ body[data-theme="dark"] .theme-btn.active{
     flex: 1 1 calc(50% - 6px);
   }
 }
+/* =====================
+   MODAL STACK FIX
+===================== */
+
+.nearby-overlay{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(3px);
+  z-index: 9999; /* 🔥 higher than any other modal */
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.nearby-overlay.show{
+  opacity: 1;
+}
+
+.nearby-modal{
+  background: var(--card);
+  max-width: 720px;
+  width: 92%;
+  max-height: 86vh;
+  overflow: auto;
+  border-radius: 18px;
+  padding: 18px;
+  transform: scale(.96);
+  transition: transform .25s ease;
+}
+
+.nearby-overlay.show .nearby-modal{
+  transform: scale(1);
+}
 </style>
 </head>
 
@@ -4393,6 +4429,7 @@ const NEARBY_CATEGORIES = {
   }
 };
 
+/* OPEN */
 function openNearbyModal(){
   const overlay = document.getElementById('nearbyOverlay');
   overlay.style.display = 'flex';
@@ -4404,15 +4441,24 @@ function openNearbyModal(){
   selectNearbyCategory('transport', document.querySelector('.nearby-tab'));
 }
 
+/* CLOSE */
 function closeNearbyModal(){
   const overlay = document.getElementById('nearbyOverlay');
   overlay.classList.remove('show');
 
   setTimeout(() => {
     overlay.style.display = 'none';
-  }, 300);
+  }, 250);
 }
 
+/* CLICK OUTSIDE TO CLOSE */
+document.getElementById('nearbyOverlay')?.addEventListener('click', e => {
+  if (e.target.id === 'nearbyOverlay') {
+    closeNearbyModal();
+  }
+});
+
+/* CATEGORY SELECT */
 function selectNearbyCategory(cat, btn){
   document.querySelectorAll('.nearby-tab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -4422,11 +4468,11 @@ function selectNearbyCategory(cat, btn){
 
   list.innerHTML = "";
   status.innerHTML = `
-  <span class="lang id">Membuka Google Maps…</span>
-  <span class="lang en" style="display:none;">Opening Google Maps…</span>
-  <span class="lang de" style="display:none;">Google Maps wird geöffnet…</span>
-  <span class="lang it" style="display:none;">Apertura di Google Maps…</span>
-`;
+    <span class="lang id">Membuka Google Maps…</span>
+    <span class="lang en" style="display:none;">Opening Google Maps…</span>
+    <span class="lang de" style="display:none;">Google Maps wird geöffnet…</span>
+    <span class="lang it" style="display:none;">Apertura di Google Maps…</span>
+  `;
 
   const q = NEARBY_CATEGORIES[cat].query;
   const url = `https://www.google.com/maps/search/${encodeURIComponent(q)}/@${HOME_COORDS.lat},${HOME_COORDS.lng},14z`;
