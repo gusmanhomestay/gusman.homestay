@@ -31,8 +31,8 @@
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": -7.01652,
-    "longitude": 107.883921
+    "latitude": -7.016526,
+  "longitude": 107.883903
   },
   "sameAs": [
     "https://www.google.com/maps/place/?q=Gusman+Homestay+Nagreg",
@@ -4544,7 +4544,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateGalleryLanguage(lang);
 });
 
-const HOME_PLACE_ID = "ChIJVWHaat_JaC4R7o6P9Yv94jc";
+const HOME_COORDS = { lat: -7.016526, lng: 107.883903 };
 
 const NEARBY_CATEGORIES = {
   transport: "train station OR bus stop near Nagreg Bandung",
@@ -4574,7 +4574,7 @@ function selectNearbyCategory(cat, btn){
   const q = NEARBY_CATEGORIES[cat];
 const url =
   `https://www.google.com/maps/dir/?api=1` +
-  `&origin=place_id:${HOME_PLACE_ID}` +
+  `&origin=${HOME_COORDS.lat},${HOME_COORDS.lng}` +
   `&destination=${encodeURIComponent(q)}` +
   `&travelmode=driving`;
 
