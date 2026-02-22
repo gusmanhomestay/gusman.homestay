@@ -1957,6 +1957,32 @@ body[data-theme="dark"] .theme-btn.active{
 .nearby-tab:hover{
   background: #eee;
 }
+.map-actions{
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 3;
+}
+
+.map-action-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #2f8f87;   /* match your theme */
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.map-action-btn:hover{
+  opacity: 0.9;
+}
 </style>
 </head>
 
@@ -3037,30 +3063,45 @@ body[data-theme="dark"] .theme-btn.active{
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.770292682659!2d107.8813245!3d-7.0165307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c9df6ada6155:0x37e2fd8bf58f8eee!2sGusman%20Homestay%20-%20Nagreg!5e0!3m2!1sen!2sid!4v1707640000000">
   </iframe>
     
-<div class="see-more-wrap">
+<!-- MAP ACTION BUTTONS -->
+<div class="map-actions">
+
+  <!-- Nearby / Distance -->
   <a
-    class="see-more-btn"
+    class="map-action-btn"
     href="https://www.google.com/maps/search/ATM+Restaurant+Hospital+Supermarket+near+Gusman+Homestay+Nagreg"
     target="_blank"
     rel="noopener">
 
-    📍 Lihat Jarak & Tempat Sekitar
+    <span class="lang id active">📍 Lihat Jarak & Tempat Sekitar</span>
+    <span class="lang en">📍 See Nearby Places & Distance</span>
+    <span class="lang de">📍 Orte & Entfernungen</span>
+    <span class="lang it">📍 Luoghi e Distanze</span>
+
   </a>
-</div>
-    
+
+  <!-- Open in Google -->
   <a
+    class="map-action-btn"
     href="https://maps.app.goo.gl/XmVP7FrznLSLhbZd9"
     target="_blank"
-    rel="noopener"
-    class="map-btn btn-premium">
+    rel="noopener">
 
     <span class="lang id active">
       Buka di <img src="/images/googlemaps.png" class="map-icon" alt="">
     </span>
-    <span class="lang en">Open in <img src="/images/googlemaps.png" class="map-icon" alt=""></span>
-    <span class="lang de">In <img src="/images/googlemaps.png" class="map-icon" alt=""> öffnen</span>
-    <span class="lang it">Apri su <img src="/images/googlemaps.png" class="map-icon" alt=""></span>
+    <span class="lang en">
+      Open in <img src="/images/googlemaps.png" class="map-icon" alt="">
+    </span>
+    <span class="lang de">
+      In <img src="/images/googlemaps.png" class="map-icon" alt=""> öffnen
+    </span>
+    <span class="lang it">
+      Apri su <img src="/images/googlemaps.png" class="map-icon" alt="">
+    </span>
+
   </a>
+
 </div>
 </div>
 </section>
