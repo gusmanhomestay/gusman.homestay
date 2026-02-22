@@ -179,12 +179,22 @@ h1{
   © 2026 Gusman Homestay • www.gusmanhomestay.com
 </div>
 <script>
-const params = new URLSearchParams(window.location.search);
-const name = params.get("guest");
+function getGuest() {
+  var query = window.location.search.substring(1);
+  var parts = query.split("&");
 
-if (name) {
-  document.getElementById("guestName").textContent =
-    decodeURIComponent(name.replace(/\+/g, " "));
+  for (var i = 0; i < parts.length; i++) {
+    var pair = parts[i].split("=");
+    if (pair[0] === "guest") {
+      return decodeURIComponent(pair[1].replace(/\+/g, " "));
+    }
+  }
+  return "";
+}
+
+var guestName = getGuest();
+if (guestName && document.getElementById("guestName")) {
+  document.getElementById("guestName").innerHTML = guestName;
 }
 </script>
 </body>
