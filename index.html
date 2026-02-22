@@ -2886,20 +2886,7 @@ body[data-theme="dark"] .theme-btn.active{
     <span class="lang it" style="display:none;">🚗 Attrazioni Vicine</span>
   </button>
 </div>
-<div style="text-align:center; margin-top:18px;">
-  <button 
-    type="button"
-    class="btn btn-premium"
-    onclick="openNearbyModal()"
-    style="padding:12px 18px; border-radius:14px;">
 
-    <span class="lang id">📍 Lihat Tempat Sekitar</span>
-    <span class="lang en" style="display:none;">📍 See Nearby Places</span>
-    <span class="lang de" style="display:none;">📍 Orte in der Nähe</span>
-    <span class="lang it" style="display:none;">📍 Luoghi nelle vicinanze</span>
-
-  </button>
-</div>
   <p style="margin-top:12px;color:var(--muted);">
     <span class="lang id"><strong>Check-in:</strong> 14:00 - 21:00 • <strong>Check-out:</strong> 07:00 - 12:00</span>
     <span class="lang en" style="display:none;"><strong>Check-in:</strong> 14:00 - 21:00 • <strong>Check-out:</strong> 07:00 - 12:00</span>
@@ -3073,15 +3060,21 @@ body[data-theme="dark"] .theme-btn.active{
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.770292682659!2d107.8813245!3d-7.0165307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c9df6ada6155:0x37e2fd8bf58f8eee!2sGusman%20Homestay%20-%20Nagreg!5e0!3m2!1sen!2sid!4v1707640000000">
   </iframe>
 
- <!-- MAP BUTTONS -->
-<div style="text-align:center;margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-  <!-- Nearby button (opens modal) -->
-  <button type="button" class="btn btn-premium" onclick="openNearbyModal()">
-    <span class="lang id">📍 Lihat Sekitar</span>
-    <span class="lang en" style="display:none;">📍 Nearby</span>
-    <span class="lang de" style="display:none;">📍 In der Nähe</span>
-    <span class="lang it" style="display:none;">📍 Nelle vicinanze</span>
+<!-- 📍 Nearby Places Button (PETA ONLY) -->
+<div style="text-align:center; margin-top:16px;">
+  <button 
+    type="button"
+    class="btn btn-premium"
+    onclick="openNearbyModal()"
+    style="padding:12px 18px; border-radius:14px;">
+
+    <span class="lang id">📍 Lihat Tempat Sekitar</span>
+    <span class="lang en" style="display:none;">📍 See Nearby Places</span>
+    <span class="lang de" style="display:none;">📍 Orte in der Nähe</span>
+    <span class="lang it" style="display:none;">📍 Luoghi nelle vicinanze</span>
+
   </button>
+</div>
 
   <!-- Open Google Maps -->
   <a
