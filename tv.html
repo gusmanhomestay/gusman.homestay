@@ -33,37 +33,58 @@ html,body{
   justify-content:center
 }
 
+/* 🔧 SHIFT CENTER LINE LEFT */
 .tv-card{
-  width:92vw;
+  width:94vw;
   height:86vh;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:4vw;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:3.5vw;
   align-items:center
 }
 
+/* LEFT */
 .left{
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  gap:2vh
+  justify-content:flex-start;
+  padding-top:2vh;
+  gap:1.6vh
 }
 
-.logo{max-width:30vw;margin-bottom:2vh}
-h1{font-size:3.4vw;line-height:1.15}
-.guest{font-size:2.4vw;margin-top:1vh}
-.info{font-size:1.5vw;line-height:1.5;opacity:.95}
+/* LOGO HIGHER */
+.logo{
+  max-width:28vw;
+  margin-bottom:1vh
+}
 
-/* STATUS BAR (COMPACT) */
+/* TITLE HIGHER */
+h1{
+  font-size:3.3vw;
+  line-height:1.15;
+  margin-bottom:.5vh
+}
+
+.guest{
+  font-size:2.4vw;
+  margin-bottom:1vh
+}
+
+.info{
+  font-size:1.45vw;
+  line-height:1.5;
+  opacity:.95
+}
+
+/* STATUS STACKED */
 .status{
-  margin-top:2vh;
+  margin-top:1.6vh;
   font-size:1.4vw;
-  opacity:.95;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  line-height:1.55;
+  opacity:.95
 }
 
+/* RIGHT */
 .right{
   height:100%;
   display:flex;
@@ -75,24 +96,42 @@ h1{font-size:3.4vw;line-height:1.15}
   padding-left:3vw
 }
 
-.qr-title{font-size:2.2vw;margin-bottom:1vh}
-.qr-sub{font-size:1.4vw;opacity:.85;margin-bottom:2vh}
-.qr{width:clamp(380px,30vw,620px)}
-.qr-note{margin-top:2vh;font-size:1.3vw;opacity:.9}
+.qr-title{
+  font-size:2.05vw;
+  margin-bottom:.8vh;
+  white-space:normal
+}
+
+.qr-sub{
+  font-size:1.35vw;
+  opacity:.85;
+  margin-bottom:1.8vh
+}
+
+.qr{
+  width:clamp(360px,28vw,560px)
+}
+
+.qr-note{
+  margin-top:1.6vh;
+  font-size:1.25vw;
+  opacity:.9
+}
 
 .footer{
   position:absolute;
-  bottom:1.5vh;
+  bottom:1.4vh;
   width:100%;
   text-align:center;
   font-size:1.1vw;
   opacity:.7
 }
 
+/* MUSIC BUTTON */
 #enableMusicBtn{
   position:fixed;
-  bottom:25px;
-  right:25px;
+  bottom:22px;
+  right:22px;
   padding:8px 14px;
   border-radius:999px;
   border:none;
@@ -147,8 +186,12 @@ h1{font-size:3.4vw;line-height:1.15}
         </span>
       </div>
 
-      <!-- COMPACT STATUS -->
-      <div class="status" id="statusBar"></div>
+      <!-- STATUS -->
+      <div class="status">
+        <div id="clock"></div>
+        <div id="weather"></div>
+        <div id="forecast"></div>
+      </div>
 
     </div>
 
@@ -182,7 +225,6 @@ h1{font-size:3.4vw;line-height:1.15}
 </div>
 
 <button id="enableMusicBtn">🔊 Aktifkan Musik</button>
-
 <audio id="bgMusic" loop>
   <source src="/music/welcome.mp3" type="audio/mpeg">
 </audio>
@@ -190,67 +232,53 @@ h1{font-size:3.4vw;line-height:1.15}
 <!-- GUEST NAME -->
 <script>
 (()=>{const p=new URLSearchParams(location.search).get("guest");
-if(p){document.getElementById("guestName").textContent=
-decodeURIComponent(p.replace(/\+/g," "))}})();
+if(p){guestName.textContent=decodeURIComponent(p.replace(/\+/g," "))}})();
 </script>
 
 <!-- LANGUAGE SWITCH -->
 <script>
-(()=>{let c='id';
-setInterval(()=>{
+(()=>{let c='id';setInterval(()=>{
 document.querySelectorAll('.lang-id').forEach(e=>e.style.display=c==='id'?'':'none');
 document.querySelectorAll('.lang-en').forEach(e=>e.style.display=c==='en'?'':'none');
 c=c==='id'?'en':'id';
 },30000)})();
 </script>
 
-<!-- CLOCK + WEATHER (TV SAFE VERSION) -->
+<!-- CLOCK & WEATHER -->
 <script>
-(async function(){
-
-const status=document.getElementById("statusBar");
+(async()=>{
+const clockEl=document.getElementById("clock"),
+weatherEl=document.getElementById("weather"),
+forecastEl=document.getElementById("forecast");
 
 function clock(){
 const n=new Date();
-return n.toLocaleDateString("id-ID",
-{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Jakarta"})
+clockEl.textContent=
+n.toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Jakarta"})
 +" • "+
-n.toLocaleTimeString("id-ID",
-{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Jakarta"})
+n.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Jakarta"})
 +" WIB";
 }
 
-async function update(){
+clock(); setInterval(clock,1000);
+
 try{
 const r=await fetch("https://api.open-meteo.com/v1/forecast?latitude=-7.0165&longitude=107.8839&current_weather=true&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Asia/Jakarta");
 const d=await r.json();
 
-let text=clock()+" • 🌡 "+d.current_weather.temperature+"°C";
+weatherEl.textContent=`🌡 ${d.current_weather.temperature}°C${d.daily.precipitation_sum[0]>0?" • 🌧 Hujan sekarang":""}`;
+forecastEl.textContent=
+d.daily.precipitation_sum[1]>0
+?`🌦 Besok hujan • ${d.daily.temperature_2m_min[1]}–${d.daily.temperature_2m_max[1]}°C`
+:`🌤 Besok cerah • ${d.daily.temperature_2m_min[1]}–${d.daily.temperature_2m_max[1]}°C`;
 
-if(d.daily.precipitation_sum[0]>0)
-text+=" • 🌧 Hujan sekarang";
-
-text+=d.daily.precipitation_sum[1]>0
-?" • 🌦 Besok hujan"
-:" • 🌤 Besok cerah";
-
-status.textContent=text;
-
-}catch{
-status.textContent=clock();
-}
-}
-
-update();
-setInterval(update,60000);
-
+}catch{}
 })();
 </script>
 
 <!-- MUSIC -->
 <script>
-(()=>{const m=document.getElementById("bgMusic"),
-b=document.getElementById("enableMusicBtn");
+(()=>{const m=bgMusic,b=enableMusicBtn;
 b.onclick=()=>m.play().then(()=>b.style.display="none").catch(()=>{});})();
 </script>
 
