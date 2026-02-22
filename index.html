@@ -1826,199 +1826,123 @@ body[data-theme="dark"] .theme-btn.active{
   min-width: 0;
 }
 /* =====================
-   NEARBY MODAL STYLE
-===================== */
-
-.nearby-overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  backdrop-filter: blur(6px);
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.nearby-modal{
-  width:min(92vw, 820px);
-  max-height:90vh;
-  background:rgba(15,47,47,.96);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:18px;
-  box-shadow:0 30px 80px rgba(0,0,0,.55);
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-}
-
-.nearby-close{
-  position:absolute;
-  top:14px;
-  right:16px;
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:20px;
-  cursor:pointer;
-  opacity:.7;
-}
-.nearby-close:hover{ opacity:1; }
-
-.nearby-head{
-  padding:20px 22px 14px;
-  border-bottom:1px solid rgba(255,255,255,.12);
-}
-
-.nearby-title{
-  font-size:20px;
-  font-weight:800;
-}
-
-.nearby-sub{
-  margin-top:4px;
-  font-size:14px;
-  opacity:.75;
-}
-
-.nearby-tabs{
-  display:flex;
-  gap:8px;
-  padding:12px;
-  overflow-x:auto;
-  border-bottom:1px solid rgba(255,255,255,.12);
-}
-
-.nearby-tab{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.15);
-  color:#fff;
-  padding:8px 12px;
-  border-radius:12px;
-  font-weight:700;
-  cursor:pointer;
-  white-space:nowrap;
-  opacity:.7;
-}
-.nearby-tab.active{
-  opacity:1;
-  background:rgba(255,255,255,.18);
-}
-
-.nearby-body{
-  padding:16px 22px 20px;
-  overflow:auto;
-}
-
-.nearby-status{
-  font-size:14px;
-  opacity:.7;
-  margin-bottom:12px;
-}
-
-.nearby-list{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.nearby-item{
-  padding:12px 14px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:14px;
-}
-
-.nearby-name{
-  font-weight:800;
-}
-
-.nearby-distance{
-  font-size:14px;
-  opacity:.8;
-  margin-top:4px;
-}
-/* =====================
-   NEARBY MODAL ANIMATION
-===================== */
-.nearby-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.45);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.nearby-modal {
-  background: var(--card);
-  border-radius: 18px;
-  width: min(92vw, 720px);
-  max-height: 85vh;
-  overflow: hidden;
-  transform: translateY(30px);
-  opacity: 0;
-  transition: all .35s ease;
-}
-
-.nearby-overlay.show .nearby-modal {
-  transform: translateY(0);
-  opacity: 1;
-}
-@media (max-width: 480px) {
-  .nearby-modal {
-    width: 94vw;
-    max-height: 88vh;
-  }
-
-  .nearby-tabs {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .nearby-tab {
-    flex: 1 1 calc(50% - 6px);
-  }
-}
-/* =====================
-   MODAL STACK FIX
+   NEARBY MODAL (CLEAN & SINGLE SOURCE)
 ===================== */
 
 .nearby-overlay{
   position: fixed;
   inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
   background: rgba(0,0,0,.55);
-  backdrop-filter: blur(3px);
-  z-index: 9999; /* 🔥 higher than any other modal */
-  opacity: 0;
-  transition: opacity .25s ease;
+  backdrop-filter: blur(4px);
+  display: none;            /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;            /* above all other modals */
 }
 
 .nearby-overlay.show{
-  opacity: 1;
+  display: flex;
 }
 
 .nearby-modal{
-  background: var(--card);
-  max-width: 720px;
-  width: 92%;
-  max-height: 86vh;
-  overflow: auto;
+  width: min(92vw, 520px);
+  max-height: 85vh;
+  background: #ffffff;
+  color: #111;
   border-radius: 18px;
-  padding: 18px;
-  transform: scale(.96);
-  transition: transform .25s ease;
+  box-shadow: 0 25px 60px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
 }
 
-.nearby-overlay.show .nearby-modal{
-  transform: scale(1);
+/* Close button */
+.nearby-close{
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: .6;
 }
-.nearby-overlay{
-  z-index: 9999;
+.nearby-close:hover{ opacity:1; }
+
+/* Header */
+.nearby-head{
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.nearby-title{
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.nearby-sub{
+  font-size: 14px;
+  opacity: .7;
+  margin-top: 4px;
+}
+
+/* Tabs */
+.nearby-tabs{
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.nearby-tab{
+  background: #f2f2f2;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  opacity: .6;
+}
+.nearby-tab.active{
+  opacity: 1;
+  background: #e0e0e0;
+}
+
+/* Body */
+.nearby-body{
+  padding: 16px 20px 20px;
+  overflow: auto;
+}
+
+.nearby-status{
+  font-size: 14px;
+  opacity: .7;
+  margin-bottom: 12px;
+}
+
+.nearby-item{
+  padding: 14px;
+  border-radius: 14px;
+  background: #f5f5f5;
+}
+
+.nearby-name{
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.nearby-distance{
+  font-size: 14px;
+  opacity: .75;
+}
+
+/* Make sure other modals stay below */
+.rules-modal,
+.attractions-modal{
+  z-index: 9000;
 }
 </style>
 </head>
@@ -4432,8 +4356,24 @@ const NEARBY_CATEGORIES = {
   }
 };
 
-/* OPEN */
+/* =====================
+   NEARBY MODAL — FINAL JS
+===================== */
+
+function closeAllModals(){
+  document.querySelectorAll(
+    '.nearby-overlay.show, .rules-modal.open, .attractions-modal.open'
+  ).forEach(m => {
+    m.classList.remove('show', 'open');
+    m.style.display = 'none';
+  });
+
+  document.body.classList.remove('modal-open');
+}
+
 function openNearbyModal(){
+  closeAllModals(); // 🔥 important
+
   const overlay = document.getElementById('nearbyOverlay');
   overlay.style.display = 'flex';
 
@@ -4441,26 +4381,36 @@ function openNearbyModal(){
     overlay.classList.add('show');
   });
 
-  selectNearbyCategory('transport', document.querySelector('.nearby-tab'));
+  document.body.classList.add('modal-open');
+
+  const firstTab = overlay.querySelector('.nearby-tab');
+  if (firstTab) selectNearbyCategory('transport', firstTab);
 }
 
-/* CLOSE */
 function closeNearbyModal(){
   const overlay = document.getElementById('nearbyOverlay');
   overlay.classList.remove('show');
 
   setTimeout(() => {
     overlay.style.display = 'none';
-  }, 250);
+  }, 200);
+
+  document.body.classList.remove('modal-open');
 }
 
-/* CLICK OUTSIDE TO CLOSE */
+/* Click outside closes */
 document.getElementById('nearbyOverlay')?.addEventListener('click', e => {
   if (e.target.id === 'nearbyOverlay') {
     closeNearbyModal();
   }
 });
 
+/* ESC closes ALL modals */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeAllModals();
+  }
+});
 /* CATEGORY SELECT */
 function selectNearbyCategory(cat, btn){
   document.querySelectorAll('.nearby-tab').forEach(b => b.classList.remove('active'));
@@ -4543,23 +4493,6 @@ function closeAttractions(){
   modal.classList.remove('open');
   document.body.style.overflow = '';
 }
-
-/* =========================
-   ESC KEY HANDLER (ALL MODALS)
-========================= */
-document.addEventListener('keydown', e => {
-  if (e.key !== 'Escape') return;
-
-  const rules = document.getElementById('rulesModal');
-  const directions = document.getElementById('directionsModal');
-  const attractions = document.getElementById('attractionsModal');
-  const nearby = document.getElementById('nearbyOverlay');
-
-  if (rules?.classList.contains('open')) closeRules();
-  if (directions?.classList.contains('open')) closeDirections();
-  if (attractions?.classList.contains('open')) closeAttractions();
-  if (nearby?.classList.contains('show')) closeNearbyModal();
-});
 </script>
 <!-- =========================
    GA4 CLICK TRACKING
