@@ -4473,6 +4473,77 @@ document.addEventListener('DOMContentLoaded', () => {
   updateGalleryLanguage(lang);
 });
 </script>
-  
+<!-- =====================
+     NEARBY MODAL
+===================== -->
+<div id="nearbyOverlay" class="nearby-overlay">
+
+  <div class="nearby-modal">
+
+    <button class="nearby-close" onclick="closeNearbyModal()">✕</button>
+
+    <div class="nearby-head">
+      <div class="nearby-title">
+        <span class="lang id">Sekitar Gusman Homestay</span>
+        <span class="lang en" style="display:none;">Nearby Gusman Homestay</span>
+        <span class="lang de" style="display:none;">In der Nähe</span>
+        <span class="lang it" style="display:none;">Nelle vicinanze</span>
+      </div>
+    </div>
+
+    <div class="nearby-tabs">
+      <button class="nearby-tab active" onclick="selectNearbyCategory('transport', this)">🚆 Transport</button>
+      <button class="nearby-tab" onclick="selectNearbyCategory('shopping', this)">🛍 Shopping</button>
+      <button class="nearby-tab" onclick="selectNearbyCategory('food', this)">🍽 Food</button>
+      <button class="nearby-tab" onclick="selectNearbyCategory('health', this)">🏥 Health</button>
+      <button class="nearby-tab" onclick="selectNearbyCategory('atm', this)">💳 ATM</button>
+      <button class="nearby-tab" onclick="selectNearbyCategory('attractions', this)">🏞 Attractions</button>
+    </div>
+
+    <div class="nearby-body">
+      <div id="nearbyStatus">Ready.</div>
+      <div id="nearbyList"></div>
+    </div>
+
+  </div>
+</div>
+<script>
+const HOME_COORDS = { lat: -7.0329, lng: 107.7483 };
+
+const NEARBY_CATEGORIES = {
+  transport: "train station OR bus stop near Nagreg Bandung",
+  shopping: "minimarket OR shop near Nagreg Bandung",
+  food: "restaurant OR warung near Nagreg Bandung",
+  health: "clinic OR pharmacy near Nagreg Bandung",
+  atm: "ATM near Nagreg Bandung",
+  attractions: "tourist attraction near Nagreg Bandung"
+};
+
+function openNearbyModal(){
+  const o = document.getElementById('nearbyOverlay');
+  o.style.display = 'flex';
+  document.body.classList.add('modal-open');
+}
+
+function closeNearbyModal(){
+  const o = document.getElementById('nearbyOverlay');
+  o.style.display = 'none';
+  document.body.classList.remove('modal-open');
+}
+
+function selectNearbyCategory(cat, btn){
+  document.querySelectorAll('.nearby-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const q = NEARBY_CATEGORIES[cat];
+  const url = `https://www.google.com/maps/search/${encodeURIComponent(q)}/@${HOME_COORDS.lat},${HOME_COORDS.lng},14z`;
+
+  document.getElementById('nearbyList').innerHTML = `
+    <a href="${url}" target="_blank" class="btn btn-premium" style="margin-top:12px">
+      Open in Google Maps →
+    </a>
+  `;
+}
+</script>
 </body>
 </html>
