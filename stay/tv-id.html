@@ -137,9 +137,7 @@ h1{
       <h1>Selamat Datang di<br>Gusman Homestay</h1>
 
       <!-- 🔁 GANTI NAMA TAMU -->
-      <div class="guest">
-  <strong id="guestName">Guest</strong>
-</div>
+     <div class="guest"><strong>Mr. John Family</strong></div>
 
       <div class="info">
         Wi-Fi: <strong>Gusman-HomeStay</strong><br>
@@ -178,24 +176,5 @@ h1{
 <div class="footer">
   © 2026 Gusman Homestay • www.gusmanhomestay.com
 </div>
-<script>
-function getGuest() {
-  var query = window.location.search.substring(1);
-  var parts = query.split("&");
-
-  for (var i = 0; i < parts.length; i++) {
-    var pair = parts[i].split("=");
-    if (pair[0] === "guest") {
-      return decodeURIComponent(pair[1].replace(/\+/g, " "));
-    }
-  }
-  return "";
-}
-
-var guestName = getGuest();
-if (guestName && document.getElementById("guestName")) {
-  document.getElementById("guestName").innerHTML = guestName;
-}
-</script>
 </body>
 </html>
