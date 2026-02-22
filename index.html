@@ -1825,125 +1825,6 @@ body[data-theme="dark"] .theme-btn.active{
 .gallery-row img {
   min-width: 0;
 }
-/* =====================
-   NEARBY MODAL (CLEAN & SINGLE SOURCE)
-===================== */
-
-.nearby-overlay{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.55);
-  backdrop-filter: blur(4px);
-  display: none;            /* hidden by default */
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;            /* above all other modals */
-}
-
-.nearby-overlay.show{
-  display: flex;
-}
-
-.nearby-modal{
-  width: min(92vw, 520px);
-  max-height: 85vh;
-  background: #ffffff;
-  color: #111;
-  border-radius: 18px;
-  box-shadow: 0 25px 60px rgba(0,0,0,.35);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Close button */
-.nearby-close{
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  opacity: .6;
-}
-.nearby-close:hover{ opacity:1; }
-
-/* Header */
-.nearby-head{
-  padding: 18px 20px 14px;
-  border-bottom: 1px solid rgba(0,0,0,.1);
-}
-
-.nearby-title{
-  font-size: 18px;
-  font-weight: 800;
-}
-
-.nearby-sub{
-  font-size: 14px;
-  opacity: .7;
-  margin-top: 4px;
-}
-
-/* Tabs */
-.nearby-tabs{
-  display: flex;
-  gap: 8px;
-  padding: 12px;
-  overflow-x: auto;
-  border-bottom: 1px solid rgba(0,0,0,.1);
-}
-
-.nearby-tab{
-  background: #f2f2f2;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  opacity: .6;
-}
-.nearby-tab.active{
-  opacity: 1;
-  background: #e0e0e0;
-}
-
-/* Body */
-.nearby-body{
-  padding: 16px 20px 20px;
-  overflow: auto;
-}
-
-.nearby-status{
-  font-size: 14px;
-  opacity: .7;
-  margin-bottom: 12px;
-}
-
-.nearby-item{
-  padding: 14px;
-  border-radius: 14px;
-  background: #f5f5f5;
-}
-
-.nearby-name{
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.nearby-distance{
-  font-size: 14px;
-  opacity: .75;
-}
-
-/* Make sure other modals stay below */
-.rules-modal,
-.attractions-modal{
-  z-index: 9000;
-}
 </style>
 </head>
 
@@ -3023,47 +2904,40 @@ body[data-theme="dark"] .theme-btn.active{
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.770292682659!2d107.8813245!3d-7.0165307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c9df6ada6155:0x37e2fd8bf58f8eee!2sGusman%20Homestay%20-%20Nagreg!5e0!3m2!1sen!2sid!4v1707640000000">
   </iframe>
 
-<!-- 📍 Nearby Places Button (PETA ONLY) -->
-<div style="text-align:center; margin-top:16px;">
-  <button 
-    type="button"
-    class="btn btn-premium"
-    onclick="openNearbyModal()"
-    style="padding:12px 18px; border-radius:14px;">
+  <!-- OPEN IN GOOGLE MAPS BUTTON -->
+  <div style="text-align:center;margin-top:14px;">
+<a
+  class="map-btn btn-premium"
+  href="https://maps.app.goo.gl/XmVP7FrznLSLhbZd9?g_st=ic"
+  target="_blank"
+  rel="noopener">
+      <!-- Indonesian -->
+      <span class="lang id active">
+        Buka di
+        <img src="images/googlemaps.png" class="map-icon" alt="">
+      </span>
 
-    <span class="lang id">📍 Lihat Tempat Sekitar</span>
-    <span class="lang en" style="display:none;">📍 See Nearby Places</span>
-    <span class="lang de" style="display:none;">📍 Orte in der Nähe</span>
-    <span class="lang it" style="display:none;">📍 Luoghi nelle vicinanze</span>
+      <!-- English -->
+      <span class="lang en">
+        Open in
+        <img src="images/googlemaps.png" class="map-icon" alt="">
+      </span>
 
-  </button>
-</div>
+      <!-- German -->
+      <span class="lang de">
+        In
+        <img src="images/googlemaps.png" class="map-icon" alt="">
+        Öffnen
+      </span>
 
-  <!-- Open Google Maps -->
-  <a
-    class="btn btn-premium"
-    href="https://maps.app.goo.gl/XmVP7FrznLSLhbZd9?g_st=ic"
-    target="_blank"
-    rel="noopener">
-    <span class="lang id active">
-      Buka di
-      <img src="images/googlemaps.png" class="map-icon" alt="">
-    </span>
-    <span class="lang en" style="display:none;">
-      Open in
-      <img src="images/googlemaps.png" class="map-icon" alt="">
-    </span>
-    <span class="lang de" style="display:none;">
-      In
-      <img src="images/googlemaps.png" class="map-icon" alt="">
-      Öffnen
-    </span>
-    <span class="lang it" style="display:none;">
-      Apri su
-      <img src="images/googlemaps.png" class="map-icon" alt="">
-    </span>
-  </a>
-</div>
+      <!-- Italian -->
+      <span class="lang it">
+        Apri su
+        <img src="images/googlemaps.png" class="map-icon" alt="">
+      </span>
+
+    </a>
+  </div>
 </div>
 </section>
 <!-- ===================== ABOUT / STORY (FULL WIDTH) ===================== -->
@@ -4282,210 +4156,62 @@ function closeRules(){
     Le distanze e i tempi di percorrenza sono indicativi e possono variare in base al traffico.
   </p>
 </div>
-<!-- =====================
-     NEARBY MODAL (Step 1)
-===================== -->
-<div id="nearbyOverlay" class="nearby-overlay" style="display:none;">
-  <div class="nearby-modal" role="dialog" aria-modal="true" aria-label="Nearby places">
-    <button class="nearby-close" type="button" onclick="closeNearbyModal()">✕</button>
 
-    <div class="nearby-head">
-      <div class="nearby-title">
-        <span class="lang id">Sekitar Gusman Homestay</span>
-        <span class="lang en" style="display:none;">Nearby Gusman Homestay</span>
-        <span class="lang de" style="display:none;">In der Nähe (Gusman Homestay)</span>
-        <span class="lang it" style="display:none;">Nelle vicinanze (Gusman Homestay)</span>
-      </div>
-      <div class="nearby-sub">
-        <span class="lang id">Pilih kategori untuk lihat jarak</span>
-        <span class="lang en" style="display:none;">Pick a category to see distances</span>
-        <span class="lang de" style="display:none;">Kategorie wählen, um Entfernungen zu sehen</span>
-        <span class="lang it" style="display:none;">Scegli una categoria per vedere le distanze</span>
-      </div>
-    </div>
-
-    <div class="nearby-tabs">
-      <button type="button" class="nearby-tab active" data-cat="transport" onclick="selectNearbyCategory('transport', this)">🚆 Transport</button>
-      <button type="button" class="nearby-tab" data-cat="shopping" onclick="selectNearbyCategory('shopping', this)">🛍 Shopping</button>
-      <button type="button" class="nearby-tab" data-cat="food" onclick="selectNearbyCategory('food', this)">🍽 Food</button>
-      <button type="button" class="nearby-tab" data-cat="health" onclick="selectNearbyCategory('health', this)">🏥 Health</button>
-      <button type="button" class="nearby-tab" data-cat="atm" onclick="selectNearbyCategory('atm', this)">💳 ATM</button>
-      <button type="button" class="nearby-tab" data-cat="attractions" onclick="selectNearbyCategory('attractions', this)">🏞 Attractions</button>
-    </div>
-
-    <div class="nearby-body">
-      <div id="nearbyStatus" class="nearby-status">Ready.</div>
-      <div id="nearbyList" class="nearby-list"></div>
-    </div>
   </div>
 </div>
-<script>
-/* =====================
-   NEARBY MODAL LOGIC
-===================== */
-
-const HOME_COORDS = {
-  lat: -7.0329,
-  lng: 107.7483
-};
-
-const NEARBY_CATEGORIES = {
-  transport: {
-    id: "🚆 Public Transportation",
-    query: "train station OR bus stop near Nagreg Bandung"
-  },
-  shopping: {
-    id: "🛍 Shopping",
-    query: "minimarket OR shop near Nagreg Bandung"
-  },
-  food: {
-    id: "🍽 Food & Restaurants",
-    query: "restaurant OR warung near Nagreg Bandung"
-  },
-  health: {
-    id: "🏥 Healthcare",
-    query: "clinic OR pharmacy near Nagreg Bandung"
-  },
-  atm: {
-    id: "💳 ATM",
-    query: "ATM near Nagreg Bandung"
-  },
-  attractions: {
-    id: "🏞 Attractions",
-    query: "tourist attraction near Nagreg Bandung"
-  }
-};
-
-/* =====================
-   NEARBY MODAL — FINAL JS
-===================== */
-
-function closeAllModals(){
-  document.querySelectorAll(
-    '.nearby-overlay.show, .rules-modal.open, .attractions-modal.open'
-  ).forEach(m => {
-    m.classList.remove('show', 'open');
-    m.style.display = 'none';
-  });
-
-  document.body.classList.remove('modal-open');
-}
-
-function openNearbyModal(){
-  closeAllModals(); // 🔥 important
-
-  const overlay = document.getElementById('nearbyOverlay');
-  overlay.style.display = 'flex';
-
-  requestAnimationFrame(() => {
-    overlay.classList.add('show');
-  });
-
-  document.body.classList.add('modal-open');
-
-  const firstTab = overlay.querySelector('.nearby-tab');
-  if (firstTab) selectNearbyCategory('transport', firstTab);
-}
-
-function closeNearbyModal(){
-  const overlay = document.getElementById('nearbyOverlay');
-  overlay.classList.remove('show');
-
-  setTimeout(() => {
-    overlay.style.display = 'none';
-  }, 200);
-
-  document.body.classList.remove('modal-open');
-}
-
-/* Click outside closes */
-document.getElementById('nearbyOverlay')?.addEventListener('click', e => {
-  if (e.target.id === 'nearbyOverlay') {
-    closeNearbyModal();
-  }
-});
-
-/* ESC closes ALL modals */
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    closeAllModals();
-  }
-});
-/* CATEGORY SELECT */
-function selectNearbyCategory(cat, btn){
-  document.querySelectorAll('.nearby-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  const list = document.getElementById('nearbyList');
-  const status = document.getElementById('nearbyStatus');
-
-  list.innerHTML = "";
-  status.innerHTML = `
-    <span class="lang id">Membuka Google Maps…</span>
-    <span class="lang en" style="display:none;">Opening Google Maps…</span>
-    <span class="lang de" style="display:none;">Google Maps wird geöffnet…</span>
-    <span class="lang it" style="display:none;">Apertura di Google Maps…</span>
-  `;
-
-  const q = NEARBY_CATEGORIES[cat].query;
-  const url = `https://www.google.com/maps/search/${encodeURIComponent(q)}/@${HOME_COORDS.lat},${HOME_COORDS.lng},14z`;
-
-  setTimeout(() => {
-    list.innerHTML = `
-      <div class="nearby-item">
-        <div class="nearby-name">${NEARBY_CATEGORIES[cat].id}</div>
-        <div class="nearby-distance">
-          Tap below to view nearby places with distance & directions
-        </div>
-        <a href="${url}" target="_blank" style="
-          display:inline-block;
-          margin-top:10px;
-          font-weight:800;
-          color:#fff;
-          text-decoration:none;
-          background:rgba(255,255,255,.18);
-          padding:8px 14px;
-          border-radius:12px;
-        ">
-          Open in Google Maps →
-        </a>
-      </div>
-    `;
-    status.textContent = "Powered by Google Maps";
-  }, 300);
-}
-</script>
 <script>
 /* =========================
    DIRECTIONS MODAL
 ========================= */
-function openAttractions(){
-  closeAllModals(); // 🔥 CLOSE EVERYTHING FIRST
-
-  const modal = document.getElementById('attractionsModal');
+function openDirections(){
+  const modal = document.getElementById('directionsModal');
   modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
 
-  document.body.classList.add('modal-open');
+  modal.addEventListener('click', e => {
+    if(e.target === modal) closeDirections();
+  }, { once:true });
+}
+
+function closeDirections(){
+  const modal = document.getElementById('directionsModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 /* =========================
    ATTRACTIONS MODAL
 ========================= */
 function openAttractions(){
-  closeAllModals(); // 🔥 CLOSE EVERYTHING FIRST
-
   const modal = document.getElementById('attractionsModal');
   modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
 
-  document.body.classList.add('modal-open');
+  modal.addEventListener('click', e => {
+    if(e.target === modal) closeAttractions();
+  }, { once:true });
 }
 
 function closeAttractions(){
   const modal = document.getElementById('attractionsModal');
   modal.classList.remove('open');
-
-  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
 }
+
+/* =========================
+   ESC KEY HANDLER (ALL MODALS)
+========================= */
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+
+  const rules = document.getElementById('rulesModal');
+  const directions = document.getElementById('directionsModal');
+  const attractions = document.getElementById('attractionsModal');
+
+  if (rules?.classList.contains('open')) closeRules();
+  if (directions?.classList.contains('open')) closeDirections();
+  if (attractions?.classList.contains('open')) closeAttractions();
+});
 </script>
 <!-- =========================
    GA4 CLICK TRACKING
