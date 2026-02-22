@@ -1779,10 +1779,10 @@ body[data-theme="dark"] .theme-btn.active{
 }
 
 /* 🔥 DESKTOP: ALWAYS ONE LINE */
-.gallery-row{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+.gallery-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
 }
 
 .gallery-row img{
