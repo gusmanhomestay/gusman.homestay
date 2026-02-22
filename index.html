@@ -3239,16 +3239,15 @@ body[data-theme="dark"] .theme-btn.active{
       <button class="nearby-tab" onclick="selectNearbyCategory('atm', this)">💳 ATM</button>
       <button class="nearby-tab" onclick="selectNearbyCategory('attractions', this)">🏞 Attractions</button>
     </div>
-
-    <div class="nearby-action" style="margin-top:16px;text-align:center;">
-  <a
-    id="nearbyMapsLink"
-    class="btn btn-premium"
-    target="_blank"
-    rel="noopener">
-    Open in Google Maps →
-  </a>
-</div>
+<a
+  id="nearbyMapsBtn"
+  class="btn btn-premium"
+  href="#"
+  target="_blank"
+  style="display:none;margin-top:16px;">
+  Open in Google Maps →
+</a>
+  
   </div> <!-- ✅ CLOSE nearby-modal -->
 
 </div> <!-- ✅ CLOSE nearby-overlay -->
@@ -4579,6 +4578,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const ORIGIN = "Gusman Homestay - Nagreg";
 
+let nearbyMapsURL = "";
+
 function selectNearbyCategory(cat, btn){
   document.querySelectorAll('.nearby-tab')
     .forEach(b => b.classList.remove('active'));
@@ -4586,11 +4587,13 @@ function selectNearbyCategory(cat, btn){
 
   const query = NEARBY_CATEGORIES[cat];
 
-  const url =
+  nearbyMapsURL =
     "https://www.google.com/maps/search/" +
     encodeURIComponent(query);
 
-  window.open(url, "_blank");
+  const btnMaps = document.getElementById("nearbyMapsBtn");
+  btnMaps.href = nearbyMapsURL;
+  btnMaps.style.display = "block";
 }
 
 function openNearbyModal(){
