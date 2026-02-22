@@ -4459,39 +4459,32 @@ function selectNearbyCategory(cat, btn){
 /* =========================
    DIRECTIONS MODAL
 ========================= */
-function openDirections(){
-  const modal = document.getElementById('directionsModal');
+function openAttractions(){
+  closeAllModals(); // 🔥 CLOSE EVERYTHING FIRST
+
+  const modal = document.getElementById('attractionsModal');
   modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
 
-  modal.addEventListener('click', e => {
-    if(e.target === modal) closeDirections();
-  }, { once:true });
-}
-
-function closeDirections(){
-  const modal = document.getElementById('directionsModal');
-  modal.classList.remove('open');
-  document.body.style.overflow = '';
+  document.body.classList.add('modal-open');
 }
 
 /* =========================
    ATTRACTIONS MODAL
 ========================= */
 function openAttractions(){
+  closeAllModals(); // 🔥 CLOSE EVERYTHING FIRST
+
   const modal = document.getElementById('attractionsModal');
   modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
 
-  modal.addEventListener('click', e => {
-    if(e.target === modal) closeAttractions();
-  }, { once:true });
+  document.body.classList.add('modal-open');
 }
 
 function closeAttractions(){
   const modal = document.getElementById('attractionsModal');
   modal.classList.remove('open');
-  document.body.style.overflow = '';
+
+  document.body.classList.remove('modal-open');
 }
 </script>
 <!-- =========================
