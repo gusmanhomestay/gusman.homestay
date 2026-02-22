@@ -3476,44 +3476,65 @@ function tourPrev(){
   const prev = btns[(i - 1 + btns.length) % btns.length];
   setTourVideo(prev.dataset.src, prev.dataset.poster, prev);
 }
+
 /* =========================
-   LIGHTBOX
+   GROUPED LIGHTBOX (PER SECTION)
 ========================= */
-function initLightbox(){
-  const overlay = document.getElementById('lbOverlay');
-  const img = document.getElementById('lbImg');
-  const imgs = Array.from(document.querySelectorAll('.gallery img'));
-  const prev = document.getElementById('lbPrev');
-  const next = document.getElementById('lbNext');
-  const close = document.getElementById('lbClose');
-  const counter = document.getElementById('lbCounter');
 
-  if(!overlay || !imgs.length) return;
+let currentImages = [];
+let currentIndex = 0;
 
-  let index = 0;
+const overlay = document.getElementById('lbOverlay');
+const img = document.getElementById('lbImg');
+const prev = document.getElementById('lbPrev');
+const next = document.getElementById('lbNext');
+const close = document.getElementById('lbClose');
+const counter = document.getElementById('lbCounter');
 
-  function show(i){
-    index = (i + imgs.length) % imgs.length;
-    img.src = imgs[index].dataset.full || imgs[index].src;
-    counter.textContent = `${index + 1} / ${imgs.length}`;
-  }
+/* attach click per gallery-row */
+document.querySelectorAll('.gallery-row').forEach(row => {
+  const imgs = Array.from(row.querySelectorAll('img'));
 
   imgs.forEach((el, i) => {
     el.onclick = () => {
-      show(i);
+      currentImages = imgs;
+      currentIndex = i;
+      show();
       overlay.classList.add('open');
     };
   });
+});
 
-  prev.onclick = () => show(index - 1);
-  next.onclick = () => show(index + 1);
-  close.onclick = () => overlay.classList.remove('open');
+function show(){
+  const el = currentImages[currentIndex];
+  img.src = el.dataset.full || el.src;
+  counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
 
-  overlay.onclick = (e) => {
-    if (e.target === overlay) close.onclick();
-  };
+  /* optional: disable arrows at ends */
+  prev.style.opacity = currentIndex === 0 ? .3 : 1;
+  next.style.opacity = currentIndex === currentImages.length - 1 ? .3 : 1;
 }
 
+prev.onclick = () => {
+  if(currentIndex > 0){
+    currentIndex--;
+    show();
+  }
+};
+
+next.onclick = () => {
+  if(currentIndex < currentImages.length - 1){
+    currentIndex++;
+    show();
+  }
+};
+
+close.onclick = () => overlay.classList.remove('open');
+
+overlay.onclick = (e) => {
+  if(e.target === overlay) close.onclick();
+};
+  
 /* =========================
    AUTO THEME: DARK AT NIGHT
 ========================= */
