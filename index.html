@@ -4544,7 +4544,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateGalleryLanguage(lang);
 });
 
-const HOME_COORDS = { lat: -7.016526, lng: 107.883903 };
+const ORIGIN = "Gusman Homestay - Nagreg";
 
 const NEARBY_CATEGORIES = {
   transport: "train station OR bus stop near Nagreg Bandung",
@@ -4572,11 +4572,7 @@ function selectNearbyCategory(cat, btn){
   btn.classList.add('active');
 
   const q = NEARBY_CATEGORIES[cat];
-const url =
-  `https://www.google.com/maps/dir/?api=1` +
-  `&origin=${HOME_COORDS.lat},${HOME_COORDS.lng}` +
-  `&destination=${encodeURIComponent(q)}` +
-  `&travelmode=driving`;
+const url = `https://www.google.com/maps/search/${encodeURIComponent(q)}?origin=${encodeURIComponent(ORIGIN)}`;
 
   document.getElementById('nearbyList').innerHTML = `
     <a href="${url}" target="_blank" class="btn btn-premium" style="margin-top:12px">
