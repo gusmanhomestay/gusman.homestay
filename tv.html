@@ -33,79 +33,74 @@ html,body{
   justify-content:center
 }
 
-/* 🔧 SHIFT CENTER LINE LEFT */
 .tv-card{
   width:94vw;
   height:86vh;
   display:grid;
-  grid-template-columns:1.15fr 0.85fr;
-  gap:3.5vw;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:3vw;
   align-items:center
 }
 
-/* LEFT */
+/* LEFT – MAIN INFO (BIGGER) */
 .left{
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
-  padding-top:2vh;
-  gap:1.6vh
+  gap:2.2vh;
+  padding-top:2vh
 }
 
-/* LOGO HIGHER */
 .logo{
-  max-width:28vw;
+  max-width:30vw;
   margin-bottom:1vh
 }
 
-/* TITLE HIGHER */
 h1{
-  font-size:3.3vw;
-  line-height:1.15;
-  margin-bottom:.5vh
+  font-size:3.8vw;
+  line-height:1.15
 }
 
 .guest{
-  font-size:2.4vw;
+  font-size:2.8vw;
   margin-bottom:1vh
 }
 
 .info{
-  font-size:1.45vw;
-  line-height:1.5;
+  font-size:1.75vw;
+  line-height:1.6;
   opacity:.95
 }
 
-/* STATUS STACKED */
-.status{
-  margin-top:1.6vh;
-  font-size:1.4vw;
-  line-height:1.55;
-  opacity:.95
-}
-
-/* RIGHT */
+/* RIGHT – STATUS + QR */
 .right{
   height:100%;
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
-  text-align:center;
   border-left:2px solid rgba(255,255,255,.35);
-  padding-left:3vw
+  padding-left:3vw;
+  gap:1.6vh
+}
+
+.status{
+  width:100%;
+  text-align:center;
+  font-size:1.45vw;
+  line-height:1.6;
+  margin-top:1vh;
+  margin-bottom:1.2vh
 }
 
 .qr-title{
-  font-size:2.05vw;
-  margin-bottom:.8vh;
-  white-space:normal
+  font-size:2.1vw;
+  margin-top:1vh
 }
 
 .qr-sub{
   font-size:1.35vw;
   opacity:.85;
-  margin-bottom:1.8vh
+  margin-bottom:1.6vh
 }
 
 .qr{
@@ -113,8 +108,8 @@ h1{
 }
 
 .qr-note{
-  margin-top:1.6vh;
-  font-size:1.25vw;
+  margin-top:1.4vh;
+  font-size:1.3vw;
   opacity:.9
 }
 
@@ -159,9 +154,7 @@ h1{
         <span class="lang-en" style="display:none">Welcome to<br>Gusman Homestay</span>
       </h1>
 
-      <div class="guest">
-        <strong id="guestName">Tamu</strong>
-      </div>
+      <div class="guest"><strong id="guestName">Tamu</strong></div>
 
       <div class="info">
         Wi-Fi: <strong>Gusman-HomeStay</strong><br>
@@ -186,17 +179,17 @@ h1{
         </span>
       </div>
 
-      <!-- STATUS -->
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+      <!-- STATUS MOVED HERE -->
       <div class="status">
         <div id="clock"></div>
         <div id="weather"></div>
         <div id="forecast"></div>
       </div>
-
-    </div>
-
-    <!-- RIGHT -->
-    <div class="right">
 
       <div class="qr-title">
         <span class="lang-id">Scan QR Code untuk Panduan Tamu</span>
@@ -259,7 +252,6 @@ n.toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"nu
 n.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Jakarta"})
 +" WIB";
 }
-
 clock(); setInterval(clock,1000);
 
 try{
@@ -271,7 +263,6 @@ forecastEl.textContent=
 d.daily.precipitation_sum[1]>0
 ?`🌦 Besok hujan • ${d.daily.temperature_2m_min[1]}–${d.daily.temperature_2m_max[1]}°C`
 :`🌤 Besok cerah • ${d.daily.temperature_2m_min[1]}–${d.daily.temperature_2m_max[1]}°C`;
-
 }catch{}
 })();
 </script>
