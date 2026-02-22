@@ -137,7 +137,9 @@ h1{
       <h1>Selamat Datang di<br>Gusman Homestay</h1>
 
       <!-- 🔁 GANTI NAMA TAMU -->
-     <div class="guest"><strong>Mr. John Family</strong></div>
+     <div class="guest">
+  <strong id="guestName">Guest</strong>
+</div>
 
       <div class="info">
         Wi-Fi: <strong>Gusman-HomeStay</strong><br>
@@ -176,5 +178,14 @@ h1{
 <div class="footer">
   © 2026 Gusman Homestay • www.gusmanhomestay.com
 </div>
+  <script>
+const params = new URLSearchParams(window.location.search);
+const name = params.get("guest");
+
+if (name) {
+  document.getElementById("guestName").textContent =
+    decodeURIComponent(name.replace(/\+/g, " "));
+}
+</script>
 </body>
 </html>
