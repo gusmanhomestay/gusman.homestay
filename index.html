@@ -4308,6 +4308,90 @@ function closeRules(){
   </div>
 </div>
 <script>
+/* =====================
+   NEARBY MODAL LOGIC
+===================== */
+
+const HOME_COORDS = {
+  lat: -7.0329,
+  lng: 107.7483
+};
+
+const NEARBY_CATEGORIES = {
+  transport: {
+    id: "🚆 Public Transportation",
+    query: "train station OR bus stop near Nagreg Bandung"
+  },
+  shopping: {
+    id: "🛍 Shopping",
+    query: "minimarket OR shop near Nagreg Bandung"
+  },
+  food: {
+    id: "🍽 Food & Restaurants",
+    query: "restaurant OR warung near Nagreg Bandung"
+  },
+  health: {
+    id: "🏥 Healthcare",
+    query: "clinic OR pharmacy near Nagreg Bandung"
+  },
+  atm: {
+    id: "💳 ATM",
+    query: "ATM near Nagreg Bandung"
+  },
+  attractions: {
+    id: "🏞 Attractions",
+    query: "tourist attraction near Nagreg Bandung"
+  }
+};
+
+function openNearbyModal(){
+  document.getElementById('nearbyOverlay').style.display = 'flex';
+  selectNearbyCategory('transport', document.querySelector('.nearby-tab'));
+}
+
+function closeNearbyModal(){
+  document.getElementById('nearbyOverlay').style.display = 'none';
+}
+
+function selectNearbyCategory(cat, btn){
+  document.querySelectorAll('.nearby-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const list = document.getElementById('nearbyList');
+  const status = document.getElementById('nearbyStatus');
+
+  list.innerHTML = "";
+  status.textContent = "Opening nearby places in Google Maps…";
+
+  const q = NEARBY_CATEGORIES[cat].query;
+  const url = `https://www.google.com/maps/search/${encodeURIComponent(q)}/@${HOME_COORDS.lat},${HOME_COORDS.lng},14z`;
+
+  setTimeout(() => {
+    list.innerHTML = `
+      <div class="nearby-item">
+        <div class="nearby-name">${NEARBY_CATEGORIES[cat].id}</div>
+        <div class="nearby-distance">
+          Tap below to view nearby places with distance & directions
+        </div>
+        <a href="${url}" target="_blank" style="
+          display:inline-block;
+          margin-top:10px;
+          font-weight:800;
+          color:#fff;
+          text-decoration:none;
+          background:rgba(255,255,255,.18);
+          padding:8px 14px;
+          border-radius:12px;
+        ">
+          Open in Google Maps →
+        </a>
+      </div>
+    `;
+    status.textContent = "Powered by Google Maps";
+  }, 300);
+}
+</script>
+<script>
 /* =========================
    DIRECTIONS MODAL
 ========================= */
