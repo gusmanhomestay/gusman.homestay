@@ -3242,8 +3242,8 @@ body[data-theme="dark"] .theme-btn.active{
 <a
   id="nearbyMapsBtn"
   class="btn btn-premium"
-  href="#"
   target="_blank"
+  rel="noopener"
   style="display:none;margin-top:16px;">
   Open in Google Maps →
 </a>
@@ -4576,9 +4576,17 @@ document.addEventListener('DOMContentLoaded', () => {
   updateGalleryLanguage(lang);
 });
 
+<script>
 const ORIGIN = "Gusman Homestay - Nagreg";
 
-let nearbyMapsURL = "";
+const NEARBY_CATEGORIES = {
+  transport: "transport near Gusman Homestay Nagreg",
+  shopping: "shopping near Gusman Homestay Nagreg",
+  food: "restaurants near Gusman Homestay Nagreg",
+  health: "hospital clinic pharmacy near Gusman Homestay Nagreg",
+  atm: "ATM near Gusman Homestay Nagreg",
+  attractions: "tourist attractions near Gusman Homestay Nagreg"
+};
 
 function selectNearbyCategory(cat, btn){
   document.querySelectorAll('.nearby-tab')
@@ -4586,42 +4594,14 @@ function selectNearbyCategory(cat, btn){
   btn.classList.add('active');
 
   const query = NEARBY_CATEGORIES[cat];
-
-  nearbyMapsURL =
-    "https://www.google.com/maps/search/" +
-    encodeURIComponent(query);
-
-  const btnMaps = document.getElementById("nearbyMapsBtn");
-  btnMaps.href = nearbyMapsURL;
-  btnMaps.style.display = "block";
-}
-
-function openNearbyModal(){
-  const o = document.getElementById('nearbyOverlay');
-  o.style.display = 'flex';
-  document.body.classList.add('modal-open');
-}
-
-function closeNearbyModal(){
-  const o = document.getElementById('nearbyOverlay');
-  o.style.display = 'none';
-  document.body.classList.remove('modal-open');
-}
-
-function selectNearbyCategory(cat, btn){
-  document.querySelectorAll('.nearby-tab')
-    .forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  const ORIGIN = "Gusman Homestay - Nagreg";
-  const q = NEARBY_CATEGORIES[cat].query;
-
   const url =
     `https://www.google.com/maps/search/?api=1` +
-    `&query=${encodeURIComponent(q)}` +
+    `&query=${encodeURIComponent(query)}` +
     `&origin=${encodeURIComponent(ORIGIN)}`;
 
-  document.getElementById('nearbyMapsLink').href = url;
+  const mapsBtn = document.getElementById('nearbyMapsBtn');
+  mapsBtn.href = url;
+  mapsBtn.style.display = "flex";
 }
 </script>
 </body>
