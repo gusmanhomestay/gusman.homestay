@@ -4572,10 +4572,11 @@ function selectNearbyCategory(cat, btn){
   btn.classList.add('active');
 
   const q = NEARBY_CATEGORIES[cat];
-  const url =
+const url =
   `https://www.google.com/maps/dir/?api=1` +
   `&origin=place_id:${HOME_PLACE_ID}` +
-  `&destination=${encodeURIComponent(q)}`;
+  `&destination=${encodeURIComponent(q)}` +
+  `&travelmode=driving`;
 
   document.getElementById('nearbyList').innerHTML = `
     <a href="${url}" target="_blank" class="btn btn-premium" style="margin-top:12px">
