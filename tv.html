@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Selamat Datang – Gusman Homestay</title>
+<title>Welcome – Gusman Homestay</title>
 
 <style>
 :root{
@@ -46,7 +46,6 @@ html, body{
   align-items:center;
 }
 
-/* LEFT */
 .left{
   display:flex;
   flex-direction:column;
@@ -75,7 +74,6 @@ h1{
   opacity:.95;
 }
 
-/* RIGHT */
 .right{
   height:100%;
   display:flex;
@@ -109,7 +107,6 @@ h1{
   opacity:.9;
 }
 
-/* FOOTER */
 .footer{
   position:absolute;
   bottom:2vh;
@@ -119,7 +116,6 @@ h1{
   opacity:.7;
 }
 
-/* 🔊 MUSIC BUTTON */
 #enableMusicBtn{
   position:fixed;
   bottom:30px;
@@ -147,7 +143,10 @@ h1{
     <div class="left">
       <img src="/images/gusman-logo-dark.webp" class="logo" alt="Gusman Homestay">
 
-      <h1>Selamat Datang di<br>Gusman Homestay</h1>
+      <h1>
+        <span class="lang-id">Selamat Datang di<br>Gusman Homestay</span>
+        <span class="lang-en" style="display:none;">Welcome to<br>Gusman Homestay</span>
+      </h1>
 
       <div class="guest">
         <strong id="guestName">Tamu</strong>
@@ -159,25 +158,42 @@ h1{
       </div>
 
       <div class="info">
-        Check-out: <strong>Pukul 12.00 WIB</strong>
+        <span class="lang-id">Check-out: <strong>Pukul 12.00 WIB</strong></span>
+        <span class="lang-en" style="display:none;">Check-out: <strong>Until 12:00 PM</strong></span>
       </div>
 
       <div class="info">
-        Kontak selama menginap:<br>
-        <strong>Ibu Yayah</strong><br>
-        WhatsApp: <strong>0813-2275-0517</strong>
+        <span class="lang-id">
+          Kontak selama menginap:<br>
+          <strong>Ibu Yayah</strong><br>
+          WhatsApp: <strong>0813-2275-0517</strong>
+        </span>
+
+        <span class="lang-en" style="display:none;">
+          During your stay:<br>
+          <strong>Ibu Yayah</strong><br>
+          WhatsApp: <strong>0813-2275-0517</strong>
+        </span>
       </div>
     </div>
 
     <!-- RIGHT -->
     <div class="right">
-      <div class="qr-title">Scan QR Code untuk Panduan Tamu</div>
-      <div class="qr-sub">Aturan rumah, Wi-Fi & rekomendasi wisata</div>
+      <div class="qr-title">
+        <span class="lang-id">Scan QR Code untuk Panduan Tamu</span>
+        <span class="lang-en" style="display:none;">Scan QR Code for Guest Guide</span>
+      </div>
 
-      <img src="/images/guide-qr.png" class="qr" alt="QR Panduan Tamu">
+      <div class="qr-sub">
+        <span class="lang-id">Aturan rumah, Wi-Fi & rekomendasi wisata</span>
+        <span class="lang-en" style="display:none;">House rules, Wi-Fi & local recommendations</span>
+      </div>
+
+      <img src="/images/guide-qr.png" class="qr" alt="QR Guide">
 
       <div class="qr-note">
-        Ulasan Google & diskon 10% tersedia 😊
+        <span class="lang-id">Ulasan Google & diskon 10% tersedia 😊</span>
+        <span class="lang-en" style="display:none;">Google reviews & 10% discount available 😊</span>
       </div>
     </div>
 
@@ -188,14 +204,14 @@ h1{
   © 2026 Gusman Homestay • www.gusmanhomestay.com
 </div>
 
-<!-- 🔊 ENABLE MUSIC -->
-<button id="enableMusicBtn">🔊 Aktifkan Musik Selamat Datang</button>
+<!-- MUSIC -->
+<button id="enableMusicBtn">🔊 Aktifkan Musik</button>
 
 <audio id="bgMusic" loop>
   <source src="/music/welcome.mp3" type="audio/mpeg">
 </audio>
 
-<!-- GUEST NAME SCRIPT -->
+<!-- Guest Name -->
 <script>
 (function () {
   const params = new URLSearchParams(window.location.search);
@@ -209,7 +225,26 @@ h1{
 })();
 </script>
 
-<!-- MUSIC SCRIPT -->
+<!-- Language Auto Switch -->
+<script>
+(function () {
+  let current = 'id';
+
+  setInterval(() => {
+    document.querySelectorAll('.lang-id').forEach(el => {
+      el.style.display = current === 'id' ? '' : 'none';
+    });
+
+    document.querySelectorAll('.lang-en').forEach(el => {
+      el.style.display = current === 'en' ? '' : 'none';
+    });
+
+    current = current === 'id' ? 'en' : 'id';
+  }, 30000); // switch every 30 seconds
+})();
+</script>
+
+<!-- Music Script -->
 <script>
 (function () {
   const music = document.getElementById('bgMusic');
