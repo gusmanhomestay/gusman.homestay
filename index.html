@@ -1806,9 +1806,9 @@ body[data-theme="dark"] .theme-btn.active{
     gap: 12px;
   }
 
-  .gallery-row img {
-    flex: 0 0 calc(50% - 6px);
-    height: 100px;
+@media (max-width: 640px) {
+  .gallery-row {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 /* 🔒 HARD STOP: prevent gallery from escaping card */
