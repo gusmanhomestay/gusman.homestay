@@ -3240,6 +3240,15 @@ body[data-theme="dark"] .theme-btn.active{
       <button class="nearby-tab" onclick="selectNearbyCategory('attractions', this)">🏞 Attractions</button>
     </div>
 
+    <div class="nearby-action" style="margin-top:16px;text-align:center;">
+  <a
+    id="nearbyMapsLink"
+    class="btn btn-premium"
+    target="_blank"
+    rel="noopener">
+    Open in Google Maps →
+  </a>
+</div>
   </div> <!-- ✅ CLOSE nearby-modal -->
 
 </div> <!-- ✅ CLOSE nearby-overlay -->
@@ -4592,17 +4601,19 @@ function closeNearbyModal(){
 }
 
 function selectNearbyCategory(cat, btn){
-  document.querySelectorAll('.nearby-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.nearby-tab')
+    .forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  const q = NEARBY_CATEGORIES[cat];
-const url = `https://www.google.com/maps/search/${encodeURIComponent(q)}?origin=${encodeURIComponent(ORIGIN)}`;
+  const ORIGIN = "Gusman Homestay - Nagreg";
+  const q = NEARBY_CATEGORIES[cat].query;
 
-  document.getElementById('nearbyList').innerHTML = `
-    <a href="${url}" target="_blank" class="btn btn-premium" style="margin-top:12px">
-      Open in Google Maps →
-    </a>
-  `;
+  const url =
+    `https://www.google.com/maps/search/?api=1` +
+    `&query=${encodeURIComponent(q)}` +
+    `&origin=${encodeURIComponent(ORIGIN)}`;
+
+  document.getElementById('nearbyMapsLink').href = url;
 }
 </script>
 </body>
