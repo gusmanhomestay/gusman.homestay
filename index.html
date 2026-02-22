@@ -1864,6 +1864,35 @@ body[data-theme="dark"] .theme-btn.active{
   font-size: 18px;
   cursor: pointer;
 }
+.nearby-tabs{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.nearby-tab{
+  border: 1px solid #ddd;
+  background: #f6f6f6;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.nearby-tab:hover{
+  background: #eee;
+}
+
+.nearby-tab.active{
+  background: #2f8f87;
+  color: #fff;
+  border-color: #2f8f87;
+}
+.nearby-tabs{
+  justify-content: center;
+}
 </style>
 </head>
 
@@ -3209,11 +3238,6 @@ body[data-theme="dark"] .theme-btn.active{
       <button class="nearby-tab" onclick="selectNearbyCategory('health', this)">🏥 Health</button>
       <button class="nearby-tab" onclick="selectNearbyCategory('atm', this)">💳 ATM</button>
       <button class="nearby-tab" onclick="selectNearbyCategory('attractions', this)">🏞 Attractions</button>
-    </div>
-
-    <div class="nearby-body">
-      <div id="nearbyStatus">Ready.</div>
-      <div id="nearbyList"></div>
     </div>
 
   </div> <!-- ✅ CLOSE nearby-modal -->
