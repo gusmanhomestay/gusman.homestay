@@ -3239,7 +3239,8 @@ body[data-theme="dark"] .theme-btn.active{
       <button class="nearby-tab" onclick="selectNearbyCategory('atm', this)">💳 ATM</button>
       <button class="nearby-tab" onclick="selectNearbyCategory('attractions', this)">🏞 Attractions</button>
     </div>
-<a
+
+   <a
   id="nearbyMapsBtn"
   class="btn btn-premium"
   target="_blank"
@@ -3247,11 +3248,9 @@ body[data-theme="dark"] .theme-btn.active{
   style="display:none;margin-top:16px;">
   Open in Google Maps →
 </a>
-  
-  </div> <!-- ✅ CLOSE nearby-modal -->
 
-</div> <!-- ✅ CLOSE nearby-overlay -->
-
+  </div>
+</div>
 <!-- Lightbox Overlay (Next/Prev) -->
 <div id="lbOverlay" class="lb-overlay" aria-hidden="true">
   <button id="lbClose" class="lb-btn lb-close" type="button" aria-label="Close">✕</button>
@@ -4577,31 +4576,39 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 <script>
-const ORIGIN = "Gusman Homestay - Nagreg";
+/* =========================
+   NEARBY MODAL – FINAL FIX
+========================= */
 
-const NEARBY_CATEGORIES = {
-  transport: "transport near Gusman Homestay Nagreg",
-  shopping: "shopping near Gusman Homestay Nagreg",
-  food: "restaurants near Gusman Homestay Nagreg",
-  health: "hospital clinic pharmacy near Gusman Homestay Nagreg",
-  atm: "ATM near Gusman Homestay Nagreg",
-  attractions: "tourist attractions near Gusman Homestay Nagreg"
+const MAP_CENTER = "-7.016526,107.883903"; // Gusman Homestay coords
+
+const nearbyLinks = {
+  transport: `https://www.google.com/maps/search/transport/@${MAP_CENTER},15z`,
+  shopping:  `https://www.google.com/maps/search/shopping/@${MAP_CENTER},15z`,
+  food:      `https://www.google.com/maps/search/restaurants/@${MAP_CENTER},15z`,
+  health:    `https://www.google.com/maps/search/hospital/@${MAP_CENTER},15z`,
+  atm:       `https://www.google.com/maps/search/atm/@${MAP_CENTER},15z`,
+  attractions:`https://www.google.com/maps/search/tourist+attractions/@${MAP_CENTER},15z`
 };
 
-function selectNearbyCategory(cat, btn){
-  document.querySelectorAll('.nearby-tab')
-    .forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+function openNearbyModal(){
+  document.getElementById("nearbyOverlay").classList.add("show");
+  selectNearbyCategory("transport");
+}
 
-  const query = NEARBY_CATEGORIES[cat];
-  const url =
-    `https://www.google.com/maps/search/?api=1` +
-    `&query=${encodeURIComponent(query)}` +
-    `&origin=${encodeURIComponent(ORIGIN)}`;
+function closeNearbyModal(){
+  document.getElementById("nearbyOverlay").classList.remove("show");
+}
 
-  const mapsBtn = document.getElementById('nearbyMapsBtn');
-  mapsBtn.href = url;
-  mapsBtn.style.display = "flex";
+function selectNearbyCategory(category, btn){
+  // tabs active state
+  document.querySelectorAll(".nearby-tab").forEach(b => b.classList.remove("active"));
+  if(btn) btn.classList.add("active");
+
+  // update Google Maps button
+  const mapBtn = document.getElementById("nearbyMapsBtn");
+  mapBtn.href = nearbyLinks[category];
+  mapBtn.style.display = "flex";
 }
 </script>
 </body>
