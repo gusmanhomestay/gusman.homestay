@@ -2017,6 +2017,9 @@ body[data-theme="dark"] .theme-btn.active{
 .nearby-overlay.show .nearby-modal{
   transform: scale(1);
 }
+.nearby-overlay{
+  z-index: 9999;
+}
 </style>
 </head>
 
@@ -4550,10 +4553,12 @@ document.addEventListener('keydown', e => {
   const rules = document.getElementById('rulesModal');
   const directions = document.getElementById('directionsModal');
   const attractions = document.getElementById('attractionsModal');
+  const nearby = document.getElementById('nearbyOverlay');
 
   if (rules?.classList.contains('open')) closeRules();
   if (directions?.classList.contains('open')) closeDirections();
   if (attractions?.classList.contains('open')) closeAttractions();
+  if (nearby?.classList.contains('show')) closeNearbyModal();
 });
 </script>
 <!-- =========================
