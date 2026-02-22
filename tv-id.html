@@ -178,14 +178,27 @@ h1{
 <div class="footer">
   © 2026 Gusman Homestay • www.gusmanhomestay.com
 </div>
-  <script>
-const params = new URLSearchParams(window.location.search);
-const name = params.get("guest");
+<script>
+(function () {
+  var query = window.location.search.substring(1);
+  var parts = query.split("&");
+  var guest = "";
 
-if (name) {
-  document.getElementById("guestName").textContent =
-    decodeURIComponent(name.replace(/\+/g, " "));
-}
+  for (var i = 0; i < parts.length; i++) {
+    var pair = parts[i].split("=");
+    if (pair[0] === "guest") {
+      guest = decodeURIComponent(pair[1].replace(/\+/g, " "));
+      break;
+    }
+  }
+
+  if (guest) {
+    var el = document.getElementById("guestName");
+    if (el) {
+      el.innerHTML = guest;
+    }
+  }
+})();
 </script>
 </body>
 </html>
