@@ -1,4 +1,3 @@
-<html lang="id">
 <head>
   
   <!-- Google Analytics 4 -->  
@@ -3184,7 +3183,42 @@ body[data-theme="dark"] .theme-btn.active{
 
   </div>
 </footer>
-</div><!-- end container -->
+
+<!-- =====================
+     NEARBY MODAL
+===================== -->
+<div id="nearbyOverlay" class="nearby-overlay">
+
+  <div class="nearby-modal">
+
+    <button class="nearby-close" onclick="closeNearbyModal()">✕</button>
+
+    <div class="nearby-head">
+      <div class="nearby-title">
+        <span class="lang id">Sekitar Gusman Homestay</span>
+        <span class="lang en" style="display:none;">Nearby Gusman Homestay</span>
+        <span class="lang de" style="display:none;">In der Nähe</span>
+        <span class="lang it" style="display:none;">Nelle vicinanze</span>
+      </div>
+    </div>
+
+    <div class="nearby-tabs">
+      <button class="nearby-tab active" onclick="selectNearbyCategory('transport', this)">🚆 Transport</button>
+      <button class="nearby-tab" onclick="selectNearbyCategory('shopping', this)">🛍 Shopping</button>
+      <button class="nearby-tab" onclick="selectNearbyCategory('food', this)">🍽 Food</button>
+      <button class="nearby-tab" onclick="selectNearbyCategory('health', this)">🏥 Health</button>
+      <button class="nearby-tab" onclick="selectNearbyCategory('atm', this)">💳 ATM</button>
+      <button class="nearby-tab" onclick="selectNearbyCategory('attractions', this)">🏞 Attractions</button>
+    </div>
+
+    <div class="nearby-body">
+      <div id="nearbyStatus">Ready.</div>
+      <div id="nearbyList"></div>
+    </div>
+
+  </div> <!-- ✅ CLOSE nearby-modal -->
+
+</div> <!-- ✅ CLOSE nearby-overlay -->
 
 <!-- Lightbox Overlay (Next/Prev) -->
 <div id="lbOverlay" class="lb-overlay" aria-hidden="true">
@@ -4509,42 +4543,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const lang = localStorage.getItem('lang') || 'id';
   updateGalleryLanguage(lang);
 });
-</script>
-<!-- =====================
-     NEARBY MODAL
-===================== -->
-<div id="nearbyOverlay" class="nearby-overlay">
-
-  <div class="nearby-modal">
-
-    <button class="nearby-close" onclick="closeNearbyModal()">✕</button>
-
-    <div class="nearby-head">
-      <div class="nearby-title">
-        <span class="lang id">Sekitar Gusman Homestay</span>
-        <span class="lang en" style="display:none;">Nearby Gusman Homestay</span>
-        <span class="lang de" style="display:none;">In der Nähe</span>
-        <span class="lang it" style="display:none;">Nelle vicinanze</span>
-      </div>
-    </div>
-
-    <div class="nearby-tabs">
-      <button class="nearby-tab active" onclick="selectNearbyCategory('transport', this)">🚆 Transport</button>
-      <button class="nearby-tab" onclick="selectNearbyCategory('shopping', this)">🛍 Shopping</button>
-      <button class="nearby-tab" onclick="selectNearbyCategory('food', this)">🍽 Food</button>
-      <button class="nearby-tab" onclick="selectNearbyCategory('health', this)">🏥 Health</button>
-      <button class="nearby-tab" onclick="selectNearbyCategory('atm', this)">💳 ATM</button>
-      <button class="nearby-tab" onclick="selectNearbyCategory('attractions', this)">🏞 Attractions</button>
-    </div>
-
-    <div class="nearby-body">
-      <div id="nearbyStatus">Ready.</div>
-      <div id="nearbyList"></div>
-    </div>
-
-  </div>
-</div>
-<script>
+  
 const HOME_COORDS = { lat: -7.0329, lng: 107.7483 };
 
 const NEARBY_CATEGORIES = {
