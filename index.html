@@ -3616,18 +3616,17 @@ function sanitizeNumericInputs(){
 ========================= */
 document.addEventListener('DOMContentLoaded', () => {
 
-  setLanguage('id');
+  setLanguage('id');        // 1️⃣ show correct .lang elements
   applyAutoTheme();
   sanitizeNumericInputs();
 
-  const adultsEl   = document.getElementById('adults');
-  const childrenEl = document.getElementById('children');
-  const checkinEl  = document.getElementById('checkin');
-  const checkoutEl = document.getElementById('checkout');
+  // ⏰ NOW it is visible
+  updateTimeWIB();
+  setInterval(updateTimeWIB, 15000);
 
   /* ---------- DEFAULT DATES ---------- */
   const today = new Date();
-  const tomorrow = new Date();
+  const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
 
   const format = d =>
@@ -3635,18 +3634,17 @@ document.addEventListener('DOMContentLoaded', () => {
     String(d.getMonth()+1).padStart(2,'0') + '-' +
     String(d.getDate()).padStart(2,'0');
 
+  const checkinEl  = document.getElementById('checkin');
+  const checkoutEl = document.getElementById('checkout');
+  const adultsEl   = document.getElementById('adults');
+  const childrenEl = document.getElementById('children');
+
   checkinEl.value  = format(today);
   checkoutEl.value = format(tomorrow);
 
-  /* ---------- FORCE DEFAULT ADULT ---------- */
-  if(!adultsEl.value || adultsEl.value === '0'){
-    adultsEl.value = '4';
-  }
-  if(!childrenEl.value){
-    childrenEl.value = '0';
-  }
+  if(!adultsEl.value || adultsEl.value === '0') adultsEl.value = '4';
+  if(!childrenEl.value) childrenEl.value = '0';
 
-  /* ---------- LISTENERS ---------- */
   ['input','change'].forEach(evt=>{
     adultsEl.addEventListener(evt, ()=>updatePrice('adults'));
     childrenEl.addEventListener(evt, ()=>updatePrice('children'));
@@ -3660,12 +3658,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- FIRST CALCULATION ---------- */
   autoFixCheckout();
   updatePrice('init');
-
-  updateTimeWIB();
-  setInterval(updateTimeWIB, 15000);
 
   initRevealAnimations();
 });
