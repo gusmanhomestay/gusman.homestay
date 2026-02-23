@@ -3226,13 +3226,9 @@ function restartHeaderAnimation(){
   header.classList.add('fade-in');
 }
 /* =========================
-   PRICE + OCCUPANCY (MOBILE SAFE)
+   BOOKING CALCULATOR FIX (ISOLATED)
 ========================= */
-function updatePrice(changedField){
-  const WEEKDAY_BASE = 750000;   // 4 adults included
-  const WEEKEND_BASE = 1000000;  // 4 adults included
-  const EXTRA_ADULT  = 50000;    // per adult above 4
-  const MAX_PERSONS  = 6;
+document.addEventListener('DOMContentLoaded', function(){
 
   const adultsEl   = document.getElementById('adults');
   const childrenEl = document.getElementById('children');
@@ -3240,111 +3236,83 @@ function updatePrice(changedField){
   const checkoutEl = document.getElementById('checkout');
   const totalEl    = document.getElementById('totalPrice');
 
-  if(!adultsEl || !childrenEl || !checkinEl || !checkoutEl || !totalEl) return;
+  if(!adultsEl || !childrenEl || !checkinEl || !checkoutEl || !totalEl){
+    console.log("Booking elements not found.");
+    return;
+  }
 
-  let adults   = parseInt(adultsEl.value, 10);
-  let children = parseInt(childrenEl.value, 10);
+  const WEEKDAY_BASE = 750000;
+  const WEEKEND_BASE = 1000000;
+  const EXTRA_ADULT  = 50000;
+  const MAX_PERSONS  = 6;
 
-  if(isNaN(adults)) adults = 1;
-  if(isNaN(children)) children = 0;
+  function formatDate(d){
+    return d.getFullYear() + '-' +
+      String(d.getMonth()+1).padStart(2,'0') + '-' +
+      String(d.getDate()).padStart(2,'0');
+  }
 
-  if(adults < 1) adults = 1;
-  if(children < 0) children = 0;
+  function setDefaults(){
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate()+1);
 
-  // ✅ HARD LIMIT: adults + children max 6
-  if(adults + children > MAX_PERSONS){
-    if(changedField === 'children'){
-      adults = Math.max(1, MAX_PERSONS - children);
-    } else {
+    checkinEl.value = formatDate(today);
+    checkoutEl.value = formatDate(tomorrow);
+
+    if(!adultsEl.value || adultsEl.value === '0') adultsEl.value = 4;
+    if(!childrenEl.value) childrenEl.value = 0;
+  }
+
+  function calculate(){
+    let adults = parseInt(adultsEl.value) || 1;
+    let children = parseInt(childrenEl.value) || 0;
+
+    if(adults < 1) adults = 1;
+    if(children < 0) children = 0;
+
+    if(adults + children > MAX_PERSONS){
       children = Math.max(0, MAX_PERSONS - adults);
     }
+
+    adultsEl.value = adults;
+    childrenEl.value = children;
+
+    const ci = new Date(checkinEl.value);
+    const co = new Date(checkoutEl.value);
+
+    if(!(co > ci)){
+      const next = new Date(ci);
+      next.setDate(ci.getDate()+1);
+      checkoutEl.value = formatDate(next);
+    }
+
+    let total = 0;
+    let d = new Date(checkinEl.value);
+
+    while(d < new Date(checkoutEl.value)){
+      const day = d.getDay();
+      const isWeekend = (day === 5 || day === 6);
+      const base = isWeekend ? WEEKEND_BASE : WEEKDAY_BASE;
+      const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
+      total += base + extra;
+      d.setDate(d.getDate()+1);
+    }
+
+    totalEl.innerText = total.toLocaleString('id-ID') + ' IDR';
   }
 
-  adultsEl.value = adults;
-  childrenEl.value = children;
+  setDefaults();
+  calculate();
 
-  const ciVal = checkinEl.value;
-  const coVal = checkoutEl.value;
+  ['input','change'].forEach(evt=>{
+    adultsEl.addEventListener(evt, calculate);
+    childrenEl.addEventListener(evt, calculate);
+    checkinEl.addEventListener(evt, calculate);
+    checkoutEl.addEventListener(evt, calculate);
+  });
 
-  // If dates not set yet, show base weekday price (4 adults) just for display
-  if(!ciVal || !coVal){
-    const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
-    totalEl.innerText = (WEEKDAY_BASE + extra).toLocaleString('id-ID') + ' IDR';
-    return;
-  }
-
-  const ci = new Date(ciVal);
-  const co = new Date(coVal);
-
-  // Invalid range -> just show 1 night estimate
-  if(!(co > ci)){
-    const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
-    totalEl.innerText = (WEEKDAY_BASE + extra).toLocaleString('id-ID') + ' IDR';
-    return;
-  }
-
-  // ✅ Per-night pricing (weekday/weekend mixed correctly)
-  let total = 0;
-  let d = new Date(ci);
-
-  while(d < co){
-    const day = d.getDay(); // 0 Sun ... 5 Fri, 6 Sat
-    const isWeekend = (day === 5 || day === 6);
-
-    const base = isWeekend ? WEEKEND_BASE : WEEKDAY_BASE;
-    const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
-
-    total += (base + extra);
-    d.setDate(d.getDate() + 1);
-  }
-
-  totalEl.innerText = total.toLocaleString('id-ID') + ' IDR';
-}
-
-function setDefaultDates(){
-  const checkinEl  = document.getElementById("checkin");
-  const checkoutEl = document.getElementById("checkout");
-  if(!checkinEl || !checkoutEl) return;
-
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, "0");
-  const dd = String(today.getDate()).padStart(2, "0");
-  const todayStr = `${yyyy}-${mm}-${dd}`;
-
-  const tomorrow = new Date(today);
-  tomorrow.setDate(today.getDate() + 1);
-  const yyyy2 = tomorrow.getFullYear();
-  const mm2 = String(tomorrow.getMonth() + 1).padStart(2, "0");
-  const dd2 = String(tomorrow.getDate()).padStart(2, "0");
-  const tomorrowStr = `${yyyy2}-${mm2}-${dd2}`;
-
-  if(!checkinEl.value) checkinEl.value = todayStr;
-  if(!checkoutEl.value) checkoutEl.value = tomorrowStr;
-}
-
-function autoFixCheckout(){
-  const checkinEl  = document.getElementById("checkin");
-  const checkoutEl = document.getElementById("checkout");
-  if(!checkinEl || !checkoutEl) return;
-
-  const ciVal = checkinEl.value;
-  if(!ciVal) return;
-
-  const ci = new Date(ciVal);
-  const coVal = checkoutEl.value;
-
-  if(!coVal || new Date(coVal) <= ci){
-    const nextDay = new Date(ci);
-    nextDay.setDate(ci.getDate() + 1);
-
-    const yyyy = nextDay.getFullYear();
-    const mm = String(nextDay.getMonth() + 1).padStart(2, "0");
-    const dd = String(nextDay.getDate()).padStart(2, "0");
-
-    checkoutEl.value = `${yyyy}-${mm}-${dd}`;
-  }
-}
+});
 /* =========================
    WHATSAPP (TRACKED)
 ========================= */
