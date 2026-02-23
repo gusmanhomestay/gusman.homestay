@@ -4440,5 +4440,23 @@ document.addEventListener('DOMContentLoaded', () => {
   updateGalleryLanguage(lang);
 });
 </script>
+
+<script>
+  /* =========================
+     BOOKING CALCULATOR – FORCE INIT (SAFE)
+  ========================= */
+  window.addEventListener('load', () => {
+    setDefaultDates();
+    autoFixCheckout();
+
+    const adultsEl = document.getElementById('adults');
+    if (adultsEl && (!adultsEl.value || adultsEl.value === '0')) {
+      adultsEl.value = '1';
+    }
+
+    updatePrice('init');
+  });
+</script>
+
 </body>
 </html>
