@@ -3178,7 +3178,7 @@ function setLanguage(lang){
   }
 
   restartHeaderAnimation();
-  updateTimeWIB();
+  requestAnimationFrame(updateTimeWIB);
 }
 function updateTimeWIB(){
   const el = document.getElementById('timeWIB');
@@ -3587,10 +3587,11 @@ document.addEventListener('DOMContentLoaded', () => {
   setLanguage('id');        // 1️⃣ show correct .lang elements
   applyAutoTheme();
   sanitizeNumericInputs();
-
-  // ⏰ NOW it is visible
+  
+requestAnimationFrame(() => {
   updateTimeWIB();
   setInterval(updateTimeWIB, 15000);
+});
 
   /* ---------- DEFAULT DATES ---------- */
   const today = new Date();
