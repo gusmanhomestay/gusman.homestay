@@ -3241,14 +3241,15 @@ function updatePrice(changedField){
   let adults = parseInt(adultsEl.value || 1, 10);
   let children = parseInt(childrenEl.value || 0, 10);
 
-  if(adults < 1) adults = 1;
-  if(children < 0) children = 0;
+  if (adults < 1) adults = 1;
+  if (children < 0) children = 0;
 
-  if(adults + children > MAX){
-    if(changedField === 'adults'){
-      children = Math.max(0, MAX - adults);
-    } else {
+  /* 🔒 HARD COMBINED LIMIT */
+  if (adults + children > MAX) {
+    if (changedField === 'children') {
       adults = Math.max(1, MAX - children);
+    } else {
+      children = Math.max(0, MAX - adults);
     }
   }
 
@@ -3260,15 +3261,15 @@ function updatePrice(changedField){
 
   let total = 0;
 
-  if(ciVal && coVal){
+  if (ciVal && coVal) {
     const ci = new Date(ciVal);
     const co = new Date(coVal);
 
-    if(co > ci){
+    if (co > ci) {
       let d = new Date(ci);
 
-      while(d < co){
-        const day = d.getDay(); // 0 Sun, 5 Fri, 6 Sat
+      while (d < co) {
+        const day = d.getDay(); // 0=Sun, 5=Fri, 6=Sat
         const isWeekend = (day === 5 || day === 6);
 
         const BASE = isWeekend ? WEEKEND_BASE : WEEKDAY_BASE;
@@ -3279,6 +3280,10 @@ function updatePrice(changedField){
       }
     }
   }
+
+  document.getElementById('totalPrice').innerText =
+    total.toLocaleString('id-ID') + ' IDR';
+}
 
   document.getElementById('totalPrice').innerText =
     total.toLocaleString('id-ID') + ' IDR';
