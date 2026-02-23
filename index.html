@@ -3612,73 +3612,61 @@ function sanitizeNumericInputs(){
   });
 }
 /* =========================
-   INIT (RUN ONCE)
+   INIT (CLEAN – SINGLE SOURCE OF TRUTH)
 ========================= */
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
 
   setLanguage('id');
-  restartHeaderAnimation();
   applyAutoTheme();
   sanitizeNumericInputs();
 
-  // iPhone: replace number instead of append
-  ['adults','children'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(!el) return;
-    el.addEventListener('focus', ()=>{
-      setTimeout(()=>{ el.select(); }, 0);
-    });
-  });
-
-  // ✅ Set initial dates + price
-  setDefaultDates();
-  autoFixCheckout();
-  updatePrice('init');
-
-  // ✅ Adults / Children listeners
-  ['adults','children'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(!el) return;
-
-    const run = ()=>updatePrice(id);
-
-    el.addEventListener('input', run);
-    el.addEventListener('change', run);
-    el.addEventListener('blur', run);
-    el.addEventListener('keyup', run);
-    el.addEventListener('touchend', run);
-  });
-
-  // ✅ Check-in / Check-out listeners
+  const adultsEl   = document.getElementById('adults');
+  const childrenEl = document.getElementById('children');
   const checkinEl  = document.getElementById('checkin');
   const checkoutEl = document.getElementById('checkout');
 
-  if(checkinEl){
-    ['change','input','blur'].forEach(evt=>{
-      checkinEl.addEventListener(evt, ()=>{
-        autoFixCheckout();
-        updatePrice('checkin');
-      });
-    });
+  /* ---------- DEFAULT DATES ---------- */
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+
+  const format = d =>
+    d.getFullYear() + '-' +
+    String(d.getMonth()+1).padStart(2,'0') + '-' +
+    String(d.getDate()).padStart(2,'0');
+
+  checkinEl.value  = format(today);
+  checkoutEl.value = format(tomorrow);
+
+  /* ---------- FORCE DEFAULT ADULT ---------- */
+  if(!adultsEl.value || adultsEl.value === '0'){
+    adultsEl.value = '4';
+  }
+  if(!childrenEl.value){
+    childrenEl.value = '0';
   }
 
-  if(checkoutEl){
-    ['change','input','blur'].forEach(evt=>{
-      checkoutEl.addEventListener(evt, ()=>{
-        autoFixCheckout();
-        updatePrice('checkout');
-      });
+  /* ---------- LISTENERS ---------- */
+  ['input','change'].forEach(evt=>{
+    adultsEl.addEventListener(evt, ()=>updatePrice('adults'));
+    childrenEl.addEventListener(evt, ()=>updatePrice('children'));
+    checkinEl.addEventListener(evt, ()=>{
+      autoFixCheckout();
+      updatePrice('checkin');
     });
-  }
+    checkoutEl.addEventListener(evt, ()=>{
+      autoFixCheckout();
+      updatePrice('checkout');
+    });
+  });
+
+  /* ---------- FIRST CALCULATION ---------- */
+  autoFixCheckout();
+  updatePrice('init');
 
   updateTimeWIB();
   setInterval(updateTimeWIB, 15000);
 
-  document.querySelectorAll('.year').forEach(y=>{
-    y.textContent = new Date().getFullYear();
-  });
-
-  initLightbox();
   initRevealAnimations();
 });
 <script>
@@ -4455,17 +4443,6 @@ function updateGalleryLanguage(lang) {
 document.addEventListener('DOMContentLoaded', () => {
   const lang = localStorage.getItem('lang') || 'id';
   updateGalleryLanguage(lang);
-});
-</script>
-
-<script>
-  /* =========================
-     BOOKING CALCULATOR – FORCE INIT (SAFE)
-  ========================= */
-window.addEventListener('pageshow', ()=>{
-  setDefaultDates();
-  autoFixCheckout();
-  updatePrice('pageshow');
 });
 </script>
 
