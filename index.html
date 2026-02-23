@@ -32,8 +32,8 @@
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": -7.047,
-    "longitude": 107.887
+    "latitude": -7.016536,
+    "longitude": 107.8839048
   },
   "sameAs": [
     "https://www.google.com/maps/place/?q=Gusman+Homestay+Nagreg",
@@ -1825,6 +1825,28 @@ body[data-theme="dark"] .theme-btn.active{
 .gallery-row img {
   min-width: 0;
 }
+.map-container{
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.map-embed{
+  width: 100%;
+  height: 360px;
+  border: 0;
+}
+
+.map-btn{
+  position: absolute;
+  bottom: 18px;              /* 👈 bottom of map */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 </style>
 </head>
 
@@ -2856,21 +2878,21 @@ body[data-theme="dark"] .theme-btn.active{
 
     <!-- Indonesian -->
     <span class="lang id">
-      Lihat lebih banyak di
+      Lihat lebih banyak disini
       <img src="images/google.png" alt="Google"
            style="width:25px;height:25px;vertical-align:-4px;margin-left:6px;">
     </span>
 
     <!-- English -->
     <span class="lang en" style="display:none;">
-      See more on
+      See more here
       <img src="images/google.png" alt="Google"
            style="width:25px;height:25px;vertical-align:-4px;margin-left:6px;">
     </span>
 
     <!-- German -->
     <span class="lang de" style="display:none;">
-      Mehr auf
+      Mehr hier
       <img src="images/google.png" alt="Google"
            style="width:25px;height:25px;vertical-align:-4px;margin:0 6px;">
       ansehen
@@ -2878,7 +2900,7 @@ body[data-theme="dark"] .theme-btn.active{
 
     <!-- Italian -->
     <span class="lang it" style="display:none;">
-      Guarda altro su
+      Guarda più qui
       <img src="images/google.png" alt="Google"
            style="width:25px;height:25px;vertical-align:-4px;margin-left:6px;">
     </span>
@@ -2896,7 +2918,8 @@ body[data-theme="dark"] .theme-btn.active{
     <span class="lang it" style="display:none;">Mappa</span>
   </h3>
 
-  <!-- LIVE GOOGLE MAP -->
+  <div class="map-container">
+
   <iframe
     class="map-embed"
     loading="lazy"
@@ -2904,40 +2927,20 @@ body[data-theme="dark"] .theme-btn.active{
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.770292682659!2d107.8813245!3d-7.0165307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c9df6ada6155:0x37e2fd8bf58f8eee!2sGusman%20Homestay%20-%20Nagreg!5e0!3m2!1sen!2sid!4v1707640000000">
   </iframe>
 
-  <!-- OPEN IN GOOGLE MAPS BUTTON -->
-  <div style="text-align:center;margin-top:14px;">
-<a
-  class="map-btn btn-premium"
-  href="https://maps.app.goo.gl/XmVP7FrznLSLhbZd9?g_st=ic"
+  <a
+  href="https://www.google.com/maps/search/Bank+ATM+Rumah+Sakit+Restaurant+Supermarket+Tempat+Wisata+Kolam+Renang+historical+landmark+tourist+attraction+cafe+grocery+store+warung+near+Gusman+Homestay+Nagreg"
   target="_blank"
-  rel="noopener">
-      <!-- Indonesian -->
-      <span class="lang id active">
-        Buka di
-        <img src="images/googlemaps.png" class="map-icon" alt="">
-      </span>
+  rel="noopener"
+  class="map-btn btn-premium">
 
-      <!-- English -->
-      <span class="lang en">
-        Open in
-        <img src="images/googlemaps.png" class="map-icon" alt="">
-      </span>
-
-      <!-- German -->
-      <span class="lang de">
-        In
-        <img src="images/googlemaps.png" class="map-icon" alt="">
-        Öffnen
-      </span>
-
-      <!-- Italian -->
-      <span class="lang it">
-        Apri su
-        <img src="images/googlemaps.png" class="map-icon" alt="">
-      </span>
-
-    </a>
-  </div>
+    <span class="lang id active">
+      📍 Lihat Atraksi & Jarak dari Gusman Homestay di<img src="/images/googlemaps.png" class="map-icon" alt="">
+    </span>
+    <span class="lang en">📍 See Nearby Attractions & Distance from Gusman Homestay in<img src="/images/googlemaps.png" class="map-icon" alt=""></span>
+    <span class="lang de">📍 Sehenswürdigkeiten & Entfernungen in der Nähe in<img src="/images/googlemaps.png" class="map-icon" alt=""> öffnen</span>
+    <span class="lang it">📍 Guarda le distanze e le attrazioni nelle vicinanze in<img src="/images/googlemaps.png" class="map-icon" alt=""></span>
+  </a>
+</div>
 </div>
 </section>
 <!-- ===================== ABOUT / STORY (FULL WIDTH) ===================== -->
@@ -3134,20 +3137,572 @@ body[data-theme="dark"] .theme-btn.active{
 
   </div>
 </footer>
-</div><!-- end container -->
+<script>
+/* =========================
+   GLOBAL STATE
+========================= */
+let currentLang = 'id';
 
-<!-- Lightbox Overlay (Next/Prev) -->
-<div id="lbOverlay" class="lb-overlay" aria-hidden="true">
-  <button id="lbClose" class="lb-btn lb-close" type="button" aria-label="Close">✕</button>
-  <button id="lbPrev" class="lb-btn lb-prev" type="button" aria-label="Previous">‹</button>
+/* =========================
+   LANGUAGE
+========================= */
+function setLanguage(lang){
+  currentLang = lang;
+  document.body.dataset.lang = lang;
 
-  <img id="lbImg" class="lb-img" src="" alt="">
+  /* 🔥 SAVE language so gallery can read it */
+  localStorage.setItem('lang', lang);
 
-  <button id="lbNext" class="lb-btn lb-next" type="button" aria-label="Next">›</button>
-  <div id="lbCounter" class="lb-counter">1 / 1</div>
-</div>
-  </div>
+  /* Normal language elements */
+  document.querySelectorAll('.lang').forEach(el=>{
+    if (el.closest('.map-btn')) return;
+    el.style.display = el.classList.contains(lang) ? 'inline' : 'none';
+  });
 
+  /* Map button language */
+  document.querySelectorAll('.map-btn .lang').forEach(el=>{
+    el.classList.toggle('active', el.classList.contains(lang));
+  });
+
+  /* Language pills */
+  document.querySelectorAll('.lang-pill').forEach(btn=>{
+    btn.classList.remove('active');
+  });
+  document
+    .querySelector(`.lang-pill[onclick*="${lang}"]`)
+    ?.classList.add('active');
+
+  /* 🔥 UPDATE GALLERY TITLES */
+  if (typeof updateGalleryLanguage === 'function') {
+    updateGalleryLanguage(lang);
+  }
+
+  restartHeaderAnimation();
+  updateTimeWIB();
+}
+function updateTimeWIB(){
+  const el = document.getElementById('timeWIB');
+  if(!el) return;
+
+  const now = new Date();
+
+  const dayNames = {
+    id: ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"],
+    en: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    de: ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],
+    it: ["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"]
+  };
+
+  const monthNames = {
+    id: ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
+    en: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+    de: ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"],
+    it: ["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"]
+  };
+
+  const wibDate = new Date(now.toLocaleString("en-US", { timeZone:"Asia/Jakarta" }));
+
+  const dayIndex = wibDate.getDay();
+  const day = String(wibDate.getDate()).padStart(2, "0");
+  const monthIndex = wibDate.getMonth();
+  const year = wibDate.getFullYear();
+  const hour = String(wibDate.getHours()).padStart(2, "0");
+  const minute = String(wibDate.getMinutes()).padStart(2, "0");
+
+  const lang = (typeof currentLang !== "undefined") ? currentLang : "id";
+  const dayText = (dayNames[lang] || dayNames.id)[dayIndex];
+  const monthText = (monthNames[lang] || monthNames.id)[monthIndex];
+
+  el.textContent = `${dayText}, ${day} ${monthText} ${year} • ${hour}:${minute} WIB`;
+}
+  // ✅ Re-trigger header animation on language switch
+function restartHeaderAnimation(){
+  const header = document.querySelector('header');
+  if(!header) return;
+
+  header.classList.remove('fade-in');
+  // force reflow so animation restarts
+  void header.offsetWidth;
+  header.classList.add('fade-in');
+}
+
+/* =========================
+   PRICE + OCCUPANCY (FIXED FOR MOBILE)
+========================= */
+function updatePrice(changedField){
+  const WEEKDAY_BASE = 750000;   // IDR
+  const WEEKEND_BASE = 1000000;   // IDR
+  const EXTRA_ADULT = 50000;     // IDR per adult above 4
+  const MAX = 6;
+
+  const adultsEl = document.getElementById('adults');
+  const childrenEl = document.getElementById('children');
+
+  let adults = parseInt(adultsEl.value || 1, 10);
+  let children = parseInt(childrenEl.value || 0, 10);
+
+  if(adults < 1) adults = 1;
+  if(children < 0) children = 0;
+
+  // 🔒 HARD LIMIT (DESKTOP + iOS + ANDROID)
+  if(adults + children > MAX){
+    if(changedField === 'adults'){
+      children = Math.max(0, MAX - adults);
+    } else {
+      adults = Math.max(1, MAX - children);
+    }
+  }
+
+  adultsEl.value = adults;
+  childrenEl.value = children;
+
+  // ✅ Get check-in/out dates
+  const ciVal = document.getElementById('checkin').value;
+  const coVal = document.getElementById('checkout').value;
+
+  let nights = 1;
+  let isWeekendStay = false;
+
+  if(ciVal && coVal){
+    const ci = new Date(ciVal);
+    const co = new Date(coVal);
+
+    if(co > ci){
+      nights = Math.ceil((co - ci) / 86400000);
+
+      // ✅ Detect if any night is Fri or Sat
+      let d = new Date(ci);
+      for(let i = 0; i < nights; i++){
+        const day = d.getDay(); // 0=Sun ... 5=Fri, 6=Sat
+        if(day === 5 || day === 6){
+          isWeekendStay = true;
+          break;
+        }
+        d.setDate(d.getDate() + 1);
+      }
+    }
+  }
+
+  // ✅ Choose base rate
+  const BASE = isWeekendStay ? WEEKEND_BASE : WEEKDAY_BASE;
+
+  // ✅ Extra adults pricing
+  const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
+
+  const total = (BASE + extra) * nights;
+
+document.getElementById('totalPrice').innerText =
+  total.toLocaleString('id-ID') + ' IDR';
+}
+function setDefaultDates(){
+  const checkinEl = document.getElementById("checkin");
+  const checkoutEl = document.getElementById("checkout");
+  if(!checkinEl || !checkoutEl) return;
+
+  // today's date in YYYY-MM-DD
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  const todayStr = `${yyyy}-${mm}-${dd}`;
+
+  // tomorrow (checkout)
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  const yyyy2 = tomorrow.getFullYear();
+  const mm2 = String(tomorrow.getMonth() + 1).padStart(2, "0");
+  const dd2 = String(tomorrow.getDate()).padStart(2, "0");
+  const tomorrowStr = `${yyyy2}-${mm2}-${dd2}`;
+
+  // only set if empty (so user choice won't be overwritten)
+  if(!checkinEl.value) checkinEl.value = todayStr;
+  if(!checkoutEl.value) checkoutEl.value = tomorrowStr;
+}
+  function autoFixCheckout(){
+  const checkinEl = document.getElementById("checkin");
+  const checkoutEl = document.getElementById("checkout");
+  if(!checkinEl || !checkoutEl) return;
+
+  const ciVal = checkinEl.value;
+  const coVal = checkoutEl.value;
+  if(!ciVal) return;
+
+  const ci = new Date(ciVal);
+
+  // If checkout empty OR checkout <= checkin, make checkout = checkin + 1 day
+  if(!coVal || new Date(coVal) <= ci){
+    const nextDay = new Date(ci);
+    nextDay.setDate(ci.getDate() + 1);
+
+    const yyyy = nextDay.getFullYear();
+    const mm = String(nextDay.getMonth() + 1).padStart(2, "0");
+    const dd = String(nextDay.getDate()).padStart(2, "0");
+
+    checkoutEl.value = `${yyyy}-${mm}-${dd}`;
+  }
+}
+/* =========================
+   WHATSAPP (TRACKED)
+========================= */
+function bookWhatsApp(){
+  const lang = document.body.dataset.lang || 'id'; // SOURCE OF TRUTH
+
+  const checkin = document.getElementById('checkin').value;
+  const checkout = document.getElementById('checkout').value;
+  const adults = document.getElementById('adults').value;
+  const children = document.getElementById('children').value;
+  const price = document.getElementById('totalPrice').innerText;
+
+  // ✅ KEEP validation (important UX)
+  if(!checkin || !checkout){
+    alert(
+      lang === 'id'
+        ? 'Silakan pilih tanggal check-in dan check-out.'
+        : lang === 'de'
+        ? 'Bitte wählen Sie Check-in und Check-out.'
+        : lang === 'it'
+        ? 'Seleziona check-in e check-out.'
+        : 'Please select check-in and check-out.'
+    );
+    return;
+  }
+
+  // ✅ KEEP full message (no simplification)
+  const msg = {
+    id: `Halo, saya ingin memesan Gusman Homestay.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Dewasa: ${adults}
+Anak-anak: ${children}
+Perkiraan total: ${price}
+
+Terima kasih.`,
+    en: `Hello, I’d like to book Gusman Homestay.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Adults: ${adults}
+Children: ${children}
+Estimated total: ${price}
+
+Thank you.`,
+    de: `Hallo, ich möchte Gusman Homestay buchen.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Erwachsene: ${adults}
+Kinder: ${children}
+Gesamtpreis: ${price}
+
+Danke.`,
+    it: `Ciao, vorrei prenotare Gusman Homestay.
+Check-in: ${checkin}
+Check-out: ${checkout}
+Adulti: ${adults}
+Bambini: ${children}
+Totale stimato: ${price}
+
+Grazie.`
+  };
+
+ // ✅ send GA event FIRST (ONLY ONCE)
+if (typeof gtag === 'function') {
+  gtag('event', 'whatsapp_click', {
+    event_category: 'booking',
+    booking_location: 'booking_section',
+    transport_type: 'beacon'
+  });
+}
+
+// ✅ delay navigation so GA4 can send event
+setTimeout(() => {
+  window.open(
+    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
+    '_blank'
+  );
+}, 150);
+}  
+/* =========================
+   VIDEO SWITCHER
+========================= */
+function setTourVideo(src, poster, btn){
+  const video = document.getElementById('tourVideo');
+  const source = document.getElementById('tourSource');
+  const cap = document.getElementById('tourCaption');
+
+  video.pause();
+  source.src = src;
+  video.poster = poster;
+
+  if(btn){
+    cap.innerHTML = btn.innerHTML;
+    setLanguage(currentLang);
+  }
+
+  document.querySelectorAll('.video-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+
+  video.load();
+  video.play().catch(()=>{});
+}
+function getTourButtons(){
+  return Array.from(document.querySelectorAll('.video-btn'));
+}
+
+function getActiveTourIndex(btns){
+  return Math.max(0, btns.findIndex(b => b.classList.contains('active')));
+}
+
+function tourNext(){
+  const btns = getTourButtons();
+  if(!btns.length) return;
+  const i = getActiveTourIndex(btns);
+  const next = btns[(i + 1) % btns.length];
+  setTourVideo(next.dataset.src, next.dataset.poster, next);
+}
+
+function tourPrev(){
+  const btns = getTourButtons();
+  if(!btns.length) return;
+  const i = getActiveTourIndex(btns);
+  const prev = btns[(i - 1 + btns.length) % btns.length];
+  setTourVideo(prev.dataset.src, prev.dataset.poster, prev);
+}
+
+/* =========================
+   GROUPED LIGHTBOX (PER SECTION)
+   ✅ IMPORTANT: init AFTER DOM is ready (Safari fix)
+========================= */
+function initLightbox(){
+  const overlay = document.getElementById('lbOverlay');
+  const img = document.getElementById('lbImg');
+  const prev = document.getElementById('lbPrev');
+  const next = document.getElementById('lbNext');
+  const close = document.getElementById('lbClose');
+  const counter = document.getElementById('lbCounter');
+
+  // If lightbox HTML isn't on this page, do nothing
+  if(!overlay || !img || !prev || !next || !close || !counter) return;
+
+  // prevent double-binding if init runs twice
+  if(overlay.dataset.bound === '1') return;
+  overlay.dataset.bound = '1';
+
+  let currentImages = [];
+  let currentIndex = 0;
+
+  const show = ()=>{
+    const el = currentImages[currentIndex];
+    if(!el) return;
+
+    img.src = el.dataset.full || el.src;
+    counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+
+    // optional: disable arrows at ends
+    prev.style.opacity = currentIndex === 0 ? .3 : 1;
+    next.style.opacity = currentIndex === currentImages.length - 1 ? .3 : 1;
+  };
+
+  // attach click per gallery-row (after DOM is ready)
+  document.querySelectorAll('.gallery-row').forEach(row=>{
+    const imgs = Array.from(row.querySelectorAll('img'));
+    imgs.forEach((el, i)=>{
+      el.addEventListener('click', ()=>{
+        currentImages = imgs;
+        currentIndex = i;
+        show();
+        overlay.classList.add('open');
+      });
+    });
+  });
+
+  prev.addEventListener('click', ()=>{
+    if(currentIndex > 0){
+      currentIndex--;
+      show();
+    }
+  });
+
+  next.addEventListener('click', ()=>{
+    if(currentIndex < currentImages.length - 1){
+      currentIndex++;
+      show();
+    }
+  });
+
+  const closeFn = ()=> overlay.classList.remove('open');
+
+  close.addEventListener('click', closeFn);
+
+  overlay.addEventListener('click', (e)=>{
+    if(e.target === overlay) closeFn();
+  });
+}
+
+/* =========================
+   AUTO THEME: DARK AT NIGHT
+========================= */
+function applyAutoTheme(){
+  const prefersDark =
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if(prefersDark){
+    document.body.setAttribute('data-theme','dark');
+    return;
+  }
+
+  const hour = new Date().getHours();
+  const isNight = hour >= 19 || hour < 7;
+  document.body.setAttribute('data-theme', isNight ? 'dark' : 'light');
+}
+/* =========================
+   SMOOTH SECTION REVEAL
+========================= */
+function initRevealAnimations(){
+  const items = document.querySelectorAll('.card, .fullwidth-section, header');
+  items.forEach(el => el.classList.add('reveal'));
+
+  const showNow = (el) => el.classList.add('is-visible');
+
+  // ✅ Make anything already on screen visible immediately
+  items.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.92) showNow(el);
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        showNow(entry.target);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -10% 0px" });
+
+  items.forEach(el => {
+    if(!el.classList.contains('is-visible')) io.observe(el);
+  });
+}
+function sanitizeNumericInputs(){
+  const adultsEl = document.getElementById('adults');
+  const childrenEl = document.getElementById('children');
+  if(!adultsEl || !childrenEl) return;
+
+  const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+
+  [adultsEl, childrenEl].forEach(el=>{
+    // ✅ When user focuses, select all text so typing replaces (fixes 12,13,14)
+    el.addEventListener('focus', ()=>{
+      el.select?.();
+    });
+
+    // ✅ While typing: keep only digits, allow empty temporarily
+    el.addEventListener('input', ()=>{
+      el.value = el.value.replace(/[^\d]/g,'');
+    });
+
+    // ✅ Only when leaving field: set defaults + enforce limits
+    el.addEventListener('blur', ()=>{
+      if(el.value === ''){
+        el.value = (el.id === 'adults') ? '1' : '0';
+      }
+
+      let val = parseInt(el.value, 10);
+      if(isNaN(val)) val = (el.id === 'adults') ? 1 : 0;
+
+      if(el.id === 'adults') val = clamp(val, 1, 6);
+      if(el.id === 'children') val = clamp(val, 0, 6);
+
+      el.value = String(val);
+
+      // update price with your existing function name:
+      updatePrice(el.id);
+    });
+  });
+}
+/* =========================
+   INIT (RUN ONCE)
+========================= */
+document.addEventListener('DOMContentLoaded', ()=>{
+  setLanguage('id');
+  restartHeaderAnimation();
+  applyAutoTheme();
+  sanitizeNumericInputs();
+
+  // iPhone fix: replace number instead of append
+  ['adults','children'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('focus', ()=>{
+      setTimeout(()=>{ el.select(); }, 0);
+    });
+  });
+
+  // ✅ set initial dates first
+  setDefaultDates();
+
+  updateTimeWIB();
+  setInterval(updateTimeWIB, 15000);
+
+  document.querySelectorAll('.year').forEach(y=>{
+    y.textContent = new Date().getFullYear();
+  });
+
+  // ✅ price update listeners
+  ['adults','children'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){
+      el.addEventListener('input', ()=>updatePrice(id));
+      el.addEventListener('change', ()=>updatePrice(id));
+    }
+  });
+
+  // ✅ when checkin changes, force checkout >= checkin+1
+  const checkinEl = document.getElementById('checkin');
+  const checkoutEl = document.getElementById('checkout');
+
+  if(checkinEl){
+    checkinEl.addEventListener('change', ()=>{
+      autoFixCheckout();
+      updatePrice('checkin');
+    });
+    checkinEl.addEventListener('input', ()=>{
+      autoFixCheckout();
+      updatePrice('checkin');
+    });
+  }
+
+  if(checkoutEl){
+    checkoutEl.addEventListener('change', ()=>{
+      autoFixCheckout();
+      updatePrice('checkout');
+    });
+  }
+
+  // ✅ first calculation
+  autoFixCheckout();
+  updatePrice();
+
+  initLightbox();
+  initRevealAnimations();
+});
+</script>
+<script>
+function openRules(){
+  const modal = document.getElementById('rulesModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  modal.addEventListener('click', e=>{
+    if(e.target === modal) closeRules();
+  }, { once:true });
+}
+
+function closeRules(){
+  document.getElementById('rulesModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+</script>
 <!-- ✅ SEO: FAQ Schema (ID + EN) -->
 <script type="application/ld+json">
 {
@@ -3606,12 +4161,89 @@ body[data-theme="dark"] .theme-btn.active{
 
   </div>
 </div>
+<script>
+/* =========================
+   DIRECTIONS MODAL
+========================= */
+function openDirections(){
+  const modal = document.getElementById('directionsModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
 
+  modal.addEventListener('click', e => {
+    if(e.target === modal) closeDirections();
+  }, { once:true });
+}
+
+function closeDirections(){
+  const modal = document.getElementById('directionsModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* =========================
+   ATTRACTIONS MODAL
+========================= */
+function openAttractions(){
+  const modal = document.getElementById('attractionsModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  modal.addEventListener('click', e => {
+    if(e.target === modal) closeAttractions();
+  }, { once:true });
+}
+
+function closeAttractions(){
+  const modal = document.getElementById('attractionsModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* =========================
+   ESC KEY HANDLER (ALL MODALS)
+========================= */
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+
+  const rules = document.getElementById('rulesModal');
+  const directions = document.getElementById('directionsModal');
+  const attractions = document.getElementById('attractionsModal');
+
+  if (rules?.classList.contains('open')) closeRules();
+  if (directions?.classList.contains('open')) closeDirections();
+  if (attractions?.classList.contains('open')) closeAttractions();
+});
+</script>
 <!-- =========================
    GA4 CLICK TRACKING
    OTA ONLY
 ========================= -->
+<script>
+document.addEventListener('click', function(e){
+  const el = e.target.closest('[data-track]');
+  if (!el) return;
 
+  // OTA = Airbnb / Booking.com / Traveloka
+  if (el.dataset.track === 'ota') {
+    e.preventDefault(); // stop instant navigation
+
+    const url = el.href;
+
+    gtag('event', 'ota_click', {
+      event_category: 'booking',
+      event_label: el.dataset.ota,
+      booking_location: el.dataset.location || 'unknown',
+      transport_type: 'beacon'
+    });
+
+    // open link after GA event is sent
+    setTimeout(() => {
+      window.open(url, '_blank');
+    }, 150);
+  }
+});
+</script>
   
 <div class="wa-sticky">
   <button type="button" class="btn btn-premium" onclick="bookWhatsApp()">
@@ -3728,645 +4360,107 @@ body[data-theme="dark"] .theme-btn.active{
 
   </div>
 </div>
-
-  
 <script>
-(() => {
-  'use strict';
+function openCancelModal(){
+  const modal = document.getElementById('cancelModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
 
-  /* =========================
-     GLOBAL STATE
-  ========================= */
-  let currentLang = 'id';
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeCancelModal();
+  }, { once:true });
+}
 
-  /* =========================
-     HELPERS
-  ========================= */
-  const qs  = (sel, root=document) => root.querySelector(sel);
-  const qsa = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+function closeCancelModal(){
+  const modal = document.getElementById('cancelModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){
+  if (e.key !== 'Escape') return;
 
-  const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
-  const formatISODate = (d) => (
-    d.getFullYear() + '-' +
-    String(d.getMonth() + 1).padStart(2, '0') + '-' +
-    String(d.getDate()).padStart(2, '0')
-  );
-
-  /* =========================
-     LANGUAGE
-  ========================= */
-  function restartHeaderAnimation(){
-    const header = qs('header');
-    if(!header) return;
-    header.classList.remove('fade-in');
-    void header.offsetWidth;
-    header.classList.add('fade-in');
+  const cancelModal = document.getElementById('cancelModal');
+  if (cancelModal && cancelModal.classList.contains('open')) {
+    closeCancelModal();
   }
-
-  function setLanguage(lang){
-    currentLang = lang || 'id';
-    document.body.dataset.lang = currentLang;
-    localStorage.setItem('lang', currentLang);
-
-    // Normal language elements
-    qsa('.lang').forEach(el => {
-      if (el.closest('.map-btn')) return;
-      el.style.display = el.classList.contains(currentLang) ? 'inline' : 'none';
-    });
-
-    // Map button language
-    qsa('.map-btn .lang').forEach(el => {
-      el.classList.toggle('active', el.classList.contains(currentLang));
-    });
-
-    // Language pills
-    qsa('.lang-pill').forEach(btn => btn.classList.remove('active'));
-    const pill = qs(`.lang-pill[onclick*="${currentLang}"]`);
-    if (pill) pill.classList.add('active');
-
-    // Gallery titles
-    if (typeof window.updateGalleryLanguage === 'function') {
-      window.updateGalleryLanguage(currentLang);
-    }
-
-    restartHeaderAnimation();
-
-    // Time can be hidden by .lang filtering; update after language is applied
-    requestAnimationFrame(updateTimeWIB);
-  }
-
-  function updateTimeWIB(){
-    const el = document.getElementById('timeWIB');
-    if(!el) return;
-
-    const now = new Date();
-    const dayNames = {
-      id: ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"],
-      en: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      de: ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],
-      it: ["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"],
-    };
-
-    const monthNames = {
-      id: ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],
-      en: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
-      de: ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"],
-      it: ["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"],
-    };
-
-    const wibDate = new Date(now.toLocaleString('en-US', { timeZone:'Asia/Jakarta' }));
-
-    const dayIndex   = wibDate.getDay();
-    const day        = String(wibDate.getDate()).padStart(2,'0');
-    const monthIndex = wibDate.getMonth();
-    const year       = wibDate.getFullYear();
-    const hour       = String(wibDate.getHours()).padStart(2,'0');
-    const minute     = String(wibDate.getMinutes()).padStart(2,'0');
-
-    const lang = currentLang || 'id';
-    const dayText   = (dayNames[lang]   || dayNames.id)[dayIndex];
-    const monthText = (monthNames[lang] || monthNames.id)[monthIndex];
-
-    el.textContent = `${dayText}, ${day} ${monthText} ${year} • ${hour}:${minute} WIB`;
-  }
-
-  /* =========================
-     THEME
-  ========================= */
-  function setTheme(theme){
-    document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    qsa('.theme-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.classList.contains(theme));
-    });
-  }
-
-  function applyAutoTheme(){
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      setTheme(saved);
-      return;
-    }
-
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark) {
-      setTheme('dark');
-      return;
-    }
-
-    const hour = new Date().getHours();
-    const isNight = hour >= 19 || hour < 7;
-    setTheme(isNight ? 'dark' : 'light');
-  }
-
-  /* =========================
-     BOOKING / PRICE
-  ========================= */
-  const PRICING = {
-    WEEKDAY_BASE: 750000,
-    WEEKEND_BASE: 1000000,
-    EXTRA_ADULT:  50000,
-    MAX_PERSONS:  6,
-  };
-
-  function setDefaultDates(){
-    const checkinEl  = document.getElementById('checkin');
-    const checkoutEl = document.getElementById('checkout');
-    if(!checkinEl || !checkoutEl) return;
-
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
-
-    if (!checkinEl.value)  checkinEl.value  = formatISODate(today);
-    if (!checkoutEl.value) checkoutEl.value = formatISODate(tomorrow);
-  }
-
-  function autoFixCheckout(){
-    const checkinEl  = document.getElementById('checkin');
-    const checkoutEl = document.getElementById('checkout');
-    if(!checkinEl || !checkoutEl) return;
-
-    if(!checkinEl.value) return;
-
-    const ci = new Date(checkinEl.value);
-    const co = checkoutEl.value ? new Date(checkoutEl.value) : null;
-
-    if(!co || !(co > ci)){
-      const next = new Date(ci);
-      next.setDate(ci.getDate() + 1);
-      checkoutEl.value = formatISODate(next);
-    }
-  }
-
-  function normalizeOccupancy(changedField){
-    const adultsEl   = document.getElementById('adults');
-    const childrenEl = document.getElementById('children');
-    if(!adultsEl || !childrenEl) return { adults: 1, children: 0 };
-
-    let adults = parseInt(adultsEl.value, 10);
-    let children = parseInt(childrenEl.value, 10);
-
-    if (Number.isNaN(adults)) adults = 4;
-    if (Number.isNaN(children)) children = 0;
-
-    adults = clamp(adults, 1, PRICING.MAX_PERSONS);
-    children = clamp(children, 0, PRICING.MAX_PERSONS);
-
-    if (adults + children > PRICING.MAX_PERSONS) {
-      if (changedField === 'children') {
-        adults = clamp(PRICING.MAX_PERSONS - children, 1, PRICING.MAX_PERSONS);
-      } else {
-        children = clamp(PRICING.MAX_PERSONS - adults, 0, PRICING.MAX_PERSONS);
-      }
-    }
-
-    adultsEl.value = String(adults);
-    childrenEl.value = String(children);
-
-    return { adults, children };
-  }
-
-  function updatePrice(changedField){
-    const totalEl = document.getElementById('totalPrice');
-    const checkinEl  = document.getElementById('checkin');
-    const checkoutEl = document.getElementById('checkout');
-    if(!totalEl || !checkinEl || !checkoutEl) return;
-
-    const { adults } = normalizeOccupancy(changedField);
-
-    const ciVal = checkinEl.value;
-    const coVal = checkoutEl.value;
-
-    if(!ciVal || !coVal){
-      const extra = adults > 4 ? (adults - 4) * PRICING.EXTRA_ADULT : 0;
-      totalEl.innerText = (PRICING.WEEKDAY_BASE + extra).toLocaleString('id-ID') + ' IDR';
-      return;
-    }
-
-    const ci = new Date(ciVal);
-    const co = new Date(coVal);
-
-    if(!(co > ci)) autoFixCheckout();
-
-    const end = new Date(document.getElementById('checkout').value);
-    let total = 0;
-    const d = new Date(document.getElementById('checkin').value);
-
-    while(d < end){
-      const day = d.getDay();
-      const isWeekend = (day === 5 || day === 6);
-      const base = isWeekend ? PRICING.WEEKEND_BASE : PRICING.WEEKDAY_BASE;
-      const extra = adults > 4 ? (adults - 4) * PRICING.EXTRA_ADULT : 0;
-      total += base + extra;
-      d.setDate(d.getDate() + 1);
-    }
-
-    totalEl.innerText = total.toLocaleString('id-ID') + ' IDR';
-  }
-
-  function sanitizeNumericInputs(){
-    const adultsEl = document.getElementById('adults');
-    const childrenEl = document.getElementById('children');
-    if(!adultsEl || !childrenEl) return;
-
-    [adultsEl, childrenEl].forEach(el => {
-      el.addEventListener('focus', () => setTimeout(() => el.select?.(), 0));
-      el.addEventListener('input', () => { el.value = el.value.replace(/[^\d]/g, ''); });
-      el.addEventListener('blur', () => {
-        if(el.value === '') el.value = (el.id === 'adults') ? '4' : '0';
-        updatePrice(el.id);
-      });
-    });
-  }
-
-  /* =========================
-     WHATSAPP
-  ========================= */
-  function bookWhatsApp(){
-    const lang = document.body.dataset.lang || 'id';
-
-    const checkin  = document.getElementById('checkin')?.value || '';
-    const checkout = document.getElementById('checkout')?.value || '';
-    const adults   = document.getElementById('adults')?.value || '1';
-    const children = document.getElementById('children')?.value || '0';
-    const price    = document.getElementById('totalPrice')?.innerText || '';
-
-    if(!checkin || !checkout){
-      alert(
-        lang === 'id' ? 'Silakan pilih tanggal check-in dan check-out.' :
-        lang === 'de' ? 'Bitte wählen Sie Check-in und Check-out.' :
-        lang === 'it' ? 'Seleziona check-in e check-out.' :
-        'Please select check-in and check-out.'
-      );
-      return;
-    }
-
-    const msg = {
-      id: `Halo, saya ingin memesan Gusman Homestay.
-Check-in: ${checkin}
-Check-out: ${checkout}
-Dewasa: ${adults}
-Anak-anak: ${children}
-Perkiraan total: ${price}
-
-Terima kasih.`,
-      en: `Hello, I’d like to book Gusman Homestay.
-Check-in: ${checkin}
-Check-out: ${checkout}
-Adults: ${adults}
-Children: ${children}
-Estimated total: ${price}
-
-Thank you.`,
-      de: `Hallo, ich möchte Gusman Homestay buchen.
-Check-in: ${checkin}
-Check-out: ${checkout}
-Erwachsene: ${adults}
-Kinder: ${children}
-Gesamtpreis: ${price}
-
-Danke.`,
-      it: `Ciao, vorrei prenotare Gusman Homestay.
-Check-in: ${checkin}
-Check-out: ${checkout}
-Adulti: ${adults}
-Bambini: ${children}
-Totale stimato: ${price}
-
-Grazie.`
-    };
-
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'whatsapp_click', {
-        event_category: 'booking',
-        booking_location: 'booking_section',
-        transport_type: 'beacon'
-      });
-    }
-
-    setTimeout(() => {
-      window.open(
-        `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
-        '_blank'
-      );
-    }, 150);
-  }
-
-  /* =========================
-     VIDEO TOUR
-  ========================= */
-  function setTourVideo(src, poster, btn){
-    const video  = document.getElementById('tourVideo');
-    const source = document.getElementById('tourSource');
-    const cap    = document.getElementById('tourCaption');
-    if(!video || !source) return;
-
-    try { video.pause(); } catch(e) {}
-    source.src = src;
-    if (poster) video.poster = poster;
-
-    if(btn && cap){
-      cap.innerHTML = btn.innerHTML;
-      setLanguage(currentLang);
-    }
-
-    qsa('.video-btn').forEach(b => b.classList.remove('active'));
-    if(btn) btn.classList.add('active');
-
-    video.load();
-    video.play().catch(() => {});
-  }
-
-  function tourNext(){
-    const btns = qsa('.video-btn');
-    if(!btns.length) return;
-    const i = Math.max(0, btns.findIndex(b => b.classList.contains('active')));
-    const next = btns[(i + 1) % btns.length];
-    setTourVideo(next.dataset.src, next.dataset.poster, next);
-  }
-
-  function tourPrev(){
-    const btns = qsa('.video-btn');
-    if(!btns.length) return;
-    const i = Math.max(0, btns.findIndex(b => b.classList.contains('active')));
-    const prev = btns[(i - 1 + btns.length) % btns.length];
-    setTourVideo(prev.dataset.src, prev.dataset.poster, prev);
-  }
-
-  function initVideoTour(){
-    qsa('.video-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        setTourVideo(btn.dataset.src, btn.dataset.poster, btn);
-      });
-    });
-  }
-
-  /* =========================
-     LIGHTBOX
-  ========================= */
-  function initLightbox(){
-    const overlay = document.getElementById('lbOverlay');
-    const img     = document.getElementById('lbImg');
-    const prevBtn = document.getElementById('lbPrev');
-    const nextBtn = document.getElementById('lbNext');
-    const closeBtn= document.getElementById('lbClose');
-    const counter = document.getElementById('lbCounter');
-
-    if(!overlay || !img || !prevBtn || !nextBtn || !closeBtn || !counter) return;
-
-    let currentImages = [];
-    let currentIndex = 0;
-
-    const show = () => {
-      const el = currentImages[currentIndex];
-      if(!el) return;
-      img.src = el.dataset.full || el.src;
-      counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
-      prevBtn.style.opacity = currentIndex === 0 ? .3 : 1;
-      nextBtn.style.opacity = currentIndex === currentImages.length - 1 ? .3 : 1;
-    };
-
-    qsa('.gallery-row').forEach(row => {
-      const imgs = qsa('img', row);
-      imgs.forEach((el, i) => {
-        el.addEventListener('click', () => {
-          currentImages = imgs;
-          currentIndex = i;
-          show();
-          overlay.classList.add('open');
-        });
-      });
-    });
-
-    prevBtn.addEventListener('click', () => {
-      if(currentIndex > 0){ currentIndex--; show(); }
-    });
-
-    nextBtn.addEventListener('click', () => {
-      if(currentIndex < currentImages.length - 1){ currentIndex++; show(); }
-    });
-
-    closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
-
-    overlay.addEventListener('click', (e) => {
-      if(e.target === overlay) overlay.classList.remove('open');
-    });
-  }
-
-  /* =========================
-     REVEAL ANIMATIONS
-  ========================= */
-  function initRevealAnimations(){
-    const items = qsa('.card, .fullwidth-section, header');
-    items.forEach(el => el.classList.add('reveal'));
-
-    const showNow = (el) => el.classList.add('is-visible');
-
-    items.forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight * 0.92) showNow(el);
-    });
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          showNow(entry.target);
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
-
-    items.forEach(el => {
-      if(!el.classList.contains('is-visible')) io.observe(el);
-    });
-  }
-
-  /* =========================
-     MODALS
-  ========================= */
-  function openModal(id){
-    const modal = document.getElementById(id);
-    if(!modal) return;
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal(id);
-    }, { once:true });
-  }
-
-  function closeModal(id){
-    const modal = document.getElementById(id);
-    if(!modal) return;
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function initEscClose(){
-    document.addEventListener('keydown', (e) => {
-      if (e.key !== 'Escape') return;
-      ['rulesModal','directionsModal','attractionsModal','cancelModal'].forEach(id => {
-        const m = document.getElementById(id);
-        if (m && m.classList.contains('open')) closeModal(id);
-      });
-    });
-  }
-
-  /* =========================
-     GA4 TRACKING (OTA ONLY)
-  ========================= */
-  function initOtaTracking(){
-    document.addEventListener('click', (e) => {
-      const el = e.target.closest('[data-track]');
-      if (!el) return;
-
-      if (el.dataset.track === 'ota') {
-        e.preventDefault();
-        const url = el.href;
-
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'ota_click', {
-            event_category: 'booking',
-            event_label: el.dataset.ota,
-            booking_location: el.dataset.location || 'unknown',
-            transport_type: 'beacon'
-          });
-        }
-
-        setTimeout(() => window.open(url, '_blank'), 150);
-      }
-    });
-  }
-
-  /* =========================
-     GALLERY TRANSLATIONS
-  ========================= */
-  const galleryTranslations = {
-    id: {
-      'gallery.exterior': 'Exterior & Akses',
-      'gallery.living': 'Ruang Tamu',
-      'gallery.bedroom': 'Kamar Tidur',
-      'gallery.kitchen': 'Dapur & Makan',
-      'gallery.bathroom': 'Kamar Mandi',
-      'gallery.amenities': 'Amenities'
-    },
-    en: {
-      'gallery.exterior': 'Exterior & Access',
-      'gallery.living': 'Living Room',
-      'gallery.bedroom': 'Bedrooms',
-      'gallery.kitchen': 'Kitchen & Dining',
-      'gallery.bathroom': 'Bathrooms',
-      'gallery.amenities': 'Amenities'
-    },
-    de: {
-      'gallery.exterior': 'Außenbereich & Zugang',
-      'gallery.living': 'Wohnzimmer',
-      'gallery.bedroom': 'Schlafzimmer',
-      'gallery.kitchen': 'Küche & Essbereich',
-      'gallery.bathroom': 'Badezimmer',
-      'gallery.amenities': 'Ausstattung'
-    },
-    it: {
-      'gallery.exterior': 'Esterni & Accesso',
-      'gallery.living': 'Soggiorno',
-      'gallery.bedroom': 'Camere da letto',
-      'gallery.kitchen': 'Cucina & Zona pranzo',
-      'gallery.bathroom': 'Bagni',
-      'gallery.amenities': 'Servizi'
-    }
-  };
-
-  window.updateGalleryLanguage = function(lang){
-    qsa('.gallery-section-label').forEach(el => {
-      const key = el.dataset.i18n;
-      const t = galleryTranslations?.[lang]?.[key];
-      if (t) el.textContent = t;
-    });
-  };
-
-  /* =========================
-     INIT
-  ========================= */
-  function initBooking(){
-    setDefaultDates();
-    autoFixCheckout();
-
-    const adultsEl   = document.getElementById('adults');
-    const childrenEl = document.getElementById('children');
-    const checkinEl  = document.getElementById('checkin');
-    const checkoutEl = document.getElementById('checkout');
-
-    if (adultsEl && (!adultsEl.value || adultsEl.value === '0')) adultsEl.value = '4';
-    if (childrenEl && (!childrenEl.value)) childrenEl.value = '0';
-
-    const bind = (el, field) => {
-      if(!el) return;
-      ['input','change'].forEach(evt => {
-        el.addEventListener(evt, () => {
-          if (field === 'checkin' || field === 'checkout') autoFixCheckout();
-          updatePrice(field);
-        });
-      });
-    };
-
-    bind(adultsEl, 'adults');
-    bind(childrenEl, 'children');
-    bind(checkinEl, 'checkin');
-    bind(checkoutEl, 'checkout');
-
-    updatePrice('init');
-  }
-
-  function init(){
-    applyAutoTheme();
-    sanitizeNumericInputs();
-
-    const savedLang = localStorage.getItem('lang') || 'id';
-    setLanguage(savedLang);
-
-    requestAnimationFrame(() => {
-      updateTimeWIB();
-      setInterval(updateTimeWIB, 15000);
-    });
-
-    initBooking();
-    initVideoTour();
-    initLightbox();
-    initRevealAnimations();
-    initEscClose();
-    initOtaTracking();
-  }
-
-  document.addEventListener('DOMContentLoaded', init);
-
-  window.addEventListener('pageshow', () => {
-    const savedLang = localStorage.getItem('lang') || currentLang || 'id';
-    setLanguage(savedLang);
-    setDefaultDates();
-    autoFixCheckout();
-    updatePrice('pageshow');
-    updateTimeWIB();
+});
+</script>
+<script>
+function setTheme(theme) {
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.classList.contains(theme));
   });
+}
 
-  /* expose for inline onclick */
-  window.setLanguage = setLanguage;
-  window.setTheme = setTheme;
-  window.bookWhatsApp = bookWhatsApp;
+document.addEventListener('DOMContentLoaded', () => {
+  let theme = localStorage.getItem('theme');
 
-  window.openRules = () => openModal('rulesModal');
-  window.closeRules = () => closeModal('rulesModal');
-  window.openDirections = () => openModal('directionsModal');
-  window.closeDirections = () => closeModal('directionsModal');
-  window.openAttractions = () => openModal('attractionsModal');
-  window.closeAttractions = () => closeModal('attractionsModal');
-  window.openCancelModal = () => openModal('cancelModal');
-  window.closeCancelModal = () => closeModal('cancelModal');
+  if (!theme) {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  }
 
-  window.setTourVideo = setTourVideo;
-  window.tourNext = tourNext;
-  window.tourPrev = tourPrev;
-})();
+  document.body.setAttribute('data-theme', theme);
+
+  document
+    .querySelector(`.theme-btn.${theme}`)
+    ?.classList.add('active');
+});
+</script>
+<script>
+/* 🔽 PASTE THE GALLERY TRANSLATION SCRIPT HERE */
+const galleryTranslations = {
+  id: {
+    "gallery.exterior": "Exterior & Akses",
+    "gallery.living": "Ruang Tamu",
+    "gallery.bedroom": "Kamar Tidur",
+    "gallery.kitchen": "Dapur & Makan",
+    "gallery.bathroom": "Kamar Mandi",
+    "gallery.amenities": "Amenities"
+  },
+  en: {
+    "gallery.exterior": "Exterior & Access",
+    "gallery.living": "Living Room",
+    "gallery.bedroom": "Bedrooms",
+    "gallery.kitchen": "Kitchen & Dining",
+    "gallery.bathroom": "Bathrooms",
+    "gallery.amenities": "Amenities"
+  },
+  de: {
+    "gallery.exterior": "Außenbereich & Zugang",
+    "gallery.living": "Wohnzimmer",
+    "gallery.bedroom": "Schlafzimmer",
+    "gallery.kitchen": "Küche & Essbereich",
+    "gallery.bathroom": "Badezimmer",
+    "gallery.amenities": "Ausstattung"
+  },
+  it: {
+    "gallery.exterior": "Esterni & Accesso",
+    "gallery.living": "Soggiorno",
+    "gallery.bedroom": "Camere da letto",
+    "gallery.kitchen": "Cucina & Zona pranzo",
+    "gallery.bathroom": "Bagni",
+    "gallery.amenities": "Servizi"
+  }
+};
+
+function updateGalleryLanguage(lang) {
+  document.querySelectorAll('.gallery-section-label').forEach(el => {
+    const key = el.dataset.i18n;
+    if (galleryTranslations[lang]?.[key]) {
+      el.textContent = galleryTranslations[lang][key];
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = localStorage.getItem('lang') || 'id';
+  updateGalleryLanguage(lang);
+});
 </script>
 </body>
 </html>
