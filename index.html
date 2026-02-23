@@ -3625,14 +3625,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
     y.textContent = new Date().getFullYear();
   });
 
-  // ✅ price update listeners
-  ['adults','children'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(el){
-      el.addEventListener('input', ()=>updatePrice(id));
-      el.addEventListener('change', ()=>updatePrice(id));
-    }
-  });
+  // ✅ price update listeners (iPhone-safe)
+['adults','children'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(!el) return;
+
+  const run = () => updatePrice(id);
+
+  // iOS sometimes skips "input" depending how user edits
+  el.addEventListener('input', run);
+  el.addEventListener('change', run);
+  el.addEventListener('blur', run);
+  el.addEventListener('keyup', run);
+  el.addEventListener('touchend', run);
+});
 
   // ✅ when checkin changes, force checkout >= checkin+1
   const checkinEl = document.getElementById('checkin');
