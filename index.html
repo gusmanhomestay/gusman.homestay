@@ -3441,61 +3441,71 @@ function tourPrev(){
 
 /* =========================
    GROUPED LIGHTBOX (PER SECTION)
+   ✅ IMPORTANT: init AFTER DOM is ready (Safari fix)
 ========================= */
+function initLightbox(){
+  const overlay = document.getElementById('lbOverlay');
+  const img = document.getElementById('lbImg');
+  const prev = document.getElementById('lbPrev');
+  const next = document.getElementById('lbNext');
+  const close = document.getElementById('lbClose');
+  const counter = document.getElementById('lbCounter');
 
-let currentImages = [];
-let currentIndex = 0;
+  // If lightbox HTML isn't on this page, do nothing
+  if(!overlay || !img || !prev || !next || !close || !counter) return;
 
-const overlay = document.getElementById('lbOverlay');
-const img = document.getElementById('lbImg');
-const prev = document.getElementById('lbPrev');
-const next = document.getElementById('lbNext');
-const close = document.getElementById('lbClose');
-const counter = document.getElementById('lbCounter');
+  // prevent double-binding
+  if(overlay.dataset.bound === '1') return;
+  overlay.dataset.bound = '1';
 
-/* attach click per gallery-row */
-document.querySelectorAll('.gallery-row').forEach(row => {
-  const imgs = Array.from(row.querySelectorAll('img'));
+  let currentImages = [];
+  let currentIndex = 0;
 
-  imgs.forEach((el, i) => {
-    el.onclick = () => {
-      currentImages = imgs;
-      currentIndex = i;
-      show();
-      overlay.classList.add('open');
-    };
+  const show = ()=>{
+    const el = currentImages[currentIndex];
+    if(!el) return;
+
+    img.src = el.dataset.full || el.src;
+    counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+
+    prev.style.opacity = currentIndex === 0 ? .3 : 1;
+    next.style.opacity = currentIndex === currentImages.length - 1 ? .3 : 1;
+  };
+
+  document.querySelectorAll('.gallery-row').forEach(row=>{
+    const imgs = Array.from(row.querySelectorAll('img'));
+    imgs.forEach((el, i)=>{
+      el.addEventListener('click', ()=>{
+        currentImages = imgs;
+        currentIndex = i;
+        show();
+        overlay.classList.add('open');
+      });
+    });
   });
-});
 
-function show(){
-  const el = currentImages[currentIndex];
-  img.src = el.dataset.full || el.src;
-  counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+  prev.addEventListener('click', ()=>{
+    if(currentIndex > 0){
+      currentIndex--;
+      show();
+    }
+  });
 
-  /* optional: disable arrows at ends */
-  prev.style.opacity = currentIndex === 0 ? .3 : 1;
-  next.style.opacity = currentIndex === currentImages.length - 1 ? .3 : 1;
+  next.addEventListener('click', ()=>{
+    if(currentIndex < currentImages.length - 1){
+      currentIndex++;
+      show();
+    }
+  });
+
+  const closeFn = ()=> overlay.classList.remove('open');
+
+  close.addEventListener('click', closeFn);
+
+  overlay.addEventListener('click', (e)=>{
+    if(e.target === overlay) closeFn();
+  });
 }
-
-prev.onclick = () => {
-  if(currentIndex > 0){
-    currentIndex--;
-    show();
-  }
-};
-
-next.onclick = () => {
-  if(currentIndex < currentImages.length - 1){
-    currentIndex++;
-    show();
-  }
-};
-
-close.onclick = () => overlay.classList.remove('open');
-
-overlay.onclick = (e) => {
-  if(e.target === overlay) close.onclick();
-};
   
 /* =========================
    AUTO THEME: DARK AT NIGHT
@@ -3591,6 +3601,7 @@ document.addEventListener('DOMContentLoaded', () => {
 requestAnimationFrame(() => {
   updateTimeWIB();
   setInterval(updateTimeWIB, 15000);
+  initLightbox();
 });
 
   /* ---------- DEFAULT DATES ---------- */
