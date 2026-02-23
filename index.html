@@ -3226,71 +3226,83 @@ function restartHeaderAnimation(){
   header.classList.add('fade-in');
 }
 /* =========================
-   PRICE + OCCUPANCY (FIXED FOR MOBILE)
+   PRICE + OCCUPANCY (MOBILE SAFE)
 ========================= */
 function updatePrice(changedField){
+  const WEEKDAY_BASE = 750000;   // 4 adults included
+  const WEEKEND_BASE = 1000000;  // 4 adults included
+  const EXTRA_ADULT  = 50000;    // per adult above 4
+  const MAX_PERSONS  = 6;
 
-  const WEEKDAY_BASE = 750000;
-  const WEEKEND_BASE = 1000000;
-  const EXTRA_ADULT = 50000;
-  const MAX = 6;
-
-  const adultsEl = document.getElementById('adults');
+  const adultsEl   = document.getElementById('adults');
   const childrenEl = document.getElementById('children');
+  const checkinEl  = document.getElementById('checkin');
+  const checkoutEl = document.getElementById('checkout');
+  const totalEl    = document.getElementById('totalPrice');
 
-  let adults = parseInt(adultsEl.value || 1, 10);
-  let children = parseInt(childrenEl.value || 0, 10);
+  if(!adultsEl || !childrenEl || !checkinEl || !checkoutEl || !totalEl) return;
 
-  if (adults < 1) adults = 1;
-  if (children < 0) children = 0;
+  let adults   = parseInt(adultsEl.value, 10);
+  let children = parseInt(childrenEl.value, 10);
 
-  /* 🔒 HARD COMBINED LIMIT */
-  if (adults + children > MAX) {
-    if (changedField === 'children') {
-      adults = Math.max(1, MAX - children);
+  if(isNaN(adults)) adults = 1;
+  if(isNaN(children)) children = 0;
+
+  if(adults < 1) adults = 1;
+  if(children < 0) children = 0;
+
+  // ✅ HARD LIMIT: adults + children max 6
+  if(adults + children > MAX_PERSONS){
+    if(changedField === 'children'){
+      adults = Math.max(1, MAX_PERSONS - children);
     } else {
-      children = Math.max(0, MAX - adults);
+      children = Math.max(0, MAX_PERSONS - adults);
     }
   }
 
   adultsEl.value = adults;
   childrenEl.value = children;
 
-  const ciVal = document.getElementById('checkin').value;
-  const coVal = document.getElementById('checkout').value;
+  const ciVal = checkinEl.value;
+  const coVal = checkoutEl.value;
 
-  let total = 0;
-
-  if (ciVal && coVal) {
-    const ci = new Date(ciVal);
-    const co = new Date(coVal);
-
-    if (co > ci) {
-      let d = new Date(ci);
-
-      while (d < co) {
-        const day = d.getDay(); // 0=Sun, 5=Fri, 6=Sat
-        const isWeekend = (day === 5 || day === 6);
-
-        const BASE = isWeekend ? WEEKEND_BASE : WEEKDAY_BASE;
-        const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
-
-        total += BASE + extra;
-        d.setDate(d.getDate() + 1);
-      }
-    }
+  // If dates not set yet, show base weekday price (4 adults) just for display
+  if(!ciVal || !coVal){
+    const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
+    totalEl.innerText = (WEEKDAY_BASE + extra).toLocaleString('id-ID') + ' IDR';
+    return;
   }
 
-  document.getElementById('totalPrice').innerText =
-    total.toLocaleString('id-ID') + ' IDR';
-}
+  const ci = new Date(ciVal);
+  const co = new Date(coVal);
 
-  document.getElementById('totalPrice').innerText =
-    total.toLocaleString('id-ID') + ' IDR';
+  // Invalid range -> just show 1 night estimate
+  if(!(co > ci)){
+    const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
+    totalEl.innerText = (WEEKDAY_BASE + extra).toLocaleString('id-ID') + ' IDR';
+    return;
+  }
+
+  // ✅ Per-night pricing (weekday/weekend mixed correctly)
+  let total = 0;
+  let d = new Date(ci);
+
+  while(d < co){
+    const day = d.getDay(); // 0 Sun ... 5 Fri, 6 Sat
+    const isWeekend = (day === 5 || day === 6);
+
+    const base = isWeekend ? WEEKEND_BASE : WEEKDAY_BASE;
+    const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
+
+    total += (base + extra);
+    d.setDate(d.getDate() + 1);
+  }
+
+  totalEl.innerText = total.toLocaleString('id-ID') + ' IDR';
 }
 
 function setDefaultDates(){
-  const checkinEl = document.getElementById("checkin");
+  const checkinEl  = document.getElementById("checkin");
   const checkoutEl = document.getElementById("checkout");
   if(!checkinEl || !checkoutEl) return;
 
@@ -3298,16 +3310,13 @@ function setDefaultDates(){
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, "0");
   const dd = String(today.getDate()).padStart(2, "0");
-
   const todayStr = `${yyyy}-${mm}-${dd}`;
 
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
-
   const yyyy2 = tomorrow.getFullYear();
   const mm2 = String(tomorrow.getMonth() + 1).padStart(2, "0");
   const dd2 = String(tomorrow.getDate()).padStart(2, "0");
-
   const tomorrowStr = `${yyyy2}-${mm2}-${dd2}`;
 
   if(!checkinEl.value) checkinEl.value = todayStr;
@@ -3315,7 +3324,7 @@ function setDefaultDates(){
 }
 
 function autoFixCheckout(){
-  const checkinEl = document.getElementById("checkin");
+  const checkinEl  = document.getElementById("checkin");
   const checkoutEl = document.getElementById("checkout");
   if(!checkinEl || !checkoutEl) return;
 
@@ -3606,12 +3615,13 @@ function sanitizeNumericInputs(){
    INIT (RUN ONCE)
 ========================= */
 document.addEventListener('DOMContentLoaded', ()=>{
+
   setLanguage('id');
   restartHeaderAnimation();
   applyAutoTheme();
   sanitizeNumericInputs();
 
-  // iPhone fix: replace number instead of append
+  // iPhone: replace number instead of append
   ['adults','children'].forEach(id=>{
     const el = document.getElementById(id);
     if(!el) return;
@@ -3620,8 +3630,46 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   });
 
-  // ✅ set initial dates first
+  // ✅ Set initial dates + price
   setDefaultDates();
+  autoFixCheckout();
+  updatePrice('init');
+
+  // ✅ Adults / Children listeners
+  ['adults','children'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(!el) return;
+
+    const run = ()=>updatePrice(id);
+
+    el.addEventListener('input', run);
+    el.addEventListener('change', run);
+    el.addEventListener('blur', run);
+    el.addEventListener('keyup', run);
+    el.addEventListener('touchend', run);
+  });
+
+  // ✅ Check-in / Check-out listeners
+  const checkinEl  = document.getElementById('checkin');
+  const checkoutEl = document.getElementById('checkout');
+
+  if(checkinEl){
+    ['change','input','blur'].forEach(evt=>{
+      checkinEl.addEventListener(evt, ()=>{
+        autoFixCheckout();
+        updatePrice('checkin');
+      });
+    });
+  }
+
+  if(checkoutEl){
+    ['change','input','blur'].forEach(evt=>{
+      checkoutEl.addEventListener(evt, ()=>{
+        autoFixCheckout();
+        updatePrice('checkout');
+      });
+    });
+  }
 
   updateTimeWIB();
   setInterval(updateTimeWIB, 15000);
@@ -3630,51 +3678,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     y.textContent = new Date().getFullYear();
   });
 
-  // ✅ price update listeners (iPhone-safe)
-['adults','children'].forEach(id=>{
-  const el = document.getElementById(id);
-  if(!el) return;
-
-  const run = () => updatePrice(id);
-
-  // iOS sometimes skips "input" depending how user edits
-  el.addEventListener('input', run);
-  el.addEventListener('change', run);
-  el.addEventListener('blur', run);
-  el.addEventListener('keyup', run);
-  el.addEventListener('touchend', run);
-});
-
-  // ✅ when checkin changes, force checkout >= checkin+1
-  const checkinEl = document.getElementById('checkin');
-  const checkoutEl = document.getElementById('checkout');
-
-  if(checkinEl){
-    checkinEl.addEventListener('change', ()=>{
-      autoFixCheckout();
-      updatePrice('checkin');
-    });
-    checkinEl.addEventListener('input', ()=>{
-      autoFixCheckout();
-      updatePrice('checkin');
-    });
-  }
-
-  if(checkoutEl){
-    checkoutEl.addEventListener('change', ()=>{
-      autoFixCheckout();
-      updatePrice('checkout');
-    });
-  }
-
-  // ✅ first calculation
-  autoFixCheckout();
-  updatePrice();
-
   initLightbox();
   initRevealAnimations();
 });
-</script>
 <script>
 function openRules(){
   const modal = document.getElementById('rulesModal');
@@ -4456,17 +4462,11 @@ document.addEventListener('DOMContentLoaded', () => {
   /* =========================
      BOOKING CALCULATOR – FORCE INIT (SAFE)
   ========================= */
-  window.addEventListener('load', () => {
-    setDefaultDates();
-    autoFixCheckout();
-
-    const adultsEl = document.getElementById('adults');
-    if (adultsEl && (!adultsEl.value || adultsEl.value === '0')) {
-      adultsEl.value = '1';
-    }
-
-    updatePrice('init');
-  });
+window.addEventListener('pageshow', ()=>{
+  setDefaultDates();
+  autoFixCheckout();
+  updatePrice('pageshow');
+});
 </script>
 
 </body>
