@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guida Ospiti – Gusman Homestay</title>
 
- <style>
+  <style>
     :root{
       --bg1:#0f2f2f;
       --bg2:#163c3c;
@@ -201,17 +201,17 @@
     }
 
     /* Accordion (Aturan Rumah) */
-  details{
-  position:relative;
-  text-align:left; /* rules stay left */
-}
-    
-.rules{
-  margin-top:12px;
-  color:var(--text);
-  line-height:1.55;
-  text-align:left;     /* keep rules left for readability */
-}
+    details{
+      position:relative;
+      text-align:left; /* rules stay left */
+    }
+
+    .rules{
+      margin-top:12px;
+      color:var(--text);
+      line-height:1.55;
+      text-align:left;     /* keep rules left for readability */
+    }
     summary{
       cursor:pointer;
       list-style:none;
@@ -231,15 +231,15 @@
       font-size:18px;
     }
     details[open] .chev{ transform: rotate(180deg); }
-    
+
     summary{
-    justify-content:center;     /* center content */
-    text-align:center;
+      justify-content:center;     /* center content */
+      text-align:center;
     }
 
     summary .chev{
-    position:absolute;
-    right:18px;                /* keep arrow on the right */
+      position:absolute;
+      right:18px;                /* keep arrow on the right */
     }
     .rules{
       margin-top:12px;
@@ -265,163 +265,180 @@
       h1{ font-size:26px; }
       .logo img{ width:250px; }
     }
-    
+
     .subtitle{
-  max-width:520px;   /* prevents ugly wrapping */
-  margin:0 auto 22px;
-}
+      max-width:520px;   /* prevents ugly wrapping */
+      margin:0 auto 22px;
+    }
 
-.subtitle-line{
-  display:block;     /* always moves to next line */
-}
-    
-.lang-switch{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  margin-bottom:18px;
-}
+    .subtitle-line{
+      display:block;     /* always moves to next line */
+    }
 
-.lang{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:6px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.25);
-  opacity:.6;
-  transition:.2s ease;
-}
+    .lang-switch{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin-bottom:18px;
+    }
 
-.lang img{
-  width:26px;
-  height:auto;
-  display:block;
-  border-radius:4px;
-}
+    .lang{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.25);
+      opacity:.6;
+      transition:.2s ease;
+    }
 
-.lang:hover{
-  opacity:1;
-  transform:translateY(-2px);
-}
+    .lang img{
+      width:26px;
+      height:auto;
+      display:block;
+      border-radius:4px;
+    }
 
-.lang.active{
-  opacity:1;
-  background:rgba(255,255,255,.12);
-}
-.button{
-  transition: transform .15s ease, box-shadow .15s ease;
-}
+    .lang:hover{
+      opacity:1;
+      transform:translateY(-2px);
+    }
 
-.button:active{
-  transform: scale(0.97);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-}
+    .lang.active{
+      opacity:1;
+      background:rgba(255,255,255,.12);
+    }
+    .button{
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .button:active{
+      transform: scale(0.97);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
   </style>
 </head>
 
 <body>
-<div class="container">
+  <div class="container">
 
-  <div class="header">
-    <div class="logo">
-      <img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
-      <div class="tagline">Private Boutique Homestay</div>
+    <div class="header">
+      <div class="logo">
+        <img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
+        <div class="tagline">Private Boutique Homestay</div>
+      </div>
+
+      <div class="lang-switch">
+        <a href="/stay/id.html" onclick="localStorage.setItem('langChosen','id')">
+          <img src="/flags/id.png" alt="Indonesian">
+        </a>
+        <a href="/stay/en.html" onclick="localStorage.setItem('langChosen','en')">
+          <img src="/flags/en.png" alt="English">
+        </a>
+        <a href="/stay/de.html" onclick="localStorage.setItem('langChosen','de')">
+          <img src="/flags/de.png" alt="Deutsch">
+        </a>
+        <a href="/stay/it.html" onclick="localStorage.setItem('langChosen','it')">
+          <img src="/flags/it.png" alt="Italiano">
+        </a>
+      </div>
+
+      <h1>Benvenuto a Gusman Homestay</h1>
+      <p class="subtitle">
+        Goditi il tuo soggiorno a Nagreg —
+        <span class="subtitle-line">speriamo che ti senta a tuo agio e come a casa 😊</span>
+      </p>
     </div>
 
-    <div class="lang-switch">
-  <a href="/stay/id.html" onclick="localStorage.setItem('langChosen','id')">
-    <img src="/flags/id.png" alt="Indonesian">
-  </a>
-  <a href="/stay/en.html" onclick="localStorage.setItem('langChosen','en')">
-    <img src="/flags/en.png" alt="English">
-  </a>
-  <a href="/stay/de.html" onclick="localStorage.setItem('langChosen','de')">
-    <img src="/flags/de.png" alt="Deutsch">
-  </a>
-  <a href="/stay/it.html" onclick="localStorage.setItem('langChosen','it')">
-    <img src="/flags/it.png" alt="Italiano">
-  </a>
-</div>
-    
-    <h1>Benvenuti al Gusman Homestay</h1>
-    <p class="subtitle">
-      Godetevi il vostro soggiorno a Nagreg —
-      speriamo che vi sentiate comodi e come a casa 😊
-    </p>
-  </div>
+    <div class="card">
+      <h2>📶 Wi-Fi</h2>
+      <div class="wifi">Gusman-HomeStay</div>
+      <div class="muted">Password: <strong style="color:var(--text)">Nagreg2025!</strong></div>
+    </div>
 
-  <div class="card">
-    <h2>📶 Wi-Fi</h2>
-    <div class="wifi">Gusman-HomeStay</div>
-    <div class="muted">Password: <strong>Nagreg2025!</strong></div>
-  </div>
-
-  <div class="card">
-    <h2>🕒 Check-out</h2>
-    L'orario massimo di check-out è <strong>12:00</strong>.<br>
-    Si prega di informare <strong>Ibu Yayah</strong> per la restituzione delle chiavi o per richiedere un late check-out (soggetto a disponibilità).
-  </div>
-
-  <div class="card">
-    <h2>🌀 Ventilatore</h2>
-    Non forniamo aria condizionata perché Nagreg ha un clima naturalmente fresco 🌿<br>
-    Se il tempo è caldo, sono disponibili ventilatori per il vostro comfort.
-  </div>
-
-  <div class="card">
-    <details>
-      <summary>🏠 Guida al Soggiorno</summary>
-      <div class="rules">
-        <ul>
-          <li>È severamente vietato fumare all’interno della casa (soggiorno, camere da letto, bagno e toilette). È consentito fumare solo nel patio sul retro e sulla terrazza anteriore.</li>
-          <li>Si prega di mantenere basso il livello di rumore e rispettare il vicinato.</li>
-          <li>Mantenere pulita la casa e tutte le strutture.</li>
-          <li>Spegnere luci, gas ed elettrodomestici quando si esce.</li>
-          <li>Asciugamani, lenzuola e coperte usati devono essere lasciati nell’area designata.</li>
-          <li>Non lasciare oggetti di valore incustoditi. L’homestay non è responsabile per eventuali perdite.</li>
-          <li>Segnalare immediatamente eventuali danni o oggetti mancanti.</li>
-          <li>I servizi sono destinati all’uso durante il soggiorno (pantofole e kit dentale possono essere portati via).</li>
-          <li>Smart TV & streaming: utilizzare solo il profilo “Gusman Homestay” e non modificare le impostazioni.</li>
-        </ul>
+    <div class="card">
+      <h2>🕒 Check-out</h2>
+      <div>
+        Entro le <strong>12:00 WIB</strong>.<br>
+        Si prega di informare <strong>Ibu Yayah</strong> per la restituzione delle chiavi & se desideri richiedere late check-out (in base alla disponibilità).
       </div>
-    </details>
-  </div>
+    </div>
 
-  <div class="card">
-    <h2>📍 Attrazioni Vicine</h2>
-    <div class="muted">Visualizza la guida completa e le distanze:</div>
-    <a class="button review" href="https://www.gusmanhomestay.com/files/panduan-wisata-en.pdf" target="_blank">
-      Apri la Guida Turistica
-    </a>
-  </div>
+    <div class="card">
+      <h2>🌀 Ventilatore</h2>
+      <div>
+        Non forniamo l’aria condizionata perché l’aria di Nagreg è generalmente fresca 🌿<br>
+        Quando fa caldo, utilizza il ventilatore disponibile.
+      </div>
+    </div>
 
-  <div class="card">
-    <h2>📞 Durante il Soggiorno</h2>
-    <div class="muted">Per qualsiasi assistenza contattare la nostra PIC: <strong>Ibu Yayah</strong></div>
+    <div class="card">
+      <details>
+        <summary>
+          🏠 Guida di soggiorno
+          <span class="chev">⌄</span>
+        </summary>
+
+        <div class="rules">
+          <ul>
+            <li>È vietato fumare all’interno della casa (soggiorno, camere da letto, bagno e toilette). È consentito fumare solo nel patio posteriore e nella terrazza anteriore.</li>
+            <li>Si prega di mantenere la tranquillità e rispettare l’ambiente circostante.</li>
+            <li>Mantenere pulita la casa e tutte le strutture.</li>
+            <li>Spegnere luci, gas e dispositivi elettronici quando si lascia la casa.</li>
+            <li>Asciugamani/lenzuola/coperte usati: si prega di lasciarli nell’area designata (vicino alla lavatrice).</li>
+            <li>Pressione dell’acqua WC/bidet: aprire leggermente prima il rubinetto del lavandino, poi usare il bidet lentamente per mantenere la pressione stabile.</li>
+            <li>Non lasciare oggetti di valore incustoditi. Le perdite dovute a negligenza sono responsabilità dell’ospite.</li>
+            <li>In caso di danni o smarrimento di oggetti, informare immediatamente il PIC.</li>
+            <li>I servizi (amenities) sono solo per l’uso durante il soggiorno (è consentito portare via: pantofole, spazzolino e dentifricio).</li>
+            <li>Smart TV & streaming: utilizzare il profilo “Gusman Homestay”/“Homestay” e non modificare account o impostazioni.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="card">
+      <h2>📍 Consigli di viaggio</h2>
+      <div class="muted">Consulta la guida completa su attrazioni & tempi di percorrenza:</div>
+      <a class="button review" href="https://www.gusmanhomestay.com/files/panduan-wisata-id.pdf" target="_blank" rel="noopener">
+        Vedi la guida turistica qui
+      </a>
+    </div>
+
+    <div class="card">
+      <h2>📞 Contatto durante il soggiorno</h2>
+      <div class="muted">
+        Se hai bisogno di qualcosa durante il soggiorno, contatta il nostro PIC: <strong style="color:var(--text)">Ibu Yayah</strong>.
+      </div>
+
       <a class="button whatsapp" href="https://wa.me/6281322750517" target="_blank" rel="noopener">
         Chat su <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon"> qui
       </a>
     </div>
 
-  <div class="card">
-    <h2>⭐ Lascia una Recensione</h2>
-    <div class="muted">La vostra recensione è molto importante per noi 🙏</div>
-    <div class="qr-wrap">
-      <img class="qr" src="/images/google-review-qr.png" alt="Google Review QR">
+    <div class="card">
+      <h2>⭐ Lascia una recensione</h2>
+      <div class="muted">Se ti va, la tua recensione ci aiuta molto 🙏</div>
+
+      <div class="qr-wrap">
+        <img class="qr" src="/images/google-review-qr.png" alt="QR Google Review">
+      </div>
+
+      <a class="button review" href="https://g.page/r/Ce6Oj_WL_eI3EBM/review" target="_blank" rel="noopener">
+        <div>
+          <div class="btn-title">Clicca qui per lasciare una recensione su Google*</div>
+          <div class="btn-note">*Ogni recensione riceve uno sconto del 10% per la prossima visita.</div>
+        </div>
+      </a>
     </div>
-    <a class="button review" href="https://g.page/r/Ce6Oj_WL_eI3EBM/review" target="_blank">
-      Lascia una Recensione su Google <br><small>10% di sconto per il prossimo soggiorno</small>
-    </a>
-  </div>
 
-  <div class="footer">
-    © 2026 Gusman Homestay<br>
-    www.gusmanhomestay.com
-    Follow us on Instagram & TikTok
-    @gusmanhomestay
-  </div>
+    <div class="footer">
+      © 2026 Gusman Homestay<br>
+      www.gusmanhomestay.com<br>
+      Follow us on Instagram & TikTok<br>
+      @gusmanhomestay
+    </div>
 
-</div>
+  </div>
 </body>
 </html>
