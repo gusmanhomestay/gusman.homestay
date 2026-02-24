@@ -5,3 +5,21 @@
 */
 
 /* empty on purpose */
+/* FIX gallery click blocking */
+.gallery-row img,
+.gallery img {
+  pointer-events: auto !important;
+  cursor: pointer;
+  position: relative;
+  z-index: 20;
+}
+/* Prevent overlay layers from blocking clicks */
+.gallery-row::before,
+.gallery-row::after,
+.card::before,
+.card::after {
+  pointer-events: none !important;
+}
+#lbOverlay {
+  z-index: 9999 !important;
+}
