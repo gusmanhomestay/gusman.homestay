@@ -1,16 +1,37 @@
-/* MOBILE FIX: allow button text to wrap */
-@media (max-width: 480px) {
-  .map-btn,
-  .see-more-btn {
+/* ===== MOBILE PORTRAIT FIX: button text must wrap ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+
+  /* your button */
+  .map-btn {
+    width: calc(100% - 24px) !important;
+    max-width: 360px !important;
     height: auto !important;
-    padding: 12px 16px;
-    white-space: normal !important;
-    text-align: center;
-    line-height: 1.3;
+    padding: 10px 14px !important;
+
+    display: flex !important;
+    flex-wrap: wrap !important;      /* ✅ allow wrap */
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px !important;
+
+    white-space: normal !important;  /* ✅ allow text wrap */
+    text-align: center !important;
+    line-height: 1.25 !important;
+
+    overflow: visible !important;
   }
 
+  /* if your button text is inside spans */
   .map-btn span,
-  .see-more-btn span {
-    display: inline;
+  .map-btn .lang {
+    white-space: normal !important;
+    display: inline !important;
+  }
+
+  /* make the icon smaller on mobile */
+  .map-btn img {
+    height: 16px !important;
+    width: 16px !important;
+    flex: 0 0 auto !important;
   }
 }
