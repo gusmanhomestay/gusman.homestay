@@ -1,25 +1,13 @@
-/* 
-  patch.css
-  Safe override layer for Gusman Homestay
-  DO NOT remove or refactor legacy CSS
-*/
-
-/* empty on purpose */
-/* FIX gallery click blocking */
-.gallery-row img,
-.gallery img {
+/* === FIX: Enable gallery click === */
+.gallery img,
+.gallery-row img {
   pointer-events: auto !important;
   cursor: pointer;
+  z-index: 2;
   position: relative;
-  z-index: 20;
 }
-/* Prevent overlay layers from blocking clicks */
-.gallery-row::before,
-.gallery-row::after,
-.card::before,
-.card::after {
-  pointer-events: none !important;
-}
-#lbOverlay {
-  z-index: 9999 !important;
+
+/* Prevent parent from blocking clicks */
+.hero-card {
+  overflow: visible !important;
 }
