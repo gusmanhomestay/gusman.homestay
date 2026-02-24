@@ -1,32 +1,33 @@
-/* ===== MOBILE PORTRAIT FIX: button text must wrap ===== */
+/* ===== MOBILE MAP BUTTON FIX (LANGUAGE SAFE) ===== */
 @media (max-width: 480px) and (orientation: portrait) {
 
-  /* your button */
   .map-btn {
     width: calc(100% - 24px) !important;
     max-width: 360px !important;
     height: auto !important;
-    padding: 10px 14px !important;
 
     display: flex !important;
-    flex-wrap: wrap !important;      /* ✅ allow wrap */
+    flex-wrap: wrap !important;
     justify-content: center !important;
     align-items: center !important;
-    gap: 6px !important;
 
-    white-space: normal !important;  /* ✅ allow text wrap */
+    white-space: normal !important;
     text-align: center !important;
     line-height: 1.25 !important;
-
-    overflow: visible !important;
   }
 
-  /* if your button text is inside spans */
-  .map-btn span,
+  /* 🔒 KEEP language system working */
   .map-btn .lang {
-    white-space: normal !important;
-    display: inline !important;
+    display: none;
   }
+
+  body[data-lang="id"] .map-btn .lang.id,
+  body[data-lang="en"] .map-btn .lang.en,
+  body[data-lang="de"] .map-btn .lang.de,
+  body[data-lang="it"] .map-btn .lang.it {
+    display: inline;
+  }
+}
 
   /* make the icon smaller on mobile */
   .map-btn img {
