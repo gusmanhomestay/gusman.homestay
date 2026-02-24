@@ -3447,7 +3447,6 @@ function tourPrev(){
    GROUPED LIGHTBOX (PER SECTION)
    ✅ IMPORTANT: init AFTER DOM is ready (Safari fix)
 ========================= */
-<script>
 function initLightbox(){
   const overlay = document.getElementById('lbOverlay');
   const img = document.getElementById('lbImg');
@@ -3499,7 +3498,6 @@ function initLightbox(){
   close.onclick = closeFn;
   overlay.onclick = e => { if(e.target === overlay) closeFn(); };
 }
-</script>
   
 /* =========================
    AUTO THEME: DARK AT NIGHT
