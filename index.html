@@ -4380,12 +4380,51 @@ function updateGalleryLanguage(lang) {
     }
   });
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   const lang = localStorage.getItem('lang') || 'id';
   updateGalleryLanguage(lang);
 });
 </script>
+<script>
+function initLightbox(){
+  const overlay = document.getElementById('lbOverlay');
+  const img = document.getElementById('lbImg');
+  const prev = document.getElementById('lbPrev');
+  const next = document.getElementById('lbNext');
+  const close = document.getElementById('lbClose');
+  const counter = document.getElementById('lbCounter');
 
+  if(!overlay || !img || !prev || !next || !close || !counter) return;
+
+  let currentImages = [];
+  let currentIndex = 0;
+
+  const show = ()=>{
+    const el = currentImages[currentIndex];
+    if(!el) return;
+    img.src = el.dataset.full || el.src;
+    counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+  };
+
+  document.querySelectorAll('.gallery-row, .gallery').forEach(group=>{
+    const imgs = Array.from(group.querySelectorAll('img'));
+    imgs.forEach((el, i)=>{
+      el.onclick = ()=>{
+        currentImages = imgs;
+        currentIndex = i;
+        show();
+        overlay.classList.add('open');
+      };
+    });
+  });
+
+  prev.onclick = ()=>{ if(currentIndex > 0){ currentIndex--; show(); } };
+  next.onclick = ()=>{ if(currentIndex < currentImages.length - 1){ currentIndex++; show(); } };
+  close.onclick = ()=> overlay.classList.remove('open');
+  overlay.onclick = e => { if(e.target === overlay) overlay.classList.remove('open'); };
+}
+
+document.addEventListener('DOMContentLoaded', initLightbox);
+</script>
 </body>
 </html>
