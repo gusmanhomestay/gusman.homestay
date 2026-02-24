@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gästeleitfaden – Gusman Homestay</title>
+
+  <style>
+  /* SAME CSS AS en.html – DO NOT CHANGE */
+  :root{
+    --bg1:#0f2f2f;
+    --bg2:#163c3c;
+    --card: rgba(255,255,255,0.08);
+    --cardBorder: rgba(255,255,255,0.10);
+    --text:#eaf2f2;
+    --muted: rgba(234,242,242,0.75);
+    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    --radius: 18px;
+    --brandTeal:#2b6f6b;
+    --brandTealHover:#2f7a75;
+    --blue:#4285F4;
+    --blueHover:#4b93ff;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(1000px 500px at 50% -50%, rgba(255,255,255,0.12), transparent 60%),
+      linear-gradient(180deg, var(--bg2), var(--bg1));
+    min-height:100vh;
+  }
+  .container{max-width:760px;margin:auto;padding:34px 18px 90px;}
+  .header{text-align:center;margin:10px 0 26px;}
+  .logo{text-align:center;margin-bottom:18px;}
+  .logo img{width:320px;max-width:92%;height:auto;display:block;margin:0 auto 10px;}
+  .tagline{font-family:"Georgia",serif;font-size:34px;color:#dfeeee;opacity:.95;margin:0 0 14px;}
+  h1{text-align:center;font-size:30px;margin:0 0 6px;color:#ffffff;}
+  .subtitle{max-width:520px;margin:0 auto 22px;text-align:center;color:#cfdede;font-size:15px;}
+  .card{background:var(--card);border:1px solid var(--cardBorder);padding:18px;border-radius:var(--radius);margin-bottom:16px;box-shadow:var(--shadow);backdrop-filter:blur(10px);text-align:center;}
+  .card h2{margin:0 0 10px;font-size:18px;}
+  .wifi{font-size:18px;font-weight:700;}
+  .muted{color:var(--muted);}
+  .button{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:14px;text-decoration:none;font-weight:800;margin-top:12px;border:1px solid rgba(255,255,255,0.14);box-shadow:0 10px 22px rgba(0,0,0,0.25);}
+  .whatsapp{background:var(--brandTeal);color:#fff;}
+  .review{background:var(--blue);color:#fff;}
+  .qr-wrap{margin-top:12px;display:flex;justify-content:center;}
+  .qr{width:170px;max-width:70%;background:#fff;padding:10px;border-radius:14px;}
+  details{text-align:left;}
+  summary{cursor:pointer;font-weight:900;}
+  .rules{margin-top:12px;line-height:1.55;}
+  .rules ul{padding-left:18px;}
+  .footer{text-align:center;font-size:13px;color:rgba(234,242,242,0.65);margin-top:34px;}
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="logo">
+      <img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
+      <div class="tagline">Private Boutique Homestay</div>
+    </div>
+
+    <div class="lang-switch" style="text-align:center;margin-bottom:18px;">
+      <a href="/stay/" onclick="localStorage.setItem('langChosen','id')">🇮🇩</a> |
+      <a href="/stay/en.html" onclick="localStorage.setItem('langChosen','en')">🇬🇧</a> |
+      <strong>🇩🇪</strong> |
+      <a href="/stay/it.html">🇮🇹</a>
+    </div>
+
+    <h1>Willkommen im Gusman Homestay</h1>
+    <p class="subtitle">
+      Genießen Sie Ihre Zeit zur Erholung in Nagreg —  
+      wir hoffen, dass Sie sich wohl und wie zu Hause fühlen 😊
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>📶 WLAN</h2>
+    <div class="wifi">Gusman-HomeStay</div>
+    <div class="muted">Passwort: <strong>Nagreg2025!</strong></div>
+  </div>
+
+  <div class="card">
+    <h2>🕒 Check-out</h2>
+    Späteste Abreisezeit ist <strong>12:00 Uhr</strong>.<br>
+    Bitte informieren Sie <strong>Ibu Yayah</strong> zur Schlüsselübergabe oder wenn Sie einen späten Check-out wünschen (je nach Verfügbarkeit).
+  </div>
+
+  <div class="card">
+    <h2>🌀 Ventilator</h2>
+    Wir bieten keine Klimaanlage an, da Nagreg ein natürlich kühles Klima hat 🌿<br>
+    Falls es warm wird, stehen Ventilatoren zu Ihrer Verfügung.
+  </div>
+
+  <div class="card">
+    <details>
+      <summary>🏠 Hausregeln</summary>
+      <div class="rules">
+        <ul>
+          <li>Rauchen ist im Haus strengstens verboten (Wohnzimmer, Schlafzimmer, Badezimmer und Toilette). Rauchen ist nur auf der hinteren Terrasse und der vorderen Terrasse erlaubt.</li>
+          <li>Bitte halten Sie den Geräuschpegel niedrig und respektieren Sie die Nachbarschaft.</li>
+          <li>Halten Sie das Haus und alle Einrichtungen sauber.</li>
+          <li>Schalten Sie beim Verlassen des Hauses Licht, Gas und elektronische Geräte aus.</li>
+          <li>Benutzte Handtücher und Bettwäsche bitte im vorgesehenen Bereich ablegen.</li>
+          <li>Bitte lassen Sie keine Wertgegenstände unbeaufsichtigt. Das Homestay übernimmt keine Haftung bei Verlust.</li>
+          <li>Schäden oder fehlende Gegenstände bitte sofort melden.</li>
+          <li>Ausstattung nur während des Aufenthalts nutzen (Hausschuhe und Zahnbürste dürfen mitgenommen werden).</li>
+          <li>Smart-TV & Streaming: Bitte nur das Profil „Gusman Homestay“ verwenden und keine Einstellungen ändern.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <div class="footer">
+    © 2026 Gusman Homestay<br>
+    www.gusmanhomestay.com
+  </div>
+
+</div>
+</body>
+</html>
