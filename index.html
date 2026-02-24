@@ -3447,6 +3447,7 @@ function tourPrev(){
    GROUPED LIGHTBOX (PER SECTION)
    ✅ IMPORTANT: init AFTER DOM is ready (Safari fix)
 ========================= */
+<script>
 function initLightbox(){
   const overlay = document.getElementById('lbOverlay');
   const img = document.getElementById('lbImg');
@@ -3455,10 +3456,7 @@ function initLightbox(){
   const close = document.getElementById('lbClose');
   const counter = document.getElementById('lbCounter');
 
-  // If lightbox HTML isn't on this page, do nothing
   if(!overlay || !img || !prev || !next || !close || !counter) return;
-
-  // prevent double-binding
   if(overlay.dataset.bound === '1') return;
   overlay.dataset.bound = '1';
 
@@ -3471,13 +3469,13 @@ function initLightbox(){
 
     img.src = el.dataset.full || el.src;
     counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
-
     prev.style.opacity = currentIndex === 0 ? .3 : 1;
     next.style.opacity = currentIndex === currentImages.length - 1 ? .3 : 1;
   };
 
-  document.querySelectorAll('.gallery-row').forEach(row=>{
-    const imgs = Array.from(row.querySelectorAll('img'));
+  // 🔥 FIX: bind to ALL gallery images, grouped by parent row
+  document.querySelectorAll('.gallery-row, .gallery').forEach(group=>{
+    const imgs = Array.from(group.querySelectorAll('img'));
     imgs.forEach((el, i)=>{
       el.addEventListener('click', ()=>{
         currentImages = imgs;
@@ -3488,28 +3486,20 @@ function initLightbox(){
     });
   });
 
-  prev.addEventListener('click', ()=>{
-    if(currentIndex > 0){
-      currentIndex--;
-      show();
-    }
-  });
+  prev.onclick = ()=>{
+    if(currentIndex > 0){ currentIndex--; show(); }
+  };
 
-  next.addEventListener('click', ()=>{
-    if(currentIndex < currentImages.length - 1){
-      currentIndex++;
-      show();
-    }
-  });
+  next.onclick = ()=>{
+    if(currentIndex < currentImages.length - 1){ currentIndex++; show(); }
+  };
 
   const closeFn = ()=> overlay.classList.remove('open');
 
-  close.addEventListener('click', closeFn);
-
-  overlay.addEventListener('click', (e)=>{
-    if(e.target === overlay) closeFn();
-  });
+  close.onclick = closeFn;
+  overlay.onclick = e => { if(e.target === overlay) closeFn(); };
 }
+</script>
   
 /* =========================
    AUTO THEME: DARK AT NIGHT
@@ -3602,11 +3592,9 @@ document.addEventListener('DOMContentLoaded', () => {
   applyAutoTheme();
   sanitizeNumericInputs();
   
-requestAnimationFrame(() => {
-  updateTimeWIB();
-  setInterval(updateTimeWIB, 15000);
-  initLightbox();
-});
+updateTimeWIB();
+setInterval(updateTimeWIB, 15000);
+initLightbox();
 
   /* ---------- DEFAULT DATES ---------- */
   const today = new Date();
