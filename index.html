@@ -782,46 +782,6 @@ p.lead{
   border:0;
   display:block;
 }
-/* ✅ Map preview (fast) */
-.map-preview{
-  position:relative;
-  overflow:hidden;
-  border-radius:12px;
-}
-
-.map-preview img{
-  width:100%;
-  display:block;
-  border-radius:12px;
-}
-
-.map-btn{
-  position:absolute;
-  bottom:14px;
-  left:50%;
-  transform:translateX(-50%);
-  background:var(--brand);
-  color:#fff;
-  padding:10px 14px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:14px;
-  box-shadow:0 8px 18px rgba(0,0,0,0.25);
-}
-/* Map button text switching (desktop vs mobile) */
-.map-text-mobile{
-  display:none;
-}
-
-@media (max-width:768px){
-  .map-text-desktop{ display:none; }
-  .map-text-mobile{ display:inline; }
-}
-
-/* Hover (desktop only, safe) */
-.map-preview:hover .map-btn{
-  background:var(--brand-dark);
-}
   
 .site-footer{
   width:100%;
@@ -1661,51 +1621,7 @@ body[data-theme="dark"] .theme-btn.active{
   height:20px;
   flex-shrink:0;
 }
-/* ✅ Only the active language is visible */
-.map-btn .lang{
-  display:none;
-}
 
-.map-btn .lang.active{
-  display:inline-flex;
-  align-items:normal;
-  white-space:nowrap;
-  flex-wrap: wrap;
-  text-align: center;
-}
-.map-btn{
-  overflow: hidden;
-  word-break: break-word;
-}
-/* Icon stays inline */
-.map-icon{
-  width:18px;
-  height:18px;
-  margin:0 4px;
-  vertical-align:middle;
-}
-
-/* Kill underline in ALL states */
-.map-btn,
-.map-btn:hover,
-.map-btn:focus,
-.map-btn:active{
-  text-decoration:none !important;
-}
-.map-container {
-  position: relative;
-}
-
-/* Google Maps button */
-.map-btn {
-  position: absolute;
-  bottom: 36px;   /* ⬅ higher = more inside the map */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-
-  text-decoration: none;
-}
 /* FORCE Map / Peta title centered (REAL FIX) */
 .fullwidth-section > h3 {
   text-align: center !important;
@@ -1830,28 +1746,6 @@ body[data-theme="dark"] .theme-btn.active{
 /* 🔑 THIS IS THE MOST IMPORTANT LINE */
 .gallery-row img {
   min-width: 0;
-}
-.map-container{
-  position: relative;
-  overflow: hidden;
-  border-radius: 14px;
-}
-
-.map-embed{
-  width: 100%;
-  height: 360px;
-  border: 0;
-}
-
-.map-btn{
-  position: absolute;
-  bottom: 18px;              /* 👈 bottom of map */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
 }
 </style>
 <link rel="stylesheet" href="/css/patch.css">
