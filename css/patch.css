@@ -1,13 +1,1 @@
-/* === FIX: Enable gallery click === */
-.gallery img,
-.gallery-row img {
-  pointer-events: auto !important;
-  cursor: pointer;
-  z-index: 2;
-  position: relative;
-}
 
-/* Prevent parent from blocking clicks */
-.hero-card {
-  overflow: visible !important;
-}
