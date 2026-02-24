@@ -57,3 +57,9 @@
   margin-left:6px;
   vertical-align:middle;
 }
+.map-btn,
+.map-btn:hover,
+.map-btn:focus,
+.map-btn:active {
+  text-decoration: none !important;
+}
