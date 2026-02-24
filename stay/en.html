@@ -199,7 +199,7 @@
       color:rgba(234,242,242,0.65);
       margin-top:34px;
     }
-  .lang-switch{
+.lang-switch{
   display:flex;
   justify-content:center;
   gap:14px;
@@ -218,11 +218,10 @@
 }
 
 .lang img{
-  width:56px;
-  height:56px;
-  object-fit:cover;
-  border-radius:50%;
+  width:26px;
+  height:auto;
   display:block;
+  border-radius:4px;
 }
 
 .lang:hover{
@@ -242,14 +241,7 @@
   transform: scale(0.97);
   box-shadow: 0 6px 14px rgba(0,0,0,0.25);
 }
-    /* FORCE flag size (put this at the very bottom of <style>) */
-.lang-switch .lang img{
-  width:56px !important;
-  height:56px !important;
-  object-fit:cover !important;
-  border-radius:50% !important;
-  display:block !important;
-}
+
   </style>
 </head>
 
@@ -263,16 +255,16 @@
     </div>
     
 <div class="lang-switch">
-  <a href="/stay/id.html" onclick="localStorage.setItem('langChosen','id')">
+  <a href="/stay/id.html" class="lang" onclick="localStorage.setItem('langChosen','id')">
     <img src="/flags/id.png" alt="Indonesian">
   </a>
-  <a href="/stay/en.html" onclick="localStorage.setItem('langChosen','en')">
+  <a href="/stay/en.html" class="lang" onclick="localStorage.setItem('langChosen','en')">
     <img src="/flags/en.png" alt="English">
   </a>
-  <a href="/stay/de.html" onclick="localStorage.setItem('langChosen','de')">
+  <a href="/stay/de.html" class="lang" onclick="localStorage.setItem('langChosen','de')">
     <img src="/flags/de.png" alt="Deutsch">
   </a>
-  <a href="/stay/it.html" onclick="localStorage.setItem('langChosen','it')">
+  <a href="/stay/it.html" class="lang" onclick="localStorage.setItem('langChosen','it')">
     <img src="/flags/it.png" alt="Italiano">
   </a>
 </div>
