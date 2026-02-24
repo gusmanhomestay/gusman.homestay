@@ -5,18 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guida Ospiti – Gusman Homestay</title>
 
-  <style>
+ <style>
     :root{
       --bg1:#0f2f2f;
       --bg2:#163c3c;
+
       --card: rgba(255,255,255,0.08);
       --cardBorder: rgba(255,255,255,0.10);
+
       --text:#eaf2f2;
       --muted: rgba(234,242,242,0.75);
+
       --shadow: 0 10px 30px rgba(0,0,0,0.35);
       --radius: 18px;
+
+      /* brand-ish teal (less neon than WhatsApp green) */
       --brandTeal:#2b6f6b;
+      --brandTealHover:#2f7a75;
+
       --blue:#4285F4;
+      --blueHover:#4b93ff;
     }
 
     *{ box-sizing:border-box; }
@@ -37,10 +45,19 @@
       padding:34px 18px 90px;
     }
 
-    .header{text-align:center;margin:10px 0 26px;}
+    /* Header */
+    .header{
+      text-align:center;
+      margin:10px 0 26px;
+    }
+
+    .logo{
+      text-align:center;
+      margin-bottom:18px;
+    }
 
     .logo img{
-      width:320px;
+      width:320px;          /* bigger logo */
       max-width:92%;
       height:auto;
       display:block;
@@ -48,23 +65,37 @@
     }
 
     .tagline{
-      font-family:"Georgia",serif;
+      font-family: "Georgia", serif;
       font-size:34px;
       color:#dfeeee;
-      opacity:.95;
-      margin:0 0 14px;
+      opacity:0.95;
+      margin: 0 0 14px;
+      animation: floaty 2.8s ease-in-out infinite; /* dancing */
     }
 
-    h1{text-align:center;font-size:30px;margin:0 0 6px;color:#ffffff;}
+    @keyframes floaty{
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-6px); }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .tagline{ animation:none; }
+    }
+
+    h1{
+      text-align:center;
+      font-size:30px;
+      margin:0 0 6px;
+      color:#ffffff;
+    }
 
     .subtitle{
-      max-width:520px;
-      margin:0 auto 22px;
       text-align:center;
       color:#cfdede;
+      margin:0 0 22px;
       font-size:15px;
     }
 
+    /* Cards */
     .card{
       background:var(--card);
       border:1px solid var(--cardBorder);
@@ -73,43 +104,219 @@
       margin-bottom:16px;
       box-shadow:var(--shadow);
       backdrop-filter: blur(10px);
-      text-align:center;
+      text-align:center; /* centered like you wanted */
     }
 
-    .wifi{font-size:18px;font-weight:700;}
-    .muted{color:var(--muted);}
+    .card h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:0.2px;
 
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+    }
+
+    .wifi{
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:2px;
+    }
+
+    .muted{ color:var(--muted); }
+
+    /* Buttons */
     .button{
       display:flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      padding:14px;
+
+      text-align:center;
+      padding:14px 14px;
       border-radius:14px;
       text-decoration:none;
       font-weight:800;
       margin-top:12px;
+
       border:1px solid rgba(255,255,255,0.14);
-      box-shadow:0 10px 22px rgba(0,0,0,0.25);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+      transition: transform .15s ease, opacity .15s ease, background .15s ease;
+    }
+    @media (hover:hover){
+      .button:hover{ transform: translateY(-1px); }
     }
 
-    .whatsapp{background:var(--brandTeal);color:#fff;}
-    .review{background:var(--blue);color:#fff;}
+    /* WhatsApp button (teal, not neon green) */
+    .whatsapp{
+      background:var(--brandTeal);
+      color:#fff;
+    }
+    .whatsapp:hover{ background:var(--brandTealHover); }
 
-    .qr-wrap{margin-top:12px;display:flex;justify-content:center;}
-    .qr{width:170px;max-width:70%;background:#fff;padding:10px;border-radius:14px;}
+    .review{
+      background:var(--blue);
+      color:#fff;
+    }
+    .review:hover{ background:var(--blueHover); }
 
-    details{text-align:left;}
-    summary{cursor:pointer;font-weight:900;}
-    .rules{margin-top:12px;line-height:1.55;}
-    .rules ul{padding-left:18px;}
+    /* WhatsApp icon inside button */
+    .wa-icon{
+      width:18px;
+      height:18px;
+      display:inline-block;
+      vertical-align:middle;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+    }
 
+    /* Review button small note */
+    .btn-title{
+      font-size:16px;
+      line-height:1.2;
+    }
+    .btn-note{
+      margin-top:6px;
+      font-size:12px;
+      font-weight:600;
+      opacity:0.82;      /* smaller + softer */
+      line-height:1.25;
+    }
+
+    /* QR in review card */
+    .qr-wrap{
+      margin-top:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .qr{
+      width:170px;
+      max-width:70%;
+      height:auto;
+      border-radius:14px;
+      background:#fff;
+      padding:10px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+    }
+
+    /* Accordion (Aturan Rumah) */
+  details{
+  position:relative;
+  text-align:left; /* rules stay left */
+}
+    
+.rules{
+  margin-top:12px;
+  color:var(--text);
+  line-height:1.55;
+  text-align:left;     /* keep rules left for readability */
+}
+    summary{
+      cursor:pointer;
+      list-style:none;
+      user-select:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      font-weight:900;
+      padding:2px 0;
+    }
+    summary::-webkit-details-marker{ display:none; }
+
+    .chev{
+      opacity:0.8;
+      transition: transform .2s ease;
+      font-size:18px;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+    
+    summary{
+    justify-content:center;     /* center content */
+    text-align:center;
+    }
+
+    summary .chev{
+    position:absolute;
+    right:18px;                /* keep arrow on the right */
+    }
+    .rules{
+      margin-top:12px;
+      color:var(--text);
+      line-height:1.55;
+    }
+    .rules ul{
+      margin:0;
+      padding-left:18px;
+    }
+    .rules li{ margin:6px 0; }
+
+    /* Footer */
     .footer{
       text-align:center;
       font-size:13px;
       color:rgba(234,242,242,0.65);
       margin-top:34px;
     }
+
+    @media (max-width:420px){
+      .tagline{ font-size:28px; }
+      h1{ font-size:26px; }
+      .logo img{ width:250px; }
+    }
+    
+    .subtitle{
+  max-width:520px;   /* prevents ugly wrapping */
+  margin:0 auto 22px;
+}
+
+.subtitle-line{
+  display:block;     /* always moves to next line */
+}
+    
+.lang-switch{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.lang{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.25);
+  opacity:.6;
+  transition:.2s ease;
+}
+
+.lang img{
+  width:26px;
+  height:auto;
+  display:block;
+  border-radius:4px;
+}
+
+.lang:hover{
+  opacity:1;
+  transform:translateY(-2px);
+}
+
+.lang.active{
+  opacity:1;
+  background:rgba(255,255,255,.12);
+}
+.button{
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.button:active{
+  transform: scale(0.97);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
   </style>
 </head>
 
