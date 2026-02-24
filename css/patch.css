@@ -1,66 +1,41 @@
-/* ===== MAP BUTTON (ONE SOURCE OF TRUTH) ===== */
+/* ===== MAP BUTTON FINAL ===== */
 
-.map-container{
-  position: relative;
-  overflow: hidden;
-  border-radius: 14px;
-}
-
-.map-embed{
-  width: 100%;
-  height: 360px;
-  border: 0;
-  display:block;
-}
-
-/* Button positioning */
 .map-btn{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:18px;
-  z-index:10;
-
-  background: var(--brand);
-  color:#fff;
-  padding:10px 14px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:14px;
-  box-shadow:0 8px 18px rgba(0,0,0,.25);
-
-  text-decoration:none !important;
-
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  gap:6px;
-
-  max-width: calc(100% - 24px);
+  padding:12px 16px;
+  border-radius:999px;
+  background:var(--brand);
+  color:#fff;
+  font-weight:700;
+  font-size:14px;
+  max-width:90%;
 }
 
-/* show only active language in the button */
-.map-btn .lang{ display:none; }
-.map-btn .lang.active{ display:flex; }
-
-/* Desktop = single line */
+/* Desktop = one line */
 .map-line-1,
-.map-line-2{ display:inline; }
+.map-line-2{
+  display:inline;
+}
 
-/* Mobile = 2 lines */
+/* Mobile = clean 2 lines stacked */
 @media (max-width:768px){
-  .map-btn .lang.active{
+  .map-btn{
     flex-direction:column;
-    line-height:1.25;
+    line-height:1.3;
   }
+
   .map-line-1,
-  .map-line-2{ display:block; }
+  .map-line-2{
+    display:block;
+  }
 }
 
 .map-icon{
-  height:16px;
-  width:auto;
-  vertical-align:middle;
+  width:18px;
+  height:18px;
   margin-left:6px;
+  vertical-align:middle;
 }
