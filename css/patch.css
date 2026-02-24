@@ -1,38 +1,33 @@
-/* ===== MOBILE MAP BUTTON FIX (LANGUAGE SAFE) ===== */
-@media (max-width: 480px) and (orientation: portrait) {
+/* Default = desktop (1 line) */
+.map-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+}
 
+.map-line-1,
+.map-line-2 {
+  display: inline;
+}
+
+/* Mobile only = 2 lines */
+@media (max-width: 768px) {
   .map-btn {
-    width: calc(100% - 24px) !important;
-    max-width: 360px !important;
-    height: auto !important;
-
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-
-    white-space: normal !important;
-    text-align: center !important;
-    line-height: 1.25 !important;
+    flex-direction: column;
+    line-height: 1.25;
   }
 
-  /* 🔒 KEEP language system working */
-  .map-btn .lang {
-    display: none;
-  }
-
-  body[data-lang="id"] .map-btn .lang.id,
-  body[data-lang="en"] .map-btn .lang.en,
-  body[data-lang="de"] .map-btn .lang.de,
-  body[data-lang="it"] .map-btn .lang.it {
-    display: inline;
+  .map-line-1,
+  .map-line-2 {
+    display: block;
   }
 }
 
-  /* make the icon smaller on mobile */
-  .map-btn img {
-    height: 16px !important;
-    width: 16px !important;
-    flex: 0 0 auto !important;
-  }
+.map-icon {
+  height: 16px;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 6px;
 }
