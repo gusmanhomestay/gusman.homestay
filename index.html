@@ -1668,10 +1668,15 @@ body[data-theme="dark"] .theme-btn.active{
 
 .map-btn .lang.active{
   display:inline-flex;
-  align-items:center;
+  align-items:normal;
   white-space:nowrap;
+  flex-wrap: wrap;
+  text-align: center;
 }
-
+.map-btn{
+  overflow: hidden;
+  word-break: break-word;
+}
 /* Icon stays inline */
 .map-icon{
   width:18px;
