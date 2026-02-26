@@ -3,30 +3,26 @@
     {
       "source": "/images/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
       "source": "/videos/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ],
   "redirects": [
     {
+      "source": "/minibar",
+      "destination": "/minibar.html",
+      "permanent": false
+    },
+    {
       "source": "/(.*)",
       "has": [
-        {
-          "type": "host",
-          "value": "gusmanhomestay.com"
-        }
+        { "type": "host", "value": "gusmanhomestay.com" }
       ],
       "destination": "https://www.gusmanhomestay.com/$1",
       "permanent": true
