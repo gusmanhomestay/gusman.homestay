@@ -1,6 +1,6 @@
 <html lang="id">
 <head>
-  
+
   <!-- Google Analytics 4 -->  
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZT9VK6BNM3"></script>
 <script>
@@ -3741,7 +3741,7 @@ function closeRules(){
 }
 </script>
 <!-- ===================== HOUSE RULES MODAL ===================== -->
-<div id="rulesModal" class="rules-modal" aria-hidden="true">
+<div id="rulesModal" class="rules-modal">
   <div class="rules-box">
     <button class="rules-close" onclick="closeRules()">×</button>
 
@@ -3759,21 +3759,18 @@ function closeRules(){
         <span class="lang de" style="display:none;">Bitte behandeln Sie das Haus und die Einrichtungen während Ihres Aufenthalts sorgfältig.</span>
         <span class="lang it" style="display:none;">Vi preghiamo di prendervi cura della casa e delle sue strutture durante il soggiorno.</span>
       </li>
-
       <li>
         <span class="lang id">Merokok diperbolehkan hanya di area dapur dan teras depan.</span>
         <span class="lang en" style="display:none;">Smoking is permitted only in the kitchen area and front terrace.</span>
         <span class="lang de" style="display:none;">Rauchen ist ausschließlich in der Küche und auf der vorderen Terrasse gestattet.</span>
         <span class="lang it" style="display:none;">È consentito fumare esclusivamente in cucina e sulla terrazza anteriore.</span>
       </li>
-
       <li>
         <span class="lang id">Dilarang merokok di kamar tidur, ruang tamu, dan kamar mandi.</span>
         <span class="lang en" style="display:none;">Smoking is strictly prohibited in the bedrooms, living room, and bathroom.</span>
         <span class="lang de" style="display:none;">In Schlafzimmern, Wohnzimmer und Badezimmer ist das Rauchen nicht erlaubt.</span>
         <span class="lang it" style="display:none;">È vietato fumare nelle camere da letto, nel soggiorno e nel bagno.</span>
       </li>
-
       <li>
         <span class="lang id">Mohon menjaga ketenangan dan menghormati lingkungan sekitar demi kenyamanan bersama.</span>
         <span class="lang en" style="display:none;">Please maintain a peaceful environment and respect the surrounding neighborhood for everyone’s comfort.</span>
@@ -3781,18 +3778,13 @@ function closeRules(){
         <span class="lang it" style="display:none;">Vi chiediamo di mantenere un ambiente tranquillo e di rispettare il vicinato per il comfort di tutti.</span>
       </li>
     </ul>
-
-    <p class="rules-note">
-      <span class="lang id"><em>Panduan lengkap tersedia secara digital melalui email konfirmasi reservasi dan dapat diakses kapan saja melalui QR code di dalam rumah.</em></span>
-      <span class="lang en" style="display:none;"><em>The complete guest guide is available digitally via your reservation confirmation email and can also be accessed anytime through the QR code inside the house.</em></span>
-      <span class="lang de" style="display:none;"><em>Der vollständige Gästeführer ist digital in der Reservierungsbestätigung enthalten und kann jederzeit über den QR-Code im Haus abgerufen werden.</em></span>
-      <span class="lang it" style="display:none;"><em>La guida completa per gli ospiti è disponibile in formato digitale nell’email di conferma della prenotazione ed è consultabile in qualsiasi momento tramite il QR code presente in casa.</em></span>
-    </p>
   </div>
 </div>
 <!-- ===================== END HOUSE RULES MODAL ===================== -->
+
+
 <!-- ===================== DIRECTIONS MODAL ===================== -->
-<div id="directionsModal" class="rules-modal" aria-hidden="true">
+<div id="directionsModal" class="rules-modal">
   <div class="rules-box">
     <button class="rules-close" onclick="closeDirections()">×</button>
 
@@ -3834,51 +3826,35 @@ function closeRules(){
     </p>
   </div>
 </div>
+
 <script>
-/* =========================
-   HOUSE RULES MODAL
-========================= */
 function openRules(){
   const modal = document.getElementById('rulesModal');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
-
-  modal.addEventListener('click', e => {
-    if(e.target === modal) closeRules();
-  }, { once:true });
 }
-
 function closeRules(){
   const modal = document.getElementById('rulesModal');
   modal.classList.remove('open');
   document.body.style.overflow = '';
 }
 
-/* =========================
-   DIRECTIONS → GOOGLE MAPS
-========================= */
 function openDirections(){
   const modal = document.getElementById('directionsModal');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function closeDirections(){
   const modal = document.getElementById('directionsModal');
   modal.classList.remove('open');
   document.body.style.overflow = '';
 }
 
-/* =========================
-   ATTRACTIONS → PDF BASED ON LANGUAGE
-========================= */
-function openAttractions() {
+function openAttractions(){
   const lang = localStorage.getItem("lang") || "id";
   window.open(`/files/panduan-wisata-${lang}.pdf`, "_blank");
 }
-
 </script>
-
 /* =========================
    ESC KEY HANDLER (ALL MODALS)
 ========================= */
