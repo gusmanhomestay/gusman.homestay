@@ -3816,7 +3816,15 @@ function closeRules(){
    DIRECTIONS → GOOGLE MAPS
 ========================= */
 function openDirections(){
-  window.open("https://maps.google.com/?q=Gusman+Homestay+Nagreg", "_blank");
+  const modal = document.getElementById('directionsModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDirections(){
+  const modal = document.getElementById('directionsModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 /* =========================
