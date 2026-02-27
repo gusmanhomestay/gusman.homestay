@@ -3838,78 +3838,59 @@ function closeRules(){
   </div>
 </div>
 <script>
-/* =========================
-   HOUSE RULES MODAL
-========================= */
-function openRules(){
-  const modal = document.getElementById('rulesModal');
+/* ========= MODAL HELPERS (click outside + ESC) ========= */
+function openModal(modalId, closeFnName){
+  const modal = document.getElementById(modalId);
+  if(!modal) return;
+
   modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
   document.body.style.overflow = 'hidden';
 
-  modal.addEventListener('click', function(e){
-    if(e.target === modal) closeRules();
-  }, { once:true });
+  // click outside to close
+  modal._outsideHandler = (e) => {
+    if (e.target === modal) window[closeFnName]();
+  };
+  modal.addEventListener('click', modal._outsideHandler);
 
-  document.addEventListener('keydown', escCloseRules);
+  // ESC to close
+  modal._escHandler = (e) => {
+    if (e.key === 'Escape') window[closeFnName]();
+  };
+  document.addEventListener('keydown', modal._escHandler);
 }
-function closeRules(){
-  const modal = document.getElementById('rulesModal');
+
+function closeModal(modalId){
+  const modal = document.getElementById(modalId);
+  if(!modal) return;
+
   modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
   document.body.style.overflow = '';
-  document.removeEventListener('keydown', escCloseRules);
-}
-function escCloseRules(e){
-  if(e.key === "Escape") closeRules();
-}
 
-
-/* =========================
-   DIRECTIONS MODAL
-========================= */
-function openDirections(){
-  const modal = document.getElementById('directionsModal');
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-
-  modal.addEventListener('click', function(e){
-    if(e.target === modal) closeDirections();
-  }, { once:true });
-
-  document.addEventListener('keydown', escCloseDirections);
-}
-function closeDirections(){
-  const modal = document.getElementById('directionsModal');
-  modal.classList.remove('open');
-  document.body.style.overflow = '';
-  document.removeEventListener('keydown', escCloseDirections);
-}
-function escCloseDirections(e){
-  if(e.key === "Escape") closeDirections();
+  if (modal._outsideHandler){
+    modal.removeEventListener('click', modal._outsideHandler);
+    modal._outsideHandler = null;
+  }
+  if (modal._escHandler){
+    document.removeEventListener('keydown', modal._escHandler);
+    modal._escHandler = null;
+  }
 }
 
+/* ========= HOUSE RULES ========= */
+function openRules(){ openModal('rulesModal', 'closeRules'); }
+function closeRules(){ closeModal('rulesModal'); }
 
-/* =========================
-   ATTRACTIONS → PDF
-========================= */
+/* ========= DIRECTIONS ========= */
+function openDirections(){ openModal('directionsModal', 'closeDirections'); }
+function closeDirections(){ closeModal('directionsModal'); }
+
+/* ========= ATTRACTIONS → PDF ========= */
 function openAttractions(){
   const lang = localStorage.getItem("lang") || "id";
   window.open(`/files/panduan-wisata-${lang}.pdf`, "_blank");
 }
-</script>
-/* =========================
-   ESC KEY HANDLER (ALL MODALS)
-========================= */
-document.addEventListener('keydown', e => {
-  if (e.key !== 'Escape') return;
-
-  const rules = document.getElementById('rulesModal');
-  const directions = document.getElementById('directionsModal');
-  const attractions = document.getElementById('attractionsModal');
-
-  if (rules?.classList.contains('open')) closeRules();
-  if (directions?.classList.contains('open')) closeDirections();
-  if (attractions?.classList.contains('open')) closeAttractions();
-});
 </script>
 <!-- =========================
    GA4 CLICK TRACKING
