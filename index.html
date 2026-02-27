@@ -3823,7 +3823,8 @@ function openDirections(){
    ATTRACTIONS → PDF BASED ON LANGUAGE
 ========================= */
 function openAttractions() {
-  const currentLang = document.documentElement.lang;
+
+  const currentLang = localStorage.getItem("langChosen") || "id";
 
   if (currentLang === "id") {
     window.location.href = "/files/panduan-wisata-id.pdf";
@@ -3838,7 +3839,7 @@ function openAttractions() {
     window.location.href = "/files/panduan-wisata-it.pdf";
   } 
   else {
-    window.location.href = "/files/panduan-wisata-en.pdf";
+    window.location.href = "/files/panduan-wisata-id.pdf";
   }
 }
 </script>
