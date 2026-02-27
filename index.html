@@ -3834,30 +3834,60 @@ function closeRules(){
 </p>
   </div>
 </div>
-
 <script>
+/* =========================
+   HOUSE RULES MODAL
+========================= */
 function openRules(){
   const modal = document.getElementById('rulesModal');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) closeRules();
+  }, { once:true });
+
+  document.addEventListener('keydown', escCloseRules);
 }
 function closeRules(){
   const modal = document.getElementById('rulesModal');
   modal.classList.remove('open');
   document.body.style.overflow = '';
+  document.removeEventListener('keydown', escCloseRules);
+}
+function escCloseRules(e){
+  if(e.key === "Escape") closeRules();
 }
 
+
+/* =========================
+   DIRECTIONS MODAL
+========================= */
 function openDirections(){
   const modal = document.getElementById('directionsModal');
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) closeDirections();
+  }, { once:true });
+
+  document.addEventListener('keydown', escCloseDirections);
 }
 function closeDirections(){
   const modal = document.getElementById('directionsModal');
   modal.classList.remove('open');
   document.body.style.overflow = '';
+  document.removeEventListener('keydown', escCloseDirections);
+}
+function escCloseDirections(e){
+  if(e.key === "Escape") closeDirections();
 }
 
+
+/* =========================
+   ATTRACTIONS → PDF
+========================= */
 function openAttractions(){
   const lang = localStorage.getItem("lang") || "id";
   window.open(`/files/panduan-wisata-${lang}.pdf`, "_blank");
