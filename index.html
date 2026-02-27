@@ -3823,25 +3823,10 @@ function openDirections(){
    ATTRACTIONS → PDF BASED ON LANGUAGE
 ========================= */
 function openAttractions() {
-
-  const currentLang = localStorage.getItem("langChosen") || "id";
-
-  if (currentLang === "id") {
-    window.location.href = "/files/panduan-wisata-id.pdf";
-  } 
-  else if (currentLang === "en") {
-    window.location.href = "/files/panduan-wisata-en.pdf";
-  } 
-  else if (currentLang === "de") {
-    window.location.href = "/files/panduan-wisata-de.pdf";
-  } 
-  else if (currentLang === "it") {
-    window.location.href = "/files/panduan-wisata-it.pdf";
-  } 
-  else {
-    window.location.href = "/files/panduan-wisata-id.pdf";
-  }
+  const lang = localStorage.getItem("lang") || "id";
+  window.open(`/files/panduan-wisata-${lang}.pdf`, "_blank");
 }
+
 </script>
 
 /* =========================
