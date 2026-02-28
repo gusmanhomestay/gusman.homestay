@@ -578,16 +578,18 @@ p.lead{
 
 .hero-card h1{
   text-align:center;
-  white-space:normal !important;
-  overflow:visible !important;
-  text-overflow:unset !important;
+  white-space:nowrap;          /* 🔥 force one line on desktop */
+  overflow:hidden;
+  text-overflow:ellipsis;      /* safety if screen slightly smaller */
   line-height:1.2;
 }
 
-/* ✅ On small phones, allow wrap (better than cutting) */
-@media (max-width:480px){
+/* On small screens allow wrapping */
+@media (max-width:768px){
   .hero-card h1{
     white-space:normal;
+    overflow:visible;
+    text-overflow:unset;
   }
 }
 /* =========================
