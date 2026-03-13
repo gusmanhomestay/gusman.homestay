@@ -19,6 +19,7 @@
       --shadow: 0 10px 30px rgba(0,0,0,0.35);
       --radius: 18px;
 
+      /* brand-ish teal (less neon than WhatsApp green) */
       --brandTeal:#2b6f6b;
       --brandTealHover:#2f7a75;
 
@@ -44,6 +45,7 @@
       padding:34px 18px 90px;
     }
 
+    /* Header */
     .header{
       text-align:center;
       margin:10px 0 26px;
@@ -55,7 +57,7 @@
     }
 
     .logo img{
-      width:320px;
+      width:320px;          /* bigger logo */
       max-width:92%;
       height:auto;
       display:block;
@@ -68,12 +70,15 @@
       color:#dfeeee;
       opacity:0.95;
       margin: 0 0 14px;
-      animation: floaty 2.8s ease-in-out infinite;
+      animation: floaty 2.8s ease-in-out infinite; /* dancing */
     }
 
     @keyframes floaty{
       0%,100% { transform: translateY(0); }
       50%     { transform: translateY(-6px); }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .tagline{ animation:none; }
     }
 
     h1{
@@ -90,6 +95,7 @@
       font-size:15px;
     }
 
+    /* Cards */
     .card{
       background:var(--card);
       border:1px solid var(--cardBorder);
@@ -98,13 +104,14 @@
       margin-bottom:16px;
       box-shadow:var(--shadow);
       backdrop-filter: blur(10px);
-      text-align:center;
+      text-align:center; /* centered like you wanted */
     }
 
     .card h2{
       margin:0 0 10px;
       font-size:18px;
       letter-spacing:0.2px;
+
       display:flex;
       justify-content:center;
       align-items:center;
@@ -119,32 +126,42 @@
 
     .muted{ color:var(--muted); }
 
+    /* Buttons */
     .button{
       display:flex;
       align-items:center;
       justify-content:center;
       gap:10px;
+
       text-align:center;
       padding:14px 14px;
       border-radius:14px;
       text-decoration:none;
       font-weight:800;
       margin-top:12px;
+
       border:1px solid rgba(255,255,255,0.14);
       box-shadow: 0 10px 22px rgba(0,0,0,0.25);
       transition: transform .15s ease, opacity .15s ease, background .15s ease;
     }
+    @media (hover:hover){
+      .button:hover{ transform: translateY(-1px); }
+    }
 
+    /* WhatsApp button (teal, not neon green) */
     .whatsapp{
       background:var(--brandTeal);
       color:#fff;
     }
+    .whatsapp:hover{ background:var(--brandTealHover); }
 
     .review{
       background:var(--blue);
       color:#fff;
     }
+    .review:hover{ background:var(--blueHover); }
 
+    /* WhatsApp icon inside button */
     .wa-icon{
       width:18px;
       height:18px;
@@ -153,13 +170,26 @@
       filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
     }
 
+    /* Review button small note */
+    .btn-title{
+      font-size:16px;
+      line-height:1.2;
+    }
+    .btn-note{
+      margin-top:6px;
+      font-size:12px;
+      font-weight:600;
+      opacity:0.82;      /* smaller + softer */
+      line-height:1.25;
+    }
+
+    /* QR in review card */
     .qr-wrap{
       margin-top:12px;
       display:flex;
       align-items:center;
       justify-content:center;
     }
-
     .qr{
       width:170px;
       max-width:70%;
@@ -170,18 +200,18 @@
       box-shadow: 0 12px 24px rgba(0,0,0,0.25);
     }
 
+    /* Accordion (Aturan Rumah) */
     details{
       position:relative;
-      text-align:left;
+      text-align:left; /* rules stay left */
     }
 
     .rules{
       margin-top:12px;
       color:var(--text);
       line-height:1.55;
-      text-align:left;
+      text-align:left;     /* keep rules left for readability */
     }
-
     summary{
       cursor:pointer;
       list-style:none;
@@ -193,19 +223,36 @@
       font-weight:900;
       padding:2px 0;
     }
+    summary::-webkit-details-marker{ display:none; }
+
+    .chev{
+      opacity:0.8;
+      transition: transform .2s ease;
+      font-size:18px;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+
+    summary{
+      justify-content:center;     /* center content */
+      text-align:center;
+    }
 
     summary .chev{
       position:absolute;
-      right:18px;
+      right:18px;                /* keep arrow on the right */
     }
-
+    .rules{
+      margin-top:12px;
+      color:var(--text);
+      line-height:1.55;
+    }
     .rules ul{
       margin:0;
       padding-left:18px;
     }
-
     .rules li{ margin:6px 0; }
 
+    /* Footer */
     .footer{
       text-align:center;
       font-size:13px;
@@ -213,12 +260,71 @@
       margin-top:34px;
     }
 
+    @media (max-width:420px){
+      .tagline{ font-size:28px; }
+      h1{ font-size:26px; }
+      .logo img{ width:250px; }
+    }
+
+    .subtitle{
+      max-width:520px;   /* prevents ugly wrapping */
+      margin:0 auto 22px;
+    }
+
+    .subtitle-line{
+      display:block;     /* always moves to next line */
+    }
+
+   .lang-switch{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.lang{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.25);
+  opacity:.6;
+  transition:.2s ease;
+}
+
+.lang img{
+  width:26px;
+  height:auto;
+  display:block;
+  border-radius:4px;
+}
+
+.lang:hover{
+  opacity:1;
+  transform:translateY(-2px);
+}
+
+.lang.active{
+  opacity:1;
+  background:rgba(255,255,255,.12);
+}
+    .button{
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .button:active{
+      transform: scale(0.97);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+/* ✅ FIX: force logo size (overrides any bad img{width:100%} rule) */
 .logo img{
   width:320px !important;
   max-width:92% !important;
   height:auto !important;
 }
 
+/* small screens */
 @media (max-width:420px){
   .logo img{
     width:250px !important;
@@ -228,116 +334,124 @@
 </head>
 
 <body>
-<div class="container">
+  <div class="container">
 
-<div class="header">
-<div class="logo">
-<img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
-<div class="tagline">Private Boutique Homestay</div>
-</div>
+    <div class="header">
+      <div class="logo">
+        <img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
+        <div class="tagline">Private Boutique Homestay</div>
+      </div>
 
-<h1>Willkommen im Gusman Homestay</h1>
-
-<p class="subtitle">
-Genießen Sie Ihren Aufenthalt in Nagreg —
-<span class="subtitle-line">Wir hoffen, dass Sie sich wohlfühlen und wie zu Hause fühlen 😊</span>
-</p>
-</div>
-
-<div class="card">
-<h2>📶 Wi-Fi</h2>
-<div class="wifi">Gusman-HomeStay</div>
-<div class="muted">Passwort: <strong style="color:var(--text)">Nagreg2025!</strong></div>
-</div>
-
-<!-- ONLY ADDITION -->
-<div class="card">
-<h2>💻 Gäste-Computer</h2>
-<div class="muted">
-Der Gäste-Informationsbildschirm kann über den <strong>Power-Knopf hinter dem Monitor</strong> eingeschaltet werden.<br><br>
-Nach der Nutzung bitte auf <strong>„Turn Off“ auf dem Bildschirm</strong> klicken, damit der Computer korrekt herunterfährt.
-</div>
+      <div class="lang-switch">
+  <a href="/stay/id.html" class="lang" onclick="localStorage.setItem('langChosen','id')">
+    <img src="/flags/id.png" alt="Indonesian">
+  </a>
+  <a href="/stay/en.html" class="lang" onclick="localStorage.setItem('langChosen','en')">
+    <img src="/flags/en.png" alt="English">
+  </a>
+  <a href="/stay/de.html" class="lang" onclick="localStorage.setItem('langChosen','de')">
+    <img src="/flags/de.png" alt="Deutsch">
+  </a>
+  <a href="/stay/it.html" class="lang" onclick="localStorage.setItem('langChosen','it')">
+    <img src="/flags/it.png" alt="Italiano">
+  </a>
 </div>
 
-<div class="card">
-<h2>🕒 Check-out</h2>
-<div>
-Spätestens um <strong>12:00 WIB</strong>.<br>
-Bitte informieren Sie <strong>Ibu Yayah</strong> zur Schlüsselrückgabe & falls Sie einen Late Check-out wünschen.
-</div>
-</div>
+      <h1>Willkommen im Gusman Homestay</h1>
+      <p class="subtitle">
+        Genießen Sie Ihren Aufenthalt in Nagreg —
+        <span class="subtitle-line">Wir hoffen, dass Sie sich wohlfühlen und wie zu Hause fühlen 😊</span>
+      </p>
+    </div>
 
-<div class="card">
-<h2>🌀 Ventilator</h2>
-<div>
-Wir bieten keine Klimaanlage an, da das Klima in Nagreg meist angenehm kühl ist 🌿<br>
-Wenn es warm wird, nutzen Sie bitte den vorhandenen Ventilator.
-</div>
-</div>
+    <div class="card">
+      <h2>📶 Wi-Fi</h2>
+      <div class="wifi">Gusman-HomeStay</div>
+      <div class="muted">Passwort: <strong style="color:var(--text)">Nagreg2025!</strong></div>
+    </div>
 
-<div class="card">
-<details>
-<summary>
-🏠 Aufenthalts-Guide
-<span class="chev">⌄</span>
-</summary>
+    <div class="card">
+      <h2>🕒 Check-out</h2>
+      <div>
+        Spätestens um <strong>12:00 WIB</strong>.<br>
+        Bitte informieren Sie <strong>Ibu Yayah</strong> zur Schlüsselrückgabe & falls Sie einen Late Check-out wünschen (je nach Verfügbarkeit).
+      </div>
+    </div>
 
-<div class="rules">
-<ul>
-<li>Rauchen im Haus ist verboten.</li>
-<li>Bitte bewahren Sie Ruhe und respektieren Sie die Umgebung.</li>
-<li>Halten Sie das Haus und alle Einrichtungen sauber.</li>
-<li>Bitte schalten Sie Licht, Gas und elektronische Geräte aus, wenn Sie das Haus verlassen.</li>
-<li>Benutzte Handtücher/Bettwäsche/Decken bitte im vorgesehenen Bereich ablegen.</li>
-<li>Öffnen Sie zuerst leicht den Wasserhahn am Waschbecken für besseren Wasserdruck.</li>
-<li>Bitte lassen Sie keine Wertsachen unbeaufsichtigt.</li>
-<li>Bei Schäden informieren Sie bitte sofort den PIC.</li>
-<li>Amenities sind nur für die Nutzung während des Aufenthalts bestimmt.</li>
-<li>Smart-TV & Streaming: Profil „Gusman Homestay“ verwenden.</li>
-</ul>
-</div>
-</details>
-</div>
+    <div class="card">
+      <h2>🌀 Ventilator</h2>
+      <div>
+        Wir bieten keine Klimaanlage an, da das Klima in Nagreg meist angenehm kühl ist 🌿<br>
+        Wenn es warm wird, nutzen Sie bitte den vorhandenen Ventilator.
+      </div>
+    </div>
 
-<div class="card">
-<h2>📍 Ausflugstipps</h2>
-<div class="muted">Vollständigen Guide zu Sehenswürdigkeiten ansehen:</div>
-<a class="button review" href="https://www.gusmanhomestay.com/files/panduan-wisata-de.pdf" target="_blank">
-Ausflugs-Guide hier ansehen
-</a>
-</div>
+    <div class="card">
+      <details>
+        <summary>
+          🏠 Aufenthalts-Guide
+          <span class="chev">⌄</span>
+        </summary>
 
-<div class="card">
-<h2>📞 Kontakt während des Aufenthalts</h2>
-<div class="muted">
-Wenn Sie etwas benötigen, kontaktieren Sie bitte unseren PIC: <strong style="color:var(--text)">Ibu Yayah</strong>.
-</div>
+        <div class="rules">
+          <ul>
+            <li>Rauchen im Haus ist verboten (Wohnzimmer, Schlafzimmer, Badezimmer und Toilette). Rauchen ist nur auf der hinteren Terrasse und der vorderen Veranda erlaubt.</li>
+            <li>Bitte bewahren Sie Ruhe und respektieren Sie die Umgebung.</li>
+            <li>Halten Sie das Haus und alle Einrichtungen sauber.</li>
+            <li>Bitte schalten Sie Licht, Gas und elektronische Geräte aus, wenn Sie das Haus verlassen.</li>
+            <li>Benutzte Handtücher/Bettwäsche/Decken: bitte im vorgesehenen Bereich (in der Nähe der Waschmaschine) ablegen.</li>
+            <li>Wasserdruck Toilette/Bidet: Öffnen Sie zuerst leicht den Wasserhahn am Waschbecken und benutzen Sie das Bidet langsam, damit der Wasserdruck starker/stabil bleibt.</li>
+            <li>Bitte lassen Sie keine Wertsachen unbeaufsichtigt. Verluste durch Fahrlässigkeit liegen in der Verantwortung des Gastes.</li>
+            <li>Bei Schäden oder Verlust von Gegenständen informieren Sie bitte sofort den PIC.</li>
+            <li>Amenities sind nur für die Nutzung während des Aufenthalts bestimmt (mitnehmbar: Hausschuhe sowie Zahnbürste & Zahnpasta).</li>
+            <li>Smart-TV & Streaming: Bitte das Profil „Gusman Homestay“/„Homestay“ verwenden und keine Kontoeinstellungen ändern.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
 
-<a class="button whatsapp" href="https://wa.me/6281322750517" target="_blank">
-Chat auf <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon"> Hier
-</a>
-</div>
+    <div class="card">
+      <h2>📍 Ausflugstipps</h2>
+      <div class="muted">Vollständigen Guide zu Sehenswürdigkeiten & Fahrzeiten ansehen:</div>
+      <a class="button review" href="https://www.gusmanhomestay.com/files/panduan-wisata-de.pdf" target="_blank" rel="noopener">
+        Ausflugs-Guide hier ansehen
+      </a>
+    </div>
 
-<div class="card">
-<h2>⭐ Bewertung hinterlassen</h2>
-<div class="muted">Ihre Bewertung hilft uns sehr 🙏</div>
+    <div class="card">
+      <h2>📞 Kontakt während des Aufenthalts</h2>
+      <div class="muted">
+        Wenn Sie während Ihres Aufenthalts etwas benötigen, kontaktieren Sie bitte unseren PIC: <strong style="color:var(--text)">Ibu Yayah</strong>.
+      </div>
 
-<div class="qr-wrap">
-<img class="qr" src="/images/google-review-qr.png" alt="QR Google Review">
-</div>
+      <a class="button whatsapp" href="https://wa.me/6281322750517" target="_blank" rel="noopener">
+        Chat auf <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon"> Hier.
+      </a>
+    </div>
 
-<a class="button review" href="https://g.page/r/Ce6Oj_WL_eI3EBM/review" target="_blank">
-Hier klicken, um eine Google-Bewertung zu hinterlassen
-</a>
-</div>
+    <div class="card">
+      <h2>⭐ Bewertung hinterlassen</h2>
+      <div class="muted">Wenn möglich, hilft uns Ihre Bewertung sehr 🙏</div>
 
-<div class="footer">
-© 2026 Gusman Homestay<br>
-www.gusmanhomestay.com<br>
-Follow us on Instagram & TikTok<br>
-@gusmanhomestay
-</div>
+      <div class="qr-wrap">
+        <img class="qr" src="/images/google-review-qr.png" alt="QR Google Review">
+      </div>
 
-</div>
+      <a class="button review" href="https://g.page/r/Ce6Oj_WL_eI3EBM/review" target="_blank" rel="noopener">
+        <div>
+          <div class="btn-title">Hier klicken, um eine Google-Bewertung zu hinterlassen*</div>
+          <div class="btn-note">*Jede Bewertung erhält 10% Rabatt für den nächsten Besuch.</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="footer">
+      © 2026 Gusman Homestay<br>
+      www.gusmanhomestay.com<br>
+      Follow us on Instagram & TikTok<br>
+      @gusmanhomestay
+    </div>
+
+  </div>
 </body>
 </html>
