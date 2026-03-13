@@ -27,7 +27,7 @@
       --blueHover:#4b93ff;
     }
 
-    { box-sizing:border-box; }
+    *{ box-sizing:border-box; }
 
     body{
       margin:0;
@@ -45,7 +45,7 @@
       padding:34px 18px 90px;
     }
 
-    / Header /
+    /* Header */
     .header{
       text-align:center;
       margin:10px 0 26px;
@@ -57,7 +57,7 @@
     }
 
     .logo img{
-      width:320px;          / bigger logo /
+      width:320px;          /* bigger logo */
       max-width:92%;
       height:auto;
       display:block;
@@ -70,7 +70,7 @@
       color:#dfeeee;
       opacity:0.95;
       margin: 0 0 14px;
-      animation: floaty 2.8s ease-in-out infinite; / dancing /
+      animation: floaty 2.8s ease-in-out infinite; /* dancing */
     }
 
     @keyframes floaty{
@@ -95,7 +95,7 @@
       font-size:15px;
     }
 
-    / Cards /
+    /* Cards */
     .card{
       background:var(--card);
       border:1px solid var(--cardBorder);
@@ -104,7 +104,7 @@
       margin-bottom:16px;
       box-shadow:var(--shadow);
       backdrop-filter: blur(10px);
-      text-align:center; / centered like you wanted /
+      text-align:center; /* centered like you wanted */
     }
 
     .card h2{
@@ -126,7 +126,7 @@
 
     .muted{ color:var(--muted); }
 
-    / Buttons /
+    /* Buttons */
     .button{
       display:flex;
       align-items:center;
@@ -148,7 +148,7 @@
       .button:hover{ transform: translateY(-1px); }
     }
 
-    / WhatsApp button (teal, not neon green) /
+    /* WhatsApp button (teal, not neon green) */
     .whatsapp{
       background:var(--brandTeal);
       color:#fff;
@@ -161,7 +161,7 @@
     }
     .review:hover{ background:var(--blueHover); }
 
-    / WhatsApp icon inside button /
+    /* WhatsApp icon inside button */
     .wa-icon{
       width:18px;
       height:18px;
@@ -170,7 +170,7 @@
       filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
     }
 
-    / Review button small note /
+    /* Review button small note */
     .btn-title{
       font-size:16px;
       line-height:1.2;
@@ -179,10 +179,11 @@
       margin-top:6px;
       font-size:12px;
       font-weight:600;
-      opacity:0.82;
+      opacity:0.82;      /* smaller + softer */
       line-height:1.25;
     }
 
+    /* QR in review card */
     .qr-wrap{
       margin-top:12px;
       display:flex;
@@ -199,18 +200,18 @@
       box-shadow: 0 12px 24px rgba(0,0,0,0.25);
     }
 
+    /* Accordion (Aturan Rumah) */
     details{
       position:relative;
-      text-align:left;
+      text-align:left; /* rules stay left */
     }
 
     .rules{
       margin-top:12px;
       color:var(--text);
       line-height:1.55;
-      text-align:left;
+      text-align:left;     /* keep rules left for readability */
     }
-
     summary{
       cursor:pointer;
       list-style:none;
@@ -232,21 +233,26 @@
     details[open] .chev{ transform: rotate(180deg); }
 
     summary{
-      justify-content:center;
+      justify-content:center;     /* center content */
       text-align:center;
     }
 
     summary .chev{
       position:absolute;
-      right:18px;
+      right:18px;                /* keep arrow on the right */
     }
-
+    .rules{
+      margin-top:12px;
+      color:var(--text);
+      line-height:1.55;
+    }
     .rules ul{
       margin:0;
       padding-left:18px;
     }
     .rules li{ margin:6px 0; }
 
+    /* Footer */
     .footer{
       text-align:center;
       font-size:13px;
@@ -261,12 +267,12 @@
     }
 
     .subtitle{
-      max-width:520px;
+      max-width:520px;   /* prevents ugly wrapping */
       margin:0 auto 22px;
     }
 
     .subtitle-line{
-      display:block;
+      display:block;     /* always moves to next line */
     }
 
    .lang-switch{
@@ -311,13 +317,14 @@
       transform: scale(0.97);
       box-shadow: 0 6px 14px rgba(0,0,0,0.25);
     }
-
+/* ✅ FIX: force logo size (overrides any bad img{width:100%} rule) */
 .logo img{
   width:320px !important;
   max-width:92% !important;
   height:auto !important;
 }
 
+/* small screens */
 @media (max-width:420px){
   .logo img{
     width:250px !important;
@@ -361,14 +368,6 @@
       <h2>📶 Wi-Fi</h2>
       <div class="wifi">Gusman-HomeStay</div>
       <div class="muted">Passwort: <strong style="color:var(--text)">Nagreg2025!</strong></div>
-    </div>
-
-    <div class="card">
-      <h2>💻 Gäste-Computer</h2>
-      <div class="muted">
-        Der Gäste-Informationsbildschirm kann über den <strong>Power-Knopf hinter dem Monitor</strong> eingeschaltet werden.<br><br>
-        Nach der Nutzung bitte auf <strong>„Turn Off“ auf dem Bildschirm</strong> klicken, damit der Computer korrekt herunterfährt.
-      </div>
     </div>
 
     <div class="card">
@@ -440,7 +439,7 @@
 
       <a class="button review" href="https://g.page/r/Ce6Oj_WL_eI3EBM/review" target="_blank" rel="noopener">
         <div>
-          <div class="btn-title">Hier klicken, um eine Google-Bewertung zu hinterlassen</div>
+          <div class="btn-title">Hier klicken, um eine Google-Bewertung zu hinterlassen*</div>
           <div class="btn-note">*Jede Bewertung erhält 10% Rabatt für den nächsten Besuch.</div>
         </div>
       </a>
