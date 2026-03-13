@@ -1,368 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guest Guide – Gusman Homestay</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Guest Guide – Gusman Homestay</title>
 
-  <style>
-    :root{
-      --bg1:#0f2f2f;
-      --bg2:#163c3c;
+<style>
+:root{
+--bg1:#0f2f2f;
+--bg2:#163c3c;
 
-      --card: rgba(255,255,255,0.08);
-      --cardBorder: rgba(255,255,255,0.10);
+--card:rgba(255,255,255,0.08);
+--cardBorder:rgba(255,255,255,0.10);
 
-      --text:#eaf2f2;
-      --muted: rgba(234,242,242,0.75);
+--text:#eaf2f2;
+--muted:rgba(234,242,242,0.75);
 
-      --shadow: 0 10px 30px rgba(0,0,0,0.35);
-      --radius: 18px;
+--shadow:0 10px 30px rgba(0,0,0,0.35);
+--radius:18px;
 
-      --brandTeal:#2b6f6b;
-      --brandTealHover:#2f7a75;
-
-      --blue:#4285F4;
-      --blueHover:#4b93ff;
-    }
-
-    *{ box-sizing:border-box; }
-
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1000px 500px at 50% -50%, rgba(255,255,255,0.12), transparent 60%),
-        linear-gradient(180deg, var(--bg2), var(--bg1));
-      min-height:100vh;
-    }
-
-    .container{
-      max-width:760px;
-      margin:auto;
-      padding:34px 18px 90px;
-    }
-
-    .header{
-      text-align:center;
-      margin:10px 0 26px;
-    }
-
-    .logo{
-      text-align:center;
-      margin-bottom:18px;
-    }
-
-    .logo img{
-      width:320px;
-      max-width:92%;
-      height:auto;
-      display:block;
-      margin:0 auto 10px;
-    }
-
-    .tagline{
-      font-family: "Georgia", serif;
-      font-size:34px;
-      color:#dfeeee;
-      opacity:0.95;
-      margin: 0 0 14px;
-      animation: floaty 2.8s ease-in-out infinite;
-    }
-
-    @keyframes floaty{
-      0%,100% { transform: translateY(0); }
-      50%     { transform: translateY(-6px); }
-    }
-
-    h1{
-      text-align:center;
-      font-size:30px;
-      margin:0 0 6px;
-      color:#ffffff;
-    }
-
-    .subtitle{
-      max-width:520px;
-      margin:0 auto 22px;
-      text-align:center;
-      color:#cfdede;
-      font-size:15px;
-    }
-
-    .subtitle-line{
-      display:block;
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--cardBorder);
-      padding:18px;
-      border-radius:var(--radius);
-      margin-bottom:16px;
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(10px);
-      text-align:center;
-    }
-
-    .card h2{
-      margin:0 0 10px;
-      font-size:18px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:10px;
-    }
-
-    .wifi{
-      font-size:18px;
-      font-weight:700;
-    }
-
-    .muted{ color:var(--muted); }
-
-    .button{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:14px;
-      border-radius:14px;
-      text-decoration:none;
-      font-weight:800;
-      margin-top:12px;
-      border:1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
-    }
-
-    .whatsapp{
-      background:var(--brandTeal);
-      color:#fff;
-    }
-
-    .review{
-      background:var(--blue);
-      color:#fff;
-    }
-
-    .wa-icon{
-      width:18px;
-      height:18px;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
-    }
-
-    .qr-wrap{
-      margin-top:12px;
-      display:flex;
-      justify-content:center;
-    }
-
-    .qr{
-      width:170px;
-      max-width:70%;
-      background:#fff;
-      padding:10px;
-      border-radius:14px;
-    }
-
-    details{
-      position:relative;
-      text-align:left;
-    }
-
-    summary{
-      cursor:pointer;
-      list-style:none;
-      display:flex;
-      justify-content:center;
-      font-weight:900;
-    }
-
-    summary .chev{
-      position:absolute;
-      right:18px;
-    }
-
-    .rules{
-      margin-top:12px;
-      line-height:1.55;
-    }
-
-    .rules ul{
-      padding-left:18px;
-    }
-
-    .footer{
-      text-align:center;
-      font-size:13px;
-      color:rgba(234,242,242,0.65);
-      margin-top:34px;
-    }
-.lang-switch{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  margin-bottom:18px;
+--brandTeal:#2b6f6b;
+--blue:#4285F4;
 }
 
-.lang{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:6px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.25);
-  opacity:.6;
-  transition:.2s ease;
+*{box-sizing:border-box;}
+
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+color:var(--text);
+background:
+radial-gradient(1000px 500px at 50% -50%, rgba(255,255,255,0.12), transparent 60%),
+linear-gradient(180deg,var(--bg2),var(--bg1));
+min-height:100vh;
 }
 
-.lang img{
-  width:26px;
-  height:auto;
-  display:block;
-  border-radius:4px;
+.container{
+max-width:760px;
+margin:auto;
+padding:34px 18px 90px;
 }
 
-.lang:hover{
-  opacity:1;
-  transform:translateY(-2px);
+.header{
+text-align:center;
+margin:10px 0 26px;
 }
 
-.lang.active{
-  opacity:1;
-  background:rgba(255,255,255,.12);
-}
-.button{
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-
-.button:active{
-  transform: scale(0.97);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-}
-/* ✅ FIX: force logo size (overrides any bad img{width:100%} rule) */
 .logo img{
-  width:320px !important;
-  max-width:92% !important;
-  height:auto !important;
+width:320px;
+max-width:92%;
+height:auto;
+display:block;
+margin:auto;
 }
 
-/* small screens */
-@media (max-width:420px){
-  .logo img{
-    width:250px !important;
-  }
+.tagline{
+font-family:"Georgia",serif;
+font-size:34px;
+color:#dfeeee;
+margin:0 0 14px;
+animation:floaty 2.8s ease-in-out infinite;
 }
-  </style>
+
+@keyframes floaty{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-6px);}
+}
+
+h1{
+text-align:center;
+font-size:30px;
+margin:0 0 6px;
+color:#fff;
+}
+
+.subtitle{
+max-width:520px;
+margin:0 auto 22px;
+text-align:center;
+color:#cfdede;
+font-size:15px;
+}
+
+.card{
+background:var(--card);
+border:1px solid var(--cardBorder);
+padding:18px;
+border-radius:var(--radius);
+margin-bottom:16px;
+box-shadow:var(--shadow);
+backdrop-filter:blur(10px);
+text-align:center;
+}
+
+.card h2{
+margin:0 0 10px;
+font-size:18px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+}
+
+.wifi{
+font-size:18px;
+font-weight:700;
+}
+
+.muted{color:var(--muted);}
+
+.button{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+padding:14px;
+border-radius:14px;
+text-decoration:none;
+font-weight:800;
+margin-top:12px;
+border:1px solid rgba(255,255,255,0.14);
+box-shadow:0 10px 22px rgba(0,0,0,0.25);
+}
+
+.whatsapp{background:#2b6f6b;color:#fff;}
+.review{background:#4285F4;color:#fff;}
+
+.qr{
+width:170px;
+max-width:70%;
+background:#fff;
+padding:10px;
+border-radius:14px;
+}
+
+.rules ul{padding-left:18px;text-align:left;}
+
+.footer{
+text-align:center;
+font-size:13px;
+color:rgba(234,242,242,0.65);
+margin-top:34px;
+}
+</style>
 </head>
 
 <body>
 <div class="container">
 
-  <div class="header">
-    <div class="logo">
-      <img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
-      <div class="tagline">Private Boutique Homestay</div>
-    </div>
-    
-<div class="lang-switch">
-  <a href="/stay/id.html" class="lang" onclick="localStorage.setItem('langChosen','id')">
-    <img src="/flags/id.png" alt="Indonesian">
-  </a>
-  <a href="/stay/en.html" class="lang" onclick="localStorage.setItem('langChosen','en')">
-    <img src="/flags/en.png" alt="English">
-  </a>
-  <a href="/stay/de.html" class="lang" onclick="localStorage.setItem('langChosen','de')">
-    <img src="/flags/de.png" alt="Deutsch">
-  </a>
-  <a href="/stay/it.html" class="lang" onclick="localStorage.setItem('langChosen','it')">
-    <img src="/flags/it.png" alt="Italiano">
-  </a>
-</div>
-    
-    <h1>Welcome to Gusman Homestay</h1>
-    <p class="subtitle">
-      Enjoy your time to rest in Nagreg —
-      <span class="subtitle-line">we hope you feel comfortable and at home 😊</span>
-    </p>
-  </div>
+<div class="header">
 
-  <div class="card">
-    <h2>📶 Wi-Fi</h2>
-    <div class="wifi">Gusman-HomeStay</div>
-    <div class="muted">Password: <strong>Nagreg2025!</strong></div>
-  </div>
+<img src="/images/gusman-logo-dark.webp" alt="Gusman Homestay">
 
-  <div class="card">
-    <h2>🕒 Check-out</h2>
-    Latest check-out time is <strong>12:00 PM</strong>.<br>
-    Please inform <strong>Ibu Yayah</strong> for key return or if you would like to request a late check-out (subject to availability).
-  </div>
+<div class="tagline">Private Boutique Homestay</div>
 
-  <div class="card">
-    <h2>🌀 Fan</h2>
-    We do not provide air conditioning as Nagreg naturally has a cool climate 🌿<br>
-    If the weather feels warm, fans are available for your comfort.
-  </div>
+<h1>Welcome to Gusman Homestay</h1>
 
-  <div class="card">
-    <details>
-      <summary>🏠 Stay Guide <span class="chev">⌄</span></summary>
-          <div class="rules">
-        <ul>
-          <li>No smoking inside the house (living room, bedrooms, bathroom, and toilet). Smoking is allowed only on the back patio and front terrace.</li>
-          <li>Please keep noise to a minimum and respect the surrounding neighborhood.</li>
-          <li>Keep the house and all facilities clean.</li>
-          <li>Turn off lights, gas, and electronic devices when leaving the house.</li>
-          <li>Used towels/bed sheets/blankets: please place them in the designated area (near the washing machine).</li>
-          <li>Toilet/bidet water pressure: slightly open the sink tap first, then use the bidet slowly to keep water pressure stronger / stable.</li>
-          <li>Please do not leave valuables unattended. Loss due to guest negligence is the guest’s responsibility.</li>
-          <li>If there is any damage or missing item, please report it immediately to the PIC.</li>
-          <li>Amenities are for use during the stay only (items allowed to take home: guest slippers, toothbrush & toothpaste).</li>
-          <li>Smart TV & streaming: use the “Gusman Homestay”/“Homestay” profile and do not change account settings.</li>
-        </ul>
-      </div>
-    </details>
-  </div>
-
-  <div class="card">
-    <h2>📍 Nearby Attractions</h2>
-    <div class="muted">View the full travel guide and distance details:</div>
-    <a class="button review" href="https://www.gusmanhomestay.com/files/panduan-wisata-en.pdf" target="_blank">
-      Open Travel Guide Here
-    </a>
-  </div>
-
-  <div class="card">
-    <h2>📞 During Your Stay</h2>
-    <div class="muted">For any assistance, please contact our PIC: <strong>Ibu Yayah</strong></div>
-      <a class="button whatsapp" href="https://wa.me/6281322750517" target="_blank" rel="noopener">
-        Chat via <img src="/images/whatsapp.png" alt="WhatsApp" class="wa-icon"> Here
-      </a>
-    </div>
-
-  <div class="card">
-    <h2>⭐ Leave a Review</h2>
-    <div class="muted">Your review means a lot to us 🙏</div>
-    <div class="qr-wrap">
-      <img class="qr" src="/images/google-review-qr.png" alt="Google Review QR">
-    </div>
-       <a class="button review" href="https://g.page/r/Ce6Oj_WL_eI3EBM/review" target="_blank" rel="noopener">
-        <div>
-          <div class="btn-title">Leave a Google Review*</div>
-          <div class="btn-note">*10% discount for your next stay</div>
-        </div>
-      </a>
-    </div>
-
-  <div class="footer">
-    © 2026 Gusman Homestay<br>
-    www.gusmanhomestay.com<br>
-    Follow us on Instagram & TikTok<br>
-    @gusmanhomestay
-  </div>
+<p class="subtitle">
+Enjoy your time to rest in Nagreg —
+we hope you feel comfortable and at home 😊
+</p>
 
 </div>
+
+<div class="card">
+<h2>📶 Wi-Fi</h2>
+<div class="wifi">Gusman-HomeStay</div>
+<div class="muted">Password: <strong>Nagreg2025!</strong></div>
+</div>
+
+
+<!-- NEW SECTION -->
+<div class="card">
+<h2>💻 Guest Computer</h2>
+
+<div class="muted">
+
+Turn on the guest information screen using the  
+<strong>power button behind the monitor</strong>.
+
+<br><br>
+
+After using the computer, please press  
+<strong>“Turn Off” on the screen</strong>  
+so the system shuts down properly.
+
+</div>
+
+</div>
+
+
+<div class="card">
+<h2>🕒 Check-out</h2>
+
+Latest check-out time is <strong>12:00 PM</strong>.<br>
+Please inform <strong>Ibu Yayah</strong> for key return or if you would like to request a late check-out.
+
+</div>
+
+
+<div class="card">
+<h2>🌀 Fan</h2>
+
+We do not provide air conditioning as Nagreg naturally has a cool climate 🌿
+
+<br>
+
+If the weather feels warm, fans are available for your comfort.
+
+</div>
+
+
+<div class="card">
+
+<details>
+
+<summary>🏠 Stay Guide</summary>
+
+<div class="rules">
+
+<ul>
+
+<li>No smoking inside the house.</li>
+
+<li>Please keep noise to a minimum.</li>
+
+<li>Keep the house clean.</li>
+
+<li>Turn off lights and electronics when leaving.</li>
+
+<li>Place used towels near the washing machine.</li>
+
+<li>Please do not leave valuables unattended.</li>
+
+<li>Report any damage immediately.</li>
+
+<li>Amenities are for use during the stay only.</li>
+
+<li>Smart TV & streaming: use the “Gusman Homestay” profile.</li>
+
+</ul>
+
+</div>
+
+</details>
+
+</div>
+
+
+<div class="card">
+
+<h2>📍 Nearby Attractions</h2>
+
+<div class="muted">View the travel guide:</div>
+
+<a class="button review" href="https://www.gusmanhomestay.com/files/panduan-wisata-en.pdf" target="_blank">
+
+Open Travel Guide
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<h2>📞 During Your Stay</h2>
+
+<div class="muted">Contact our PIC: <strong>Ibu Yayah</strong></div>
+
+<a class="button whatsapp" href="https://wa.me/6281322750517" target="_blank">
+
+Chat via WhatsApp
+
+</a>
+
+</div>
+
+
+<div class="card">
+
+<h2>⭐ Leave a Review</h2>
+
+<div class="muted">Your review means a lot to us 🙏</div>
+
+<img class="qr" src="/images/google-review-qr.png" alt="Google Review QR">
+
+<a class="button review" href="https://g.page/r/Ce6Oj_WL_eI3EBM/review" target="_blank">
+
+Leave a Google Review
+
+</a>
+
+</div>
+
+
+<div class="footer">
+
+© 2026 Gusman Homestay<br>
+www.gusmanhomestay.com<br>
+Instagram & TikTok @gusmanhomestay
+
+</div>
+
+</div>
+
 </body>
 </html>
