@@ -1799,24 +1799,28 @@ body[data-theme="dark"] .theme-btn.active{
 .split-right .rules-btn {
   margin-top: 6px !important;
 }
+/* =========================
+   REVIEW CAROUSEL
+========================= */
+
 /* Desktop */
 .review-carousel {
   overflow: hidden;
   position: relative;
-  height: 420px; /* 4 reviews */
+  height: 420px;
 }
 
 /* Tablet */
 @media (max-width: 900px) {
   .review-carousel {
-    height: 320px; /* ~3 reviews */
+    height: 320px;
   }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
   .review-carousel {
-    height: 260px; /* ~2 reviews */
+    height: 260px;
   }
 }
 
@@ -1835,7 +1839,7 @@ body[data-theme="dark"] .theme-btn.active{
   margin: 0;
 }
 
-/* Fade */
+/* Fade (light mode) */
 .review-carousel::after {
   content: "";
   position: absolute;
@@ -1843,10 +1847,20 @@ body[data-theme="dark"] .theme-btn.active{
   left: 0;
   right: 0;
   height: 40px;
-  background: linear-gradient(to bottom, transparent, #fff);
   pointer-events: none;
+  background: linear-gradient(to bottom, transparent, #fff);
 }
-    
+
+/* Fade (dark mode) */
+body.dark .review-carousel::after {
+  background: linear-gradient(to bottom, transparent, #1f3a36);
+}
+
+
+/* =========================
+   TRUST HEADLINE
+========================= */
+
 .trust-headline {
   text-align: center;
   margin-bottom: 16px;
@@ -1864,18 +1878,42 @@ body[data-theme="dark"] .theme-btn.active{
   font-size: 13px;
   color: #777;
 }
-    
+
+/* Dark mode */
+body.dark .trust-sub {
+  color: #aaa;
+}
+
+
+/* =========================
+   CHECK-IN / CHECK-OUT
+========================= */
+
 .check-time {
   margin-top: 16px;
   padding-top: 10px;
   font-size: 14px;
-  color: #444; /* darker, readable */
-  border-top: 1px solid rgba(0,0,0,0.08); /* softer divider for light bg */
   text-align: center;
 }
 
-.check-time strong {
-  color: #000; /* emphasize labels */
+/* Light mode */
+body:not(.dark) .check-time {
+  color: #444;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+body:not(.dark) .check-time strong {
+  color: #000;
+}
+
+/* Dark mode */
+body.dark .check-time {
+  color: #bbb;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+body.dark .check-time strong {
+  color: #fff;
 }
 </style>
 <link rel="stylesheet" href="/css/patch.css">
