@@ -1799,6 +1799,40 @@ body[data-theme="dark"] .theme-btn.active{
 .split-right .rules-btn {
   margin-top: 6px !important;
 }
+/* Carousel container */
+.review-carousel {
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 5px; /* optional polish */
+}
+
+/* Track */
+.review-track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.6s ease;
+  will-change: transform; /* smoother animation */
+}
+
+/* Each review */
+.review-track blockquote {
+  min-width: calc(25% - 12px); /* 4 per row */
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .review-track blockquote {
+    min-width: calc(50% - 8px); /* 2 per row */
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .review-track blockquote {
+    min-width: 100%; /* 1 per row */
+  }
+}
 </style>
 <link rel="stylesheet" href="/css/patch.css">
 </head>
@@ -2452,7 +2486,10 @@ body[data-theme="dark"] .theme-btn.active{
       <span class="lang de" style="display:none;">Gästebewertungen</span>
       <span class="lang it" style="display:none;">Recensioni Ospiti</span>
     </h3>
-
+    
+<!-- ✅ CAROUSEL START -->
+<div class="review-carousel">
+  <div class="review-track">   
     <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
       <span class="lang id">
         “Rumah minimalis dengan sentuhan tradisional. Tempat berhenti sempurna sebelum Garut!”
@@ -2626,6 +2663,9 @@ body[data-theme="dark"] .theme-btn.active{
     <br><strong class="review-author">— Yasrival Berak</strong> · <span class="review-stars">★★★★★</span>
   </span>
 </blockquote>
+</div>
+</div>
+<!-- ✅ CAROUSEL END -->
 
       <div style="margin-top:10px;">
         <a class="btn btn-premium"
@@ -4319,6 +4359,40 @@ function initLightbox(){
 
 document.addEventListener('DOMContentLoaded', initLightbox);
 </script>
+  
+<script>
+window.addEventListener('load', () => {
+
+  const track = document.querySelector('.review-track');
+  const items = document.querySelectorAll('.review-track blockquote');
+
+  if (!track || items.length === 0) return;
+
+  let index = 0;
+
+  function getVisibleCount() {
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 900) return 2;
+    return 4;
+  }
+
+  function slideReviews() {
+    const visible = getVisibleCount();
+    index++;
+
+    if (index > items.length - visible) {
+      index = 0;
+    }
+
+    const itemWidth = items[0].offsetWidth + 16;
+    track.style.transform = `translateX(-${index * itemWidth}px)`;
+  }
+
+  setInterval(slideReviews, 4000);
+
+});
+</script>
+  
   <!-- LIGHTBOX OVERLAY -->
 <div id="lbOverlay" class="lb-overlay">
   <button id="lbClose" class="lb-btn lb-close">×</button>
