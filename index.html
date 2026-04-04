@@ -1780,25 +1780,24 @@ body[data-theme="dark"] .theme-btn.active{
 .map-container{
   position: relative;
 }
-/* 🔧 Fix right column spacing (tight stack like Airbnb) */
+/* 🔧 Fix right column spacing (tight + aligned) */
 .split-right > * {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+  margin: 0 !important;
 }
 
-/* Control spacing manually */
+/* Consistent spacing between elements */
 .split-right > * + * {
-  margin-top: 10px; /* consistent gap between blocks */
+  margin-top: 12px;
 }
 
-/* Reduce space inside Amenities section */
+/* Reduce spacing for description text under amenities */
 .split-right p {
-  margin: 6px 0 !important;
+  margin: 6px 0 4px !important;
 }
 
-/* Reduce button spacing */
+/* Tighten button spacing */
 .split-right .rules-btn {
-  margin-top: 8px !important;
+  margin-top: 6px !important;
 }
 </style>
 <link rel="stylesheet" href="/css/patch.css">
