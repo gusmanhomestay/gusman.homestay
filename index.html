@@ -1799,14 +1799,28 @@ body[data-theme="dark"] .theme-btn.active{
 .split-right .rules-btn {
   margin-top: 6px !important;
 }
-/* Container */
+/* Desktop */
 .review-carousel {
   overflow: hidden;
   position: relative;
-  height: 320px; /* shows ~3 reviews */
+  height: 420px; /* 4 reviews */
 }
 
-/* Track (vertical) */
+/* Tablet */
+@media (max-width: 900px) {
+  .review-carousel {
+    height: 320px; /* ~3 reviews */
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .review-carousel {
+    height: 260px; /* ~2 reviews */
+  }
+}
+
+/* Track */
 .review-track {
   display: flex;
   flex-direction: column;
@@ -1815,13 +1829,13 @@ body[data-theme="dark"] .theme-btn.active{
   will-change: transform;
 }
 
-/* Each review */
+/* Reviews */
 .review-track blockquote {
   min-height: 100px;
-  margin: 0; /* 🔥 important: remove default spacing */
+  margin: 0;
 }
 
-/* Soft fade at bottom */
+/* Fade */
 .review-carousel::after {
   content: "";
   position: absolute;
