@@ -1839,7 +1839,7 @@ body[data-theme="dark"] .theme-btn.active{
   margin: 0;
 }
 
-/* Fade (light mode) */
+/* Fade (light mode default) */
 .review-carousel::after {
   content: "";
   position: absolute;
@@ -1851,9 +1851,11 @@ body[data-theme="dark"] .theme-btn.active{
   background: linear-gradient(to bottom, transparent, #fff);
 }
 
-/* Fade (dark mode) */
-body.dark .review-carousel::after {
-  background: linear-gradient(to bottom, transparent, #1f3a36);
+/* Fade (dark mode FIXED) */
+@media (prefers-color-scheme: dark) {
+  .review-carousel::after {
+    background: linear-gradient(to bottom, transparent, #1f3a36);
+  }
 }
 
 
@@ -1880,8 +1882,10 @@ body.dark .review-carousel::after {
 }
 
 /* Dark mode */
-body.dark .trust-sub {
-  color: #aaa;
+@media (prefers-color-scheme: dark) {
+  .trust-sub {
+    color: #aaa;
+  }
 }
 
 
@@ -1897,23 +1901,25 @@ body.dark .trust-sub {
 }
 
 /* Light mode */
-body:not(.dark) .check-time {
+.check-time {
   color: #444;
   border-top: 1px solid rgba(0,0,0,0.08);
 }
 
-body:not(.dark) .check-time strong {
+.check-time strong {
   color: #000;
 }
 
-/* Dark mode */
-body.dark .check-time {
-  color: #bbb;
-  border-top: 1px solid rgba(255,255,255,0.12);
-}
+/* Dark mode FIXED */
+@media (prefers-color-scheme: dark) {
+  .check-time {
+    color: #bbb;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
 
-body.dark .check-time strong {
-  color: #fff;
+  .check-time strong {
+    color: #fff;
+  }
 }
 </style>
 <link rel="stylesheet" href="/css/patch.css">
