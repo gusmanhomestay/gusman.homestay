@@ -1839,7 +1839,7 @@ body[data-theme="dark"] .theme-btn.active{
   margin: 0;
 }
 
-/* Fade (light mode default) */
+/* ✅ FINAL FIXED FADE (works for BOTH themes) */
 .review-carousel::after {
   content: "";
   position: absolute;
@@ -1848,17 +1848,10 @@ body[data-theme="dark"] .theme-btn.active{
   right: 0;
   height: 40px;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent, #fff);
+
+  /* 👇 THIS IS THE KEY FIX */
+  background: linear-gradient(to bottom, transparent, inherit);
 }
-
-/* Fade (dark mode FIXED) */
-@media (prefers-color-scheme: dark) {
-  .review-carousel::after {
-    background: linear-gradient(to bottom, transparent, #1f3a36);
-  }
-}
-
-
 /* =========================
    TRUST HEADLINE
 ========================= */
@@ -1878,17 +1871,9 @@ body[data-theme="dark"] .theme-btn.active{
 .trust-sub {
   display: block;
   font-size: 13px;
-  color: #777;
+  color: inherit;
+  opacity: 0.7;
 }
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  .trust-sub {
-    color: #aaa;
-  }
-}
-
-
 /* =========================
    CHECK-IN / CHECK-OUT
 ========================= */
@@ -1898,28 +1883,15 @@ body[data-theme="dark"] .theme-btn.active{
   padding-top: 10px;
   font-size: 14px;
   text-align: center;
-}
 
-/* Light mode */
-.check-time {
-  color: #444;
-  border-top: 1px solid rgba(0,0,0,0.08);
+  /* 👇 AUTO adapts to theme */
+  color: inherit;
+  border-top: 1px solid rgba(128,128,128,0.2);
 }
 
 .check-time strong {
-  color: #000;
-}
-
-/* Dark mode FIXED */
-@media (prefers-color-scheme: dark) {
-  .check-time {
-    color: #bbb;
-    border-top: 1px solid rgba(255,255,255,0.12);
-  }
-
-  .check-time strong {
-    color: #fff;
-  }
+  font-weight: 600;
+  color: inherit;
 }
 </style>
 <link rel="stylesheet" href="/css/patch.css">
