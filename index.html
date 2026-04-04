@@ -1780,6 +1780,26 @@ body[data-theme="dark"] .theme-btn.active{
 .map-container{
   position: relative;
 }
+/* 🔧 Fix right column spacing (tight stack like Airbnb) */
+.split-right > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Control spacing manually */
+.split-right > * + * {
+  margin-top: 10px; /* consistent gap between blocks */
+}
+
+/* Reduce space inside Amenities section */
+.split-right p {
+  margin: 6px 0 !important;
+}
+
+/* Reduce button spacing */
+.split-right .rules-btn {
+  margin-top: 8px !important;
+}
 </style>
 <link rel="stylesheet" href="/css/patch.css">
 </head>
