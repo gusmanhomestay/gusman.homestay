@@ -1869,9 +1869,13 @@ body[data-theme="dark"] .theme-btn.active{
   margin-top: 16px;
   padding-top: 10px;
   font-size: 14px;
-  color: #bbb;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  color: #444; /* darker, readable */
+  border-top: 1px solid rgba(0,0,0,0.08); /* softer divider for light bg */
   text-align: center;
+}
+
+.check-time strong {
+  color: #000; /* emphasize labels */
 }
 </style>
 <link rel="stylesheet" href="/css/patch.css">
