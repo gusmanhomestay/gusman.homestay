@@ -1799,39 +1799,38 @@ body[data-theme="dark"] .theme-btn.active{
 .split-right .rules-btn {
   margin-top: 6px !important;
 }
-/* Carousel container */
+/* Container */
 .review-carousel {
   overflow: hidden;
   position: relative;
-  padding-bottom: 5px; /* optional polish */
+  height: 320px; /* shows ~3 reviews */
 }
 
-/* Track */
+/* Track (vertical) */
 .review-track {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  gap: 12px;
   transition: transform 0.6s ease;
-  will-change: transform; /* smoother animation */
+  will-change: transform;
 }
 
 /* Each review */
 .review-track blockquote {
-  min-width: calc(25% - 12px); /* 4 per row */
-  box-sizing: border-box;
+  min-height: 100px;
+  margin: 0; /* 🔥 important: remove default spacing */
 }
 
-/* Tablet */
-@media (max-width: 900px) {
-  .review-track blockquote {
-    min-width: calc(50% - 8px); /* 2 per row */
-  }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .review-track blockquote {
-    min-width: 100%; /* 1 per row */
-  }
+/* Soft fade at bottom */
+.review-carousel::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, #fff);
+  pointer-events: none;
 }
 </style>
 <link rel="stylesheet" href="/css/patch.css">
@@ -2490,7 +2489,7 @@ body[data-theme="dark"] .theme-btn.active{
 <!-- ✅ CAROUSEL START -->
 <div class="review-carousel">
   <div class="review-track">   
-    <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
       <span class="lang id">
         “Rumah minimalis dengan sentuhan tradisional. Tempat berhenti sempurna sebelum Garut!”
         <br><strong class="review-author">— Ayu, Jakarta</strong> · <span class="review-stars">★★★★★</span>
@@ -2509,7 +2508,7 @@ body[data-theme="dark"] .theme-btn.active{
       </span>
     </blockquote>
 
-    <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
       <span class="lang id">
         “Homestay yang cozy, adem, cocok untuk yg mau mudik ke Garut/Tasik/Ciamis—bisa stop over dulu di sini. Dekat juga dari jalan raya. Kekinian, tapi ada tradisionalnya. Nyaman banget 😍”
         <br><strong class="review-author">— Gieta Agiet</strong> · <span class="review-stars">★★★★★</span>
@@ -2528,7 +2527,7 @@ body[data-theme="dark"] .theme-btn.active{
       </span>
     </blockquote>
 
-    <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
       <span class="lang id">
         “Homestaynya estetik bgt.. nyaman dan bersih.. sangat worth it buat staycation.. next saya akan kembali lagi ke homestay ini..”
         <br><strong class="review-author">— Raden Maya</strong> · <span class="review-stars">★★★★★</span>
@@ -2547,14 +2546,14 @@ body[data-theme="dark"] .theme-btn.active{
       </span>
     </blockquote>
 
-    <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
       <span class="lang id">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
       <span class="lang en" style="display:none;">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
       <span class="lang de" style="display:none;">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
       <span class="lang it" style="display:none;">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
     </blockquote>
 
-    <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
   <span class="lang id">
     “Tempatnya enak dan nyaman, cocok sekali untuk tempat istirahat atau bermalam perjalanan Tasik atau Garut.”
     <br><strong class="review-author">— Rika Puspitasari</strong> · <span class="review-stars">★★★★★</span>
@@ -2576,7 +2575,7 @@ body[data-theme="dark"] .theme-btn.active{
   </span>
 </blockquote>
 
-    <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
   <span class="lang id">
     “Tempatnya bagus, keren, nyaman. Biar lebih jelasnya kalian harus coba datang kesini. Dijamin ga kecewa deh.”
     <br><strong class="review-author">— Nur Maulina</strong> · <span class="review-stars">★★★★★</span>
@@ -2598,7 +2597,7 @@ body[data-theme="dark"] .theme-btn.active{
   </span>
 </blockquote>
 
-    <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
   <span class="lang id">
     “Masyaallah tabarakallah Allahumma baarik. Homestay nya bagus dan bersih cozy, aesthetic the best 💯. Sukses selalu gusman home stay 🙏😊”
     <br><strong class="review-author">— Ade Suparman</strong> · <span class="review-stars">★★★★★</span>
@@ -2620,7 +2619,7 @@ body[data-theme="dark"] .theme-btn.active{
   </span>
 </blockquote>
 
-    <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
   <span class="lang id">
     “Bagusss dan nyaman kerennn💗💗”
     <br><strong class="review-author">— Kekey Kekeyi</strong> · <span class="review-stars">★★★★★</span>
@@ -2642,7 +2641,7 @@ body[data-theme="dark"] .theme-btn.active{
   </span>
 </blockquote>
 
-    <blockquote style="margin:10px 0;padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
   <span class="lang id">
     “Nyaman. Tempat yang sangat direkomendasikan untuk beristirahat saat lelah di perjalanan. Bersih, lengkap, dan dekat dari jalan utama.”
     <br><strong class="review-author">— Yasrival Berak</strong> · <span class="review-stars">★★★★★</span>
@@ -4370,22 +4369,15 @@ window.addEventListener('load', () => {
 
   let index = 0;
 
-  function getVisibleCount() {
-    if (window.innerWidth <= 600) return 1;
-    if (window.innerWidth <= 900) return 2;
-    return 4;
-  }
-
   function slideReviews() {
-    const visible = getVisibleCount();
     index++;
 
-    if (index > items.length - visible) {
+    if (index >= items.length) {
       index = 0;
     }
 
-    const itemWidth = items[0].offsetWidth + 16;
-    track.style.transform = `translateX(-${index * itemWidth}px)`;
+    const itemHeight = items[0].offsetHeight + 12;
+    track.style.transform = `translateY(-${index * itemHeight}px)`;
   }
 
   setInterval(slideReviews, 4000);
