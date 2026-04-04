@@ -1846,6 +1846,24 @@ body[data-theme="dark"] .theme-btn.active{
   background: linear-gradient(to bottom, transparent, #fff);
   pointer-events: none;
 }
+    
+.trust-headline {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.trust-headline strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+}
+
+.trust-sub {
+  display: block;
+  font-size: 13px;
+  color: #777;
+}
 </style>
 <link rel="stylesheet" href="/css/patch.css">
 </head>
@@ -2494,17 +2512,16 @@ body[data-theme="dark"] .theme-btn.active{
 <div class="split-left">
   <div class="card">
 <!-- ✅ Trust headline (multilingual) -->
-<div style="margin-bottom:10px;">
+<div class="trust-headline">
 
-  <strong style="font-size:16px;">
-    <span class="lang id">⭐ Disukai banyak Tamu</span>
+  <strong>
+    <span class="lang id">⭐ Disukai banyak tamu</span>
     <span class="lang en" style="display:none;">⭐ Loved by Guests</span>
     <span class="lang de" style="display:none;">⭐ Von Gästen geschätzt</span>
     <span class="lang it" style="display:none;">⭐ Amato dagli ospiti</span>
   </strong>
-  <br>
 
-  <span style="font-size:13px;color:#777;">
+  <span class="trust-sub">
     <span class="lang id">Rating 5.0 dari tamu terbaru</span>
     <span class="lang en" style="display:none;">5.0 rating from recent guests</span>
     <span class="lang de" style="display:none;">5,0 Bewertung von aktuellen Gästen</span>
