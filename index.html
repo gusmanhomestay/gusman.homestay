@@ -556,11 +556,14 @@ body[data-theme="dark"] .tag{
   display:flex;
   gap:28px;
   align-items:flex-start;
-  flex-wrap:wrap; /* 🔥 THIS FIXES IT */
+  flex-wrap:nowrap; /* ✅ IMPORTANT: keep side-by-side on desktop */
 }
 .hero-left{
-  flex:1 1 420px;
-  min-width:300px;
+  flex:0 0 420px;   /* left column fixed width */
+  min-width:420px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
 .hero-middle{
@@ -657,7 +660,6 @@ p.lead{
   gap:28px;
   flex-wrap:wrap;
   margin-top:28px;
-  align-items: flex-start; /* ✅ ADD THIS */
 }
 .split-left{flex:1 1 420px;min-width:300px}
 .split-right{
@@ -1805,23 +1807,20 @@ body[data-theme="dark"] .theme-btn.active{
 .review-carousel {
   overflow: hidden;
   position: relative;
-  min-height: 420px;   /* ✅ allow flexible height */
-  height: auto;
+  height: 420px;
 }
 
 /* Tablet */
 @media (max-width: 900px) {
   .review-carousel {
-    min-height: 320px;
-    height: auto;
+    height: 320px;
   }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
   .review-carousel {
-    min-height: 260px;
-    height: auto;
+    height: 260px;
   }
 }
 
@@ -2380,8 +2379,6 @@ body[data-theme="dark"] .theme-btn.active{
 </p>
       </form>
 </div>
-<section class="hero">
-<div class="hero-left">
 <!-- Contact -->
 <div class="card contact">
   <h3>
@@ -2487,244 +2484,7 @@ body[data-theme="dark"] .theme-btn.active{
 
 </p>
 </div>
-<!-- ===================== REVIEWS LEFT | AMENITIES + LOCATION RIGHT ===================== -->
-  <div class="card">
-<!-- ✅ Trust headline (multilingual) -->
-<div class="trust-headline">
-
-  <strong>
-    <span class="lang id">⭐ Disukai banyak tamu</span>
-    <span class="lang en" style="display:none;">⭐ Loved by Guests</span>
-    <span class="lang de" style="display:none;">⭐ Von Gästen geschätzt</span>
-    <span class="lang it" style="display:none;">⭐ Amato dagli ospiti</span>
-  </strong>
-
-  <span class="trust-sub">
-    <span class="lang id">Rating 5.0 dari tamu terbaru</span>
-    <span class="lang en" style="display:none;">5.0 rating from recent guests</span>
-    <span class="lang de" style="display:none;">5,0 Bewertung von aktuellen Gästen</span>
-    <span class="lang it" style="display:none;">Valutazione 5.0 dagli ospiti recenti</span>
-  </span>
-
-</div>
-    
-    <h3>
-      <span class="lang id">Review Tamu</span>
-      <span class="lang en" style="display:none;">Guest Reviews</span>
-      <span class="lang de" style="display:none;">Gästebewertungen</span>
-      <span class="lang it" style="display:none;">Recensioni Ospiti</span>
-    </h3>
-    
-<!-- ✅ CAROUSEL START -->
-<div class="review-carousel">
-  <div class="review-track">   
-    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-      <span class="lang id">
-        “Rumah minimalis dengan sentuhan tradisional. Tempat berhenti sempurna sebelum Garut!”
-        <br><strong class="review-author">— Ayu, Jakarta</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-      <span class="lang en" style="display:none;">
-        “A minimalist home with a traditional touch. A perfect stop before heading to Garut!”
-        <br><strong class="review-author">— Ayu, Jakarta</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-      <span class="lang de" style="display:none;">
-        “Ein minimalistisches Haus mit traditionellem Touch. Perfekter Zwischenstopp vor Garut!”
-        <br><strong class="review-author">— Ayu, Jakarta</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-      <span class="lang it" style="display:none;">
-        “Una casa minimalista con un tocco tradizionale. Sosta perfetta prima di Garut!”
-        <br><strong class="review-author">— Ayu, Jakarta</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-    </blockquote>
-
-    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-      <span class="lang id">
-        “Homestay yang cozy, adem, cocok untuk yg mau mudik ke Garut/Tasik/Ciamis—bisa stop over dulu di sini. Dekat juga dari jalan raya. Kekinian, tapi ada tradisionalnya. Nyaman banget 😍”
-        <br><strong class="review-author">— Gieta Agiet</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-      <span class="lang en" style="display:none;">
-        “Cozy and cool homestay—perfect as a stopover when traveling toward Garut/Tasik/Ciamis. Close to the main road. Modern, but with a traditional touch. Very comfortable 😍”
-        <br><strong class="review-author">— Gieta Agiet</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-      <span class="lang de" style="display:none;">
-        “Gemütliches, angenehmes Homestay—ideal als Zwischenstopp Richtung Garut/Tasik/Ciamis. Nahe an der Hauptstraße. Modern, aber mit traditionellem Touch. Sehr komfortabel 😍”
-        <br><strong class="review-author">— Gieta Agiet</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-      <span class="lang it" style="display:none;">
-        “Homestay accogliente e fresco—perfetto come sosta verso Garut/Tasik/Ciamis. Vicino alla strada principale. Moderno ma con un tocco tradizionale. Molto confortevole 😍”
-        <br><strong class="review-author">— Gieta Agiet</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-    </blockquote>
-
-    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-      <span class="lang id">
-        “Homestaynya estetik bgt.. nyaman dan bersih.. sangat worth it buat staycation.. next saya akan kembali lagi ke homestay ini..”
-        <br><strong class="review-author">— Raden Maya</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-      <span class="lang en" style="display:none;">
-        “Very aesthetic, comfortable, and clean. Totally worth it for a staycation. I’ll definitely come back!”
-        <br><strong class="review-author">— Raden Maya</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-      <span class="lang de" style="display:none;">
-        “Sehr stilvoll, bequem und sauber. Absolut empfehlenswert für einen Staycation. Ich komme wieder!”
-        <br><strong class="review-author">— Raden Maya</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-      <span class="lang it" style="display:none;">
-        “Molto estetico, comodo e pulito. Davvero perfetto per una staycation. Tornerò sicuramente!”
-        <br><strong class="review-author">— Raden Maya</strong> · <span class="review-stars">★★★★★</span>
-      </span>
-    </blockquote>
-
-    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-      <span class="lang id">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
-      <span class="lang en" style="display:none;">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
-      <span class="lang de" style="display:none;">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
-      <span class="lang it" style="display:none;">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
-    </blockquote>
-
-    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-  <span class="lang id">
-    “Tempatnya enak dan nyaman, cocok sekali untuk tempat istirahat atau bermalam perjalanan Tasik atau Garut.”
-    <br><strong class="review-author">— Rika Puspitasari</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang en" style="display:none;">
-    “The place is nice and comfortable—perfect for a rest stop or an overnight stay when traveling to Tasik or Garut.”
-    <br><strong class="review-author">— Rika Puspitasari</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang de" style="display:none;">
-    “Der Ort ist schön und bequem—ideal zum Ausruhen oder Übernachten auf dem Weg nach Tasik oder Garut.”
-    <br><strong class="review-author">— Rika Puspitasari</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang it" style="display:none;">
-    “Il posto è piacevole e confortevole—perfetto per riposarsi o pernottare durante il viaggio verso Tasik o Garut.”
-    <br><strong class="review-author">— Rika Puspitasari</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-</blockquote>
-
-    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-  <span class="lang id">
-    “Tempatnya bagus, keren, nyaman. Biar lebih jelasnya kalian harus coba datang kesini. Dijamin ga kecewa deh.”
-    <br><strong class="review-author">— Nur Maulina</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang en" style="display:none;">
-    “The place is great, cool, and comfortable. To really understand, you should come and try it yourself—you won’t be disappointed.”
-    <br><strong class="review-author">— Nur Maulina</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang de" style="display:none;">
-    “Der Ort ist großartig, schön und komfortabel. Am besten überzeugen Sie sich selbst—Sie werden nicht enttäuscht sein.”
-    <br><strong class="review-author">— Nur Maulina</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang it" style="display:none;">
-    “Il posto è bello, accogliente e confortevole. Per capirlo davvero, dovete provarlo di persona—non rimarrete delusi.”
-    <br><strong class="review-author">— Nur Maulina</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-</blockquote>
-
-    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-  <span class="lang id">
-    “Masyaallah tabarakallah Allahumma baarik. Homestay nya bagus dan bersih cozy, aesthetic the best 💯. Sukses selalu gusman home stay 🙏😊”
-    <br><strong class="review-author">— Ade Suparman</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang en" style="display:none;">
-    “MashaAllah, truly blessed. The homestay is beautiful, clean, cozy, and aesthetic—the best 💯. Wishing Gusman Homestay continued success 🙏😊”
-    <br><strong class="review-author">— Ade Suparman</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang de" style="display:none;">
-    “Masyaallah, wirklich gesegnet. Das Homestay ist schön, sauber, gemütlich und ästhetisch—einfach das Beste 💯. Viel Erfolg für Gusman Homestay 🙏😊”
-    <br><strong class="review-author">— Ade Suparman</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang it" style="display:none;">
-    “Mashallah, davvero benedetto. L’alloggio è bello, pulito, accogliente ed elegante—il migliore 💯. Auguri di successo a Gusman Homestay 🙏😊”
-    <br><strong class="review-author">— Ade Suparman</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-</blockquote>
-
-    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-  <span class="lang id">
-    “Bagusss dan nyaman kerennn💗💗”
-    <br><strong class="review-author">— Kekey Kekeyi</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang en" style="display:none;">
-    “Very nice, comfortable, and awesome 💗💗”
-    <br><strong class="review-author">— Kekey Kekeyi</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang de" style="display:none;">
-    “Sehr schön, komfortabel und großartig 💗💗”
-    <br><strong class="review-author">— Kekey Kekeyi</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang it" style="display:none;">
-    “Molto bello, confortevole e fantastico 💗💗”
-    <br><strong class="review-author">— Kekey Kekeyi</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-</blockquote>
-
-    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
-  <span class="lang id">
-    “Nyaman. Tempat yang sangat direkomendasikan untuk beristirahat saat lelah di perjalanan. Bersih, lengkap, dan dekat dari jalan utama.”
-    <br><strong class="review-author">— Yasrival Berak</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang en" style="display:none;">
-    “Comfortable. Highly recommended place to rest when you’re tired during a trip. Clean, well-equipped, and very close to the main road.”
-    <br><strong class="review-author">— Yasrival Berak</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang de" style="display:none;">
-    “Komfortabel. Sehr empfehlenswerter Ort zum Ausruhen während einer Reise. Sauber, gut ausgestattet und nahe an der Hauptstraße.”
-    <br><strong class="review-author">— Yasrival Berak</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-
-  <span class="lang it" style="display:none;">
-    “Confortevole. Un luogo altamente raccomandato per riposarsi durante un viaggio. Pulito, ben attrezzato e vicino alla strada principale.”
-    <br><strong class="review-author">— Yasrival Berak</strong> · <span class="review-stars">★★★★★</span>
-  </span>
-</blockquote>
-</div>
-</div>
-<!-- ✅ CAROUSEL END -->
-
-      <div style="margin-top:10px;">
-        <a class="btn btn-premium"
-           href="https://g.page/r/Ce6Oj_WL_eI3EBM/review"
-           target="_blank"
-           rel="noopener">
-          <span class="lang id">Lihat & tulis review di Google ⭐<br>
-            atau scan QR code di bawah</span>
-          <span class="lang en" style="display:none;">Read & write a review on Google ⭐<br>
-            or scan the QR code below</span>
-          <span class="lang de" style="display:none;">Bewertung auf Google ansehen & schreiben ⭐<br>
-            oder den QR-Code unten scannen</span>
-          <span class="lang it" style="display:none;">Leggi e scrivi una recensione su Google ⭐<br>
-            oppure scansiona il QR code qui sotto</span>
-        </a>
-      </div>
-    <!-- QR code under the Google Review button -->
-<div class="review-qr">
-  <img src="images/google-review-qr.png"
-       alt="QR code to Google Review page"
-       loading="lazy">
-
-  <div class="review-qr-text">
-    <span class="lang id">Scan QR untuk langsung ke halaman review Google.</span>
-    <span class="lang en" style="display:none;">Scan the QR to open the Google review page.</span>
-    <span class="lang de" style="display:none;">QR-Code scannen, um die Google-Bewertungsseite zu öffnen.</span>
-    <span class="lang it" style="display:none;">Scansiona il QR per aprire la pagina recensioni su Google.</span>
-  </div>
-</div>
   </div><!-- end hero-left -->
-  
   <!-- Middle Column -->
   <div class="hero-middle">
 
@@ -3139,6 +2899,252 @@ body[data-theme="dark"] .theme-btn.active{
   </div>
 </div>
 
+  </div><!-- end hero-middle -->
+
+</section><!-- end hero -->
+
+<!-- ===================== REVIEWS LEFT | AMENITIES + LOCATION RIGHT ===================== -->
+<section class="split-row">
+
+<!-- LEFT: Guest Reviews -->
+<div class="split-left">
+  <div class="card">
+<!-- ✅ Trust headline (multilingual) -->
+<div class="trust-headline">
+
+  <strong>
+    <span class="lang id">⭐ Disukai banyak tamu</span>
+    <span class="lang en" style="display:none;">⭐ Loved by Guests</span>
+    <span class="lang de" style="display:none;">⭐ Von Gästen geschätzt</span>
+    <span class="lang it" style="display:none;">⭐ Amato dagli ospiti</span>
+  </strong>
+
+  <span class="trust-sub">
+    <span class="lang id">Rating 5.0 dari tamu terbaru</span>
+    <span class="lang en" style="display:none;">5.0 rating from recent guests</span>
+    <span class="lang de" style="display:none;">5,0 Bewertung von aktuellen Gästen</span>
+    <span class="lang it" style="display:none;">Valutazione 5.0 dagli ospiti recenti</span>
+  </span>
+
+</div>
+    
+    <h3>
+      <span class="lang id">Review Tamu</span>
+      <span class="lang en" style="display:none;">Guest Reviews</span>
+      <span class="lang de" style="display:none;">Gästebewertungen</span>
+      <span class="lang it" style="display:none;">Recensioni Ospiti</span>
+    </h3>
+    
+<!-- ✅ CAROUSEL START -->
+<div class="review-carousel">
+  <div class="review-track">   
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+      <span class="lang id">
+        “Rumah minimalis dengan sentuhan tradisional. Tempat berhenti sempurna sebelum Garut!”
+        <br><strong class="review-author">— Ayu, Jakarta</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+      <span class="lang en" style="display:none;">
+        “A minimalist home with a traditional touch. A perfect stop before heading to Garut!”
+        <br><strong class="review-author">— Ayu, Jakarta</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+      <span class="lang de" style="display:none;">
+        “Ein minimalistisches Haus mit traditionellem Touch. Perfekter Zwischenstopp vor Garut!”
+        <br><strong class="review-author">— Ayu, Jakarta</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+      <span class="lang it" style="display:none;">
+        “Una casa minimalista con un tocco tradizionale. Sosta perfetta prima di Garut!”
+        <br><strong class="review-author">— Ayu, Jakarta</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+    </blockquote>
+
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+      <span class="lang id">
+        “Homestay yang cozy, adem, cocok untuk yg mau mudik ke Garut/Tasik/Ciamis—bisa stop over dulu di sini. Dekat juga dari jalan raya. Kekinian, tapi ada tradisionalnya. Nyaman banget 😍”
+        <br><strong class="review-author">— Gieta Agiet</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+      <span class="lang en" style="display:none;">
+        “Cozy and cool homestay—perfect as a stopover when traveling toward Garut/Tasik/Ciamis. Close to the main road. Modern, but with a traditional touch. Very comfortable 😍”
+        <br><strong class="review-author">— Gieta Agiet</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+      <span class="lang de" style="display:none;">
+        “Gemütliches, angenehmes Homestay—ideal als Zwischenstopp Richtung Garut/Tasik/Ciamis. Nahe an der Hauptstraße. Modern, aber mit traditionellem Touch. Sehr komfortabel 😍”
+        <br><strong class="review-author">— Gieta Agiet</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+      <span class="lang it" style="display:none;">
+        “Homestay accogliente e fresco—perfetto come sosta verso Garut/Tasik/Ciamis. Vicino alla strada principale. Moderno ma con un tocco tradizionale. Molto confortevole 😍”
+        <br><strong class="review-author">— Gieta Agiet</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+    </blockquote>
+
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+      <span class="lang id">
+        “Homestaynya estetik bgt.. nyaman dan bersih.. sangat worth it buat staycation.. next saya akan kembali lagi ke homestay ini..”
+        <br><strong class="review-author">— Raden Maya</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+      <span class="lang en" style="display:none;">
+        “Very aesthetic, comfortable, and clean. Totally worth it for a staycation. I’ll definitely come back!”
+        <br><strong class="review-author">— Raden Maya</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+      <span class="lang de" style="display:none;">
+        “Sehr stilvoll, bequem und sauber. Absolut empfehlenswert für einen Staycation. Ich komme wieder!”
+        <br><strong class="review-author">— Raden Maya</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+      <span class="lang it" style="display:none;">
+        “Molto estetico, comodo e pulito. Davvero perfetto per una staycation. Tornerò sicuramente!”
+        <br><strong class="review-author">— Raden Maya</strong> · <span class="review-stars">★★★★★</span>
+      </span>
+    </blockquote>
+
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+      <span class="lang id">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
+      <span class="lang en" style="display:none;">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
+      <span class="lang de" style="display:none;">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
+      <span class="lang it" style="display:none;">“★★★★★”<br><strong class="review-author">— Anggunice Fahreza</strong></span>
+    </blockquote>
+
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+  <span class="lang id">
+    “Tempatnya enak dan nyaman, cocok sekali untuk tempat istirahat atau bermalam perjalanan Tasik atau Garut.”
+    <br><strong class="review-author">— Rika Puspitasari</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang en" style="display:none;">
+    “The place is nice and comfortable—perfect for a rest stop or an overnight stay when traveling to Tasik or Garut.”
+    <br><strong class="review-author">— Rika Puspitasari</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang de" style="display:none;">
+    “Der Ort ist schön und bequem—ideal zum Ausruhen oder Übernachten auf dem Weg nach Tasik oder Garut.”
+    <br><strong class="review-author">— Rika Puspitasari</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang it" style="display:none;">
+    “Il posto è piacevole e confortevole—perfetto per riposarsi o pernottare durante il viaggio verso Tasik o Garut.”
+    <br><strong class="review-author">— Rika Puspitasari</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+</blockquote>
+
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+  <span class="lang id">
+    “Tempatnya bagus, keren, nyaman. Biar lebih jelasnya kalian harus coba datang kesini. Dijamin ga kecewa deh.”
+    <br><strong class="review-author">— Nur Maulina</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang en" style="display:none;">
+    “The place is great, cool, and comfortable. To really understand, you should come and try it yourself—you won’t be disappointed.”
+    <br><strong class="review-author">— Nur Maulina</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang de" style="display:none;">
+    “Der Ort ist großartig, schön und komfortabel. Am besten überzeugen Sie sich selbst—Sie werden nicht enttäuscht sein.”
+    <br><strong class="review-author">— Nur Maulina</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang it" style="display:none;">
+    “Il posto è bello, accogliente e confortevole. Per capirlo davvero, dovete provarlo di persona—non rimarrete delusi.”
+    <br><strong class="review-author">— Nur Maulina</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+</blockquote>
+
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+  <span class="lang id">
+    “Masyaallah tabarakallah Allahumma baarik. Homestay nya bagus dan bersih cozy, aesthetic the best 💯. Sukses selalu gusman home stay 🙏😊”
+    <br><strong class="review-author">— Ade Suparman</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang en" style="display:none;">
+    “MashaAllah, truly blessed. The homestay is beautiful, clean, cozy, and aesthetic—the best 💯. Wishing Gusman Homestay continued success 🙏😊”
+    <br><strong class="review-author">— Ade Suparman</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang de" style="display:none;">
+    “Masyaallah, wirklich gesegnet. Das Homestay ist schön, sauber, gemütlich und ästhetisch—einfach das Beste 💯. Viel Erfolg für Gusman Homestay 🙏😊”
+    <br><strong class="review-author">— Ade Suparman</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang it" style="display:none;">
+    “Mashallah, davvero benedetto. L’alloggio è bello, pulito, accogliente ed elegante—il migliore 💯. Auguri di successo a Gusman Homestay 🙏😊”
+    <br><strong class="review-author">— Ade Suparman</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+</blockquote>
+
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+  <span class="lang id">
+    “Bagusss dan nyaman kerennn💗💗”
+    <br><strong class="review-author">— Kekey Kekeyi</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang en" style="display:none;">
+    “Very nice, comfortable, and awesome 💗💗”
+    <br><strong class="review-author">— Kekey Kekeyi</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang de" style="display:none;">
+    “Sehr schön, komfortabel und großartig 💗💗”
+    <br><strong class="review-author">— Kekey Kekeyi</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang it" style="display:none;">
+    “Molto bello, confortevole e fantastico 💗💗”
+    <br><strong class="review-author">— Kekey Kekeyi</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+</blockquote>
+
+    <blockquote style="padding-left:12px;border-left:3px solid var(--accent);color:var(--muted)">
+  <span class="lang id">
+    “Nyaman. Tempat yang sangat direkomendasikan untuk beristirahat saat lelah di perjalanan. Bersih, lengkap, dan dekat dari jalan utama.”
+    <br><strong class="review-author">— Yasrival Berak</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang en" style="display:none;">
+    “Comfortable. Highly recommended place to rest when you’re tired during a trip. Clean, well-equipped, and very close to the main road.”
+    <br><strong class="review-author">— Yasrival Berak</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang de" style="display:none;">
+    “Komfortabel. Sehr empfehlenswerter Ort zum Ausruhen während einer Reise. Sauber, gut ausgestattet und nahe an der Hauptstraße.”
+    <br><strong class="review-author">— Yasrival Berak</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+
+  <span class="lang it" style="display:none;">
+    “Confortevole. Un luogo altamente raccomandato per riposarsi durante un viaggio. Pulito, ben attrezzato e vicino alla strada principale.”
+    <br><strong class="review-author">— Yasrival Berak</strong> · <span class="review-stars">★★★★★</span>
+  </span>
+</blockquote>
+</div>
+</div>
+<!-- ✅ CAROUSEL END -->
+
+      <div style="margin-top:10px;">
+        <a class="btn btn-premium"
+           href="https://g.page/r/Ce6Oj_WL_eI3EBM/review"
+           target="_blank"
+           rel="noopener">
+          <span class="lang id">Lihat & tulis review di Google ⭐<br>
+            atau scan QR code di bawah</span>
+          <span class="lang en" style="display:none;">Read & write a review on Google ⭐<br>
+            or scan the QR code below</span>
+          <span class="lang de" style="display:none;">Bewertung auf Google ansehen & schreiben ⭐<br>
+            oder den QR-Code unten scannen</span>
+          <span class="lang it" style="display:none;">Leggi e scrivi una recensione su Google ⭐<br>
+            oppure scansiona il QR code qui sotto</span>
+        </a>
+      </div>
+    <!-- QR code under the Google Review button -->
+<div class="review-qr">
+  <img src="images/google-review-qr.png"
+       alt="QR code to Google Review page"
+       loading="lazy">
+
+  <div class="review-qr-text">
+    <span class="lang id">Scan QR untuk langsung ke halaman review Google.</span>
+    <span class="lang en" style="display:none;">Scan the QR to open the Google review page.</span>
+    <span class="lang de" style="display:none;">QR-Code scannen, um die Google-Bewertungsseite zu öffnen.</span>
+    <span class="lang it" style="display:none;">Scansiona il QR per aprire la pagina recensioni su Google.</span>
+  </div>
+</div>
+    </div>
+  </div>
   <!-- RIGHT: Rooms & Amenities + Location -->
   <div class="split-right">
 
