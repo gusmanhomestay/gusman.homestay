@@ -1906,6 +1906,26 @@ body[data-theme="dark"] .theme-btn.active{
 .wa-normal {
   margin-top: 8px !important;
 }
+/* Add spacing between stacked cards in right column */
+.hero-middle .card {
+  margin-top: 16px;
+}
+
+/* First card (gallery) should NOT have top margin */
+.hero-middle .hero-card {
+  margin-top: 0;
+}
+/* Force same width as left column cards */
+.split-left .card {
+  max-width: 420px;
+}
+
+/* Center it nicely */
+.split-left {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
 </style>
 <link rel="stylesheet" href="/css/patch.css">
 </head>
