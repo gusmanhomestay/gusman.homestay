@@ -2786,6 +2786,119 @@ body[data-theme="dark"] .theme-btn.active{
 </div>
 <!-- ✅ END LOCATION CARD -->
 
+<!-- ✅ VIDEO (CORRECT VERSION INSIDE COLUMN) -->
+<div class="card">
+  <h3>
+    <span class="lang id">Gusman Homestay Video Tour</span>
+    <span class="lang en" style="display:none;">Gusman Homestay Video Tour</span>
+    <span class="lang de" style="display:none;">Gusman Homestay Video Tour</span>
+    <span class="lang it" style="display:none;">Gusman Homestay Video Tour</span>
+  </h3>
+
+  <div class="video-grid">
+    <div class="video-item">
+      <video id="tourVideo"
+        controls
+        playsinline
+        preload="none"
+        poster="images/video-brand-poster.jpg">
+        <source id="tourSource"
+          src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257194/01-day-overview_bkmohy.mp4"
+          type="video/mp4">
+      </video>
+
+      <!-- NAV BUTTONS -->
+      <div class="video-nav">
+        <button type="button" class="video-nav-btn prev" onclick="tourPrev()">‹</button>
+        <button type="button" class="video-nav-btn next" onclick="tourNext()">›</button>
+      </div>
+
+      <figcaption id="tourCaption">Gusman Homestay Video Tour</figcaption>
+    </div>
+
+    <div class="video-buttons">
+
+      <button type="button" class="video-btn"
+        data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257194/01-day-overview_bkmohy.mp4"
+        onclick="setTourVideo(this.dataset.src, null, this)">
+        <span class="lang id">Tour Siang hari</span>
+        <span class="lang en" style="display:none;">Day overview</span>
+        <span class="lang de" style="display:none;">Tagesübersicht</span>
+        <span class="lang it" style="display:none;">Panoramica diurna</span>
+      </button>
+
+      <button type="button" class="video-btn"
+        data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257195/02-night-overview_k44qdz.mp4"
+        onclick="setTourVideo(this.dataset.src, null, this)">
+        <span class="lang id">Tour Malam hari</span>
+        <span class="lang en" style="display:none;">Night overview</span>
+        <span class="lang de" style="display:none;">Nachtübersicht</span>
+        <span class="lang it" style="display:none;">Panoramica notturna</span>
+      </button>
+
+      <button type="button" class="video-btn"
+        data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257186/03-terrace-night_hmrc7x.mp4"
+        onclick="setTourVideo(this.dataset.src, null, this)">
+        <span class="lang id">View Teras malam</span>
+        <span class="lang en" style="display:none;">View Terrace at night</span>
+        <span class="lang de" style="display:none;">Ausblick Terrasse bei Nacht</span>
+        <span class="lang it" style="display:none;">Vista terrazza di notte</span>
+      </button>
+
+      <button type="button" class="video-btn"
+        data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257177/04-kitchen-night_evs1ai.mp4"
+        onclick="setTourVideo(this.dataset.src, null, this)">
+        <span class="lang id">Tour Dapur & ruang makan</span>
+        <span class="lang en" style="display:none;">Kitchen & dining</span>
+        <span class="lang de" style="display:none;">Küche & Essbereich</span>
+        <span class="lang it" style="display:none;">Cucina e zona pranzo</span>
+      </button>
+
+      <button type="button" class="video-btn"
+        data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257182/05-bedroom-main_cokwvg.mp4"
+        onclick="setTourVideo(this.dataset.src, null, this)">
+        <span class="lang id">Kamar Tidur utama</span>
+        <span class="lang en" style="display:none;">Main bedroom</span>
+        <span class="lang de" style="display:none;">Hauptschlafzimmer</span>
+        <span class="lang it" style="display:none;">Camera principale</span>
+      </button>
+
+      <button type="button" class="video-btn"
+        data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257168/06-bedroom-second_taoy8g.mp4"
+        onclick="setTourVideo(this.dataset.src, null, this)">
+        <span class="lang id">Kamar Tidur kedua</span>
+        <span class="lang en" style="display:none;">Second bedroom</span>
+        <span class="lang de" style="display:none;">Zweites Schlafzimmer</span>
+        <span class="lang it" style="display:none;">Seconda camera</span>
+      </button>
+
+      <button type="button" class="video-btn"
+        data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257179/07-amenities_sp9qfy.mp4"
+        onclick="setTourVideo(this.dataset.src, null, this)">
+        <span class="lang id">Amenities</span>
+        <span class="lang en" style="display:none;">Amenities</span>
+        <span class="lang de" style="display:none;">Amenities</span>
+        <span class="lang it" style="display:none;">Amenities</span>
+      </button>
+
+    </div>
+
+    <div style="margin-top:14px;text-align:center">
+      <a href="https://www.google.com/search?q=gusman+homestay+nagreg"
+         target="_blank"
+         rel="noopener"
+         class="btn btn-premium"
+         style="display:inline-flex;align-items:center;width:auto;">
+        <span class="lang id">Lihat lebih banyak disini</span>
+        <span class="lang en" style="display:none;">See more here</span>
+        <span class="lang de" style="display:none;">Mehr hier ansehen</span>
+        <span class="lang it" style="display:none;">Guarda di più qui</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
   </div><!-- end hero-middle -->
 
 </section><!-- end hero -->
@@ -3038,153 +3151,6 @@ body[data-theme="dark"] .theme-btn.active{
 </section><!-- end split-row -->
 </section>
     
-<!-- ===================== FULL-WIDTH VIDEO (CENTERED SECTION) ===================== -->
-<section class="fullwidth-section">
-  <div class="card">
-    <h3>
-      <span class="lang id">Gusman Homestay Video Tour</span>
-      <span class="lang en" style="display:none;">Gusman Homestay Video Tour</span>
-      <span class="lang de" style="display:none;">Gusman Homestay Video Tour</span>
-      <span class="lang it" style="display:none;">Gusman Homestay Video Tour</span>
-    </h3>
-
-    <div class="video-grid">
-  <div class="video-item">
-    <video id="tourVideo"
-      controls
-      playsinline
-      preload="none"
-      poster="images/video-brand-poster.jpg">
-      <source id="tourSource"
-        src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257194/01-day-overview_bkmohy.mp4"
-        type="video/mp4">
-    </video>
-          <!-- ✅ NEXT/PREV BUTTONS ON TOP OF VIDEO -->
-  <div class="video-nav">
-    <button type="button" class="video-nav-btn prev" onclick="tourPrev()">‹</button>
-    <button type="button" class="video-nav-btn next" onclick="tourNext()">›</button>
-  </div>
-        <figcaption id="tourCaption">Gusman Homestay Video Tour</figcaption>
-      </div>
-
-<div class="video-buttons">
-  
-<!-- 1️⃣ Day overview -->
-  <button type="button" class="video-btn"
-  data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257194/01-day-overview_bkmohy.mp4"
-  onclick="setTourVideo(this.dataset.src, null, this)">
-  <span class="lang id">Tour Siang hari</span>
-  <span class="lang en" style="display:none;">Day overview</span>
-  <span class="lang de" style="display:none;">Tagesübersicht</span>
-  <span class="lang it" style="display:none;">Panoramica diurna</span>
-</button>
-  
-<!-- 2️⃣ Night overview -->
-  <button type="button" class="video-btn"
-  data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257195/02-night-overview_k44qdz.mp4"
-  onclick="setTourVideo(this.dataset.src, null, this)">
-  <span class="lang id">Tour Malam hari</span>
-  <span class="lang en" style="display:none;">Night overview</span>
-  <span class="lang de" style="display:none;">Nachtübersicht</span>
-  <span class="lang it" style="display:none;">Panoramica notturna</span>
-</button>
-
-<!-- 3️⃣ Terrace at night -->
-<button type="button" class="video-btn"
-  data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257186/03-terrace-night_hmrc7x.mp4"
-  onclick="setTourVideo(this.dataset.src, null, this)">
-  <span class="lang id">View Teras malam</span>
-  <span class="lang en" style="display:none;">View Terrace at night</span>
-  <span class="lang de" style="display:none;">Ausblick Terrasse bei Nacht</span>
-  <span class="lang it" style="display:none;">il view Terrazza di notte</span>
-</button>
-
-<!-- 4️⃣ Kitchen & dining -->
-<button type="button" class="video-btn"
-  data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257177/04-kitchen-night_evs1ai.mp4"
-  onclick="setTourVideo(this.dataset.src, null, this)">
-  <span class="lang id">Tour Dapur & ruang makan</span>
-  <span class="lang en" style="display:none;">Kitchen & dining</span>
-  <span class="lang de" style="display:none;">Küche & Essbereich</span>
-  <span class="lang it" style="display:none;">Cucina e zona pranzo</span>
-</button>
-
-<!-- 5️⃣ Main bedroom -->
-<button type="button" class="video-btn"
-  data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257182/05-bedroom-main_cokwvg.mp4"
-  onclick="setTourVideo(this.dataset.src, null, this)">
-  <span class="lang id">Kamar Tidur utama</span>
-  <span class="lang en" style="display:none;">Main bedroom</span>
-  <span class="lang de" style="display:none;">Hauptschlafzimmer</span>
-  <span class="lang it" style="display:none;">Camera principale</span>
-</button>
-
-<!-- 6️⃣ Second bedroom -->
-<button type="button" class="video-btn"
-  data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257168/06-bedroom-second_taoy8g.mp4"
-  onclick="setTourVideo(this.dataset.src, null, this)">
-  <span class="lang id">Kamar Tidur kedua</span>
-  <span class="lang en" style="display:none;">Second bedroom</span>
-  <span class="lang de" style="display:none;">Zweites Schlafzimmer</span>
-  <span class="lang it" style="display:none;">Seconda camera</span>
-</button>
-
-<!-- 7️⃣ Amenities -->
-<button type="button" class="video-btn"
-  data-src="https://res.cloudinary.com/gusmanhomestay/video/upload/v1771257179/07-amenities_sp9qfy.mp4"
-  onclick="setTourVideo(this.dataset.src, null, this)">
-  <span class="lang id">Amenities</span>
-  <span class="lang en" style="display:none;">Amenities</span>
-  <span class="lang de" style="display:none;">Amenities</span>
-  <span class="lang it" style="display:none;">Amenities</span>
-</button>
-
-</div>
-<div style="margin-top:14px;text-align:center">
-  <a
-    href="https://www.google.com/search?q=gusman+homestay+nagreg"
-    target="_blank"
-    rel="noopener"
-    class="btn btn-premium"
-    style="display:inline-flex;align-items:center;width:auto;">
-
-    <!-- Indonesian -->
-    <span class="lang id">
-      Lihat lebih banyak
-      <img src="images/google.png" alt="Google"
-           style="width:25px;height:25px;vertical-align:-4px;margin:0 6px;">
-      disini
-    </span>
-
-    <!-- English -->
-    <span class="lang en" style="display:none;">
-      See more
-      <img src="images/google.png" alt="Google"
-           style="width:25px;height:25px;vertical-align:-4px;margin:0 6px;">
-      here
-    </span>
-
-    <!-- German -->
-    <span class="lang de" style="display:none;">
-      Mehr
-      <img src="images/google.png" alt="Google"
-           style="width:25px;height:25px;vertical-align:-4px;margin:0 6px;">
-      hier ansehen
-    </span>
-
-    <!-- Italian -->
-    <span class="lang it" style="display:none;">
-      Guarda più
-      <img src="images/google.png" alt="Google"
-           style="width:25px;height:25px;vertical-align:-4px;margin:0 6px;">
-      qui
-    </span>
-
-  </a>
-</div>
-  </div>
-</section>
-
 <div class="card fullwidth-section">
   <h3>
     <span class="lang id">Peta</span>
@@ -4533,5 +4499,16 @@ window.addEventListener('load', () => {
 
   <button id="lbNext" class="lb-btn lb-next">›</button>
 </div>
+<script>
+function bookWhatsApp() {
+  const phone = "6281230015529";
+
+  const message = encodeURIComponent(
+    "Halo, saya sudah melakukan transfer untuk booking Gusman Homestay. Berikut bukti pembayaran saya."
+  );
+
+  window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+}
+</script>
 </body>
 </html>
