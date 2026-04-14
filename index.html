@@ -1808,20 +1808,23 @@ body[data-theme="dark"] .theme-btn.active{
 .review-carousel {
   overflow: hidden;
   position: relative;
-  height: 420px;
+  min-height: 420px;   /* ✅ allow flexible height */
+  height: auto;
 }
 
 /* Tablet */
 @media (max-width: 900px) {
   .review-carousel {
-    height: 320px;
+    min-height: 320px;
+    height: auto;
   }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
   .review-carousel {
-    height: 260px;
+    min-height: 260px;
+    height: auto;
   }
 }
 
