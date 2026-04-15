@@ -3594,7 +3594,6 @@ Ho selezionato una data nel calendario oppure vorrei fare una domanda.
 Grazie.`
   };
 
-  // Track click (optional, keep if you use GA)
   if (typeof gtag === 'function') {
     gtag('event', 'whatsapp_click', {
       event_category: 'booking',
@@ -3602,7 +3601,6 @@ Grazie.`
     });
   }
 
-  // Open WhatsApp
   window.open(
     `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
     '_blank'
