@@ -3561,176 +3561,52 @@ function restartHeaderAnimation(){
   void header.offsetWidth;
   header.classList.add('fade-in');
 }
-/* =========================
-   BOOKING CALCULATOR FIX (ISOLATED)
-========================= */
-document.addEventListener('DOMContentLoaded', function(){
-
-  const adultsEl   = document.getElementById('adults');
-  const childrenEl = document.getElementById('children');
-  const checkinEl  = document.getElementById('checkin');
-  const checkoutEl = document.getElementById('checkout');
-  const totalEl    = document.getElementById('totalPrice');
-
-  if(!adultsEl || !childrenEl || !checkinEl || !checkoutEl || !totalEl){
-    console.log("Booking elements not found.");
-    return;
-  }
-
-  const WEEKDAY_BASE = 650000;
-  const WEEKEND_BASE = 900000;
-  const EXTRA_ADULT  = 50000;
-  const MAX_PERSONS  = 6;
-
-  function formatDate(d){
-    return d.getFullYear() + '-' +
-      String(d.getMonth()+1).padStart(2,'0') + '-' +
-      String(d.getDate()).padStart(2,'0');
-  }
-
-  function setDefaults(){
-    const today = new Date();
-    const tomorrow = new Date();
-    tomorrow.setDate(today.getDate()+1);
-
-    checkinEl.value = formatDate(today);
-    checkoutEl.value = formatDate(tomorrow);
-
-    if(!adultsEl.value || adultsEl.value === '0') adultsEl.value = 4;
-    if(!childrenEl.value) childrenEl.value = 0;
-  }
-
-  function calculate(){
-    let adults = parseInt(adultsEl.value) || 1;
-    let children = parseInt(childrenEl.value) || 0;
-
-    if(adults < 1) adults = 1;
-    if(children < 0) children = 0;
-
-    if(adults + children > MAX_PERSONS){
-      children = Math.max(0, MAX_PERSONS - adults);
-    }
-
-    adultsEl.value = adults;
-    childrenEl.value = children;
-
-    const ci = new Date(checkinEl.value);
-    const co = new Date(checkoutEl.value);
-
-    if(!(co > ci)){
-      const next = new Date(ci);
-      next.setDate(ci.getDate()+1);
-      checkoutEl.value = formatDate(next);
-    }
-
-    let total = 0;
-    let d = new Date(checkinEl.value);
-
-    while(d < new Date(checkoutEl.value)){
-      const day = d.getDay();
-      const isWeekend = (day === 5 || day === 6);
-      const base = isWeekend ? WEEKEND_BASE : WEEKDAY_BASE;
-      const extra = adults > 4 ? (adults - 4) * EXTRA_ADULT : 0;
-      total += base + extra;
-      d.setDate(d.getDate()+1);
-    }
-
-    totalEl.innerText = total.toLocaleString('id-ID') + ' IDR';
-  }
-
-  setDefaults();
-  calculate();
-
-  ['input','change'].forEach(evt=>{
-    adultsEl.addEventListener(evt, calculate);
-    childrenEl.addEventListener(evt, calculate);
-    checkinEl.addEventListener(evt, calculate);
-    checkoutEl.addEventListener(evt, calculate);
-  });
-
-});
-/* =========================
-   WHATSAPP (TRACKED)
-========================= */
+<!-- =========================
+   WHATSAPP (CLEAN - KOALENDAR)
+========================= -->
 <script>
 function bookWhatsApp(){
   const lang = document.body.dataset.lang || 'id';
 
-  const checkin = document.getElementById('checkin')?.value;
-  const checkout = document.getElementById('checkout')?.value;
-  const adults = document.getElementById('adults')?.value;
-  const children = document.getElementById('children')?.value;
-  const price = document.getElementById('totalPrice')?.innerText;
-
-  if(!checkin || !checkout){
-    alert(
-      lang === 'id'
-        ? 'Silakan pilih tanggal check-in dan check-out.'
-        : lang === 'de'
-        ? 'Bitte wählen Sie Check-in und Check-out.'
-        : lang === 'it'
-        ? 'Seleziona check-in e check-out.'
-        : 'Please select check-in and check-out.'
-    );
-    return;
-  }
-
   const msg = {
     id: `Halo, saya ingin booking Gusman Homestay.
 
-Check-in: ${checkin}
-Check-out: ${checkout}
-Dewasa: ${adults}
-Anak-anak: ${children}
-Perkiraan total: ${price}
+Saya sudah memilih tanggal di kalender atau ingin bertanya terlebih dahulu.
 
 Terima kasih.`,
 
     en: `Hello, I’d like to book Gusman Homestay.
 
-Check-in: ${checkin}
-Check-out: ${checkout}
-Adults: ${adults}
-Children: ${children}
-Estimated total: ${price}
+I have selected a date on the calendar or would like to ask a question first.
 
 Thank you.`,
 
     de: `Hallo, ich möchte Gusman Homestay buchen.
 
-Check-in: ${checkin}
-Check-out: ${checkout}
-Erwachsene: ${adults}
-Kinder: ${children}
-Gesamtpreis: ${price}
+Ich habe ein Datum im Kalender gewählt oder habe noch eine Frage.
 
 Danke.`,
 
     it: `Ciao, vorrei prenotare Gusman Homestay.
 
-Check-in: ${checkin}
-Check-out: ${checkout}
-Adulti: ${adults}
-Bambini: ${children}
-Totale stimato: ${price}
+Ho selezionato una data nel calendario oppure vorrei fare una domanda.
 
 Grazie.`
   };
 
+  // Track click (optional, keep if you use GA)
   if (typeof gtag === 'function') {
     gtag('event', 'whatsapp_click', {
       event_category: 'booking',
-      booking_location: 'booking_section',
-      transport_type: 'beacon'
+      booking_location: 'booking_section'
     });
   }
 
-  setTimeout(() => {
-    window.open(
-      `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
-      '_blank'
-    );
-  }, 150);
+  // Open WhatsApp
+  window.open(
+    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
+    '_blank'
+  );
 }
 </script>
 /* =========================
