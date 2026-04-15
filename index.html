@@ -3652,16 +3652,16 @@ document.addEventListener('DOMContentLoaded', function(){
 /* =========================
    WHATSAPP (TRACKED)
 ========================= */
+<script>
 function bookWhatsApp(){
-  const lang = document.body.dataset.lang || 'id'; // SOURCE OF TRUTH
+  const lang = document.body.dataset.lang || 'id';
 
-  const checkin = document.getElementById('checkin').value;
-  const checkout = document.getElementById('checkout').value;
-  const adults = document.getElementById('adults').value;
-  const children = document.getElementById('children').value;
-  const price = document.getElementById('totalPrice').innerText;
+  const checkin = document.getElementById('checkin')?.value;
+  const checkout = document.getElementById('checkout')?.value;
+  const adults = document.getElementById('adults')?.value;
+  const children = document.getElementById('children')?.value;
+  const price = document.getElementById('totalPrice')?.innerText;
 
-  // ✅ KEEP validation (important UX)
   if(!checkin || !checkout){
     alert(
       lang === 'id'
@@ -3675,9 +3675,9 @@ function bookWhatsApp(){
     return;
   }
 
-  // ✅ KEEP full message (no simplification)
   const msg = {
-    id: `Halo, saya ingin memesan Gusman Homestay.
+    id: `Halo, saya ingin booking Gusman Homestay.
+
 Check-in: ${checkin}
 Check-out: ${checkout}
 Dewasa: ${adults}
@@ -3685,7 +3685,9 @@ Anak-anak: ${children}
 Perkiraan total: ${price}
 
 Terima kasih.`,
+
     en: `Hello, I’d like to book Gusman Homestay.
+
 Check-in: ${checkin}
 Check-out: ${checkout}
 Adults: ${adults}
@@ -3693,7 +3695,9 @@ Children: ${children}
 Estimated total: ${price}
 
 Thank you.`,
+
     de: `Hallo, ich möchte Gusman Homestay buchen.
+
 Check-in: ${checkin}
 Check-out: ${checkout}
 Erwachsene: ${adults}
@@ -3701,7 +3705,9 @@ Kinder: ${children}
 Gesamtpreis: ${price}
 
 Danke.`,
+
     it: `Ciao, vorrei prenotare Gusman Homestay.
+
 Check-in: ${checkin}
 Check-out: ${checkout}
 Adulti: ${adults}
@@ -3711,23 +3717,22 @@ Totale stimato: ${price}
 Grazie.`
   };
 
- // ✅ send GA event FIRST (ONLY ONCE)
-if (typeof gtag === 'function') {
-  gtag('event', 'whatsapp_click', {
-    event_category: 'booking',
-    booking_location: 'booking_section',
-    transport_type: 'beacon'
-  });
-}
+  if (typeof gtag === 'function') {
+    gtag('event', 'whatsapp_click', {
+      event_category: 'booking',
+      booking_location: 'booking_section',
+      transport_type: 'beacon'
+    });
+  }
 
-// ✅ delay navigation so GA4 can send event
-setTimeout(() => {
-  window.open(
-    `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
-    '_blank'
-  );
-}, 150);
-}  
+  setTimeout(() => {
+    window.open(
+      `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
+      '_blank'
+    );
+  }, 150);
+}
+</script>
 /* =========================
    VIDEO SWITCHER
 ========================= */
