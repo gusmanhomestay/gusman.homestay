@@ -3561,9 +3561,9 @@ function restartHeaderAnimation(){
   void header.offsetWidth;
   header.classList.add('fade-in');
 }
-<!-- =========================
-   WHATSAPP (CLEAN - KOALENDAR)
-========================= -->
+/* =========================
+   WHATSAPP (CLEAN)
+========================= */
 function bookWhatsApp(){
   const lang = document.body.dataset.lang || 'id';
 
@@ -3588,17 +3588,10 @@ Danke.`,
 
     it: `Ciao, vorrei prenotare Gusman Homestay.
 
-Ho selezionato una data nel calendario oppure vorrei fare una domanda.
+Ho selezionato una data nel kalender oppure vorrei fare una domanda.
 
 Grazie.`
   };
-
-  if (typeof gtag === 'function') {
-    gtag('event', 'whatsapp_click', {
-      event_category: 'booking',
-      booking_location: 'booking_section'
-    });
-  }
 
   window.open(
     `https://wa.me/6281230015529?text=${encodeURIComponent(msg[lang] || msg.en)}`,
