@@ -1,0 +1,65 @@
+/* ===== MAP BUTTON FINAL (STABLE) ===== */
+
+.map-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:14px 18px;
+  border-radius:999px;
+  background:var(--brand);
+  color:#fff;
+  font-weight:700;
+  font-size:14px;
+  max-width:90%;
+
+  white-space:normal;      /* 🔥 important */
+}
+
+/* hide other languages */
+.map-btn .lang{
+  display:none;
+}
+
+/* show only active language */
+.map-btn .lang.active{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  width:100%;
+}
+
+/* Desktop = single line */
+.map-line-1,
+.map-line-2{
+  display:inline;
+}
+
+/* Mobile = 2 clean stacked lines */
+@media (max-width:768px){
+  .map-btn{
+    flex-direction:column;
+    line-height:1.3;
+  }
+
+  .map-line-1,
+  .map-line-2{
+    display:block;
+    width:100%;
+    text-align:center;
+  }
+}
+
+.map-icon{
+  width:18px;
+  height:18px;
+  margin-left:6px;
+  vertical-align:middle;
+}
+.map-btn,
+.map-btn:hover,
+.map-btn:focus,
+.map-btn:active {
+  text-decoration: none !important;
+}
