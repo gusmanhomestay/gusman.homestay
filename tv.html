@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome – Gusman Homestay</title>
+
+<style>
+:root{
+  --bg1:#0f2f2a;
+  --bg2:#1b4a44;
+  --text:#ffffff;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:"Georgia",serif;
+  background:
+    radial-gradient(1200px 600px at 50% -40%, rgba(255,255,255,.10), transparent 60%),
+    linear-gradient(180deg,var(--bg2),var(--bg1));
+  color:var(--text);
+}
+
+.tv-wrap{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.tv-card{
+  width:94vw;
+  height:86vh;
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:3vw;
+  align-items:center;
+}
+
+/* LEFT */
+.left{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  gap:2vh;
+  padding-top:1.5vh;
+}
+
+.logo{
+  max-width:30vw;
+  margin-bottom:.6vh;
+}
+
+h1{
+  font-size:3.8vw;
+  line-height:1.15;
+}
+
+.guest{
+  font-size:2.8vw;
+  margin-bottom:.6vh;
+}
+
+.info{
+  font-size:1.75vw;
+  line-height:1.6;
+  opacity:.95;
+}
+
+/* RIGHT */
+.right{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  border-left:2px solid rgba(255,255,255,.35);
+  padding-left:3vw;
+  gap:1.4vh;
+}
+
+/* STATUS */
+.status{
+  width:100%;
+  text-align:center;
+  font-size:1.45vw;
+  line-height:1.6;
+  margin-top:.5vh;
+  margin-bottom:1vh;
+}
+
+.qr-title{
+  font-size:1.8vw;
+  margin-top:.8vh;
+  line-height:1.2;
+  text-align:center;
+  max-width:85%;
+}
+
+.qr-sub{
+  font-size:1.35vw;
+  opacity:.85;
+  margin-bottom:1.2vh;
+}
+
+.qr{
+  width:380px;
+  max-width:22vw;
+  height:auto;
+}
+
+.qr-note{
+  margin-top:1.2vh;
+  font-size:1.3vw;
+  opacity:.9;
+}
+
+.footer{
+  position:absolute;
+  bottom:1.2vh;
+  width:100%;
+  text-align:center;
+  font-size:1.1vw;
+  opacity:.7;
+}
+
+/* MUSIC BUTTON */
+#enableMusicBtn{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  padding:8px 14px;
+  border-radius:999px;
+  border:none;
+  background:#1f6b5f;
+  color:#fff;
+  font-size:13px;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+</style>
+</head>
+
+<body>
+
+<div class="tv-wrap">
+  <div class="tv-card">
+
+    <!-- LEFT -->
+    <div class="left">
+
+      <img src="/images/gusman-logo-dark.webp" class="logo" alt="Gusman Homestay">
+
+      <h1>
+        <span class="lang-id">Selamat Datang di<br>Gusman Homestay</span>
+        <span class="lang-en" style="display:none">Welcome to<br>Gusman Homestay</span>
+      </h1>
+
+      <div class="guest"><strong id="guestName">Tamu</strong></div>
+
+      <div class="info">
+        Wi-Fi: <strong>Gusman-HomeStay</strong><br>
+        Password: <strong>Nagreg2025!</strong>
+      </div>
+
+      <div class="info">
+        <span class="lang-id">Check-out: <strong>Sampai Pukul 12.00 WIB</strong></span>
+        <span class="lang-en" style="display:none">Check-out: <strong>Until 12:00 PM</strong></span>
+      </div>
+
+      <div class="info">
+        <span class="lang-id">
+          Kontak selama menginap:<br>
+          <strong>Ibu Yayah</strong><br>
+          WhatsApp: <strong>0813-2275-0517</strong>
+        </span>
+        <span class="lang-en" style="display:none">
+          During your stay:<br>
+          <strong>Ibu Yayah</strong><br>
+          WhatsApp: <strong>0813-2275-0517</strong>
+        </span>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+      <div class="status">
+        <div id="clock"></div>
+        <div id="weather"></div>
+        <div id="forecast"></div>
+      </div>
+
+      <div class="qr-title">
+        <span class="lang-id">Scan QR Code<br>Untuk Panduan Tamu</span>
+        <span class="lang-en" style="display:none">Scan QR Code<br>For Guest Guide</span>
+      </div>
+
+      <div class="qr-sub">
+        <span class="lang-id">Aturan rumah, Wi-Fi & rekomendasi wisata</span>
+        <span class="lang-en" style="display:none">House rules, Wi-Fi & local tips</span>
+      </div>
+
+      <img src="/images/guide-qr.png" class="qr" alt="QR Guide">
+
+      <div class="qr-note">
+        <span class="lang-id">Ulasan Google & diskon 10% 😊</span>
+        <span class="lang-en" style="display:none">Google reviews & 10% discount 😊</span>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+© 2026 Gusman Homestay • www.gusmanhomestay.com • Follow us on Instagram & TikTok @gusmanhomestay
+</div>
+
+<button id="enableMusicBtn">🔊 Aktifkan Musik</button>
+<audio id="bgMusic" loop>
+  <source src="/music/welcome.mp3" type="audio/mpeg">
+</audio>
+
+<!-- GUEST NAME -->
+<script>
+(()=>{const p=new URLSearchParams(location.search).get("guest");
+if(p){document.getElementById("guestName").textContent=decodeURIComponent(p.replace(/\+/g," "))}})();
+</script>
+
+<!-- LANGUAGE AUTO SWITCH -->
+<script>
+(()=>{let c='id';setInterval(()=>{
+document.querySelectorAll('.lang-id').forEach(e=>e.style.display=c==='id'?'':'none');
+document.querySelectorAll('.lang-en').forEach(e=>e.style.display=c==='en'?'':'none');
+c=c==='id'?'en':'id';
+},30000)})();
+</script>
+
+<!-- CLOCK & WEATHER (REAL DATA) -->
+<script>
+(async()=>{
+const clockEl=document.getElementById("clock");
+const weatherEl=document.getElementById("weather");
+const forecastEl=document.getElementById("forecast");
+
+function updateClock(){
+const n=new Date();
+clockEl.textContent=
+n.toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:"Asia/Jakarta"})
++" • "+
+n.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Jakarta"})
++" WIB";
+}
+updateClock();
+setInterval(updateClock,1000);
+
+try{
+const r=await fetch("https://api.open-meteo.com/v1/forecast?latitude=-7.0165&longitude=107.8839&current_weather=true&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Asia/Jakarta");
+const d=await r.json();
+
+weatherEl.textContent=`🌡 ${d.current_weather.temperature}°C${d.daily.precipitation_sum[0]>0?" • 🌧 Hujan sekarang":""}`;
+
+forecastEl.textContent=
+d.daily.precipitation_sum[1]>0
+?`🌦 Besok hujan • ${d.daily.temperature_2m_min[1]}–${d.daily.temperature_2m_max[1]}°C`
+:`🌤 Besok cerah • ${d.daily.temperature_2m_min[1]}–${d.daily.temperature_2m_max[1]}°C`;
+}catch(e){}
+})();
+</script>
+
+<!-- MUSIC -->
+<script>
+(()=>{const m=document.getElementById("bgMusic");
+const b=document.getElementById("enableMusicBtn");
+b.onclick=()=>m.play().then(()=>b.style.display="none").catch(()=>{});})();
+</script>
+
+</body>
+</html>
